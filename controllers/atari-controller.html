@@ -16,13 +16,34 @@
             font-family: Arial, sans-serif;
         }
 
+        .joystick-frame {
+            border-radius: 100%;
+            background-color: transparent;
+            border: 3px dashed white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            aspect-ratio: 1;
+        }
+
+        .joystick-ring {
+            border-radius: 100%;
+            background-color: #666666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            aspect-ratio: 1;
+        }
+
         .joystick-base-outer {
             border-radius: 100%;
             background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12px;
+            padding: 8px;
             aspect-ratio: 1;
             box-shadow: 
                 inset -4px -4px 8px rgba(0,0,0,0.8),
@@ -35,7 +56,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12px;
+            padding: 8px;
             aspect-ratio: 1;
             box-shadow: 
                 inset -4px -4px 8px rgba(0,0,0,0.8),
@@ -48,7 +69,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12px;
+            padding: 8px;
             aspect-ratio: 1;
             box-shadow: 
                 inset -4px -4px 8px rgba(0,0,0,0.8),
@@ -100,13 +121,17 @@
 </head>
 
 <body>
-    <div class="joystick-base-outer">
-        <div class="joystick-base-middle">
-            <div class="joystick-base-inner">
-                <div class="joystick-handle">
-                    <div class="joystick-logo-top-outer">
-                        <div class="joystick-logo-top-inner">
-                            Atari
+    <div class="joystick-ring">
+        <div class="joystick-frame">
+            <div class="joystick-base-outer">
+                <div class="joystick-base-middle">
+                    <div class="joystick-base-inner">
+                        <div class="joystick-handle">
+                            <div class="joystick-logo-top-outer">
+                                <div class="joystick-logo-top-inner">
+                                    Atari
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
