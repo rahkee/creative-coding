@@ -16,6 +16,45 @@
             font-family: Arial, sans-serif;
         }
 
+        .joystick-base-outer {
+            border-radius: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            aspect-ratio: 1;
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.8),
+                inset 4px 4px 8px rgba(255,255,255,0.3);
+        }
+
+        .joystick-base-middle {
+            border-radius: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            aspect-ratio: 1;
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.8),
+                inset 4px 4px 8px rgba(255,255,255,0.3);
+        }
+
+        .joystick-base-inner {
+            border-radius: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            aspect-ratio: 1;
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.8),
+                inset 4px 4px 8px rgba(255,255,255,0.3);
+        }
+
         .joystick-handle {
             border-radius: 100%;
             background-color: #2d3436;
@@ -61,10 +100,16 @@
 </head>
 
 <body>
-    <div class="joystick-handle">
-        <div class="joystick-logo-top-outer">
-            <div class="joystick-logo-top-inner">
-                Atari
+    <div class="joystick-base-outer">
+        <div class="joystick-base-middle">
+            <div class="joystick-base-inner">
+                <div class="joystick-handle">
+                    <div class="joystick-logo-top-outer">
+                        <div class="joystick-logo-top-inner">
+                            Atari
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
