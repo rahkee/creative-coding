@@ -16,6 +16,19 @@
             font-family: Arial, sans-serif;
         }
 
+        .joystick-handle {
+            border-radius: 100%;
+            background-color: #2d3436;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            aspect-ratio: 1;
+            box-shadow: 
+                inset -2px -2px 4px rgba(0,0,0,0.4),
+                inset 2px 2px 4px rgba(255,255,255,0.1);
+        }
+
         .joystick-logo-top-outer {
             border-radius: 100%;
             background-color: #d63031;
@@ -41,16 +54,18 @@
             aspect-ratio: 1;
             box-shadow: 
                 0 1px 2px rgba(0,0,0,0.2),
-                inset 0 -1px 2px rgba(255,255,255,0.1),
+                inset 0 -1px 2px rgba(255,255,255,0.4),
                 inset 0 1px 2px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 
 <body>
-    <div class="joystick-logo-top-outer">
-        <div class="joystick-logo-top-inner">
-            Atari
+    <div class="joystick-handle">
+        <div class="joystick-logo-top-outer">
+            <div class="joystick-logo-top-inner">
+                Atari
+            </div>
         </div>
     </div>
 </body>
