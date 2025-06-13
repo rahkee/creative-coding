@@ -21,14 +21,29 @@
             border-radius: 10px;
             padding: 10px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            gap: 20px;
             box-shadow: 
                 0 8px 20px rgba(0,0,0,0.4),
                 inset 0 2px 4px rgba(255,255,255,0.1),
                 inset 0 -2px 4px rgba(0,0,0,0.3);
         }
 
+        .fire-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: #d63031;
+            border: none;
+            cursor: pointer;
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.3),
+                inset 0 -2px 0px rgba(0,0,0,0.4),
+                inset 0 2px 0px rgba(255,255,255,0.2);
+            transition: all 0.1s ease;
+        }
+        
         .joystick-frame {
             border-radius: 100%;
             background-color: transparent;
@@ -153,6 +168,7 @@
                 </div>
             </div>
         </div>
+        <button class="fire-button"></button>
     </div>
 </body>
 
