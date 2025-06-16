@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow DOM as Iframe Alternative</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .host-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            color: #4a5568;
+            text-align: center;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .shadow-host {
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            min-height: 200px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .shadow-host:before {
+            content: 'Shadow DOM Container';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .info {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .explanation {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 15px;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="host-content">
+        <h1>🎭 Shadow DOM as Iframe Alternative</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Demonstrating how Shadow DOM can encapsulate content like an iframe
+        </p>
+    </div>
+
+    <div class="demo-section">
+        <h2>Interactive Demo</h2>
+        <div class="controls">
+            <button onclick="injectWidget()">Inject Widget</button>
+            <button onclick="injectGame()">Inject Mini Game</button>
+            <button onclick="injectCard()">Inject Profile Card</button>
+            <button onclick="injectScrollDemo()">Scroll-Aware Demo</button>
+            <button onclick="injectFloatingDemo()">Floating Elements Demo</button>
+            <button onclick="clearShadow()">Clear Shadow DOM</button>
+        </div>
+        
+        <div id="shadow-container" class="shadow-host"></div>
+        
+        <div class="info">
+            <strong>🔒 Encapsulation Benefits:</strong><br>
+            • Styles are completely isolated (no CSS conflicts)<br>
+            • JavaScript scope is contained<br>
+            • DOM manipulation doesn't affect parent page<br>
+            • Behaves like an iframe but with better performance
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>How It Works</h2>
+        <div class="explanation">
+            <h3>Traditional Iframe vs Shadow DOM:</h3>
+            <p><strong>Iframe:</strong> Creates a separate document context with its own window, requiring postMessage for communication.</p>
+            <p><strong>Shadow DOM:</strong> Creates an isolated DOM subtree within the same document, allowing controlled encapsulation.</p>
+        </div>
+        
+        <div class="code-example">
+// Creating a Shadow DOM "iframe"
+const container = document.getElementById('shadow-container');
+const shadowRoot = container.attachShadow({ mode: 'open' });
+
+// Inject completely isolated content
+shadowRoot.innerHTML = `
+  &lt;style&gt;
+    /* Styles only affect shadow content */
+    .widget { background: red; }
+  &lt;/style&gt;
+  &lt;div class="widget"&gt;Isolated content&lt;/div&gt;
+`;
+        </div>
+    </div>
+
+    <script>
+        let currentShadowRoot = null;
+
+        function createShadowRoot() {
+            const container = document.getElementById('shadow-container');
+            
+            // If shadow root already exists, clear it and reuse
+            if (currentShadowRoot) {
+                currentShadowRoot.innerHTML = '';
+                return currentShadowRoot;
+            }
+            
+            // Check if container already has a shadow root
+            if (container.shadowRoot) {
+                currentShadowRoot = container.shadowRoot;
+                currentShadowRoot.innerHTML = '';
+                return currentShadowRoot;
+            }
+            
+            // Create new shadow root only if one doesn't exist
+            currentShadowRoot = container.attachShadow({ mode: 'open' });
+            return currentShadowRoot;
+        }
+
+        function injectWidget() {
+            const shadowRoot = createShadowRoot();
+            
+            // Create the style element
+            const style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    display: block;
+                    padding: 20px;
+                }
+                
+                .widget-container {
+                    background: linear-gradient(45deg, #ff6b6b, #feca57);
+                    border-radius: 15px;
+                    padding: 25px;
+                    text-align: center;
+                    color: white;
+                    font-family: Arial, sans-serif;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    transform: scale(0);
+                    animation: popIn 0.5s ease forwards;
+                }
+                
+                @keyframes popIn {
+                    to { transform: scale(1); }
+                }
+                
+                .counter {
+                    font-size: 48px;
+                    font-weight: bold;
+                    margin: 20px 0;
+                }
+                
+                button {
+                    background: rgba(255,255,255,0.2);
+                    border: 2px solid white;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    margin: 0 5px;
+                    transition: all 0.3s ease;
+                }
+                
+                button:hover {
+                    background: white;
+                    color: #ff6b6b;
+                    transform: translateY(-2px);
+                }
+            `;
+            
+            // Create the HTML content
+            const container = document.createElement('div');
+            container.innerHTML = `
+                <div class="widget-container">
+                    <h3>🚀 Interactive Counter Widget</h3>
+                    <div class="counter" id="counter">0</div>
+                    <button id="decreaseBtn">- Decrease</button>
+                    <button id="increaseBtn">+ Increase</button>
+                    <p style="margin-top: 15px; opacity: 0.8;">This widget is completely isolated!</p>
+                </div>
+            `;
+            
+            // Add elements to shadow DOM
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(container);
+            
+            // Add JavaScript functionality
+            let count = 0;
+            const counter = shadowRoot.getElementById('counter');
+            const decreaseBtn = shadowRoot.getElementById('decreaseBtn');
+            const increaseBtn = shadowRoot.getElementById('increaseBtn');
+            
+            function updateCounter(delta) {
+                count += delta;
+                counter.textContent = count;
+            }
+            
+            decreaseBtn.addEventListener('click', () => updateCounter(-1));
+            increaseBtn.addEventListener('click', () => updateCounter(1));
+            
+            console.log('Widget script loaded in shadow DOM');
+        }
+
+        function injectGame() {
+            const shadowRoot = createShadowRoot();
+            // Style
+            const style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    display: block;
+                    padding: 20px;
+                }
+                .game-container {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 15px;
+                    padding: 25px;
+                    color: white;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .game-area {
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 10px;
+                    height: 200px;
+                    margin: 20px 0;
+                    position: relative;
+                    cursor: crosshair;
+                    border: 2px dashed rgba(255,255,255,0.3);
+                }
+                .target {
+                    width: 30px;
+                    height: 30px;
+                    background: #ff6b6b;
+                    border-radius: 50%;
+                    position: absolute;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 0 20px rgba(255,107,107,0.6);
+                }
+                .target:hover {
+                    transform: scale(1.2);
+                }
+                .score {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                .instructions {
+                    opacity: 0.8;
+                    font-size: 14px;
+                }
+            `;
+            // HTML
+            const container = document.createElement('div');
+            container.innerHTML = `
+                <div class="game-container">
+                    <h3>🎯 Click the Red Dots Game</h3>
+                    <div class="score">Score: <span id="score">0</span></div>
+                    <div class="game-area" id="gameArea"></div>
+                    <div class="instructions">Click the red dots as they appear!</div>
+                </div>
+            `;
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(container);
+            // JS
+            let score = 0;
+            const gameArea = shadowRoot.getElementById('gameArea');
+            const scoreElement = shadowRoot.getElementById('score');
+            function spawnTarget() {
+                const target = document.createElement('div');
+                target.className = 'target';
+                target.style.left = Math.random() * (gameArea.offsetWidth - 30) + 'px';
+                target.style.top = Math.random() * (gameArea.offsetHeight - 30) + 'px';
+                target.onclick = function() {
+                    score++;
+                    scoreElement.textContent = score;
+                    target.remove();
+                    setTimeout(spawnTarget, 500);
+                };
+                gameArea.appendChild(target);
+                setTimeout(() => {
+                    if (target.parentNode) {
+                        target.remove();
+                        setTimeout(spawnTarget, 1000);
+                    }
+                }, 3000);
+            }
+            spawnTarget();
+        }
+
+        function injectCard() {
+            const shadowRoot = createShadowRoot();
+            // Style
+            const style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    display: flex;
+                    justify-content: center;
+                    padding: 20px;
+                }
+                .profile-card {
+                    background: white;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+                    overflow: hidden;
+                    max-width: 300px;
+                    width: 100%;
+                    transform: translateY(20px);
+                    opacity: 0;
+                    animation: slideIn 0.6s ease forwards;
+                }
+                @keyframes slideIn {
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                .card-header {
+                    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+                    height: 120px;
+                    position: relative;
+                }
+                .avatar {
+                    width: 80px;
+                    height: 80px;
+                    background: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 36px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                }
+                .card-body {
+                    padding: 50px 30px 30px;
+                    text-align: center;
+                    font-family: Arial, sans-serif;
+                }
+                .name {
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 5px;
+                }
+                .title {
+                    color: #666;
+                    margin-bottom: 20px;
+                }
+                .social-buttons {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                }
+                .social-btn {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    color: white;
+                    font-weight: bold;
+                }
+                .twitter { background: #1DA1F2; }
+                .github { background: #333; }
+                .linkedin { background: #0077B5; }
+                .social-btn:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                }
+            `;
+            // HTML
+            const container = document.createElement('div');
+            container.innerHTML = `
+                <div class="profile-card">
+                    <div class="card-header">
+                        <div class="avatar">👨‍💻</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="name">John Developer</div>
+                        <div class="title">Frontend Engineer</div>
+                        <div class="social-buttons">
+                            <button class="social-btn twitter" id="twitterBtn">T</button>
+                            <button class="social-btn github" id="githubBtn">G</button>
+                            <button class="social-btn linkedin" id="linkedinBtn">L</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(container);
+            // JS
+            shadowRoot.getElementById('twitterBtn').onclick = () => alert('Twitter clicked!');
+            shadowRoot.getElementById('githubBtn').onclick = () => alert('GitHub clicked!');
+            shadowRoot.getElementById('linkedinBtn').onclick = () => alert('LinkedIn clicked!');
+        }
+
+        function injectScrollDemo() {
+            const shadowRoot = createShadowRoot();
+            
+            // Style
+            const style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    display: block;
+                    padding: 20px;
+                }
+                
+                .scroll-demo {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 15px;
+                    padding: 25px;
+                    color: white;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .scroll-info {
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 10px;
+                    padding: 20px;
+                    margin: 20px 0;
+                    backdrop-filter: blur(10px);
+                }
+                
+                .scroll-value {
+                    font-size: 32px;
+                    font-weight: bold;
+                    margin: 10px 0;
+                    color: #fff;
+                }
+                
+                .scroll-bar {
+                    background: rgba(255,255,255,0.2);
+                    height: 20px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin: 15px 0;
+                    position: relative;
+                }
+                
+                .scroll-progress {
+                    background: linear-gradient(45deg, #ff6b6b, #feca57);
+                    height: 100%;
+                    border-radius: 10px;
+                    transition: width 0.1s ease;
+                    box-shadow: 0 0 20px rgba(255,107,107,0.5);
+                }
+                
+                .scroll-stats {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 15px;
+                    font-size: 14px;
+                    opacity: 0.9;
+                }
+                
+                .floating-indicator {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: rgba(102, 126, 234, 0.9);
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 25px;
+                    font-weight: bold;
+                    z-index: 1000;
+                    backdrop-filter: blur(10px);
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                    transition: all 0.3s ease;
+                }
+                
+                .direction-arrow {
+                    font-size: 24px;
+                    margin: 10px;
+                    transition: all 0.3s ease;
+                }
+                
+                .scroll-up { color: #4CAF50; }
+                .scroll-down { color: #ff6b6b; }
+            `;
+            
+            // HTML
+            const container = document.createElement('div');
+            container.innerHTML = `
+                <div class="scroll-demo">
+                    <h3>📏 Scroll Position Tracker</h3>
+                    <p>This Shadow DOM widget can track the main page scroll!</p>
+                    
+                    <div class="scroll-info">
+                        <div>Current Scroll Position:</div>
+                        <div class="scroll-value" id="scrollValue">0px</div>
+                        
+                        <div class="scroll-bar">
+                            <div class="scroll-progress" id="scrollProgress"></div>
+                        </div>
+                        
+                        <div class="scroll-stats">
+                            <span>Viewport: <span id="viewport">0x0</span></span>
+                            <span>Page Height: <span id="pageHeight">0px</span></span>
+                        </div>
+                        
+                        <div class="direction-arrow" id="scrollDirection">⏸️</div>
+                    </div>
+                    
+                    <p style="opacity: 0.8; font-size: 14px;">
+                        Scroll this page up and down to see real-time tracking!<br>
+                        Shadow DOM has full access to window scroll events.
+                    </p>
+                </div>
+                
+                <div class="floating-indicator" id="floatingIndicator">
+                    Scroll: 0%
+                </div>
+            `;
+            
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(container);
+            
+            // JavaScript - Shadow DOM tracking main page scroll
+            const scrollValue = shadowRoot.getElementById('scrollValue');
+            const scrollProgress = shadowRoot.getElementById('scrollProgress');
+            const viewport = shadowRoot.getElementById('viewport');
+            const pageHeight = shadowRoot.getElementById('pageHeight');
+            const scrollDirection = shadowRoot.getElementById('scrollDirection');
+            const floatingIndicator = shadowRoot.getElementById('floatingIndicator');
+            
+            let lastScrollY = window.scrollY;
+            let scrollDirection_value = 'paused';
+            
+            function updateScrollInfo() {
+                const currentScroll = window.scrollY;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = maxScroll > 0 ? (currentScroll / maxScroll) * 100 : 0;
+                
+                // Update scroll position
+                scrollValue.textContent = Math.round(currentScroll) + 'px';
+                
+                // Update progress bar
+                scrollProgress.style.width = scrollPercent + '%';
+                
+                // Update viewport info
+                viewport.textContent = window.innerWidth + 'x' + window.innerHeight;
+                pageHeight.textContent = document.documentElement.scrollHeight + 'px';
+                
+                // Update floating indicator
+                floatingIndicator.textContent = `Scroll: ${Math.round(scrollPercent)}%`;
+                
+                // Detect scroll direction
+                if (currentScroll > lastScrollY) {
+                    scrollDirection_value = 'down';
+                    scrollDirection.textContent = '⬇️';
+                    scrollDirection.className = 'direction-arrow scroll-down';
+                } else if (currentScroll < lastScrollY) {
+                    scrollDirection_value = 'up';
+                    scrollDirection.textContent = '⬆️';
+                    scrollDirection.className = 'direction-arrow scroll-up';
+                } else {
+                    scrollDirection.textContent = '⏸️';
+                    scrollDirection.className = 'direction-arrow';
+                }
+                
+                lastScrollY = currentScroll;
+            }
+            
+            // Listen to scroll events on the main window
+            window.addEventListener('scroll', updateScrollInfo);
+            window.addEventListener('resize', updateScrollInfo);
+            
+            // Initial update
+            updateScrollInfo();
+            
+            // Store cleanup function for when shadow DOM is cleared
+            shadowRoot.cleanup = function() {
+                window.removeEventListener('scroll', updateScrollInfo);
+                window.removeEventListener('resize', updateScrollInfo);
+                // Remove floating indicator
+                const indicator = document.querySelector('.floating-indicator');
+                if (indicator && indicator.parentNode === document.body) {
+                    indicator.remove();
+                }
+            };
+            
+            console.log('Scroll tracking demo loaded in Shadow DOM');
+        }
+
+        function injectFloatingDemo() {
+            const shadowRoot = createShadowRoot();
+            
+            // Style
+            const style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    display: block;
+                    padding: 20px;
+                    position: relative;
+                    height: 400px;
+                    overflow: hidden;
+                }
+                
+                .floating-demo {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 15px;
+                    padding: 25px;
+                    color: white;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    position: relative;
+                    height: 100%;
+                    overflow: hidden;
+                }
+                
+                .demo-info {
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 10px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    backdrop-filter: blur(10px);
+                }
+                
+                .floating-element {
+                    position: absolute;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                    z-index: 10;
+                }
+                
+                .floating-element:hover {
+                    transform: scale(1.2);
+                    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+                }
+                
+                .mouse-follower {
+                    background: linear-gradient(45deg, #ff6b6b, #feca57);
+                }
+                
+                .viewport-bouncer {
+                    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+                }
+                
+                .scroll-orbiter {
+                    background: linear-gradient(45deg, #f093fb, #f5576c);
+                }
+                
+                .corner-hugger {
+                    background: linear-gradient(45deg, #667eea, #764ba2);
+                }
+                
+                .status-display {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 20px;
+                    right: 20px;
+                    background: rgba(0,0,0,0.5);
+                    border-radius: 10px;
+                    padding: 15px;
+                    font-size: 12px;
+                    line-height: 1.4;
+                    backdrop-filter: blur(10px);
+                }
+                
+                .controls-panel {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    margin: 15px 0;
+                    flex-wrap: wrap;
+                }
+                
+                .control-btn {
+                    background: rgba(255,255,255,0.2);
+                    border: 1px solid rgba(255,255,255,0.3);
+                    color: white;
+                    padding: 8px 15px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    transition: all 0.3s ease;
+                }
+                
+                .control-btn:hover {
+                    background: rgba(255,255,255,0.3);
+                    transform: translateY(-2px);
+                }
+                
+                .control-btn.active {
+                    background: rgba(255,255,255,0.4);
+                    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+                }
+            `;
+            
+            // HTML
+            const container = document.createElement('div');
+            container.innerHTML = `
+                <div class="floating-demo">
+                    <h3>🎈 Floating Elements in Shadow DOM</h3>
+                    
+                    <div class="demo-info">
+                        <p>These elements can move based on viewport, mouse, and scroll!</p>
+                    </div>
+                    
+                    <div class="controls-panel">
+                        <button class="control-btn active" id="mouseBtn">🖱️ Mouse Follower</button>
+                        <button class="control-btn" id="bounceBtn">⚡ Viewport Bouncer</button>
+                        <button class="control-btn" id="orbitBtn">🌍 Scroll Orbiter</button>
+                        <button class="control-btn" id="cornerBtn">📍 Corner Hugger</button>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="floating-element mouse-follower" id="mouseFollower">🖱️</div>
+                    <div class="floating-element viewport-bouncer" id="viewportBouncer">⚡</div>
+                    <div class="floating-element scroll-orbiter" id="scrollOrbiter">🌍</div>
+                    <div class="floating-element corner-hugger" id="cornerHugger">📍</div>
+                    
+                    <div class="status-display" id="statusDisplay">
+                        Mouse: (0, 0) | Viewport: 0x0 | Scroll: 0px
+                    </div>
+                </div>
+            `;
+            
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(container);
+            
+            // Get elements
+            const demoContainer = shadowRoot.querySelector('.floating-demo');
+            const mouseFollower = shadowRoot.getElementById('mouseFollower');
+            const viewportBouncer = shadowRoot.getElementById('viewportBouncer');
+            const scrollOrbiter = shadowRoot.getElementById('scrollOrbiter');
+            const cornerHugger = shadowRoot.getElementById('cornerHugger');
+            const statusDisplay = shadowRoot.getElementById('statusDisplay');
+            
+            // Control buttons
+            const mouseBtn = shadowRoot.getElementById('mouseBtn');
+            const bounceBtn = shadowRoot.getElementById('bounceBtn');
+            const orbitBtn = shadowRoot.getElementById('orbitBtn');
+            const cornerBtn = shadowRoot.getElementById('cornerBtn');
+            
+            // Animation state
+            let mouseX = 0, mouseY = 0;
+            let bounceX = 100, bounceY = 100;
+            let bounceVelX = 2, bounceVelY = 1.5;
+            let orbitAngle = 0;
+            let activeElements = { mouse: true, bounce: false, orbit: false, corner: false };
+            
+            // Update positions based on viewport and interactions
+            function updatePositions() {
+                const containerRect = demoContainer.getBoundingClientRect();
+                const containerWidth = containerRect.width - 60; // Element width
+                const containerHeight = containerRect.height - 60; // Element height
+                
+                // Mouse Follower - follows mouse within container
+                if (activeElements.mouse) {
+                    const relativeX = Math.max(0, Math.min(mouseX - containerRect.left, containerWidth));
+                    const relativeY = Math.max(0, Math.min(mouseY - containerRect.top, containerHeight));
+                    mouseFollower.style.left = relativeX + 'px';
+                    mouseFollower.style.top = relativeY + 'px';
+                    mouseFollower.style.display = 'flex';
+                } else {
+                    mouseFollower.style.display = 'none';
+                }
+                
+                // Viewport Bouncer - bounces around container
+                if (activeElements.bounce) {
+                    bounceX += bounceVelX;
+                    bounceY += bounceVelY;
+                    
+                    if (bounceX <= 0 || bounceX >= containerWidth) bounceVelX *= -1;
+                    if (bounceY <= 0 || bounceY >= containerHeight) bounceVelY *= -1;
+                    
+                    bounceX = Math.max(0, Math.min(bounceX, containerWidth));
+                    bounceY = Math.max(0, Math.min(bounceY, containerHeight));
+                    
+                    viewportBouncer.style.left = bounceX + 'px';
+                    viewportBouncer.style.top = bounceY + 'px';
+                    viewportBouncer.style.display = 'flex';
+                } else {
+                    viewportBouncer.style.display = 'none';
+                }
+                
+                // Scroll Orbiter - orbits based on scroll position
+                if (activeElements.orbit) {
+                    orbitAngle += 0.02 + (window.scrollY * 0.001);
+                    const centerX = containerWidth / 2;
+                    const centerY = containerHeight / 2;
+                    const radius = Math.min(centerX, centerY) * 0.6;
+                    
+                    const orbitX = centerX + Math.cos(orbitAngle) * radius;
+                    const orbitY = centerY + Math.sin(orbitAngle) * radius;
+                    
+                    scrollOrbiter.style.left = orbitX + 'px';
+                    scrollOrbiter.style.top = orbitY + 'px';
+                    scrollOrbiter.style.display = 'flex';
+                } else {
+                    scrollOrbiter.style.display = 'none';
+                }
+                
+                // Corner Hugger - moves to viewport corners based on scroll
+                if (activeElements.corner) {
+                    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                    const corner = Math.floor(scrollPercent * 4) % 4;
+                    
+                    let cornerX, cornerY;
+                    switch(corner) {
+                        case 0: cornerX = 0; cornerY = 0; break; // Top-left
+                        case 1: cornerX = containerWidth; cornerY = 0; break; // Top-right
+                        case 2: cornerX = containerWidth; cornerY = containerHeight; break; // Bottom-right
+                        case 3: cornerX = 0; cornerY = containerHeight; break; // Bottom-left
+                    }
+                    
+                    cornerHugger.style.left = cornerX + 'px';
+                    cornerHugger.style.top = cornerY + 'px';
+                    cornerHugger.style.display = 'flex';
+                } else {
+                    cornerHugger.style.display = 'none';
+                }
+                
+                // Update status display
+                statusDisplay.textContent = `Mouse: (${Math.round(mouseX)}, ${Math.round(mouseY)}) | Viewport: ${window.innerWidth}x${window.innerHeight} | Scroll: ${Math.round(window.scrollY)}px`;
+            }
+            
+            // Event listeners
+            function handleMouseMove(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            }
+            
+            function handleScroll() {
+                // Scroll affects orbiter and corner hugger
+            }
+            
+            function handleResize() {
+                // Viewport changes affect all elements
+            }
+            
+            // Control button handlers
+            function setActiveElement(element) {
+                // Reset all
+                Object.keys(activeElements).forEach(key => activeElements[key] = false);
+                // Set active
+                activeElements[element] = true;
+                
+                // Update button states
+                shadowRoot.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+            }
+            
+            mouseBtn.onclick = () => {
+                setActiveElement('mouse');
+                mouseBtn.classList.add('active');
+            };
+            
+            bounceBtn.onclick = () => {
+                setActiveElement('bounce');
+                bounceBtn.classList.add('active');
+            };
+            
+            orbitBtn.onclick = () => {
+                setActiveElement('orbit');
+                orbitBtn.classList.add('active');
+            };
+            
+            cornerBtn.onclick = () => {
+                setActiveElement('corner');
+                cornerBtn.classList.add('active');
+            };
+            
+            // Add event listeners
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', handleResize);
+            
+            // Animation loop
+            const animationLoop = setInterval(updatePositions, 16); // ~60fps
+            
+            // Initial position
+            updatePositions();
+            
+            // Cleanup function
+            shadowRoot.cleanup = function() {
+                window.removeEventListener('mousemove', handleMouseMove);
+                window.removeEventListener('scroll', handleScroll);
+                window.removeEventListener('resize', handleResize);
+                clearInterval(animationLoop);
+            };
+            
+            console.log('Floating elements demo loaded in Shadow DOM');
+        }
+
+        function clearShadow() {
+            const container = document.getElementById('shadow-container');
+            if (currentShadowRoot) {
+                // Call cleanup if it exists
+                if (currentShadowRoot.cleanup) {
+                    currentShadowRoot.cleanup();
+                }
+                currentShadowRoot.innerHTML = '';
+            }
+            // Don't set currentShadowRoot to null - keep the reference
+            // The shadow root still exists, we just cleared its content
+        }
+
+        // Demo initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show a welcome message
+            setTimeout(() => {
+                injectWidget();
+            }, 500);
+        });
+
+        // Add some host page styles that WON'T affect shadow content
+        const hostStyles = document.createElement('style');
+        hostStyles.textContent = `
+            /* These styles won't affect shadow DOM content */
+            .widget-container { 
+                background: blue !important; 
+                color: yellow !important; 
+            }
+        `;
+        document.head.appendChild(hostStyles);
+    </script>
+</body>
+
+</html>
