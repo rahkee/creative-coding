@@ -172,4 +172,83 @@
     </div>
 </body>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const joystickBaseOuter = document.querySelector('.joystick-base-outer');
+        const joystickBaseMiddle = document.querySelector('.joystick-base-middle');
+        const joystickBaseInner = document.querySelector('.joystick-base-inner');
+        const joystickHandle = document.querySelector('.joystick-handle');
+        
+        // Movement multipliers for each layer (outer moves less, inner moves more)
+        const intensities = {
+            baseOuter: 0.0125,  // reduced by another 50% (was 0.025)
+            baseMiddle: 0.01875, // reduced by another 50% (was 0.0375)
+            baseInner: 0.025,   // reduced by another 50% (was 0.05)
+            handle: 0.3         // most movement (unchanged)
+        };
+        
+        // Maximum movement distance in pixels
+        const maxMovement = 20;
+        
+        // Get the center of the controller
+        const controllerBase = document.querySelector('.controller-base');
+        let centerX = 0;
+        let centerY = 0;
+        
+        function updateCenter() {
+            const rect = controllerBase.getBoundingClientRect();
+            centerX = rect.left + rect.width / 2;
+            centerY = rect.top + rect.height / 2;
+        }
+        
+        function moveJoystick(mouseX, mouseY) {
+            // Calculate distance from center
+            const deltaX = mouseX - centerX;
+            const deltaY = mouseY - centerY;
+            
+            // Limit movement to maximum distance
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const limitedDistance = Math.min(distance, maxMovement);
+            const angle = Math.atan2(deltaY, deltaX);
+            
+            const limitedDeltaX = Math.cos(angle) * limitedDistance;
+            const limitedDeltaY = Math.sin(angle) * limitedDistance;
+            
+            // Apply movement to each layer with different intensities
+            joystickBaseOuter.style.transform = `translate(${limitedDeltaX * intensities.baseOuter}px, ${limitedDeltaY * intensities.baseOuter}px)`;
+            joystickBaseMiddle.style.transform = `translate(${limitedDeltaX * intensities.baseMiddle}px, ${limitedDeltaY * intensities.baseMiddle}px)`;
+            joystickBaseInner.style.transform = `translate(${limitedDeltaX * intensities.baseInner}px, ${limitedDeltaY * intensities.baseInner}px)`;
+            joystickHandle.style.transform = `translate(${limitedDeltaX * intensities.handle}px, ${limitedDeltaY * intensities.handle}px)`;
+        }
+        
+        function resetJoystick() {
+            // Return all layers to center position
+            joystickBaseOuter.style.transform = 'translate(0px, 0px)';
+            joystickBaseMiddle.style.transform = 'translate(0px, 0px)';
+            joystickBaseInner.style.transform = 'translate(0px, 0px)';
+            joystickHandle.style.transform = 'translate(0px, 0px)';
+        }
+        
+        // Initialize center position
+        updateCenter();
+        
+        // Update center on window resize
+        window.addEventListener('resize', updateCenter);
+        
+        // Mouse move event
+        document.addEventListener('mousemove', function(e) {
+            moveJoystick(e.clientX, e.clientY);
+        });
+        
+        // Reset joystick when mouse leaves the window
+        document.addEventListener('mouseleave', resetJoystick);
+        
+        // Add smooth transitions
+        const elements = [joystickBaseOuter, joystickBaseMiddle, joystickBaseInner, joystickHandle];
+        elements.forEach(element => {
+            element.style.transition = 'transform 0.1s ease-out';
+        });
+    });
+</script>
+
 </html>
