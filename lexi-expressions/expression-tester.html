@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexi Expression Tester</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+            max-width: 800px;
+            border: 4px solid #000000;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .expression-video {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+        }
+
+        .expression-video.active {
+            opacity: 1;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin: 0;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .expression-btn {
+            padding: 20px 30px;
+            border: 4px solid #000000;
+            border-right: none;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: none;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            flex: 1;
+            text-align: center;
+        }
+
+        .expression-btn:last-child {
+            border-right: 4px solid #000000;
+        }
+
+        .expression-btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .expression-btn.active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: left;
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .description {
+            color: #000000;
+            max-width: 800px;
+            margin: 0;
+            line-height: 1.4;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 400;
+            width: 100%;
+        }
+
+        .status-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 0;
+            padding: 30px;
+            width: calc(100% - 60px);
+            max-width: 800px;
+            background-color: #ffffff;
+            border: 4px solid #000000;
+        }
+
+        .queue-display {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 18px;
+            color: #000000;
+            font-weight: 700;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .queue-items {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+            min-height: 40px;
+            align-items: center;
+        }
+
+        .queue-item {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid #000000;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .current-expression {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: 900;
+            color: #000000;
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .current-expression::before {
+            content: "▶";
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .technical-section {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 0;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 4px solid #000000;
+        }
+
+        .technical-section h2 {
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .technical-section h3 {
+            color: #000000;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .technical-section p {
+            color: #000000;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+
+        .technical-section code {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 4px 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .technical-section ul {
+            color: #000000;
+            line-height: 1.4;
+            padding-left: 30px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+
+        .technical-section li {
+            margin-bottom: 10px;
+        }
+
+        .technical-section strong {
+            color: #000000;
+            font-weight: 900;
+        }
+
+        @media (max-width: 480px) {
+            .expression-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>Lexi Expression Tester</h1>
+        <p class="description">Test different video expressions for the Lexi chatbot AI. Click the buttons below to switch between expressions seamlessly.</p>
+    </div>
+    
+    <div class="controls">
+        <button class="expression-btn active" data-expression="idle">Idle</button>
+        <button class="expression-btn" data-expression="thinking">Thinking</button>
+        <button class="expression-btn" data-expression="excited">Excited</button>
+    </div>
+    
+    <div class="status-section">
+        <div class="current-expression" id="current-expression">Idle</div>
+        <div class="queue-display">
+            <span>Queue:</span>
+            <div id="queue-items" class="queue-items"></div>
+        </div>
+    </div>
+    
+    <div class="video-container">
+        <video id="idle-video" class="expression-video active" autoplay loop muted>
+            <source src="Lexi-idle.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <video id="thinking-video" class="expression-video" muted>
+            <source src="Lexi-thinking.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <video id="excited-video" class="expression-video" muted>
+            <source src="Lexi-excited.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="technical-section">
+        <h2>Technical Implementation</h2>
+        
+        <h3>Seamless Video Switching</h3>
+        <p>The seamless expression switching is achieved through a CSS Grid overlay technique combined with opacity-based visibility control:</p>
+        <ul>
+            <li><strong>CSS Grid Overlay:</strong> All videos are positioned on the same grid cell using <code>grid-column: 1 / 1</code> and <code>grid-row: 1 / 1</code>, creating perfect alignment</li>
+            <li><strong>Opacity Control:</strong> Videos have <code>opacity: 0</code> by default, with the active video having <code>opacity: 1</code></li>
+            <li><strong>No Transitions:</strong> Opacity changes are instantaneous (no CSS transitions) for seamless switching</li>
+            <li><strong>Preloading:</strong> All videos are preloaded with <code>preload="auto"</code> for instant playback</li>
+        </ul>
+
+        <h3>Expression Queue System</h3>
+        <p>The queue system ensures natural expression flow by preventing abrupt interruptions:</p>
+        <ul>
+            <li><strong>Array-Based Queue:</strong> Uses <code>expressionQueue[]</code> array to store pending expressions</li>
+            <li><strong>Event-Driven Processing:</strong> Queue is processed only when current video ends via <code>ended</code> event listeners</li>
+            <li><strong>FIFO Processing:</strong> First-in-first-out using <code>array.shift()</code> to remove and process next expression</li>
+            <li><strong>Idle Fallback:</strong> Returns to idle state when queue is empty, creating natural resting behavior</li>
+        </ul>
+
+        <h3>Implementation Flow</h3>
+        <p>The system follows this technical flow:</p>
+        <ul>
+            <li><strong>Button Click:</strong> <code>queueExpression()</code> adds expression to queue array</li>
+            <li><strong>Video End:</strong> <code>ended</code> event triggers <code>processNextExpression()</code></li>
+            <li><strong>Queue Processing:</strong> <code>shift()</code> removes first item, switches video, updates UI</li>
+            <li><strong>Seamless Transition:</strong> Grid overlay ensures perfect alignment during switch</li>
+            <li><strong>Loop Management:</strong> Idle loops manually via restart, others play once then queue next</li>
+        </ul>
+
+        <h3>Developer Notes</h3>
+        <p>Key considerations for implementation:</p>
+        <ul>
+            <li>Remove <code>loop</code> attribute from all videos to enable <code>ended</code> event detection</li>
+            <li>Use <code>muted</code> attribute to avoid autoplay restrictions</li>
+            <li>Implement manual idle looping via <code>currentTime = 0</code> and <code>play()</code></li>
+            <li>Queue visualization available via console logs: <code>📥 Added</code> and <code>📤 Removed</code></li>
+        </ul>
+    </div>
+
+    <script>
+        // Get all video elements and buttons
+        const videos = {
+            idle: document.getElementById('idle-video'),
+            thinking: document.getElementById('thinking-video'),
+            excited: document.getElementById('excited-video')
+        };
+        
+        const buttons = document.querySelectorAll('.expression-btn');
+        let currentExpression = 'idle';
+        let expressionQueue = [];
+        let isTransitioning = false;
+
+        // Function to update queue display
+        function updateQueueDisplay() {
+            const queueItemsContainer = document.getElementById('queue-items');
+            
+            if (expressionQueue.length === 0) {
+                queueItemsContainer.innerHTML = '<span style="color: #999; font-style: italic;">Empty</span>';
+            } else {
+                queueItemsContainer.innerHTML = expressionQueue
+                    .map(expression => `<span class="queue-item">${expression}</span>`)
+                    .join('');
+            }
+        }
+
+        // Function to switch expressions
+        function switchExpression(newExpression) {
+            // Hide current video
+            videos[currentExpression].classList.remove('active');
+            videos[currentExpression].pause();
+            
+            // Show new video
+            videos[newExpression].classList.add('active');
+            videos[newExpression].currentTime = 0; // Reset to beginning
+            videos[newExpression].play();
+            
+            // Update button states
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.expression === newExpression) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update current expression display
+            const currentExpressionDisplay = document.getElementById('current-expression');
+            currentExpressionDisplay.textContent = newExpression;
+            
+            currentExpression = newExpression;
+        }
+
+        // Function to process the next expression in queue
+        function processNextExpression() {
+            if (expressionQueue.length === 0) {
+                isTransitioning = false;
+                updateQueueDisplay();
+                return;
+            }
+            
+            isTransitioning = true;
+            const nextExpression = expressionQueue.shift();
+            console.log(`📤 Removed "${nextExpression}" from queue:`, [...expressionQueue]);
+            updateQueueDisplay();
+            
+            // If it's the same as current, skip to next
+            if (nextExpression === currentExpression) {
+                processNextExpression();
+                return;
+            }
+            
+            switchExpression(nextExpression);
+        }
+
+        // Function to queue an expression
+        function queueExpression(expression) {
+            // If it's the same as current expression and queue is empty, ignore
+            if (expression === currentExpression && expressionQueue.length === 0) {
+                return;
+            }
+            
+            // Add to queue - always queue, never process immediately
+            expressionQueue.push(expression);
+            console.log(`📥 Added "${expression}" to queue:`, [...expressionQueue]);
+            updateQueueDisplay();
+            
+            // The queue will be processed when the current video ends
+        }
+
+        // Add ended event listeners to all videos
+        Object.entries(videos).forEach(([expressionName, video]) => {
+            video.addEventListener('ended', () => {
+                if (expressionName === currentExpression) {
+                    // If there's something in queue, process it
+                    if (expressionQueue.length > 0) {
+                        processNextExpression();
+                    } else {
+                        // If queue is empty, handle based on current expression
+                        if (expressionName === 'idle') {
+                            // Idle loops by restarting itself
+                            playIdleLoop();
+                        } else {
+                            // Non-idle expressions return to idle
+                            switchExpression('idle');
+                            playIdleLoop();
+                        }
+                    }
+                }
+            });
+        });
+
+        // Add click event listeners to buttons
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const expression = button.dataset.expression;
+                queueExpression(expression);
+            });
+        });
+
+        // Function to play idle in loop mode (restarts when ended)
+        function playIdleLoop() {
+            videos.idle.currentTime = 0;
+            videos.idle.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+            });
+        }
+
+        // Ensure idle video starts playing on load
+        window.addEventListener('load', () => {
+            playIdleLoop();
+            updateQueueDisplay(); // Initialize queue display
+        });
+
+        // Remove loop from all videos so they can end and trigger transitions
+        videos.idle.loop = false;
+        videos.thinking.loop = false;
+        videos.excited.loop = false;
+
+        // Preload all videos for smooth switching
+        Object.values(videos).forEach(video => {
+            video.preload = 'auto';
+        });
+    </script>
+</body>
+</html> 
