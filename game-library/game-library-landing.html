@@ -42,6 +42,14 @@
             justify-self: center;
             align-self: start;
         }
+
+        #firefliesCanvas {
+            width: 100%;
+            height: 75%;
+            pointer-events: none;
+            justify-self: center;
+            align-self: start;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +62,7 @@
     <!-- Row 2 -->
     <section class="section">
         <img src="30f2d5d8-f05c-4025-b665-9239dfb8730f.png" alt="Campfire">
+        <canvas id="firefliesCanvas"></canvas>
     </section>
 
     <!-- Row 3 (Footer) -->
@@ -178,6 +187,220 @@
         window.addEventListener('resize', () => {
             stars.length = 0;
             setTimeout(createStars, 50); // Small delay to ensure resize is complete
+        });
+
+        // FIREFLIES ANIMATION
+        const firefliesCanvas = document.getElementById('firefliesCanvas');
+        const firefliesCtx = firefliesCanvas.getContext('2d');
+
+        // Set fireflies canvas size
+        function resizeFirefliesCanvas() {
+            firefliesCanvas.width = firefliesCanvas.offsetWidth;
+            firefliesCanvas.height = firefliesCanvas.offsetHeight;
+        }
+
+        const fireflies = [];
+        const firefliesColors = ['#FFD700', '#FFA500', '#FFFF00', '#90EE90']; // Golden, orange, yellow, light green
+
+                 // Firefly class
+         class Firefly {
+             constructor(startDelay = 0) {
+                 this.reset();
+                 this.visible = startDelay === 0; // Some start visible, others start hidden
+                 this.opacity = startDelay === 0 ? 0 : 0;
+                 this.fadeIn = startDelay === 0;
+                 this.lifetime = Math.random() * 3000 + 2000; // Live for 2-5 seconds
+                 this.age = startDelay === 0 ? 0 : this.lifetime; // Stagger initial ages
+                 this.nextAppearance = startDelay === 0 ? 0 : Date.now() + startDelay;
+             }
+
+                         reset() {
+                 this.x = Math.random() * firefliesCanvas.width;
+                 
+                 // Weighted distribution: more fireflies at top, fewer at bottom
+                 // Using power function to create non-linear distribution
+                 const randomValue = Math.random();
+                 const weightedValue = Math.pow(randomValue, 2); // Square makes it favor smaller values (top)
+                 this.y = weightedValue * firefliesCanvas.height;
+                 this.vx = (Math.random() - 0.5) * 1.5; // Reduced velocity by 25%: -0.75 to 0.75
+                 this.vy = (Math.random() - 0.5) * 1.5;
+                 this.size = Math.random() * 3 + 2; // Size 2-5
+                 this.color = firefliesColors[Math.floor(Math.random() * firefliesColors.length)];
+                 this.pulseSpeed = (Math.random() * 0.1 + 0.05) * 0.75; // Reduced pulsing speed by 25%
+                 this.pulsePhase = Math.random() * Math.PI * 2;
+                 
+                 // Circular motion properties
+                 this.circularForce = Math.random() * 0.02 + 0.01; // Reduced circular force for wider circles
+                 this.rotationDirection = Math.random() < 0.5 ? 1 : -1; // Clockwise or counter-clockwise
+                 this.centerX = this.x; // Center point for circular motion
+                 this.centerY = this.y;
+                 this.centerDrift = 0.3; // How much the center point drifts
+                 this.rotationChangeTimer = Math.random() * 2000 + 1000; // Change direction every 1-3 seconds
+                 this.timeSinceRotationChange = 0;
+             }
+
+                         update(deltaTime) {
+                 if (this.visible) {
+                     // Update rotation change timer
+                     this.timeSinceRotationChange += deltaTime;
+                     
+                     // Switch rotation direction periodically
+                     if (this.timeSinceRotationChange >= this.rotationChangeTimer) {
+                         this.rotationDirection *= -1; // Flip direction
+                         this.rotationChangeTimer = Math.random() * 2000 + 1000; // Reset timer for 1-3 seconds
+                         this.timeSinceRotationChange = 0;
+                     }
+
+                     // Apply circular motion by rotating velocity vector
+                     const currentAngle = Math.atan2(this.vy, this.vx);
+                     const newAngle = currentAngle + (this.circularForce * this.rotationDirection);
+                     const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                     
+                     this.vx = Math.cos(newAngle) * speed;
+                     this.vy = Math.sin(newAngle) * speed;
+
+                     // Drift the center point slowly for varied circular paths
+                     this.centerX += (Math.random() - 0.5) * this.centerDrift;
+                     this.centerY += (Math.random() - 0.5) * this.centerDrift;
+
+                     // Move firefly
+                     this.x += this.vx;
+                     this.y += this.vy;
+
+                     // Occasional random direction changes (reduced frequency for more circular motion)
+                     if (Math.random() < 0.008) { // Reduced from 0.02 to 0.008
+                         this.vx += (Math.random() - 0.5) * 0.3; // Reduced force
+                         this.vy += (Math.random() - 0.5) * 0.3;
+                         
+                         // Limit speed (reduced by 25%)
+                         const newSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                         if (newSpeed > 1.5) {
+                             this.vx = (this.vx / newSpeed) * 1.5;
+                             this.vy = (this.vy / newSpeed) * 1.5;
+                         }
+                     }
+
+                    // Gentle steering away from boundaries (more natural)
+                    const margin = 20; // Distance from edge to start steering
+                    const steerForce = 0.1; // How strong the steering is
+                    
+                    // Steer away from left edge
+                    if (this.x < margin) {
+                        this.vx += steerForce * (margin - this.x) / margin;
+                    }
+                    // Steer away from right edge
+                    if (this.x > firefliesCanvas.width - margin) {
+                        this.vx -= steerForce * (this.x - (firefliesCanvas.width - margin)) / margin;
+                    }
+                    // Steer away from top edge
+                    if (this.y < margin) {
+                        this.vy += steerForce * (margin - this.y) / margin;
+                    }
+                    // Steer away from bottom edge
+                    if (this.y > firefliesCanvas.height - margin) {
+                        this.vy -= steerForce * (this.y - (firefliesCanvas.height - margin)) / margin;
+                    }
+                    
+                    // Keep within bounds as backup (but shouldn't be needed with steering)
+                    this.x = Math.max(5, Math.min(firefliesCanvas.width - 5, this.x));
+                    this.y = Math.max(5, Math.min(firefliesCanvas.height - 5, this.y));
+
+                    // Update age and opacity
+                    this.age += deltaTime;
+                    
+                    if (this.fadeIn && this.opacity < 1) {
+                        this.opacity += 0.02;
+                        if (this.opacity >= 1) this.fadeIn = false;
+                    } else if (!this.fadeIn && this.age > this.lifetime * 0.7) {
+                        // Start fading out in last 30% of lifetime
+                        this.opacity -= 0.015;
+                        if (this.opacity <= 0) {
+                            this.visible = false;
+                            this.nextAppearance = Date.now() + Math.random() * 4000 + 1000; // Reappear in 1-5 seconds
+                        }
+                    }
+
+                    // Update pulse phase
+                    this.pulsePhase += this.pulseSpeed;
+                } else {
+                    // Check if it's time to reappear
+                    if (Date.now() >= this.nextAppearance) {
+                        this.reset();
+                        this.visible = true;
+                        this.opacity = 0;
+                        this.fadeIn = true;
+                        this.age = 0;
+                    }
+                }
+            }
+
+            draw() {
+                if (!this.visible || this.opacity <= 0) return;
+
+                const pulseBrightness = 0.5 + 0.5 * Math.sin(this.pulsePhase);
+                const currentOpacity = this.opacity * pulseBrightness;
+
+                firefliesCtx.save();
+                firefliesCtx.globalAlpha = currentOpacity;
+                
+                // Draw glow effect
+                firefliesCtx.shadowColor = this.color;
+                firefliesCtx.shadowBlur = this.size * 3;
+                firefliesCtx.fillStyle = this.color;
+                
+                firefliesCtx.beginPath();
+                firefliesCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                firefliesCtx.fill();
+                
+                // Inner bright core
+                firefliesCtx.shadowBlur = 0;
+                firefliesCtx.fillStyle = '#FFFFFF';
+                firefliesCtx.beginPath();
+                firefliesCtx.arc(this.x, this.y, this.size * 0.3, 0, Math.PI * 2);
+                firefliesCtx.fill();
+                
+                firefliesCtx.restore();
+            }
+        }
+
+                 // Create fireflies
+         function createFireflies() {
+             resizeFirefliesCanvas();
+             fireflies.length = 0;
+             
+             const numFireflies = 32; // Doubled again for even more magical activity
+             for (let i = 0; i < numFireflies; i++) {
+                 // Stagger fireflies: half start visible, half start with delays
+                 const startDelay = i < numFireflies / 2 ? 0 : Math.random() * 3000 + 1000;
+                 fireflies.push(new Firefly(startDelay));
+             }
+         }
+
+        // Animate fireflies
+        let lastTime = 0;
+        function animateFireflies(currentTime) {
+            const deltaTime = currentTime - lastTime;
+            lastTime = currentTime;
+
+            firefliesCtx.clearRect(0, 0, firefliesCanvas.width, firefliesCanvas.height);
+
+            fireflies.forEach(firefly => {
+                firefly.update(deltaTime);
+                firefly.draw();
+            });
+
+            requestAnimationFrame(animateFireflies);
+        }
+
+        // Initialize fireflies after a delay
+        setTimeout(() => {
+            createFireflies();
+            animateFireflies(0);
+        }, 200);
+
+        // Recreate fireflies when window resizes
+        window.addEventListener('resize', () => {
+            setTimeout(createFireflies, 100);
         });
     </script>
 </body>
