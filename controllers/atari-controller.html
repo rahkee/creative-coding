@@ -135,10 +135,9 @@
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 8px;
+            font-size: 4px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
             padding: 4px;
             aspect-ratio: 1;
             box-shadow: 
@@ -181,10 +180,10 @@
         
         // Movement multipliers for each layer (outer moves less, inner moves more)
         const intensities = {
-            baseOuter: 0.0125,  // reduced by another 50% (was 0.025)
-            baseMiddle: 0.01875, // reduced by another 50% (was 0.0375)
-            baseInner: 0.025,   // reduced by another 50% (was 0.05)
-            handle: 0.3         // most movement (unchanged)
+            baseOuter: 0.025,   // doubled from 0.0125
+            baseMiddle: 0.0375, // doubled from 0.01875
+            baseInner: 0.05,    // doubled from 0.025
+            handle: 0.1         // reduced to 0.1
         };
         
         // Maximum movement distance in pixels
