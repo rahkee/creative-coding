@@ -50,6 +50,162 @@
             justify-self: center;
             align-self: start;
         }
+
+        .hero-content {
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+            color: white;
+            width: 50%;
+            min-width: 620px;
+            z-index: 30;
+            padding: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 600;
+            margin-bottom: 0;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-content p {
+            font-size: 0.825rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .cta-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .button-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.6rem 3.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+            box-shadow: 
+                0 8px 16px rgba(0, 0, 0, 0.15),
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 12px 24px rgba(0, 0, 0, 0.2),
+                0 6px 12px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+        }
+
+        .cta-container:hover .button-canvas {
+            filter: brightness(1.1) contrast(1.05);
+        }
+
+        .sparkles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            color: #FFD700;
+            opacity: 0;
+            transform: scale(0) rotate(0deg);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .sparkle-1 {
+            top: -10px;
+            left: 20%;
+            transition-delay: 0.1s;
+        }
+
+        .sparkle-2 {
+            top: -15px;
+            right: 25%;
+            transition-delay: 0.2s;
+        }
+
+        .sparkle-3 {
+            top: 50%;
+            left: -20px;
+            transition-delay: 0.15s;
+        }
+
+        .sparkle-4 {
+            top: 50%;
+            right: -20px;
+            transition-delay: 0.25s;
+        }
+
+        .sparkle-5 {
+            bottom: -10px;
+            left: 30%;
+            transition-delay: 0.3s;
+        }
+
+        .sparkle-6 {
+            bottom: -15px;
+            right: 20%;
+            transition-delay: 0.05s;
+        }
+
+        .cta-container:hover .sparkle {
+            opacity: 1;
+            transform: scale(1) rotate(180deg);
+            animation: sparkle-twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle-twinkle {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1) rotate(180deg);
+            }
+            50% { 
+                opacity: 0.3; 
+                transform: scale(1.2) rotate(270deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -57,6 +213,35 @@
     <section class="section">
         <img src="570f9e19-4b51-4ccc-a1a5-d2cd8a2c0fc8.png" alt="Forest Night">
         <canvas id="starsCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Wonder to Wisdom</h1>
+            <h2>From Play to Mastery—The Natural Route</h2>
+            <p>Research shows that the brain learns best when engaged and emotionally invested. Play activates key areas involved in memory, attention, and motivation—making learning more effective and enjoyable. When kids have fun, they stick with challenges and build lasting skills. Our games make learning feel like play—because joyful learning is powerful learning.</p>
+            <div class="cta-container">
+                <canvas id="buttonCanvas" class="button-canvas"></canvas>
+                <a href="#" class="cta-button">Sign up for Free</a>
+                <div class="sparkles-container">
+                    <svg class="sparkle sparkle-1" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                    <svg class="sparkle sparkle-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                    <svg class="sparkle sparkle-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                    <svg class="sparkle sparkle-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                    <svg class="sparkle sparkle-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                    <svg class="sparkle sparkle-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Row 2 -->
@@ -187,6 +372,217 @@
         window.addEventListener('resize', () => {
             stars.length = 0;
             setTimeout(createStars, 50); // Small delay to ensure resize is complete
+        });
+
+        // ORNATE BUTTON CANVAS DESIGN
+        const buttonCanvas = document.getElementById('buttonCanvas');
+        const buttonCtx = buttonCanvas.getContext('2d');
+
+        function initButtonCanvas() {
+            const button = document.querySelector('.cta-button');
+            const rect = button.getBoundingClientRect();
+            
+            // Set canvas size to match button with extra space for decorations
+            buttonCanvas.width = rect.width + 40;
+            buttonCanvas.height = rect.height + 40;
+            buttonCanvas.style.width = (rect.width + 40) + 'px';
+            buttonCanvas.style.height = (rect.height + 40) + 'px';
+            buttonCanvas.style.left = '-20px';
+            buttonCanvas.style.top = '-20px';
+            
+            drawOrnateDecorations();
+        }
+
+        function drawOrnateDecorations() {
+            const ctx = buttonCtx;
+            const w = buttonCanvas.width;
+            const h = buttonCanvas.height;
+            
+            ctx.clearRect(0, 0, w, h);
+            
+            // Create ornate corner decorations
+            drawCornerOrnaments(ctx, w, h);
+            
+            // Draw decorative border elements
+            drawDecorativeBorder(ctx, w, h);
+            
+            // Add filigree details
+            drawFiligree(ctx, w, h);
+            
+            // Add subtle pattern overlay
+            drawPatternOverlay(ctx, w, h);
+        }
+
+        function drawCornerOrnaments(ctx, w, h) {
+            ctx.strokeStyle = 'rgba(218, 165, 32, 0.6)'; // Golden color
+            ctx.fillStyle = 'rgba(218, 165, 32, 0.3)';
+            ctx.lineWidth = 1.5;
+            
+            // Top-left ornament
+            drawOrnament(ctx, 25, 25, 15, 0);
+            
+            // Top-right ornament
+            drawOrnament(ctx, w - 25, 25, 15, Math.PI / 2);
+            
+            // Bottom-right ornament
+            drawOrnament(ctx, w - 25, h - 25, 15, Math.PI);
+            
+            // Bottom-left ornament
+            drawOrnament(ctx, 25, h - 25, 15, -Math.PI / 2);
+        }
+
+        function drawOrnament(ctx, x, y, size, rotation) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+            
+            // Draw intricate corner piece
+            ctx.beginPath();
+            
+            // Central flower-like shape
+            for (let i = 0; i < 8; i++) {
+                const angle = (i * Math.PI) / 4;
+                const r1 = size * 0.6;
+                const r2 = size * 0.3;
+                
+                const x1 = Math.cos(angle) * r1;
+                const y1 = Math.sin(angle) * r1;
+                const x2 = Math.cos(angle + Math.PI / 8) * r2;
+                const y2 = Math.sin(angle + Math.PI / 8) * r2;
+                
+                if (i === 0) ctx.moveTo(x1, y1);
+                ctx.quadraticCurveTo(x2, y2, 
+                    Math.cos(angle + Math.PI / 4) * r1, 
+                    Math.sin(angle + Math.PI / 4) * r1);
+            }
+            
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            // Add small decorative dots
+            for (let i = 0; i < 4; i++) {
+                const angle = (i * Math.PI) / 2 + Math.PI / 4;
+                const dotX = Math.cos(angle) * size * 0.8;
+                const dotY = Math.sin(angle) * size * 0.8;
+                
+                ctx.beginPath();
+                ctx.arc(dotX, dotY, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            ctx.restore();
+        }
+
+        function drawDecorativeBorder(ctx, w, h) {
+            ctx.strokeStyle = 'rgba(255, 215, 0, 0.4)'; // Gold
+            ctx.lineWidth = 1;
+            
+            // Top border decoration
+            drawBorderPattern(ctx, 40, 15, w - 80, true);
+            
+            // Bottom border decoration
+            drawBorderPattern(ctx, 40, h - 15, w - 80, true);
+            
+            // Left border decoration
+            drawBorderPattern(ctx, 15, 40, h - 80, false);
+            
+            // Right border decoration
+            drawBorderPattern(ctx, w - 15, 40, h - 80, false);
+        }
+
+        function drawBorderPattern(ctx, startX, startY, length, horizontal) {
+            ctx.save();
+            
+            if (!horizontal) {
+                ctx.translate(startX, startY);
+                ctx.rotate(Math.PI / 2);
+                startX = 0;
+                startY = 0;
+            }
+            
+            // Create repeating decorative pattern
+            const segments = Math.floor(length / 20);
+            for (let i = 0; i < segments; i++) {
+                const x = startX + (i * 20);
+                const y = startY;
+                
+                // Small decorative wave
+                ctx.beginPath();
+                ctx.moveTo(x, y - 3);
+                ctx.quadraticCurveTo(x + 5, y - 6, x + 10, y - 3);
+                ctx.quadraticCurveTo(x + 15, y, x + 20, y - 3);
+                ctx.stroke();
+                
+                // Add small ornamental dots
+                if (i % 2 === 0) {
+                    ctx.beginPath();
+                    ctx.arc(x + 10, y - 8, 1, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            ctx.restore();
+        }
+
+        function drawFiligree(ctx, w, h) {
+            ctx.strokeStyle = 'rgba(255, 215, 0, 0.3)';
+            ctx.lineWidth = 0.8;
+            
+            // Draw delicate swirls near corners
+            drawSwirl(ctx, 35, 35, 8, 1);
+            drawSwirl(ctx, w - 35, 35, 8, -1);
+            drawSwirl(ctx, w - 35, h - 35, 8, 1);
+            drawSwirl(ctx, 35, h - 35, 8, -1);
+        }
+
+        function drawSwirl(ctx, x, y, radius, direction) {
+            ctx.save();
+            ctx.translate(x, y);
+            
+            ctx.beginPath();
+            for (let i = 0; i <= 50; i++) {
+                const angle = (i / 50) * Math.PI * 3 * direction;
+                const r = radius * (1 - i / 50);
+                const px = Math.cos(angle) * r;
+                const py = Math.sin(angle) * r;
+                
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+            
+            ctx.restore();
+        }
+
+        function drawPatternOverlay(ctx, w, h) {
+            // Subtle texture overlay
+            ctx.fillStyle = 'rgba(255, 215, 0, 0.05)';
+            
+            // Create diamond pattern
+            for (let x = 0; x < w; x += 8) {
+                for (let y = 0; y < h; y += 8) {
+                    if ((x + y) % 16 === 0) {
+                        ctx.beginPath();
+                        ctx.moveTo(x + 4, y);
+                        ctx.lineTo(x + 8, y + 4);
+                        ctx.lineTo(x + 4, y + 8);
+                        ctx.lineTo(x, y + 4);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                }
+            }
+        }
+
+        // Initialize button canvas after a delay to ensure button is rendered
+        setTimeout(() => {
+            initButtonCanvas();
+        }, 200);
+
+        // Redraw on window resize
+        window.addEventListener('resize', () => {
+            setTimeout(initButtonCanvas, 100);
         });
 
         // FIREFLIES ANIMATION
