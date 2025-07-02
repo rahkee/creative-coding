@@ -7,16 +7,38 @@
     <style>
         body {
             margin: 0;
-            padding: 30px;
+            padding: 0;
             font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: #ffffff;
             min-height: 100vh;
             display: flex;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            min-height: 100vh;
+        }
+
+        .left-column {
+            flex: 1;
+            padding: 30px;
+            display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
-            color: #000000;
-            line-height: 1.2;
+            max-width: 50%;
+        }
+
+        .right-column {
+            flex: 1;
+            padding: 30px;
+            background-color: #f8f8f8;
+            border-left: 4px solid #000000;
+            overflow-y: auto;
+            max-width: 50%;
         }
 
         .video-container {
@@ -174,12 +196,11 @@
         }
 
         .technical-section {
-            max-width: 800px;
             width: 100%;
-            margin-top: 0;
-            padding: 30px;
-            background-color: #ffffff;
-            border: 4px solid #000000;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            border: none;
         }
 
         .technical-section h2 {
@@ -237,6 +258,21 @@
             font-weight: 900;
         }
 
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .left-column, .right-column {
+                max-width: 100%;
+            }
+            
+            .right-column {
+                border-left: none;
+                border-top: 4px solid #000000;
+            }
+        }
+
         @media (max-width: 480px) {
             .expression-btn {
                 padding: 10px 20px;
@@ -246,48 +282,52 @@
     </style>
 </head>
 <body>
-    <div class="header-section">
-        <h1>Lexi Expression Tester</h1>
-        <p class="description">Test different video expressions for the Lexi chatbot AI. Click the buttons below to switch between expressions seamlessly.</p>
-    </div>
-    
-    <div class="controls">
-        <button class="expression-btn active" data-expression="idle">Idle</button>
-        <button class="expression-btn" data-expression="thinking">Thinking</button>
-        <button class="expression-btn" data-expression="excited">Excited</button>
-    </div>
-    
-    <div class="status-section">
-        <div class="current-expression" id="current-expression">Idle</div>
-        <div class="queue-display">
-            <span>Queue:</span>
-            <div id="queue-items" class="queue-items"></div>
+    <div class="main-container">
+        <div class="left-column">
+            <div class="header-section">
+                <h1>Lexi Expression Tester</h1>
+                <p class="description">Test different video expressions for the Lexi chatbot AI. Click the buttons below to switch between expressions seamlessly.</p>
+            </div>
+            
+            <div class="controls">
+                <button class="expression-btn active" data-expression="idle">Idle</button>
+                <button class="expression-btn" data-expression="thinking">Thinking</button>
+                <button class="expression-btn" data-expression="excited">Excited</button>
+            </div>
+            
+            <div class="status-section">
+                <div class="current-expression" id="current-expression">Idle</div>
+                <div class="queue-display">
+                    <span>Queue:</span>
+                    <div id="queue-items" class="queue-items"></div>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <video id="idle-left-video" class="expression-video active" autoplay loop muted>
+                    <source src="Lexi-idle-left.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <video id="idle-right-video" class="expression-video" muted>
+                    <source src="Lexi-idle-right.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <video id="thinking-video" class="expression-video" muted>
+                    <source src="Lexi-thinking.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <video id="excited-video" class="expression-video" muted>
+                    <source src="Lexi-excited.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
-    </div>
-    
-    <div class="video-container">
-        <video id="idle-left-video" class="expression-video active" autoplay loop muted>
-            <source src="Lexi-idle-left.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <video id="idle-right-video" class="expression-video" muted>
-            <source src="Lexi-idle-right.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <video id="thinking-video" class="expression-video" muted>
-            <source src="Lexi-thinking.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <video id="excited-video" class="expression-video" muted>
-            <source src="Lexi-excited.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
 
-    <div class="technical-section">
+        <div class="right-column">
+            <div class="technical-section">
         <h2>Technical Implementation</h2>
         
         <h3>Dynamic Alternating Idle System</h3>
@@ -356,6 +396,8 @@
             <li><strong>Expression Mapping:</strong> Automatic conversion of 'idle' requests to specific alternating sides</li>
             <li><strong>Flexible Fallback:</strong> Non-idle expressions return to alternating idle after completion</li>
         </ul>
+            </div>
+        </div>
     </div>
 
     <script>
