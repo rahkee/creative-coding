@@ -266,8 +266,13 @@
     </div>
     
     <div class="video-container">
-        <video id="idle-video" class="expression-video active" autoplay loop muted>
-            <source src="Lexi-idle.mp4" type="video/mp4">
+        <video id="idle-left-video" class="expression-video active" autoplay loop muted>
+            <source src="Lexi-idle-left.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <video id="idle-right-video" class="expression-video" muted>
+            <source src="Lexi-idle-right.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         
@@ -285,56 +290,89 @@
     <div class="technical-section">
         <h2>Technical Implementation</h2>
         
-        <h3>Seamless Video Switching</h3>
-        <p>The seamless expression switching is achieved through a CSS Grid overlay technique combined with opacity-based visibility control:</p>
+        <h3>Dynamic Alternating Idle System</h3>
+        <p>The core innovation is the alternating idle behavior that creates dynamic resting states:</p>
         <ul>
-            <li><strong>CSS Grid Overlay:</strong> All videos are positioned on the same grid cell using <code>grid-column: 1 / 1</code> and <code>grid-row: 1 / 1</code>, creating perfect alignment</li>
-            <li><strong>Opacity Control:</strong> Videos have <code>opacity: 0</code> by default, with the active video having <code>opacity: 1</code></li>
-            <li><strong>No Transitions:</strong> Opacity changes are instantaneous (no CSS transitions) for seamless switching</li>
-            <li><strong>Preloading:</strong> All videos are preloaded with <code>preload="auto"</code> for instant playback</li>
+            <li><strong>Dual Idle Videos:</strong> Uses <code>Lexi-idle-left.mp4</code> and <code>Lexi-idle-right.mp4</code> for alternating idle states</li>
+            <li><strong>State Tracking:</strong> <code>currentIdleSide</code> variable tracks which side ('left' or 'right') should play next</li>
+            <li><strong>Automatic Alternation:</strong> <code>getNextIdleSide()</code> function toggles between sides when queue is empty</li>
+            <li><strong>Seamless Transitions:</strong> Uses CSS Grid overlay for perfect alignment during idle switches</li>
         </ul>
 
-        <h3>Expression Queue System</h3>
-        <p>The queue system ensures natural expression flow by preventing abrupt interruptions:</p>
+        <h3>Priority-Based Expression System</h3>
+        <p>The system uses a priority hierarchy to handle expression playback:</p>
         <ul>
-            <li><strong>Array-Based Queue:</strong> Uses <code>expressionQueue[]</code> array to store pending expressions</li>
-            <li><strong>Event-Driven Processing:</strong> Queue is processed only when current video ends via <code>ended</code> event listeners</li>
-            <li><strong>FIFO Processing:</strong> First-in-first-out using <code>array.shift()</code> to remove and process next expression</li>
-            <li><strong>Idle Fallback:</strong> Returns to idle state when queue is empty, creating natural resting behavior</li>
+            <li><strong>Priority 1:</strong> Queued expressions always take precedence over alternating idle behavior</li>
+            <li><strong>Priority 2:</strong> Alternating idle continues only when queue is empty</li>
+            <li><strong>Interruption Logic:</strong> New expressions interrupt idle alternation but allow current video to finish</li>
+            <li><strong>Return Behavior:</strong> After expressions complete, system returns to alternating idle</li>
+        </ul>
+
+        <h3>Seamless Video Switching</h3>
+        <p>The seamless expression switching is achieved through a CSS Grid overlay technique:</p>
+        <ul>
+            <li><strong>CSS Grid Overlay:</strong> All videos positioned on same grid cell: <code>grid-column: 1 / 1; grid-row: 1 / 1</code></li>
+            <li><strong>Opacity Control:</strong> Videos have <code>opacity: 0</code> by default, active video has <code>opacity: 1</code></li>
+            <li><strong>No Transitions:</strong> Instantaneous opacity changes (no CSS transitions) for seamless switching</li>
+            <li><strong>Preloading:</strong> All videos preloaded with <code>preload="auto"</code> for instant playback</li>
         </ul>
 
         <h3>Implementation Flow</h3>
-        <p>The system follows this technical flow:</p>
+        <p>The complete system flow for developers:</p>
         <ul>
-            <li><strong>Button Click:</strong> <code>queueExpression()</code> adds expression to queue array</li>
-            <li><strong>Video End:</strong> <code>ended</code> event triggers <code>processNextExpression()</code></li>
-            <li><strong>Queue Processing:</strong> <code>shift()</code> removes first item, switches video, updates UI</li>
-            <li><strong>Seamless Transition:</strong> Grid overlay ensures perfect alignment during switch</li>
-            <li><strong>Loop Management:</strong> Idle loops manually via restart, others play once then queue next</li>
+            <li><strong>Initialization:</strong> System starts with <code>idle-left</code>, begins alternating idle cycle</li>
+            <li><strong>Expression Queue:</strong> <code>queueExpression()</code> adds to <code>expressionQueue[]</code> array</li>
+            <li><strong>Video End Event:</strong> <code>ended</code> event triggers priority check</li>
+            <li><strong>Priority Processing:</strong> Queue check first, then alternating idle fallback</li>
+            <li><strong>State Management:</strong> <code>currentExpression</code> and <code>currentIdleSide</code> track system state</li>
         </ul>
 
-        <h3>Developer Notes</h3>
-        <p>Key considerations for implementation:</p>
+        <h3>Key Implementation Requirements</h3>
+        <p>Critical setup requirements for the system to work:</p>
         <ul>
-            <li>Remove <code>loop</code> attribute from all videos to enable <code>ended</code> event detection</li>
-            <li>Use <code>muted</code> attribute to avoid autoplay restrictions</li>
-            <li>Implement manual idle looping via <code>currentTime = 0</code> and <code>play()</code></li>
-            <li>Queue visualization available via console logs: <code>📥 Added</code> and <code>📤 Removed</code></li>
+            <li><strong>Video Structure:</strong> Include both <code>idle-left-video</code> and <code>idle-right-video</code> elements</li>
+            <li><strong>Loop Removal:</strong> Remove <code>loop</code> attribute from all videos to enable <code>ended</code> events</li>
+            <li><strong>Muted Attribute:</strong> Use <code>muted</code> to avoid autoplay restrictions</li>
+            <li><strong>Event Listeners:</strong> Add <code>ended</code> event listeners to all video elements</li>
+            <li><strong>State Variables:</strong> Initialize <code>currentIdleSide</code> and <code>expressionQueue</code></li>
+        </ul>
+
+        <h3>Developer Integration Guide</h3>
+        <p>To implement this system in your project:</p>
+        <ul>
+            <li><strong>Video Assets:</strong> Prepare left and right idle video files for alternating behavior</li>
+            <li><strong>CSS Grid:</strong> Use grid overlay technique for seamless video switching</li>
+            <li><strong>Priority Logic:</strong> Implement queue-first, alternating-idle-second priority in <code>ended</code> handlers</li>
+            <li><strong>State Management:</strong> Track current side and expression state for proper transitions</li>
+            <li><strong>Queue Visualization:</strong> Optional: Add UI elements to show current queue state</li>
+            <li><strong>Debug Logging:</strong> Console logs available: <code>📥 Added</code> and <code>📤 Removed</code> for queue monitoring</li>
+        </ul>
+
+        <h3>Advanced Features</h3>
+        <p>Additional capabilities of the system:</p>
+        <ul>
+            <li><strong>Backwards Compatibility:</strong> "Idle" button clicks automatically use next alternating side</li>
+            <li><strong>Queue Management:</strong> FIFO processing with visual queue display</li>
+            <li><strong>Expression Mapping:</strong> Automatic conversion of 'idle' requests to specific alternating sides</li>
+            <li><strong>Flexible Fallback:</strong> Non-idle expressions return to alternating idle after completion</li>
         </ul>
     </div>
 
     <script>
         // Get all video elements and buttons
         const videos = {
-            idle: document.getElementById('idle-video'),
+            idle: document.getElementById('idle-left-video'), // Default to left for backwards compatibility
+            'idle-left': document.getElementById('idle-left-video'),
+            'idle-right': document.getElementById('idle-right-video'),
             thinking: document.getElementById('thinking-video'),
             excited: document.getElementById('excited-video')
         };
         
         const buttons = document.querySelectorAll('.expression-btn');
-        let currentExpression = 'idle';
+        let currentExpression = 'idle-left'; // Start with left idle
         let expressionQueue = [];
         let isTransitioning = false;
+        let currentIdleSide = 'left'; // Track which idle side we're on for ping pong
 
         // Function to update queue display
         function updateQueueDisplay() {
@@ -375,6 +413,12 @@
             currentExpression = newExpression;
         }
 
+        // Function to get next idle side for ping pong
+        function getNextIdleSide() {
+            currentIdleSide = currentIdleSide === 'left' ? 'right' : 'left';
+            return `idle-${currentIdleSide}`;
+        }
+
         // Function to process the next expression in queue
         function processNextExpression() {
             if (expressionQueue.length === 0) {
@@ -399,6 +443,11 @@
 
         // Function to queue an expression
         function queueExpression(expression) {
+            // Convert 'idle' button clicks to the appropriate idle side
+            if (expression === 'idle') {
+                expression = getNextIdleSide();
+            }
+            
             // If it's the same as current expression and queue is empty, ignore
             if (expression === currentExpression && expressionQueue.length === 0) {
                 return;
@@ -416,18 +465,21 @@
         Object.entries(videos).forEach(([expressionName, video]) => {
             video.addEventListener('ended', () => {
                 if (expressionName === currentExpression) {
-                    // If there's something in queue, process it
+                    // PRIORITY 1: If there's something in queue, process it immediately
                     if (expressionQueue.length > 0) {
                         processNextExpression();
                     } else {
-                        // If queue is empty, handle based on current expression
-                        if (expressionName === 'idle') {
-                            // Idle loops by restarting itself
-                            playIdleLoop();
+                        // PRIORITY 2: If queue is empty, handle based on current expression
+                        if (expressionName === 'idle-left' || expressionName === 'idle-right' || expressionName === 'idle') {
+                            // Continue ping pong to the other idle side
+                            const nextIdleSide = getNextIdleSide();
+                            switchExpression(nextIdleSide);
+                            playIdleLoop(nextIdleSide);
                         } else {
-                            // Non-idle expressions return to idle
-                            switchExpression('idle');
-                            playIdleLoop();
+                            // Non-idle expressions return to idle ping pong
+                            const nextIdleSide = getNextIdleSide();
+                            switchExpression(nextIdleSide);
+                            playIdleLoop(nextIdleSide);
                         }
                     }
                 }
@@ -443,21 +495,25 @@
         });
 
         // Function to play idle in loop mode (restarts when ended)
-        function playIdleLoop() {
-            videos.idle.currentTime = 0;
-            videos.idle.play().catch(e => {
-                console.log('Autoplay prevented:', e);
-            });
+        function playIdleLoop(idleExpression = null) {
+            const expression = idleExpression || currentExpression;
+            if (videos[expression]) {
+                videos[expression].currentTime = 0;
+                videos[expression].play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+            }
         }
 
         // Ensure idle video starts playing on load
         window.addEventListener('load', () => {
-            playIdleLoop();
+            playIdleLoop('idle-left');
             updateQueueDisplay(); // Initialize queue display
         });
 
         // Remove loop from all videos so they can end and trigger transitions
-        videos.idle.loop = false;
+        videos['idle-left'].loop = false;
+        videos['idle-right'].loop = false;
         videos.thinking.loop = false;
         videos.excited.loop = false;
 
