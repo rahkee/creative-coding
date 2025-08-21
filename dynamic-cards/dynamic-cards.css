@@ -12,6 +12,13 @@ body {
     color: white;
 }
 
+.demo-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -29,23 +36,23 @@ p {
 }
 
 p:last-of-type {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
 }
 
 /* Base sm-card styling with explicit border-radius calculations */
 .sm-card {
     --scale-factor: 1;
     --padding: 32px;
-    --border-radius: calc(var(--padding) * var(--scale-factor));
-    /* Base styling - 16px padding = 16% reduction per level */
+    --border-radius: max(calc(var(--padding) * var(--scale-factor)), 6px);
+    /* Base styling with 6px minimum border-radius and halving scale factors per level */
     color: black;
     padding: var(--padding);
-    border-radius: var(--border-radius);
+    border-radius: max(var(--border-radius));
     background: white;
     border: 1px solid rgba(102, 126, 234, 0.2);
 }
 
-/* Explicit nesting levels with 16% reduction (scale factor: 0.84) */
+/* Explicit nesting levels with halving scale factors (1 → 0.5 → 0.25 → 0.125 → 0.0625 → 0.03125 → 0.015625) */
 .sm-card .sm-card {
     --scale-factor: .5;
 }
@@ -62,7 +69,176 @@ p:last-of-type {
     --scale-factor: 0.0625;
 }
 
+.sm-card .sm-card .sm-card .sm-card .sm-card .sm-card {
+    --scale-factor: 0.03125;
+}
+
+.sm-card .sm-card .sm-card .sm-card .sm-card .sm-card .sm-card {
+    --scale-factor: 0.015625;
+}
+
 .comparison-grid {
     display: flex;
     gap: 32px;
+}
+
+/* Documentation Styles */
+.documentation {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.doc-section {
+    margin-bottom: 32px;
+}
+
+.doc-section:last-child {
+    margin-bottom: 0;
+}
+
+.doc-section h3 {
+    color: #FFD700;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.doc-section p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.formula-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    border-left: 4px solid #FFD700;
+}
+
+.formula-box code {
+    color: #FFD700;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.scale-table {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.scale-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scale-row:last-child {
+    border-bottom: none;
+}
+
+.scale-row .level {
+    color: #FFD700;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.scale-row .factor {
+    color: white;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.scale-row .description {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.code-block {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.code-block code {
+    color: inherit;
+}
+
+.feature-list,
+.use-case-list,
+.compat-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.feature-list li,
+.use-case-list li,
+.compat-list li {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.feature-list li::before,
+.use-case-list li::before,
+.compat-list li::before {
+    content: "→";
+    color: #FFD700;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.feature-list li strong,
+.use-case-list li strong,
+.compat-list li strong {
+    color: #FFD700;
+}
+
+/* Responsive documentation */
+@media (max-width: 768px) {
+    .documentation {
+        padding: 16px;
+    }
+    
+    .scale-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .scale-row .level,
+    .scale-row .factor {
+        min-width: auto;
+    }
+    
+    .code-block {
+        padding: 12px;
+    }
+    
+    .code-block pre {
+        font-size: 0.8rem;
+    }
 }

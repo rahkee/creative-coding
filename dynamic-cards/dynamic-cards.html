@@ -84,6 +84,123 @@
                 </div>
             </div>
         </div>
+        
+        <div class="demo-section">
+            <h2>Technology Documentation</h2>
+            <div class="documentation">
+                <div class="doc-section">
+                    <h3>Overview</h3>
+                    <p>This technology demonstrates <strong>dynamic recursive border-radius scaling</strong> using CSS custom properties and mathematical calculations. Each nested <code>sm-card</code> element automatically reduces its border-radius while maintaining consistent padding and typography.</p>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Core Formula</h3>
+                    <div class="formula-box">
+                        <code>border-radius = max(padding × scale-factor, 6px)</code>
+                    </div>
+                    <p>This ensures visual hierarchy through progressive corner rounding while maintaining a 6px minimum for usability.</p>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Scale Factor Progression</h3>
+                    <div class="scale-table">
+                        <div class="scale-row">
+                            <span class="level">Level 1:</span>
+                            <span class="factor">1.0</span>
+                            <span class="description">(Base level - full padding value)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 2:</span>
+                            <span class="factor">0.5</span>
+                            <span class="description">(50% reduction)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 3:</span>
+                            <span class="factor">0.25</span>
+                            <span class="description">(75% reduction)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 4:</span>
+                            <span class="factor">0.125</span>
+                            <span class="description">(87.5% reduction)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 5:</span>
+                            <span class="factor">0.0625</span>
+                            <span class="description">(93.75% reduction)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 6:</span>
+                            <span class="factor">0.03125</span>
+                            <span class="description">(96.875% reduction)</span>
+                        </div>
+                        <div class="scale-row">
+                            <span class="level">Level 7:</span>
+                            <span class="factor">0.015625</span>
+                            <span class="description">(98.4375% reduction)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>CSS Implementation</h3>
+                    <div class="code-block">
+                        <pre><code>/* Base card */
+.sm-card {
+    --scale-factor: 1;
+    --padding: 32px;
+    --border-radius: max(calc(var(--padding) * var(--scale-factor)), 6px);
+    border-radius: var(--border-radius);
+    padding: var(--padding);
+}
+
+/* Nested cards inherit and override scale-factor */
+.sm-card .sm-card {
+    --scale-factor: 0.5;
+}
+
+.sm-card .sm-card .sm-card {
+    --scale-factor: 0.25;
+}
+/* ... and so on */</code></pre>
+                    </div>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>Infinite Nesting:</strong> Supports unlimited nesting levels with automatic scaling</li>
+                        <li><strong>Dynamic Padding:</strong> Interactive slider adjusts base padding (12px-48px range)</li>
+                        <li><strong>Minimum Constraint:</strong> 6px minimum border-radius ensures usability</li>
+                        <li><strong>Consistent Spacing:</strong> Padding remains uniform across all nesting levels</li>
+                        <li><strong>Mathematical Precision:</strong> Each level exactly halves the previous scale factor</li>
+                        <li><strong>Real-time Updates:</strong> JavaScript synchronizes all calculations and text displays</li>
+                    </ul>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Use Cases</h3>
+                    <ul class="use-case-list">
+                        <li><strong>Nested Comments:</strong> Reddit-style threaded discussions</li>
+                        <li><strong>File Hierarchies:</strong> Folder/file tree structures</li>
+                        <li><strong>Menu Systems:</strong> Multi-level navigation menus</li>
+                        <li><strong>Data Visualization:</strong> Hierarchical data representation</li>
+                        <li><strong>Content Organization:</strong> Nested content blocks with visual hierarchy</li>
+                    </ul>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Browser Compatibility</h3>
+                    <p>This technology uses modern CSS features:</p>
+                    <ul class="compat-list">
+                        <li><strong>CSS Custom Properties:</strong> IE 16+, All modern browsers</li>
+                        <li><strong>CSS calc():</strong> IE 9+, All modern browsers</li>
+                        <li><strong>CSS max():</strong> Chrome 79+, Firefox 75+, Safari 11.1+</li>
+                        <li><strong>CSS Grid/Flexbox:</strong> All modern browsers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
