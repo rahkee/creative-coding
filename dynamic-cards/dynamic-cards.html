@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Cards - Nested Border Radius Demo</title>
+    <link rel="stylesheet" href="dynamic-cards.css">
+    <script src="dynamic-cards.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dynamic Cards Demo</h1>
+            <p>Each nested sm-card has border-radius = padding × scale-factor (32px padding with decreasing scale factors)</p>
+        </header>
+        
+        <div class="demo-section">
+            <h2>Progressive Nesting Example</h2>
+            
+            <!-- Level 1: Base sm-card -->
+            <div class="sm-card">
+                <h3>Level 1 Card</h3>
+                <p>Base card: 32px × 1 = 32px border-radius, 32px padding</p>
+                
+                <!-- Level 2: scale-factor 0.5 -->
+                <div class="sm-card">
+                    <h3>Level 2 Card</h3>
+                    <p>Nested card: 32px × 0.5 = 16px border-radius, 32px padding</p>
+                    
+                    <!-- Level 3: scale-factor 0.25 -->
+                    <div class="sm-card">
+                        <h3>Level 3 Card</h3>
+                        <p>Double nested: 32px × 0.25 = 8px border-radius, 32px padding</p>
+                        
+                        <!-- Level 4: scale-factor 0.125 -->
+                        <div class="sm-card">
+                            <h3>Level 4 Card</h3>
+                            <p>Triple nested: 32px × 0.125 = 4px border-radius, 32px padding</p>
+                            
+                            <!-- Level 5: scale-factor 0.0625 -->
+                            <div class="sm-card">
+                                <h3>Level 5 Card</h3>
+                                <p>Quad nested: 32px × 0.0625 = 2px border-radius, 32px padding</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Side-by-Side Comparison</h2>
+            <div class="comparison-grid">
+                <div class="sm-card">
+                    <h3>Level 1</h3>
+                    <p>32px radius & 32px padding</p>
+                </div>
+                
+                <div class="sm-card">
+                    <div class="sm-card">
+                        <h3>Level 2</h3>
+                        <p>16px radius & 32px padding</p>
+                    </div>
+                </div>
+                
+                <div class="sm-card">
+                    <div class="sm-card">
+                        <div class="sm-card">
+                            <h3>Level 3</h3>
+                            <p>8px radius & 32px padding</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sm-card">
+                    <div class="sm-card">
+                        <div class="sm-card">
+                            <div class="sm-card">
+                                <h3>Level 4</h3>
+                                <p>4px radius & 32px padding</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
