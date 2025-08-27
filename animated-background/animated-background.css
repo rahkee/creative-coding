@@ -186,14 +186,14 @@ html, body {
 
 /* Pastel version styles */
 .container.pastel {
-  --color-bg1: rgb(245, 240, 255);
-  --color-bg2: rgb(240, 248, 255);
-  --color1: 200, 220, 255;
-  --color2: 255, 200, 230;
-  --color3: 200, 255, 220;
-  --color4: 255, 220, 200;
-  --color5: 255, 255, 200;
-  --color-interactive: 220, 200, 255;
+  --color-bg1: rgb(230, 220, 255);
+  --color-bg2: rgb(220, 240, 255);
+  --color1: 150, 180, 255;
+  --color2: 255, 150, 200;
+  --color3: 200, 150, 255;
+  --color4: 255, 180, 150;
+  --color5: 255, 240, 150;
+  --color-interactive: 180, 150, 255;
   --blending: multiply;
 }
 
@@ -207,26 +207,26 @@ html, body {
 }
 
 .g1.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color1), 0.4) 0, rgba(var(--color1), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color1), 0.7) 0, rgba(var(--color1), 0) 50%) no-repeat;
 }
 
 .g2.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color2), 0.4) 0, rgba(var(--color2), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color2), 0.7) 0, rgba(var(--color2), 0) 50%) no-repeat;
 }
 
 .g3.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color3), 0.4) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.7) 0, rgba(var(--color3), 0) 50%) no-repeat;
 }
 
 .g4.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color4), 0.3) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color4), 0.6) 0, rgba(var(--color4), 0) 50%) no-repeat;
 }
 
 .g5.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color5), 0.3) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color5), 0.6) 0, rgba(var(--color5), 0) 50%) no-repeat;
 }
 
 .interactive.pastel {
-  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.3) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
-  opacity: 0.5;
+  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.6) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
+  opacity: 0.7;
 }
