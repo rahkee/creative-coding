@@ -15,6 +15,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let tgX2 = 0;
     let tgY2 = 0;
 
+    // Color picker functionality
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function updateColors(theme) {
+        const container = document.querySelector(`.container${theme === 'pastel' ? '.pastel' : ':not(.pastel)'}`);
+        
+        for (let i = 1; i <= 5; i++) {
+            const colorPicker = document.getElementById(`${theme}-color${i}`);
+            const rgb = hexToRgb(colorPicker.value);
+            if (rgb) {
+                container.style.setProperty(`--color${i}`, `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+            }
+        }
+        
+        const interactivePicker = document.getElementById(`${theme}-interactive`);
+        const interactiveRgb = hexToRgb(interactivePicker.value);
+        if (interactiveRgb) {
+            container.style.setProperty(`--color-interactive`, `${interactiveRgb.r}, ${interactiveRgb.g}, ${interactiveRgb.b}`);
+        }
+    }
+
+    // Add event listeners for dark theme color pickers
+    ['color1', 'color2', 'color3', 'color4', 'color5', 'interactive'].forEach(colorType => {
+        const darkPicker = document.getElementById(`dark-${colorType}`);
+        const pastelPicker = document.getElementById(`pastel-${colorType}`);
+        
+        darkPicker.addEventListener('input', () => updateColors('dark'));
+        pastelPicker.addEventListener('input', () => updateColors('pastel'));
+    });
+
     function move() {
         // Move bubble in first container
         curX1 += (tgX1 - curX1) / 20;

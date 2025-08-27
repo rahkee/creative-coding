@@ -9,10 +9,22 @@
     <link rel="stylesheet" href="animated-background.css">
   </head>
   <body>
-    <div class="container">
-      <div class="text-container">
-        Dark
+    <div class="card-wrapper">
+      <div class="color-controls">
+        <h3>Dark Theme Colors</h3>
+        <div class="color-picker-group">
+          <label>Color 1: <input type="color" id="dark-color1" value="#1271ff"></label>
+          <label>Color 2: <input type="color" id="dark-color2" value="#dd4aff"></label>
+          <label>Color 3: <input type="color" id="dark-color3" value="#64dcff"></label>
+          <label>Color 4: <input type="color" id="dark-color4" value="#c83232"></label>
+          <label>Color 5: <input type="color" id="dark-color5" value="#b4b432"></label>
+          <label>Interactive: <input type="color" id="dark-interactive" value="#8c64ff"></label>
+        </div>
       </div>
+      <div class="container" data-theme="dark">
+        <div class="text-container">
+          Dark
+        </div>
       <div class="gradient-bg">
       <svg xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -31,13 +43,26 @@
         <div class="g5"></div>
         <div class="interactive"></div>
       </div>
+            </div>
       </div>
     </div>
 
-    <div class="container pastel">
-      <div class="text-container pastel">
-        Pastel
+    <div class="card-wrapper">
+      <div class="color-controls">
+        <h3>Pastel Theme Colors</h3>
+        <div class="color-picker-group">
+          <label>Color 1: <input type="color" id="pastel-color1" value="#96b4ff"></label>
+          <label>Color 2: <input type="color" id="pastel-color2" value="#ff96c8"></label>
+          <label>Color 3: <input type="color" id="pastel-color3" value="#c896ff"></label>
+          <label>Color 4: <input type="color" id="pastel-color4" value="#ffb496"></label>
+          <label>Color 5: <input type="color" id="pastel-color5" value="#fff096"></label>
+          <label>Interactive: <input type="color" id="pastel-interactive" value="#b496ff"></label>
+        </div>
       </div>
+      <div class="container pastel" data-theme="pastel">
+        <div class="text-container pastel">
+          Pastel
+        </div>
       <div class="gradient-bg pastel">
       <svg xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -57,6 +82,7 @@
         <div class="interactive pastel"></div>
       </div>
       </div>
+    </div>
     </div>
     <script src="animated-background.js"></script>
   </body>
