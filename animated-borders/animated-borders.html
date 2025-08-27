@@ -7,9 +7,30 @@
   <link rel="stylesheet" href="animated-borders.css">
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span class="sun-icon">☀️</span>
+    <span class="moon-icon">🌙</span>
+  </button>
+  
   <div class="card">
-    <h1>Animate Borders</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ad exercitationem voluptatem ullam et, natus impedit quae veniam optio a doloremque officiis beatae, itaque nesciunt nostrum quasi molestiae laudantium dolor asperiores soluta sint sed ratione cupiditate. Laudantium earum reiciendis enim.</p>
+    <h1>For the AI Vibes</h1>
+    <p>Dear Michelle, I hope you like this and find this useful in your future design ventures at Strongmind.</p>
+		<p><small>P.S. Toggle for light/dark mode in the upper right</small></p>
   </div>
+  
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    // Load saved theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    });
+  </script>
 </body>
 </html>
