@@ -1,0 +1,200 @@
+/* Course Header Gradients - Conic Gradients with Seamless Transitions */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+    padding: 24px;
+    min-height: 100vh;
+    background: #252831;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.header h1 {
+    margin: 0 0 8px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    flex: 1;
+}
+
+.gradient-card {
+    flex: 1;
+    min-width: 420px;
+    min-height: 150px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Base gradient as fallback */
+    background: conic-gradient(from 45deg, #667eea, #764ba2, #667eea);
+}
+
+/* 
+CONCEPTUAL: What we WANT to do with CSS (not possible yet)
+This would be the ideal syntax if CSS could read attributes:
+
+.gradient-card[data-course-id] {
+    background: conic-gradient(
+        from calc(hash(attr(data-course-id)) * 1deg),
+        color-from-palette(hash(attr(data-course-id)), 0),
+        color-from-palette(hash(attr(data-course-id)), 1),
+        color-from-palette(hash(attr(data-course-id)), 0)
+    );
+}
+
+But CSS cannot:
+1. Read attribute values as numbers
+2. Perform hash calculations
+3. Select colors from arrays
+4. Do mathematical operations on attribute values
+*/
+
+/* CURRENT APPROACH: Specific selectors for each course ID */
+/* This works but requires manual mapping for each course */
+
+.gradient-card[data-course-id="20240101083000001"] {
+    /* Organic Chemistry - Physical Sciences */
+    background: conic-gradient(from 45deg, #D14D42, #7BAD47, #D14D42);
+}
+
+.gradient-card[data-course-id="20240131141500002"] {
+    /* Digital Marketing - Business Studies */
+    background: conic-gradient(from 120deg, #4D88A3, #E9A747, #BE6FBF, #4D88A3);
+}
+
+.gradient-card[data-course-id="20240301092300003"] {
+    /* World Literature - Language Arts */
+    background: conic-gradient(from 200deg, #74B8B9, #9B7AC4, #74B8B9);
+}
+
+.gradient-card[data-course-id="20240331164500004"] {
+    /* Machine Learning - Computer Science */
+    background: conic-gradient(from 300deg, #DF6133, #5DAA5B, #7D8FD5, #DF6133);
+}
+
+.gradient-card[data-course-id="20240430113000005"] {
+    /* Renaissance Art - Visual Arts */
+    background: conic-gradient(from 180deg, #EAB845, #CC6071, #EAB845);
+}
+
+.gradient-card[data-course-id="20240530195500006"] {
+    /* Spanish Conversation - World Languages */
+    background: conic-gradient(from 270deg, #76B9A0, #517CB0, #E07EB3, #76B9A0);
+}
+
+.card-content {
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 10;
+    position: relative;
+}
+
+.card-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.refresh-btn {
+    align-self: center;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.controls {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.controls .refresh-btn {
+    flex: 0 0 auto;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+    .grid {
+        flex-direction: column;
+    }
+    
+    .gradient-card {
+        min-width: auto;
+        min-height: 150px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    body {
+        padding: 16px;
+        gap: 16px;
+    }
+}
+
+@media (min-width: 769px) {
+    .grid {
+        flex-direction: row;
+    }
+    
+    .gradient-card {
+        flex-basis: calc(50% - 12px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .gradient-card {
+        flex-basis: calc(33.333% - 16px);
+    }
+}

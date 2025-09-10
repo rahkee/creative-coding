@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Header Gradients</title>
+    <link rel="stylesheet" href="random-gradients.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Course Header Gradients</h1>
+            <p>Deterministic gradients based on course creation timestamps using your custom color palette</p>
+        </div>
+        
+        <div class="grid">
+            <div class="gradient-card" data-course-id="20240101083000001">
+                <div class="card-content">
+                    <h3>Organic Chemistry</h3>
+                    <p>Physical Sciences</p>
+                </div>
+            </div>
+            
+            <div class="gradient-card" data-course-id="20240131141500002">
+                <div class="card-content">
+                    <h3>Digital Marketing</h3>
+                    <p>Business Studies</p>
+                </div>
+            </div>
+            
+            <div class="gradient-card" data-course-id="20240301092300003">
+                <div class="card-content">
+                    <h3>World Literature</h3>
+                    <p>Language Arts</p>
+                </div>
+            </div>
+            
+            <div class="gradient-card" data-course-id="20240331164500004">
+                <div class="card-content">
+                    <h3>Machine Learning</h3>
+                    <p>Computer Science</p>
+                </div>
+            </div>
+            
+            <div class="gradient-card" data-course-id="20240430113000005">
+                <div class="card-content">
+                    <h3>Renaissance Art</h3>
+                    <p>Visual Arts</p>
+                </div>
+            </div>
+            
+            <div class="gradient-card" data-course-id="20240530195500006">
+                <div class="card-content">
+                    <h3>Spanish Conversation</h3>
+                    <p>World Languages</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="refresh-btn" onclick="generateNewCourse()">
+                Create New Courses
+            </button>
+        </div>
+    </div>
+
+    <script src="random-gradients.js"></script>
+</body>
+</html>
