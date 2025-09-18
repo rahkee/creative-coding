@@ -1,5 +1,5 @@
 .insane-button {
-    border: 1px solid #000;
+    border: none;
     display: grid;
     font-family: "IBM Plex Sans", sans-serif;
     grid-template-columns: 1fr;
@@ -59,7 +59,7 @@
         display: flex;
         font-size: 3.8rem;
         gap: 1rem;
-    padding: 24px 40px;
+        padding: 24px 40px;
         pointer-events: none;
 
         .number {
