@@ -6,6 +6,14 @@
     grid-template-rows: 1fr;
     padding: unset;
 
+    [data-layer-name="date-time"] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
     [data-layer-name="hardware"] {
         display: grid;
         grid-template-columns: 1fr 1fr;
