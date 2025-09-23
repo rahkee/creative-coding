@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Course Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-breadcrumb" id="sidebar-breadcrumb">
+                    <div class="breadcrumb-item active">Robotics Course</div>
+                </div>
+                <button id="back-btn" class="back-button" style="display: none;">
+                    <i class="fas fa-chevron-left"></i> Back to Courses
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <ul id="navigation-list" class="nav-list">
+                    <!-- Navigation items will be populated by JavaScript -->
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <div class="breadcrumb" id="breadcrumb">
+                    <span class="breadcrumb-item active">Robotics Course</span>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <div id="content-area" class="content-area">
+                    <div class="welcome-screen">
+                        <h1>Welcome to Robotics Course</h1>
+                        <p>Explore the fascinating world of robotics through our comprehensive course. Select a unit from the sidebar to begin your journey.</p>
+                        <div class="course-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label">Units</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">20</span>
+                                <span class="stat-label">Lessons</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100</span>
+                                <span class="stat-label">Slides</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar Accordion Navigation -->
+        <nav class="right-sidebar">
+            <div class="right-sidebar-header">
+                <h3>Course Navigation</h3>
+            </div>
+            <div class="right-sidebar-content">
+                <div id="accordion-navigation" class="accordion-navigation">
+                    <!-- Accordion items will be populated by JavaScript -->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,664 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #F5B617 0%, #F5B617 100%);
+    color: #2a2a2a;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    background: white;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.sidebar-breadcrumb {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-breadcrumb .breadcrumb-item {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2a2a2a;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    width: 100%;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.sidebar-breadcrumb .breadcrumb-item:hover {
+    background: rgba(245, 182, 23, 0.1);
+    border-color: #F5B617;
+    color: #2a2a2a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-breadcrumb .breadcrumb-item.active {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    cursor: default;
+    background: #F5B617;
+    border-color: #F5B617;
+}
+
+.sidebar-breadcrumb .breadcrumb-item.active:hover {
+    color: #2a2a2a;
+    background: #F5B617;
+    transform: none;
+}
+
+.sidebar-breadcrumb .breadcrumb-item:not(:last-child)::after {
+    display: none;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(245, 182, 23, 0.1);
+    border: 1px solid #F5B617;
+    border-radius: 8px;
+    color: #2a2a2a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+.back-button:hover {
+    background: rgba(245, 182, 23, 0.2);
+    transform: translateX(-2px);
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background: rgba(245, 182, 23, 0.1);
+    border-left-color: #F5B617;
+}
+
+.nav-item.active {
+    background: rgba(245, 182, 23, 0.15);
+    border-left-color: #F5B617;
+    font-weight: 600;
+}
+
+/* Removed nav-item-icon styles */
+
+.nav-item-content {
+    flex: 1;
+}
+
+.nav-item-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2a2a2a;
+    margin-bottom: 2px;
+}
+
+.nav-item-subtitle {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.nav-item-due-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #F5B617;
+    background: rgba(245, 182, 23, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+/* Right Sidebar Styles */
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background: white;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.right-sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+}
+
+/* Accordion Navigation Styles */
+.accordion-navigation {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.accordion-header:hover {
+    background: rgba(245, 182, 23, 0.05);
+}
+
+.accordion-header.active {
+    background: rgba(245, 182, 23, 0.1);
+    border-left: 3px solid #F5B617;
+}
+
+.accordion-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin: 0;
+}
+
+.accordion-subtitle {
+    font-size: 0.85rem;
+    color: #666666;
+    margin: 2px 0 0 0;
+}
+
+.accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: #F5B617;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.accordion-icon.expanded {
+    transform: rotate(90deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.accordion-content.expanded {
+    max-height: 500px;
+}
+
+.accordion-lessons {
+    padding: 8px 0;
+}
+
+.accordion-lesson {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.accordion-lesson-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px 12px 48px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.accordion-lesson-header:hover {
+    background: rgba(245, 182, 23, 0.08);
+    border-left-color: rgba(245, 182, 23, 0.3);
+}
+
+.accordion-lesson-header.active {
+    background: rgba(245, 182, 23, 0.15);
+    border-left-color: #F5B617;
+    font-weight: 600;
+}
+
+.accordion-lesson-content {
+    flex: 1;
+}
+
+.accordion-lesson-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2a2a2a;
+    margin-bottom: 2px;
+}
+
+.accordion-lesson-subtitle {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+.accordion-lesson-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #F5B617;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.accordion-lesson-icon.expanded {
+    transform: rotate(90deg);
+}
+
+.accordion-lesson-slides {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.accordion-lesson-slides.expanded {
+    max-height: 300px;
+}
+
+.accordion-slide {
+    display: flex;
+    align-items: center;
+    padding: 8px 24px 8px 72px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.accordion-slide:hover {
+    background: rgba(245, 182, 23, 0.06);
+    border-left-color: rgba(245, 182, 23, 0.2);
+}
+
+.accordion-slide.active {
+    background: rgba(245, 182, 23, 0.12);
+    border-left-color: #F5B617;
+    font-weight: 600;
+}
+
+.accordion-slide-content {
+    flex: 1;
+}
+
+.accordion-slide-title {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #2a2a2a;
+    line-height: 1.3;
+}
+
+.accordion-slide-due-date {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #F5B617;
+    background: rgba(245, 182, 23, 0.1);
+    padding: 1px 4px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+    color: #666666;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item.active {
+    color: #2a2a2a;
+    font-weight: 600;
+}
+
+.breadcrumb-separator {
+    color: #cbd5e0;
+    margin: 0 4px;
+}
+
+.content-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    text-align: center;
+    padding: 48px 24px;
+}
+
+.welcome-screen h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 16px;
+}
+
+.welcome-screen p {
+    font-size: 1.1rem;
+    color: #2a2a2a;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.course-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 32px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #F5B617;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Unit/Lesson Content */
+.unit-content, .lesson-content {
+    padding: 24px;
+}
+
+.unit-content h1, .lesson-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 16px;
+}
+
+.unit-content p, .lesson-content p {
+    font-size: 1.1rem;
+    color: #2a2a2a;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.lesson-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.lesson-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #F5B617;
+}
+
+/* Removed lesson-card-icon styles */
+
+.lesson-card-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin-bottom: 4px;
+}
+
+.lesson-card-content p {
+    font-size: 0.9rem;
+    color: #666666;
+    margin: 0;
+}
+
+/* Slide Content */
+.slide-content {
+    padding: 32px;
+    text-align: center;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+}
+
+.slide-content-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+}
+
+.slide-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 24px;
+}
+
+.slide-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin-bottom: 16px;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    color: #2a2a2a;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.slide-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.slide-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #F5B617;
+    color: #2a2a2a;
+    border: 1px solid #F5B617;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slide-nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 182, 23, 0.3);
+}
+
+.slide-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.slide-counter {
+    font-size: 0.9rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        width: 280px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .right-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 280px;
+    }
+    
+    .content-body {
+        padding: 24px 16px;
+    }
+    
+    .course-stats {
+        gap: 24px;
+    }
+    
+    .welcome-screen h1 {
+        font-size: 2rem;
+    }
+    
+    .slide-navigation {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    .main-content {
+        flex: 1;
+    }
+}
