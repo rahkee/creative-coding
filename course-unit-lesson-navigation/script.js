@@ -763,6 +763,13 @@ let currentState = {
     navigationHistory: []
 };
 
+// Progress Tracking
+let progressData = {
+    viewedSlides: new Set(), // Set of slide IDs that have been viewed
+    completedLessons: new Set(), // Set of lesson IDs that are fully completed
+    completedUnits: new Set() // Set of unit IDs that are fully completed
+};
+
 // DOM Elements
 const sidebarBreadcrumb = document.getElementById('sidebar-breadcrumb');
 const backBtn = document.getElementById('back-btn');
@@ -770,12 +777,96 @@ const navigationList = document.getElementById('navigation-list');
 const contentArea = document.getElementById('content-area');
 // Removed: const breadcrumb = document.getElementById('breadcrumb');
 const accordionNavigation = document.getElementById('accordion-navigation');
+const headerTitle = document.getElementById('header-title');
+const headerSubtitle = document.getElementById('header-subtitle');
+const progressContainer = document.getElementById('progress-container');
+const progressFill = document.getElementById('progress-fill');
+
+// Progress Tracking Functions
+function markSlideAsViewed(slideId) {
+    progressData.viewedSlides.add(slideId);
+    updateProgressStatus();
+}
+
+function isSlideViewed(slideId) {
+    return progressData.viewedSlides.has(slideId);
+}
+
+function isLessonCompleted(lesson) {
+    return lesson.slides.every(slide => progressData.viewedSlides.has(slide.id));
+}
+
+function isUnitCompleted(unit) {
+    return unit.lessons.every(lesson => isLessonCompleted(lesson));
+}
+
+function updateProgressStatus() {
+    // Update completed lessons
+    courseData.units.forEach(unit => {
+        unit.lessons.forEach(lesson => {
+            if (isLessonCompleted(lesson)) {
+                progressData.completedLessons.add(lesson.id);
+            }
+        });
+    });
+    
+    // Update completed units
+    courseData.units.forEach(unit => {
+        if (isUnitCompleted(unit)) {
+            progressData.completedUnits.add(unit.id);
+        }
+    });
+}
+
+function getProgressIcon(isCompleted) {
+    return isCompleted ? 'fas fa-circle-check' : 'far fa-circle';
+}
+
+// Content Header Functions
+function updateContentHeader() {
+    switch (currentState.level) {
+        case 'course':
+            headerTitle.textContent = 'Robotics Course';
+            headerSubtitle.textContent = 'Select a unit to begin your learning journey';
+            
+            // Calculate overall course progress (completed units / total units)
+            const completedUnitsCount = courseData.units.filter(unit => isUnitCompleted(unit)).length;
+            const courseProgress = (completedUnitsCount / courseData.units.length) * 100;
+            
+            progressContainer.style.display = 'block';
+            progressFill.style.width = `${courseProgress}cqw`;
+            break;
+            
+        case 'unit':
+            const unit = courseData.units.find(u => u.id === currentState.unitId);
+            headerTitle.textContent = unit.title;
+            headerSubtitle.textContent = `${unit.lessons.length} lessons available`;
+            progressContainer.style.display = 'none';
+            break;
+            
+        case 'lesson':
+        case 'slide':
+            const lessonUnit = courseData.units.find(u => u.id === currentState.unitId);
+            const lesson = lessonUnit.lessons.find(l => l.id === currentState.lessonId);
+            headerTitle.textContent = lesson.title;
+            
+            if (currentState.level === 'lesson') {
+                headerSubtitle.textContent = `${lesson.slides.length} slides in this lesson`;
+            } else {
+                headerSubtitle.textContent = `Slide ${currentState.slideIndex + 1} of ${lesson.slides.length}`;
+            }
+            
+            progressContainer.style.display = 'none';
+            break;
+    }
+}
 
 // Initialize the application
 function init() {
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
     setupEventListeners();
 }
 
@@ -850,6 +941,7 @@ function navigateToBreadcrumbLevel(level, unitId, lessonId) {
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 // Navigation rendering functions
@@ -878,7 +970,12 @@ function renderUnits() {
     courseData.units.forEach((unit, index) => {
         const listItem = document.createElement('li');
         listItem.className = 'nav-item';
+        const isCompleted = isUnitCompleted(unit);
+        const progressIcon = getProgressIcon(isCompleted);
         listItem.innerHTML = `
+            <div class="nav-item-icon">
+                <i class="${progressIcon}"></i>
+            </div>
             <div class="nav-item-content">
                 <div class="nav-item-title">${unit.title}</div>
                 <div class="nav-item-subtitle">${unit.lessons.length} lessons</div>
@@ -902,7 +999,12 @@ function renderLessons() {
         if (lesson.id === currentState.lessonId) {
             listItem.classList.add('active');
         }
+        const isCompleted = isLessonCompleted(lesson);
+        const progressIcon = getProgressIcon(isCompleted);
         listItem.innerHTML = `
+            <div class="nav-item-icon">
+                <i class="${progressIcon}"></i>
+            </div>
             <div class="nav-item-content">
                 <div class="nav-item-title">${lesson.title}</div>
                 <div class="nav-item-subtitle">${lesson.slides.length} slides</div>
@@ -927,8 +1029,13 @@ function renderSlides() {
         if (index === currentState.slideIndex) {
             listItem.classList.add('active');
         }
+        const isViewed = isSlideViewed(slide.id);
+        const progressIcon = getProgressIcon(isViewed);
         const dueDateHTML = slide.isAssignment ? `<div class="nav-item-due-date">Due: ${slide.dueDate}</div>` : '';
         listItem.innerHTML = `
+            <div class="nav-item-icon">
+                <i class="${progressIcon}"></i>
+            </div>
             <div class="nav-item-content">
                 <div class="nav-item-title">${slide.title}</div>
                 <div class="nav-item-subtitle">Slide ${index + 1}${slide.isAssignment ? ' (Assignment)' : ''}</div>
@@ -1049,6 +1156,7 @@ function navigateToUnit(unitId) {
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 function navigateToLesson(lessonId) {
@@ -1061,17 +1169,33 @@ function navigateToLesson(lessonId) {
     currentState.level = 'lesson';
     currentState.lessonId = lessonId;
     currentState.slideIndex = 0;
+    
+    // Mark first slide as viewed when entering lesson
+    const unit = courseData.units.find(u => u.id === currentState.unitId);
+    const lesson = unit.lessons.find(l => l.id === lessonId);
+    const firstSlide = lesson.slides[0];
+    markSlideAsViewed(firstSlide.id);
+    
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 function navigateToSlide(slideIndex) {
     currentState.level = 'slide';
     currentState.slideIndex = slideIndex;
+    
+    // Mark slide as viewed
+    const unit = courseData.units.find(u => u.id === currentState.unitId);
+    const lesson = unit.lessons.find(l => l.id === currentState.lessonId);
+    const slide = lesson.slides[slideIndex];
+    markSlideAsViewed(slide.id);
+    
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 function goBack() {
@@ -1100,14 +1224,23 @@ function goBack() {
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 function previousSlide() {
     if (currentState.slideIndex > 0) {
         currentState.slideIndex--;
+        
+        // Mark slide as viewed
+        const unit = courseData.units.find(u => u.id === currentState.unitId);
+        const lesson = unit.lessons.find(l => l.id === currentState.lessonId);
+        const slide = lesson.slides[currentState.slideIndex];
+        markSlideAsViewed(slide.id);
+        
         renderNavigation();
         renderContent();
         renderAccordionNavigation();
+        updateContentHeader();
     }
 }
 
@@ -1116,9 +1249,15 @@ function nextSlide() {
     const lesson = unit.lessons.find(l => l.id === currentState.lessonId);
     if (currentState.slideIndex < lesson.slides.length - 1) {
         currentState.slideIndex++;
+        
+        // Mark slide as viewed
+        const slide = lesson.slides[currentState.slideIndex];
+        markSlideAsViewed(slide.id);
+        
         renderNavigation();
         renderContent();
         renderAccordionNavigation();
+        updateContentHeader();
     }
 }
 
@@ -1135,8 +1274,14 @@ function renderAccordionNavigation() {
         const isUnitActive = currentState.unitId === unit.id;
         const isExpanded = isUnitActive;
         
+        const unitCompleted = isUnitCompleted(unit);
+        const unitProgressIcon = getProgressIcon(unitCompleted);
+        
         accordionItem.innerHTML = `
             <button class="accordion-header ${isUnitActive ? 'active' : ''}" data-unit-id="${unit.id}">
+                <div class="accordion-progress-icon">
+                    <i class="${unitProgressIcon}"></i>
+                </div>
                 <div class="accordion-header-content">
                     <div class="accordion-title">${unit.title}</div>
                     <div class="accordion-subtitle">${unit.lessons.length} lessons</div>
@@ -1148,10 +1293,15 @@ function renderAccordionNavigation() {
                     ${unit.lessons.map((lesson, lessonIndex) => {
                         const isLessonActive = currentState.lessonId === lesson.id;
                         const isLessonExpanded = isLessonActive;
+                        const lessonCompleted = isLessonCompleted(lesson);
+                        const lessonProgressIcon = getProgressIcon(lessonCompleted);
                         return `
                         <div class="accordion-lesson">
                             <button class="accordion-lesson-header ${isLessonActive ? 'active' : ''}" 
                                     data-lesson-id="${lesson.id}" data-unit-id="${unit.id}">
+                                <div class="accordion-progress-icon">
+                                    <i class="${lessonProgressIcon}"></i>
+                                </div>
                                 <div class="accordion-lesson-content">
                                     <div class="accordion-lesson-title">${lesson.title}</div>
                                     <div class="accordion-lesson-subtitle">${lesson.slides.length} slides</div>
@@ -1160,15 +1310,22 @@ function renderAccordionNavigation() {
                             </button>
                             <div class="accordion-lesson-slides ${isLessonExpanded ? 'expanded' : ''}" 
                                  data-lesson-id="${lesson.id}">
-                                ${lesson.slides.map((slide, slideIndex) => `
+                                ${lesson.slides.map((slide, slideIndex) => {
+                                    const slideViewed = isSlideViewed(slide.id);
+                                    const slideProgressIcon = getProgressIcon(slideViewed);
+                                    return `
                                     <div class="accordion-slide ${currentState.level === 'slide' && currentState.slideIndex === slideIndex && currentState.lessonId === lesson.id ? 'active' : ''}" 
                                          data-slide-index="${slideIndex}" data-lesson-id="${lesson.id}" data-unit-id="${unit.id}">
+                                        <div class="accordion-progress-icon">
+                                            <i class="${slideProgressIcon}"></i>
+                                        </div>
                                         <div class="accordion-slide-content">
                                             <div class="accordion-slide-title">${slide.title}${slide.isAssignment ? ' (Assignment)' : ''}</div>
                                             ${slide.isAssignment ? `<div class="accordion-slide-due-date">Due: ${slide.dueDate}</div>` : ''}
                                         </div>
                                     </div>
-                                `).join('')}
+                                    `;
+                                }).join('')}
                             </div>
                         </div>
                         `;
@@ -1260,10 +1417,17 @@ function navigateToLessonFromAccordion(unitId, lessonId) {
     currentState.lessonId = lessonId;
     currentState.slideIndex = 0;
     
+    // Mark first slide as viewed when entering lesson
+    const unit = courseData.units.find(u => u.id === unitId);
+    const lesson = unit.lessons.find(l => l.id === lessonId);
+    const firstSlide = lesson.slides[0];
+    markSlideAsViewed(firstSlide.id);
+    
     // Re-render all navigation components
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 function navigateToSlideFromAccordion(unitId, lessonId, slideIndex) {
@@ -1273,10 +1437,17 @@ function navigateToSlideFromAccordion(unitId, lessonId, slideIndex) {
     currentState.lessonId = lessonId;
     currentState.slideIndex = slideIndex;
     
+    // Mark slide as viewed
+    const unit = courseData.units.find(u => u.id === unitId);
+    const lesson = unit.lessons.find(l => l.id === lessonId);
+    const slide = lesson.slides[slideIndex];
+    markSlideAsViewed(slide.id);
+    
     // Re-render all navigation components
     renderNavigation();
     renderContent();
     renderAccordionNavigation();
+    updateContentHeader();
 }
 
 // Update accordion navigation when state changes

@@ -28,12 +28,20 @@
 
         <!-- Main Content Area -->
         <main class="main-content">
-            <div class="content-header">
-                <div class="breadcrumb" id="breadcrumb">
-                    <span class="breadcrumb-item active">Robotics Course</span>
+            <div class="content-header" id="content-header">
+                <div class="header-info">
+                    <h2 class="header-title" id="header-title">Robotics Course</h2>
+                    <div class="header-subtitle" id="header-subtitle"></div>
+                </div>
+                <div class="progress-container" id="progress-container" style="display: none;">
+                    <div class="wrapper">
+                        <div class="padding-mask">
+                            <div class="slide" id="progress-fill"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="content-body">
                 <div id="content-area" class="content-area">
                     <div class="welcome-screen">
@@ -60,9 +68,6 @@
 
         <!-- Right Sidebar Accordion Navigation -->
         <nav class="right-sidebar">
-            <div class="right-sidebar-header">
-                <h3>Course Navigation</h3>
-            </div>
             <div class="right-sidebar-content">
                 <div id="accordion-navigation" class="accordion-navigation">
                     <!-- Accordion items will be populated by JavaScript -->
