@@ -7,9 +7,9 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    line-height: 1.4;
+    color: #ffffff;
+    background: #000000;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,34 +17,34 @@ body {
 
 /* Header */
 .header {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background: #000000;
+    padding: 3rem 2rem;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
 }
 
 .header p {
-    color: #666;
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.125rem;
+    line-height: 1.4;
 }
 
 /* Main Content */
 .main {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 3rem;
+    padding: 3rem 2rem;
     flex: 1;
 }
 
@@ -56,20 +56,27 @@ body {
 }
 
 .info-card {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     padding: 2rem;
     flex: 1;
     min-width: 280px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .info-card h2 {
-    font-size: 1.8rem;
-    color: #667eea;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.info-card p {
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .info-card ul {
@@ -80,22 +87,63 @@ body {
 .info-card li {
     position: relative;
     padding-left: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
 }
 
-.info-card li:before {
+.info-card li:nth-child(1):before {
     content: "→";
     position: absolute;
     left: 0;
-    color: #764ba2;
+    color: rgba(138, 180, 248, 0.9);
+}
+
+.info-card li:nth-child(2):before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(187, 222, 251, 0.9);
+}
+
+.info-card li:nth-child(3):before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(163, 230, 201, 0.9);
+}
+
+.info-card li:nth-child(4):before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(202, 169, 255, 0.9);
+}
+
+.info-card li:nth-child(5):before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(233, 187, 255, 0.9);
+}
+
+.info-card li:nth-child(6):before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 204, 188, 0.9);
+}
+
+.info-card strong {
+    color: #ffffff;
+    font-weight: 600;
 }
 
 /* Architecture Section */
 .architecture-section {
-    background: white;
-    border-left: 4px solid #667eea;
-    border-radius: 12px;
+    background: rgba(138, 180, 248, 0.08);
+    border-left: 3px solid rgba(138, 180, 248, 0.6);
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -105,64 +153,75 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    border-radius: 8px;
-    padding: 1.5rem;
 }
 
 .architecture-insight h2 {
-    color: #667eea;
-    font-size: 1.8rem;
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .architecture-insight p {
-    color: #333;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.6;
 }
 
 .architecture-insight strong {
-    color: #764ba2;
+    color: rgba(138, 180, 248, 1);
+    font-weight: 600;
 }
 
 /* Demo Section */
 .demo-section {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .demo-section h2 {
-    color: #667eea;
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .demo-instructions {
-    background: #f0f4ff;
+    background: rgba(138, 180, 248, 0.08);
     padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-radius: 6px;
+    border-left: 3px solid rgba(138, 180, 248, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
 }
 
 .demo-container {
-    padding: 2rem 0;
-    border-bottom: 2px solid #eee;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.demo-container:last-child {
-    border-bottom: none;
+.demo-header h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .demo-description {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.demo-description strong {
+    color: rgba(138, 180, 248, 1);
+    font-weight: 600;
 }
 
 .layout-demo {
@@ -174,19 +233,19 @@ body {
 .wide-container {
     flex: 2;
     min-width: 250px;
-    border: 3px dashed #667eea;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     padding: 1rem;
-    border-radius: 8px;
-    background: #f9fafb;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .narrow-container {
     flex: 1;
     min-width: 200px;
-    border: 3px dashed #764ba2;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     padding: 1rem;
-    border-radius: 8px;
-    background: #f9fafb;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Container Query Setup */
@@ -197,22 +256,46 @@ body {
 
 /* Card Styles - Base */
 .card {
-    background: white;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     transition: all 0.3s ease;
 }
 
+.card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(138, 180, 248, 0.4);
+}
+
 .card-image {
     font-size: 3rem;
     text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 2rem;
+}
+
+.card:nth-child(1) .card-image {
+    background: rgba(255, 160, 180, 0.1);
+    border: 1px solid rgba(255, 160, 180, 0.3);
+}
+
+.card:nth-child(2) .card-image {
+    background: rgba(255, 230, 170, 0.1);
+    border: 1px solid rgba(255, 230, 170, 0.3);
+}
+
+.card:nth-child(3) .card-image {
+    background: rgba(138, 180, 248, 0.1);
+    border: 1px solid rgba(138, 180, 248, 0.3);
+}
+
+.card:nth-child(4) .card-image {
+    background: rgba(187, 222, 251, 0.1);
+    border: 1px solid rgba(187, 222, 251, 0.3);
 }
 
 .card-content {
@@ -222,22 +305,26 @@ body {
 }
 
 .card-content h4 {
-    color: #333;
-    font-size: 1.2rem;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .card-content p {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 .card-badge {
     display: inline-block;
-    background: #667eea;
-    color: white;
+    background: rgba(138, 180, 248, 0.2);
+    color: rgba(138, 180, 248, 1);
     padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
     align-self: flex-start;
 }
 
@@ -267,168 +354,27 @@ body {
     }
 }
 
-/* Practical Example Section */
-.practical-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.practical-section h2 {
-    color: #667eea;
-    font-size: 2rem;
-}
-
-.practical-layout {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.sidebar {
-    flex: 1;
-    min-width: 250px;
-    background: #f9fafb;
-    border-radius: 8px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.sidebar h3 {
-    color: #764ba2;
-}
-
-.main-content {
-    flex: 3;
-    min-width: 300px;
-}
-
-.main-content h3 {
-    color: #667eea;
-}
-
-.product-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* Product Card - Uses Container Queries */
-.product-card {
-    background: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: transform 0.2s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.product-image {
-    font-size: 4rem;
-    text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px;
-    padding: 2rem;
-}
-
-.product-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.product-info h4 {
-    color: #333;
-    font-size: 1.1rem;
-}
-
-.product-description {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.product-price {
-    color: #667eea;
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-.product-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-
-.product-button:hover {
-    opacity: 0.9;
-}
-
-/* Container Query for Product Cards */
-@container (min-width: 300px) {
-    .product-card {
-        flex-direction: row;
-        gap: 1.5rem;
-    }
-    
-    .product-image {
-        font-size: 3rem;
-        padding: 1.5rem;
-        min-width: 100px;
-    }
-    
-    .product-grid {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
-    .product-grid .product-card {
-        flex: 1;
-        min-width: 250px;
-    }
-}
-
-@container (min-width: 500px) {
-    .product-image {
-        font-size: 4rem;
-        padding: 2rem;
-        min-width: 120px;
-    }
-    
-    .product-description {
-        display: block;
-    }
-}
-
 /* Interactive Section */
 .interactive-section {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
 .interactive-section h2 {
-    color: #667eea;
+    color: #ffffff;
     font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.interactive-section > p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
 }
 
 .slider-container {
@@ -436,21 +382,22 @@ body {
     flex-direction: column;
     gap: 1rem;
     padding: 1.5rem;
-    background: #f9fafb;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
 }
 
 .slider-container label {
-    font-weight: bold;
-    color: #667eea;
-    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1rem;
 }
 
 #container-width {
     width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: #ddd;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
     outline: none;
     appearance: none;
     -webkit-appearance: none;
@@ -459,26 +406,27 @@ body {
 #container-width::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgba(138, 180, 248, 1);
     cursor: pointer;
+    border: 2px solid #000000;
 }
 
 #container-width::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgba(138, 180, 248, 1);
     cursor: pointer;
-    border: none;
+    border: 2px solid #000000;
 }
 
 .resizable-demo {
     padding: 2rem;
-    background: #f9fafb;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
     display: flex;
     justify-content: center;
 }
@@ -491,15 +439,17 @@ body {
 
 /* Use Cases Section */
 .use-cases-section {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .use-cases-section h2 {
-    color: #667eea;
+    color: #ffffff;
     font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
     text-align: center;
 }
 
@@ -510,9 +460,10 @@ body {
 }
 
 .use-case {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 12px;
+    background: rgba(138, 180, 248, 0.08);
+    border: 1px solid rgba(138, 180, 248, 0.3);
+    color: #ffffff;
+    border-radius: 8px;
     padding: 2rem;
     flex: 1;
     min-width: 280px;
@@ -520,7 +471,9 @@ body {
 
 .use-case h3 {
     font-size: 1.5rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    line-height: 1.2;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 1rem;
 }
 
@@ -532,25 +485,19 @@ body {
 .use-case li {
     padding: 0.75rem 0;
     font-size: 1rem;
-}
-
-/* Footer */
-.footer {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1.5rem;
-    text-align: center;
-    color: #666;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Responsive Media Queries for Overall Layout */
 @media (max-width: 768px) {
     .header h1 {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
     }
     
     .main {
-        padding: 1rem;
-        gap: 1rem;
+        padding: 2rem 1rem;
+        gap: 2rem;
     }
     
     .intro-section {
@@ -558,10 +505,6 @@ body {
     }
     
     .layout-demo {
-        flex-direction: column;
-    }
-    
-    .practical-layout {
         flex-direction: column;
     }
     
@@ -577,4 +520,3 @@ body {
         align-self: center;
     }
 }
-
