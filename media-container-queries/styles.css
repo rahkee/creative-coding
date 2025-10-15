@@ -411,6 +411,10 @@ body {
     font-size: 2rem;
 }
 
+.interactive-section > p {
+    margin-bottom: 1.5rem;
+}
+
 .slider-container {
     display: flex;
     flex-direction: column;
