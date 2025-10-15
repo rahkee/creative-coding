@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox vs Grid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Flexbox vs Grid</h1>
+        <p>An interactive comparison of CSS layout systems</p>
+    </header>
+
+    <main class="main">
+        <!-- Demo Section -->
+        <section class="demo-section">
+            <!-- One-Dimensional vs Two-Dimensional -->
+            <div class="demo-container">
+                <div class="demo-header">
+                    <h3>One-Dimensional vs Two-Dimensional</h3>
+                    <p class="demo-description">Flexbox excels at <strong>one-dimensional layouts</strong> (row or column). Grid excels at <strong>two-dimensional layouts</strong> (rows and columns simultaneously).</p>
+                </div>
+                
+                <div class="toggle-controls">
+                    <button class="toggle-btn active" data-layout="flex" data-demo="dimension">Flexbox</button>
+                    <button class="toggle-btn" data-layout="grid" data-demo="dimension">Grid</button>
+                </div>
+
+                <div class="layout-demo" id="dimension-demo" data-layout="flex">
+                    <div class="demo-item">1</div>
+                    <div class="demo-item">2</div>
+                    <div class="demo-item">3</div>
+                    <div class="demo-item">4</div>
+                    <div class="demo-item">5</div>
+                    <div class="demo-item">6</div>
+                    <div class="demo-item">7</div>
+                    <div class="demo-item">8</div>
+                </div>
+            </div>
+
+            <!-- Content-First vs Layout-First -->
+            <div class="demo-container">
+                <div class="demo-header">
+                    <h3>Content-First vs Layout-First</h3>
+                    <p class="demo-description">Flexbox is <strong>content-based</strong> (items determine the layout). Grid is <strong>layout-based</strong> (you define the structure first).</p>
+                </div>
+                
+                <div class="toggle-controls">
+                    <button class="toggle-btn active" data-layout="flex" data-demo="content">Flexbox</button>
+                    <button class="toggle-btn" data-layout="grid" data-demo="content">Grid</button>
+                </div>
+
+                <div class="layout-demo" id="content-demo" data-layout="flex">
+                    <div class="demo-item">Small</div>
+                    <div class="demo-item">Medium Content Here</div>
+                    <div class="demo-item">Large Content Takes More Space</div>
+                    <div class="demo-item">Tiny</div>
+                    <div class="demo-item">Another Medium Item</div>
+                </div>
+            </div>
+
+            <!-- Alignment Control -->
+            <div class="demo-container">
+                <div class="demo-header">
+                    <h3>Alignment & Spacing</h3>
+                    <p class="demo-description">Both offer powerful alignment, but Grid provides more explicit control over both axes simultaneously.</p>
+                </div>
+                
+                <div class="toggle-controls">
+                    <button class="toggle-btn active" data-layout="flex" data-demo="alignment">Flexbox</button>
+                    <button class="toggle-btn" data-layout="grid" data-demo="alignment">Grid</button>
+                </div>
+
+                <div class="layout-demo alignment-demo" id="alignment-demo" data-layout="flex">
+                    <div class="demo-item">1</div>
+                    <div class="demo-item tall">2<br>Tall</div>
+                    <div class="demo-item">3</div>
+                    <div class="demo-item">4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Playground Section -->
+        <section class="interactive-section">
+            <p>Experiment with different numbers of items to see how Flexbox and Grid behave differently</p>
+
+            <div class="interactive-controls">
+                <div class="slider-container">
+                    <label for="item-count">Number of Items: <span id="item-count-value">6</span></label>
+                    <input type="range" id="item-count" min="3" max="12" value="6">
+                </div>
+
+                <div class="toggle-controls">
+                    <button class="toggle-btn active" data-layout="flex" data-demo="playground">Flexbox</button>
+                    <button class="toggle-btn" data-layout="grid" data-demo="playground">Grid</button>
+                </div>
+
+                <div class="resizable-demo">
+                    <div class="layout-demo" id="playground-demo" data-layout="flex">
+                        <div class="demo-item">1</div>
+                        <div class="demo-item">2</div>
+                        <div class="demo-item">3</div>
+                        <div class="demo-item">4</div>
+                        <div class="demo-item">5</div>
+                        <div class="demo-item">6</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Insight Section -->
+        <section class="architecture-section">
+            <div class="architecture-insight">
+                <h2>🎯 When to Use Each</h2>
+                <p><strong>Use Flexbox when:</strong> You have a row or column of items and want them to flexibly adapt to available space. Perfect for navigation bars, button groups, and single-direction layouts.</p>
+                <p><strong>Use Grid when:</strong> You need to control layout in both dimensions simultaneously. Perfect for page layouts, card grids, and complex structured designs.</p>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <div class="info-card">
+                <h2>📦 Flexbox</h2>
+                <p><strong>What:</strong> One-dimensional layout system (row or column)</p>
+                <p><strong>Best for:</strong> Navigation bars, button groups, centering content, flexible single-direction layouts, and spacing items along one axis</p>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                    <li>Simple and intuitive for one-dimensional layouts</li>
+                    <li>Content-driven (items naturally size themselves)</li>
+                    <li>Excellent for distributing space along one axis</li>
+                    <li>Great browser support</li>
+                </ul>
+                <p><strong>Cons:</strong></p>
+                <ul>
+                    <li>Can become complex when trying to control two dimensions</li>
+                    <li>Less predictable with varying content sizes</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>📐 Grid</h2>
+                <p><strong>What:</strong> Two-dimensional layout system (rows and columns)</p>
+                <p><strong>Best for:</strong> Page layouts, card grids, complex structured designs, magazine-style layouts, and any design requiring precise control over both axes</p>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                    <li>Powerful two-dimensional control</li>
+                    <li>Layout-driven (you define the structure)</li>
+                    <li>Precise positioning with grid lines</li>
+                    <li>Explicit gaps between items</li>
+                </ul>
+                <p><strong>Cons:</strong></p>
+                <ul>
+                    <li>More complex syntax for simple layouts</li>
+                    <li>Overkill for simple one-dimensional needs</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
