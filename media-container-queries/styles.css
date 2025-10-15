@@ -21,6 +21,9 @@ body {
     padding: 2rem;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .header h1 {
@@ -59,6 +62,9 @@ body {
     flex: 1;
     min-width: 280px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .info-card h2 {
@@ -86,14 +92,20 @@ body {
 /* Architecture Section */
 .architecture-section {
     background: white;
+    border-left: 4px solid #667eea;
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .architecture-insight {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    border-left: 4px solid #667eea;
     border-radius: 8px;
     padding: 1.5rem;
 }
@@ -119,6 +131,9 @@ body {
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .demo-section h2 {
@@ -136,6 +151,9 @@ body {
 .demo-container {
     padding: 2rem 0;
     border-bottom: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .demo-container:last-child {
@@ -145,7 +163,6 @@ body {
 .demo-description {
     color: #666;
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
 }
 
 .layout-demo {
@@ -404,15 +421,14 @@ body {
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .interactive-section h2 {
     color: #667eea;
     font-size: 2rem;
-}
-
-.interactive-section > p {
-    margin-bottom: 1.5rem;
 }
 
 .slider-container {
@@ -436,12 +452,13 @@ body {
     border-radius: 4px;
     background: #ddd;
     outline: none;
+    appearance: none;
     -webkit-appearance: none;
 }
 
 #container-width::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
+    -webkit-appearance: none;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -556,8 +573,8 @@ body {
 @media (min-width: 1200px) {
     .main {
         max-width: 1400px;
-        margin: 0 auto;
         width: 100%;
+        align-self: center;
     }
 }
 

@@ -13,56 +13,6 @@
     </header>
 
     <main class="main">
-        <!-- Introduction Section -->
-        <section class="intro-section">
-            <div class="info-card">
-                <h2>📱 Media Queries</h2>
-                <p><strong>What:</strong> Respond to viewport (browser window) size</p>
-                <p><strong>Best for:</strong> Overall page layout changes</p>
-                <p><strong>Use Media Queries For:</strong></p>
-                <ul>
-                    <li>🔄 Changing overall page layout (sidebar → hamburger menu)</li>
-                    <li>🌐 Global typography changes</li>
-                    <li>📱 Device-specific features (orientation, hover capability)</li>
-                </ul>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Great for global layout changes</li>
-                    <li>Can query many device features</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Elements can overflow or overlap before the viewport breakpoint triggers</li>
-                    <li>Requires mental math to predict how components will behave at different viewport sizes</li>
-                </ul>
-            </div>
-
-            <div class="info-card">
-                <h2>📦 Container Queries</h2>
-                <p><strong>What:</strong> Respond to parent container size</p>
-                <p><strong>Best for:</strong> Component-based responsive design</p>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>More intuitive - no mental math required</li>
-                    <li>Based on localized dimensions rather than global viewport</li>
-                    <li>Works anywhere in the layout</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Requires container-type declaration</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Architecture Insight Section -->
-        <section class="architecture-section">
-            <div class="architecture-insight">
-                <h2>🌳 DOM Tree Architecture</h2>
-                <p><strong>Media queries live towards the top of the DOM tree</strong> for site-wide changes. There shouldn't be many media queries.</p>
-                <p><strong>Container queries live in the lower branches</strong> for localized components. It's okay to have many container queries.</p>
-            </div>
-        </section>
-
         <!-- Demo Section -->
         <section class="demo-section">
             <h2>Live Demo: See the Difference</h2>
@@ -70,8 +20,10 @@
 
             <!-- Media Query Demo -->
             <div class="demo-container">
-                <h3>Media Query Example</h3>
-                <p class="demo-description">These cards respond to the <strong>viewport width</strong>. Both cards change at the same breakpoint, regardless of their container size.</p>
+                <div class="demo-header">
+                    <h3>Media Query Example</h3>
+                    <p class="demo-description">These cards respond to the <strong>viewport width</strong>. Both cards change at the same breakpoint, regardless of their container size.</p>
+                </div>
                 
                 <div class="layout-demo">
                     <div class="wide-container">
@@ -100,8 +52,10 @@
 
             <!-- Container Query Demo -->
             <div class="demo-container">
-                <h3>Container Query Example</h3>
-                <p class="demo-description">These cards respond to their <strong>parent container size</strong>. Each card adapts independently based on available space.</p>
+                <div class="demo-header">
+                    <h3>Container Query Example</h3>
+                    <p class="demo-description">These cards respond to their <strong>parent container size</strong>. Each card adapts independently based on available space.</p>
+                </div>
                 
                 <div class="layout-demo">
                     <div class="wide-container container-query-parent">
@@ -122,23 +76,69 @@
         <section class="interactive-section">
             <p>Drag the slider to resize the containers and see how container queries adapt</p>
 
-            <div class="slider-container">
-                <label for="container-width">Container Width: <span id="width-value">100</span>%</label>
-                <input type="range" id="container-width" min="30" max="100" value="100">
-            </div>
+            <div class="interactive-controls">
+                <div class="slider-container">
+                    <label for="container-width">Container Width: <span id="width-value">100</span>%</label>
+                    <input type="range" id="container-width" min="30" max="100" value="100">
+                </div>
 
-            <div class="resizable-demo">
-                <div class="resizable-wrapper" id="resizable-wrapper">
-                    <div class="container-query-parent" style="flex: 1;">
-                        <div class="card card-container">
-                            <div class="card-image">✨</div>
-                            <div class="card-content">
-                                <h4>Responsive Card</h4>
-                                <p>Watch me adapt to my container size!</p>
+                <div class="resizable-demo">
+                    <div class="resizable-wrapper" id="resizable-wrapper">
+                        <div class="container-query-parent" style="flex: 1;">
+                            <div class="card card-container">
+                                <div class="card-image">✨</div>
+                                <div class="card-content">
+                                    <h4>Responsive Card</h4>
+                                    <p>Watch me adapt to my container size!</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Architecture Insight Section -->
+        <section class="architecture-section">
+            <div class="architecture-insight">
+                <h2>🌳 DOM Tree Architecture</h2>
+                <p><strong>Media queries live towards the top of the DOM tree</strong> for site-wide changes. There shouldn't be many media queries.</p>
+                <p><strong>Container queries live in the lower branches</strong> for localized components. It's okay to have many container queries.</p>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <div class="info-card">
+                <h2>📱 Media Queries</h2>
+                <p><strong>What:</strong> Respond to viewport (browser window) size</p>
+                <p><strong>Best for:</strong> Overall page layout changes like sidebar to hamburger menu conversions, global typography changes, and device-specific features (orientation, hover capability)</p>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                    <li>Great for global layout changes</li>
+                    <li>Can query many device features</li>
+                </ul>
+                <p><strong>Cons:</strong></p>
+                <ul>
+                    <li>Elements can overflow or overlap before the viewport breakpoint triggers</li>
+                    <li>Requires mental math to predict how components will behave at different viewport sizes</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>📦 Container Queries</h2>
+                <p><strong>What:</strong> Respond to parent container size</p>
+                <p><strong>Best for:</strong> Component-based responsive design</p>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                    <li>More intuitive - no mental math required</li>
+                    <li>Based on localized dimensions rather than global viewport</li>
+                    <li>Works anywhere in the layout</li>
+                </ul>
+                <p><strong>Cons:</strong></p>
+                <ul>
+                    <li>Requires container-type declaration</li>
+                </ul>
             </div>
         </section>
     </main>
