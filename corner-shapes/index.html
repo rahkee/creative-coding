@@ -21,7 +21,6 @@
                     <div class="control-panel">
                         <h3>Top Left</h3>
                         <div class="control-group">
-                            <label for="topLeftType">Shape Type</label>
                             <select id="topLeftType" class="shape-select">
                                 <option value="round">Round</option>
                                 <option value="angle">Angle</option>
@@ -30,7 +29,6 @@
                             </select>
                         </div>
                         <div class="control-group">
-                            <label for="topLeftSize">Size: <span id="topLeftValue">40</span>px</label>
                             <input type="range" id="topLeftSize" class="size-slider" min="0" max="100" value="40">
                         </div>
                     </div>
@@ -38,7 +36,6 @@
                     <div class="control-panel">
                         <h3>Bottom Left</h3>
                         <div class="control-group">
-                            <label for="bottomLeftType">Shape Type</label>
                             <select id="bottomLeftType" class="shape-select">
                                 <option value="round">Round</option>
                                 <option value="angle">Angle</option>
@@ -47,15 +44,24 @@
                             </select>
                         </div>
                         <div class="control-group">
-                            <label for="bottomLeftSize">Size: <span id="bottomLeftValue">40</span>px</label>
                             <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
                         </div>
                     </div>
                 </div>
 
-                <!-- Center Column: Preview Box and Reset -->
+                <!-- Center Column: Preview Box with Controls -->
                 <div class="center-column">
-                    <div class="preview-box" id="previewBox"></div>
+                    <div class="preview-box" id="previewBox">
+                        <div class="css-display">
+                            <pre id="cssCode"><code></code></pre>
+                            <button class="copy-btn" id="copyBtn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                     <button class="reset-btn" id="resetBtn">Reset All</button>
                 </div>
 
@@ -64,7 +70,6 @@
                     <div class="control-panel">
                         <h3>Top Right</h3>
                         <div class="control-group">
-                            <label for="topRightType">Shape Type</label>
                             <select id="topRightType" class="shape-select">
                                 <option value="round">Round</option>
                                 <option value="angle">Angle</option>
@@ -73,7 +78,6 @@
                             </select>
                         </div>
                         <div class="control-group">
-                            <label for="topRightSize">Size: <span id="topRightValue">40</span>px</label>
                             <input type="range" id="topRightSize" class="size-slider" min="0" max="100" value="40">
                         </div>
                     </div>
@@ -81,7 +85,6 @@
                     <div class="control-panel">
                         <h3>Bottom Right</h3>
                         <div class="control-group">
-                            <label for="bottomRightType">Shape Type</label>
                             <select id="bottomRightType" class="shape-select">
                                 <option value="round">Round</option>
                                 <option value="angle">Angle</option>
@@ -90,19 +93,12 @@
                             </select>
                         </div>
                         <div class="control-group">
-                            <label for="bottomRightSize">Size: <span id="bottomRightValue">40</span>px</label>
                             <input type="range" id="bottomRightSize" class="size-slider" min="0" max="100" value="40">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CSS Output -->
-            <div class="css-output">
-                <h3>Generated CSS</h3>
-                <pre id="cssCode"><code></code></pre>
-                <button class="copy-btn" id="copyBtn">Copy CSS</button>
-            </div>
         </div>
     </div>
 

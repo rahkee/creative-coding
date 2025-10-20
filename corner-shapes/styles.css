@@ -70,36 +70,97 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
 }
 
 .preview-box {
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
 }
 
-.reset-btn, .copy-btn {
-    background: #667eea;
-    color: white;
+.reset-btn {
+    background: rgba(255, 255, 255, 0.95);
+    color: #667eea;
     border: none;
-    padding: 16px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
-.reset-btn:hover, .copy-btn:hover {
-    background: #5568d3;
+.reset-btn:hover {
+    background: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.reset-btn:active, .copy-btn:active {
+.reset-btn:active {
     transform: translateY(0);
+}
+
+.css-display {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.css-display pre {
+    background: transparent;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-btn:hover {
+    background: #5568d3;
+    transform: scale(1.05);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-btn svg {
+    display: flex;
 }
 
 .control-panel {
@@ -151,81 +212,54 @@ body {
     appearance: none;
     background: transparent;
     cursor: pointer;
+    width: 100%;
 }
 
 .size-slider::-webkit-slider-track {
-    background: linear-gradient(to right, #e0e0e0, #667eea);
-    height: 6px;
-    border-radius: 3px;
+    background: #6b7280;
+    height: 8px;
+    border-radius: 4px;
 }
 
 .size-slider::-webkit-slider-thumb {
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: #667eea;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
 }
 
 .size-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    transform: scale(1.15);
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.6);
 }
 
 .size-slider::-moz-range-track {
-    background: linear-gradient(to right, #e0e0e0, #667eea);
-    height: 6px;
-    border-radius: 3px;
+    background: #6b7280;
+    height: 8px;
+    border-radius: 4px;
 }
 
 .size-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: #667eea;
-    border: none;
+    border: 3px solid white;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .size-slider::-moz-range-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    transform: scale(1.15);
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.6);
 }
 
-.css-output {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1;
-}
-
-.css-output h3 {
-    font-size: 1.2rem;
-    color: #667eea;
-    font-weight: 600;
-}
-
-.css-output pre {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #333;
-}
-
-.copy-btn {
-    align-self: flex-start;
-}
 
 @media (min-width: 768px) {
     .container {
@@ -244,6 +278,15 @@ body {
     .preview-box {
         width: 350px;
         height: 350px;
+        padding: 24px;
+    }
+
+    .css-display {
+        padding: 20px;
+    }
+
+    .css-display pre {
+        font-size: 0.75rem;
     }
 
     .control-panel {
@@ -264,14 +307,19 @@ body {
     .preview-box {
         width: 400px;
         height: 400px;
+        padding: 32px;
+    }
+
+    .css-display {
+        padding: 24px;
+    }
+
+    .css-display pre {
+        font-size: 0.8rem;
     }
 
     .left-column,
     .right-column {
-        gap: 32px;
-    }
-
-    .center-column {
         gap: 32px;
     }
 }

@@ -20,7 +20,6 @@ function init() {
     corners.forEach(corner => {
         const typeSelect = document.getElementById(`${corner}Type`);
         const sizeSlider = document.getElementById(`${corner}Size`);
-        const sizeValue = document.getElementById(`${corner}Value`);
 
         // Type change
         typeSelect.addEventListener('change', (e) => {
@@ -31,7 +30,6 @@ function init() {
         // Size change
         sizeSlider.addEventListener('input', (e) => {
             state[corner].size = e.target.value;
-            sizeValue.textContent = e.target.value;
             updatePreview();
         });
     });
@@ -92,7 +90,6 @@ function resetAll() {
         
         document.getElementById(`${corner}Type`).value = 'round';
         document.getElementById(`${corner}Size`).value = 40;
-        document.getElementById(`${corner}Value`).textContent = 40;
     });
     
     updatePreview();
