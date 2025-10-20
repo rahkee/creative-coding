@@ -71,8 +71,7 @@ body {
 .preview-box {
     flex: 1;
     width: 100%;
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #2d3a8c 0%, #3d2557 100%);
+    background: linear-gradient(135deg, #242e70 0%, #301d46 100%);
     transition: all 0.3s ease;
     border-radius: 16px;
     display: grid;
@@ -208,15 +207,11 @@ body {
 }
 
 .control-panel {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    backdrop-filter: blur(20px);
     width: 200px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .control-panel h3 {
