@@ -40,22 +40,12 @@ body {
 }
 
 .main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    flex: 1;
-}
-
-.preview-section {
-    background: white;
-    border-radius: 20px;
-    padding: 32px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
-    gap: 32px;
+    gap: 16px;
     align-items: center;
+    flex: 1;
 }
 
 .center-cell {
@@ -276,9 +266,8 @@ body {
         font-size: 3rem;
     }
 
-    .preview-section {
-        padding: 32px;
-        gap: 32px;
+    .main-content {
+        gap: 16px;
     }
 
     .preview-box {
@@ -305,9 +294,8 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .preview-section {
-        padding: 32px;
-        gap: 32px;
+    .main-content {
+        gap: 16px;
     }
 
     .preview-box {
@@ -322,11 +310,6 @@ body {
 
     .css-display pre {
         font-size: 0.8rem;
-    }
-
-    .left-column,
-    .right-column {
-        gap: 32px;
     }
 }
 
