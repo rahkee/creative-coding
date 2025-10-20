@@ -60,19 +60,16 @@ body {
     justify-content: center;
     align-items: center;
     flex: 1;
-    gap: 24px;
 }
 
 .preview-box {
     flex: 1;
     width: 100%;
-    max-width: 600px;
-    max-height: 600px;
     aspect-ratio: 1;
     background: white;
     transition: all 0.3s ease;
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .bottom-section {
@@ -85,21 +82,19 @@ body {
 .reset-btn {
     background: rgba(255, 255, 255, 0.95);
     color: #667eea;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 16px 32px;
     border-radius: 12px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
 }
 
 .reset-btn:hover {
     background: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .reset-btn:active {
@@ -107,17 +102,15 @@ body {
 }
 
 .css-display {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, #2d3a8c 0%, #3d2557 100%);
     border-radius: 12px;
     padding: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     width: 100%;
-    max-width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .css-display pre {
@@ -128,14 +121,14 @@ body {
     font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
     font-size: 0.7rem;
     line-height: 1.4;
-    color: #333;
+    color: white;
 }
 
 .copy-btn {
     position: absolute;
     top: 8px;
     right: 8px;
-    background: #667eea;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
     padding: 8px;
@@ -148,7 +141,7 @@ body {
 }
 
 .copy-btn:hover {
-    background: #5568d3;
+    background: rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
 }
 
@@ -164,13 +157,12 @@ body {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     gap: 16px;
     backdrop-filter: blur(10px);
     width: 200px;
-    aspect-ratio: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .control-panel h3 {
@@ -234,13 +226,11 @@ body {
     background: #667eea;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     border: 3px solid white;
 }
 
 .size-slider::-webkit-slider-thumb:hover {
     transform: scale(1.15);
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.6);
 }
 
 .size-slider::-moz-range-track {
@@ -258,11 +248,9 @@ body {
     border: 3px solid white;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .size-slider::-moz-range-thumb:hover {
     transform: scale(1.15);
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.6);
 }
 
