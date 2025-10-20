@@ -14,8 +14,9 @@
         </header>
 
         <div class="main-content">
-            <!-- Row 1: Top Left Control -->
-            <div class="control-panel">
+            <!-- Left Column: Top Left & Bottom Left Controls -->
+            <div class="left-column">
+                <div class="control-panel">
                     <h3>Top Left</h3>
                     <div class="control-group">
                         <select id="topLeftType" class="shape-select">
@@ -30,10 +31,43 @@
                     </div>
                 </div>
                 
-                <!-- Row 1: Top Center Empty -->
-                <div></div>
+                <div class="control-panel">
+                    <h3>Bottom Left</h3>
+                    <div class="control-group">
+                        <select id="bottomLeftType" class="shape-select">
+                            <option value="round">Round</option>
+                            <option value="angle">Angle</option>
+                            <option value="scoop">Scoop</option>
+                            <option value="notch">Notch</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Center Column: Preview Box & Bottom Section -->
+            <div class="center-column">
+                <div class="preview-box" id="previewBox"></div>
                 
-                <!-- Row 1: Top Right Control -->
+                <!-- Code Display and Reset Button -->
+                <div class="bottom-section">
+                    <div class="css-display">
+                        <pre id="cssCode"><code></code></pre>
+                        <button class="copy-btn" id="copyBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="reset-btn" id="resetBtn">Reset All</button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Top Right & Bottom Right Controls -->
+            <div class="right-column">
                 <div class="control-panel">
                     <h3>Top Right</h3>
                     <div class="control-group">
@@ -49,49 +83,6 @@
                     </div>
                 </div>
                 
-                <!-- Row 2: Middle Left Empty -->
-                <div></div>
-                
-                <!-- Row 2: Middle Center - Preview Box -->
-                <div class="center-cell">
-                    <div class="preview-box" id="previewBox">
-                        <div class="css-display">
-                            <pre id="cssCode"><code></code></pre>
-                            <button class="copy-btn" id="copyBtn">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2 2v1"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Row 2: Middle Right Empty -->
-                <div></div>
-                
-                <!-- Row 3: Bottom Left Control -->
-                <div class="control-panel">
-                    <h3>Bottom Left</h3>
-                    <div class="control-group">
-                        <select id="bottomLeftType" class="shape-select">
-                            <option value="round">Round</option>
-                            <option value="angle">Angle</option>
-                            <option value="scoop">Scoop</option>
-                            <option value="notch">Notch</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
-                    </div>
-                </div>
-                
-                <!-- Row 3: Bottom Center - Reset Button -->
-                <div class="reset-cell">
-                    <button class="reset-btn" id="resetBtn">Reset All</button>
-                </div>
-                
-                <!-- Row 3: Bottom Right Control -->
                 <div class="control-panel">
                     <h3>Bottom Right</h3>
                     <div class="control-group">
@@ -106,10 +97,12 @@
                         <input type="range" id="bottomRightSize" class="size-slider" min="0" max="100" value="40">
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
 
