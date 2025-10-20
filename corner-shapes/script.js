@@ -53,8 +53,19 @@ function updatePreview() {
         previewBox.style.setProperty(property, styles[property]);
     });
 
+    // Update corner value displays
+    updateCornerDisplays();
+
     // Update CSS code display
     updateCSSOutput(styles);
+}
+
+// Update corner value displays
+function updateCornerDisplays() {
+    document.getElementById('topLeftDisplay').textContent = `${state.topLeft.size}px`;
+    document.getElementById('topRightDisplay').textContent = `${state.topRight.size}px`;
+    document.getElementById('bottomLeftDisplay').textContent = `${state.bottomLeft.size}px`;
+    document.getElementById('bottomRightDisplay').textContent = `${state.bottomRight.size}px`;
 }
 
 // Generate CSS styles

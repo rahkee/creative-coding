@@ -70,6 +70,20 @@ body {
     transition: all 0.3s ease;
     border-radius: 16px;
     border: 2px solid rgba(255, 255, 255, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 16px;
+}
+
+.corner-value {
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    pointer-events: none;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    align-self: center;
+    justify-self: center;
 }
 
 .bottom-section {
@@ -110,7 +124,6 @@ body {
     flex-direction: column;
     overflow: hidden;
     width: 100%;
-    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .css-display pre {

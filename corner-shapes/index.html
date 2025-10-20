@@ -21,13 +21,15 @@
                     <div class="control-group">
                         <select id="topLeftType" class="shape-select">
                             <option value="round">Round</option>
-                            <option value="angle">Angle</option>
                             <option value="scoop">Scoop</option>
+                            <option value="bevel">Bevel</option>
                             <option value="notch">Notch</option>
+                            <option value="square">Square</option>
+                            <option value="squircle">Squircle</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <input type="range" id="topLeftSize" class="size-slider" min="0" max="100" value="40">
+                        <input type="range" id="topLeftSize" class="size-slider" min="0" max="500" value="40" step="8">
                     </div>
                 </div>
                 
@@ -36,20 +38,27 @@
                     <div class="control-group">
                         <select id="bottomLeftType" class="shape-select">
                             <option value="round">Round</option>
-                            <option value="angle">Angle</option>
                             <option value="scoop">Scoop</option>
+                            <option value="bevel">Bevel</option>
                             <option value="notch">Notch</option>
+                            <option value="square">Square</option>
+                            <option value="squircle">Squircle</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
+                        <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="500" value="40" step="8">
                     </div>
                 </div>
             </div>
             
             <!-- Center Column: Preview Box Only -->
             <div class="center-column">
-                <div class="preview-box" id="previewBox"></div>
+                <div class="preview-box" id="previewBox">
+                    <span class="corner-value top-left" id="topLeftDisplay">40px</span>
+                    <span class="corner-value top-right" id="topRightDisplay">40px</span>
+                    <span class="corner-value bottom-left" id="bottomLeftDisplay">40px</span>
+                    <span class="corner-value bottom-right" id="bottomRightDisplay">40px</span>
+                </div>
             </div>
             
             <!-- Right Column: Top Right & Bottom Right Controls -->
@@ -59,13 +68,15 @@
                     <div class="control-group">
                         <select id="topRightType" class="shape-select">
                             <option value="round">Round</option>
-                            <option value="angle">Angle</option>
                             <option value="scoop">Scoop</option>
+                            <option value="bevel">Bevel</option>
                             <option value="notch">Notch</option>
+                            <option value="square">Square</option>
+                            <option value="squircle">Squircle</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <input type="range" id="topRightSize" class="size-slider" min="0" max="100" value="40">
+                        <input type="range" id="topRightSize" class="size-slider" min="0" max="500" value="40" step="8">
                     </div>
                 </div>
                 
@@ -74,13 +85,15 @@
                     <div class="control-group">
                         <select id="bottomRightType" class="shape-select">
                             <option value="round">Round</option>
-                            <option value="angle">Angle</option>
                             <option value="scoop">Scoop</option>
+                            <option value="bevel">Bevel</option>
                             <option value="notch">Notch</option>
+                            <option value="square">Square</option>
+                            <option value="squircle">Squircle</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <input type="range" id="bottomRightSize" class="size-slider" min="0" max="100" value="40">
+                        <input type="range" id="bottomRightSize" class="size-slider" min="0" max="500" value="40" step="8">
                     </div>
                 </div>
             </div>
