@@ -14,83 +14,85 @@
         </header>
 
         <div class="main-content">
-            <!-- Preview Area -->
+            <!-- Grid Layout -->
             <div class="preview-section">
-                <div class="preview-box" id="previewBox"></div>
-                <button class="reset-btn" id="resetBtn">Reset All</button>
-            </div>
-
-            <!-- Controls Grid -->
-            <div class="controls-grid">
-                <!-- Top Left Corner -->
-                <div class="control-panel">
-                    <h3>Top Left</h3>
-                    <div class="control-group">
-                        <label for="topLeftType">Shape Type</label>
-                        <select id="topLeftType" class="shape-select">
-                            <option value="round">Round</option>
-                            <option value="angle">Angle</option>
-                            <option value="scoop">Scoop</option>
-                            <option value="notch">Notch</option>
-                        </select>
+                <!-- Left Column: Top Left & Bottom Left Controls -->
+                <div class="left-column">
+                    <div class="control-panel">
+                        <h3>Top Left</h3>
+                        <div class="control-group">
+                            <label for="topLeftType">Shape Type</label>
+                            <select id="topLeftType" class="shape-select">
+                                <option value="round">Round</option>
+                                <option value="angle">Angle</option>
+                                <option value="scoop">Scoop</option>
+                                <option value="notch">Notch</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="topLeftSize">Size: <span id="topLeftValue">40</span>px</label>
+                            <input type="range" id="topLeftSize" class="size-slider" min="0" max="100" value="40">
+                        </div>
                     </div>
-                    <div class="control-group">
-                        <label for="topLeftSize">Size: <span id="topLeftValue">40</span>px</label>
-                        <input type="range" id="topLeftSize" class="size-slider" min="0" max="100" value="40">
+
+                    <div class="control-panel">
+                        <h3>Bottom Left</h3>
+                        <div class="control-group">
+                            <label for="bottomLeftType">Shape Type</label>
+                            <select id="bottomLeftType" class="shape-select">
+                                <option value="round">Round</option>
+                                <option value="angle">Angle</option>
+                                <option value="scoop">Scoop</option>
+                                <option value="notch">Notch</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="bottomLeftSize">Size: <span id="bottomLeftValue">40</span>px</label>
+                            <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Top Right Corner -->
-                <div class="control-panel">
-                    <h3>Top Right</h3>
-                    <div class="control-group">
-                        <label for="topRightType">Shape Type</label>
-                        <select id="topRightType" class="shape-select">
-                            <option value="round">Round</option>
-                            <option value="angle">Angle</option>
-                            <option value="scoop">Scoop</option>
-                            <option value="notch">Notch</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label for="topRightSize">Size: <span id="topRightValue">40</span>px</label>
-                        <input type="range" id="topRightSize" class="size-slider" min="0" max="100" value="40">
-                    </div>
+                <!-- Center Column: Preview Box and Reset -->
+                <div class="center-column">
+                    <div class="preview-box" id="previewBox"></div>
+                    <button class="reset-btn" id="resetBtn">Reset All</button>
                 </div>
 
-                <!-- Bottom Right Corner -->
-                <div class="control-panel">
-                    <h3>Bottom Right</h3>
-                    <div class="control-group">
-                        <label for="bottomRightType">Shape Type</label>
-                        <select id="bottomRightType" class="shape-select">
-                            <option value="round">Round</option>
-                            <option value="angle">Angle</option>
-                            <option value="scoop">Scoop</option>
-                            <option value="notch">Notch</option>
-                        </select>
+                <!-- Right Column: Top Right & Bottom Right Controls -->
+                <div class="right-column">
+                    <div class="control-panel">
+                        <h3>Top Right</h3>
+                        <div class="control-group">
+                            <label for="topRightType">Shape Type</label>
+                            <select id="topRightType" class="shape-select">
+                                <option value="round">Round</option>
+                                <option value="angle">Angle</option>
+                                <option value="scoop">Scoop</option>
+                                <option value="notch">Notch</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="topRightSize">Size: <span id="topRightValue">40</span>px</label>
+                            <input type="range" id="topRightSize" class="size-slider" min="0" max="100" value="40">
+                        </div>
                     </div>
-                    <div class="control-group">
-                        <label for="bottomRightSize">Size: <span id="bottomRightValue">40</span>px</label>
-                        <input type="range" id="bottomRightSize" class="size-slider" min="0" max="100" value="40">
-                    </div>
-                </div>
 
-                <!-- Bottom Left Corner -->
-                <div class="control-panel">
-                    <h3>Bottom Left</h3>
-                    <div class="control-group">
-                        <label for="bottomLeftType">Shape Type</label>
-                        <select id="bottomLeftType" class="shape-select">
-                            <option value="round">Round</option>
-                            <option value="angle">Angle</option>
-                            <option value="scoop">Scoop</option>
-                            <option value="notch">Notch</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label for="bottomLeftSize">Size: <span id="bottomLeftValue">40</span>px</label>
-                        <input type="range" id="bottomLeftSize" class="size-slider" min="0" max="100" value="40">
+                    <div class="control-panel">
+                        <h3>Bottom Right</h3>
+                        <div class="control-group">
+                            <label for="bottomRightType">Shape Type</label>
+                            <select id="bottomRightType" class="shape-select">
+                                <option value="round">Round</option>
+                                <option value="angle">Angle</option>
+                                <option value="scoop">Scoop</option>
+                                <option value="notch">Notch</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="bottomRightSize">Size: <span id="bottomRightValue">40</span>px</label>
+                            <input type="range" id="bottomRightSize" class="size-slider" min="0" max="100" value="40">
+                        </div>
                     </div>
                 </div>
             </div>
