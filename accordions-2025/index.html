@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Accordions 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Accordions 2025</h1>
+        <p class="subtitle">Using the new HTML <code>name</code> attribute for exclusive accordion behavior</p>
+        
+        <div class="accordion-group">
+            <!-- Accordion 1 - Short content -->
+            <details name="accordion">
+                <summary>What is the new accordion feature?</summary>
+                <div class="accordion-content">
+                    <p>The new HTML <code>name</code> attribute allows you to group <code>&lt;details&gt;</code> elements together, ensuring only one accordion is open at a time - all without JavaScript!</p>
+                </div>
+            </details>
+
+            <!-- Accordion 2 - Medium content -->
+            <details name="accordion">
+                <summary>How does it work?</summary>
+                <div class="accordion-content">
+                    <p>By adding the same <code>name</code> attribute to multiple <code>&lt;details&gt;</code> elements, the browser automatically handles the exclusive behavior. When you open one accordion, any other accordion with the same <code>name</code> will automatically close.</p>
+                    <p>This is a native browser feature that works seamlessly across modern browsers, providing better performance and accessibility out of the box.</p>
+                </div>
+            </details>
+
+            <!-- Accordion 3 - Long content -->
+            <details name="accordion">
+                <summary>What are the benefits of using native accordions?</summary>
+                <div class="accordion-content">
+                    <h3>Native Browser Support</h3>
+                    <p>The <code>&lt;details&gt;</code> element is built into the browser, which means it works without any JavaScript libraries or frameworks. This results in faster load times and better performance.</p>
+                    
+                    <h3>Accessibility</h3>
+                    <p>Native accordions come with built-in accessibility features. Screen readers automatically understand the expand/collapse behavior, and keyboard navigation works out of the box with proper focus management.</p>
+                    
+                    <h3>Progressive Enhancement</h3>
+                    <p>Even if CSS fails to load or JavaScript is disabled, the accordion still functions perfectly. Users can still expand and collapse content, ensuring a resilient user experience.</p>
+                    
+                    <h3>Maintainability</h3>
+                    <p>Using native HTML elements means less code to maintain, fewer bugs, and better long-term stability. You don't need to worry about updating third-party libraries or dealing with breaking changes.</p>
+                    
+                    <h3>Performance</h3>
+                    <p>Browser-native features are optimized at the engine level, providing smoother animations and better resource management compared to JavaScript-based solutions.</p>
+                </div>
+            </details>
+
+            <!-- Accordion 4 - Short content with list -->
+            <details name="accordion">
+                <summary>Browser Support</summary>
+                <div class="accordion-content">
+                    <p>The <code>name</code> attribute for exclusive accordions is supported in:</p>
+                    <ul>
+                        <li>Chrome 120+</li>
+                        <li>Edge 120+</li>
+                        <li>Safari 17.2+</li>
+                        <li>Firefox 120+</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Accordion 5 - Medium content with code example -->
+            <details name="accordion">
+                <summary>Code Example</summary>
+                <div class="accordion-content">
+                    <p>Here's how simple it is to create grouped accordions:</p>
+                    <pre><code>&lt;details name="accordion"&gt;
+  &lt;summary&gt;First Item&lt;/summary&gt;
+  &lt;div class="accordion-content"&gt;
+    &lt;p&gt;Content here&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;details name="accordion"&gt;
+  &lt;summary&gt;Second Item&lt;/summary&gt;
+  &lt;div class="accordion-content"&gt;
+    &lt;p&gt;More content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+                    <p>That's all you need! The browser handles the rest.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="footer">
+            <p>Demo created with ❤️ using modern web standards</p>
+        </div>
+    </div>
+</body>
+</html>
+
