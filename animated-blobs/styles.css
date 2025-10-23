@@ -179,10 +179,11 @@ body {
     position: relative;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     color: white;
     padding: 30px;
     z-index: 20;
+    font-family: "Rubik", sans-serif;
 }
 
 /* White Background Container */
@@ -194,7 +195,7 @@ body {
 }
 
 /* Pretty Content Styles */
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 #imgZoom,
 #imgZoom2,
@@ -207,7 +208,7 @@ body {
     color: #1f2937;
     display: flex;
     flex-direction: column;
-    font-family: "Lato", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     line-height: 1.7;
@@ -222,12 +223,21 @@ body {
     color: #374151;
 }
 
+#pretty-content h1,
+#pretty-content h2,
+#pretty-content h3,
+#pretty-content h4,
+#pretty-content h5,
+#pretty-content h6 {
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+}
+
 #pretty-content h1 {
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
     color: #111827;
     line-height: 1.2;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
 #course-header {
@@ -301,187 +311,125 @@ body {
     font-weight: 300;
 }
 
-#pretty-content section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-#pretty-content section > header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-#pretty-content section > header h3 {
-    color: #a1a1aa;
-    font-weight: 400;
-}
-
-#pretty-content section > header hr {
-    color: #f4f4f5;
-}
-
-#pretty-content section h2 {
+#pretty-content h2 {
     font-size: clamp(1.75rem, 3vw, 2.25rem);
-    font-weight: 700;
     line-height: 1.3;
-    letter-spacing: -0.02em;
-    padding-left: 3.5rem;
+    letter-spacing: -0.01em;
+    padding-left: 4rem;
     position: relative;
+    margin-top: 2rem;
 }
 
-/* Lesson Materials - Pink */
-#pretty-content section:nth-of-type(1) h2 {
-    color: #db2777;
+#pretty-content h2:first-of-type {
+    margin-top: 0;
 }
 
-#pretty-content section:nth-of-type(1) h2::before {
-    content: "✏️";
+#pretty-content h2::before {
+    content: "";
     position: absolute;
     left: 0;
-    font-size: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     top: 50%;
     transform: translateY(-50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-/* Vocabulary - Purple */
-#pretty-content section:nth-of-type(2) h2 {
-    color: #7c3aed;
-}
-
-#pretty-content section:nth-of-type(2) h2::before {
-    content: "📚";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Solutions to Urban Sprawl Impacts - Green */
-#pretty-content section:nth-of-type(3) h2 {
-    color: #059669;
-}
-
-#pretty-content section:nth-of-type(3) h2::before {
-    content: "🌱";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Investigate - Blue */
-#pretty-content section:nth-of-type(4) h2 {
+/* Lesson Materials - Pink circle → Teal text (complementary) */
+#pretty-content h2:nth-of-type(1) {
     color: #0891b2;
 }
 
-#pretty-content section:nth-of-type(4) h2::before {
-    content: "🔍";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(1)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/circle.svg');
 }
 
-/* Manage Urban Sprawl Impacts - Orange */
-#pretty-content section:nth-of-type(5) h2 {
+/* Vocabulary - Purple diamond → Yellow/Gold text (complementary) */
+#pretty-content h2:nth-of-type(2) {
+    color: #eab308;
+}
+
+#pretty-content h2:nth-of-type(2)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/purple-diamond.svg');
+}
+
+/* Solutions to Urban Sprawl Impacts - Green loops → Magenta text (complementary) */
+#pretty-content h2:nth-of-type(3) {
+    color: #db2777;
+}
+
+#pretty-content h2:nth-of-type(3)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/loops.svg');
+}
+
+/* Investigate - Light Blue asterix → Orange text (complementary) */
+#pretty-content h2:nth-of-type(4) {
     color: #ea580c;
 }
 
-#pretty-content section:nth-of-type(5) h2::before {
-    content: "🏙️";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(4)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
 }
 
-/* Create - Indigo */
-#pretty-content section:nth-of-type(7) h2 {
-    color: #4f46e5;
+/* Manage Urban Sprawl Impacts - Coral 3lines → Blue text (complementary) */
+#pretty-content h2:nth-of-type(5) {
+    color: #0369a1;
 }
 
-#pretty-content section:nth-of-type(7) h2::before {
-    content: "💡";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(5)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/3lines.svg');
 }
 
-/* Housing Problems - Red */
-#pretty-content section:nth-of-type(8) h2 {
-    color: #dc2626;
+/* Create - Yellow star → Purple text (complementary) */
+#pretty-content h2:nth-of-type(6) {
+    color: #7c3aed;
 }
 
-#pretty-content section:nth-of-type(8) h2::before {
-    content: "🏘️";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(6)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/star.svg');
 }
 
-/* Integrate - Teal */
-#pretty-content section:nth-of-type(9) h2 {
-    color: #14b8a6;
+/* Housing Problems - Mint crown → Coral text (complementary) */
+#pretty-content h2:nth-of-type(7) {
+    color: #f97316;
 }
 
-#pretty-content section:nth-of-type(9) h2::before {
-    content: "🔗";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(7)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/crown.svg');
 }
 
-/* Transportation Solutions - Cyan */
-#pretty-content section:nth-of-type(11) h2 {
-    color: #06b6d4;
+/* Integrate - Purple diamond → Lime text (complementary) */
+#pretty-content h2:nth-of-type(8) {
+    color: #84cc16;
 }
 
-#pretty-content section:nth-of-type(11) h2::before {
-    content: "🚌";
-    position: absolute;
-    left: 0;
-    font-size: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(8)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/purple-diamond.svg');
 }
 
-/* Design for Purpose h2 - Special styling */
-.design-for-purpose h2 {
-    color: #6d28d9;
-    font-size: clamp(1.375rem, 3vw, 1.75rem);
-    font-weight: 600;
-    padding-left: 3rem;
+/* Transportation Solutions - Light Blue asterix → Amber text (complementary) */
+#pretty-content h2:nth-of-type(9) {
+    color: #f59e0b;
 }
 
-.design-for-purpose h2::before {
-    content: "⚠️";
-    position: absolute;
-    left: 0;
-    font-size: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+#pretty-content h2:nth-of-type(9)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
 }
 
-div#materials {
+/* Materials List - Labels Style (First UL) */
+#pretty-content ul:first-of-type {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-span.item {
+#pretty-content ul:first-of-type li {
     background-color: #f4f4f4;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -489,114 +437,166 @@ span.item {
     font-weight: 500;
 }
 
-span.item.pink {
+#pretty-content ul:first-of-type li.pink {
     background-color: #fdf2f8;
     border: 1px solid #ec4899;
     color: #db2777;
 }
 
-span.item.violet {
+#pretty-content ul:first-of-type li.violet {
     background-color: #f5f3ff;
     border: 1px solid #8b5cf6;
     color: #7c3aed;
 }
 
-span.item.cyan {
+#pretty-content ul:first-of-type li.cyan {
     background-color: #ecfeff;
     border: 1px solid #06b6d4;
     color: #0891b2;
 }
 
-span.item.lime {
+#pretty-content ul:first-of-type li.lime {
     background-color: #f7fee7;
     border: 1px solid #84cc16;
     color: #65a30d;
 }
 
-div#vocab {
+/* Vocabulary Cards - Deck Style (Second UL) */
+#pretty-content ul:nth-of-type(2) {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.card-vocab {
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 0.75rem;
+#pretty-content ul:nth-of-type(2) li {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    border: 2px solid #e5e7eb;
+    border-radius: 1rem;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 0.75rem;
-    min-width: 310px;
-    padding: 1.5rem;
-    transition-property: background-color, color, transform, border-color;
-    transition-duration: 0.24s;
+    flex: 0 1 auto;
+    width: min(320px, 100%);
+    gap: 1rem;
+    padding: 2rem 1.75rem;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
-.card-vocab:hover {
-    background-color: #111827;
-    color: #fff;
-    transform: translateY(-4px);
-    border-color: #111827;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    z-index: 10;
+/* Dog-ear fold in upper right corner - lighter colors */
+#pretty-content ul:nth-of-type(2) li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 60px 60px 0;
+    border-color: transparent #e0e7ff transparent transparent;
 }
 
-.card-vocab header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+/* Card 1 - Pink theme */
+#pretty-content ul:nth-of-type(2) li:nth-child(1) {
+    border-color: #fce7f3;
 }
 
-.pronunciation {
-    align-items: center;
-    display: flex;
-    gap: 0.5rem;
+#pretty-content ul:nth-of-type(2) li:nth-child(1)::before {
+    border-color: transparent #fce7f3 transparent transparent;
 }
 
-.pronunciation span {
-    color: #9ca3af;
-    font-size: 0.875rem;
+#pretty-content ul:nth-of-type(2) li:nth-child(1) .pronunciation {
+    background: #fbcfe8;
+    color: #9f1239;
 }
 
-.card-vocab:hover .pronunciation span {
-    color: #d1d5db;
+/* Card 2 - Purple theme */
+#pretty-content ul:nth-of-type(2) li:nth-child(2) {
+    border-color: #f3e8ff;
 }
 
-.card-vocab strong {
-    font-size: 1.375rem;
+#pretty-content ul:nth-of-type(2) li:nth-child(2)::before {
+    border-color: transparent #f3e8ff transparent transparent;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(2) .pronunciation {
+    background: #e9d5ff;
+    color: #6b21a8;
+}
+
+/* Card 3 - Cyan theme */
+#pretty-content ul:nth-of-type(2) li:nth-child(3) {
+    border-color: #cffafe;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(3)::before {
+    border-color: transparent #cffafe transparent transparent;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(3) .pronunciation {
+    background: #a5f3fc;
+    color: #0e7490;
+}
+
+/* Card 4 - Green theme */
+#pretty-content ul:nth-of-type(2) li:nth-child(4) {
+    border-color: #d1fae5;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(4)::before {
+    border-color: transparent #d1fae5 transparent transparent;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(4) .pronunciation {
+    background: #a7f3d0;
+    color: #065f46;
+}
+
+/* Card 5 - Amber theme */
+#pretty-content ul:nth-of-type(2) li:nth-child(5) {
+    border-color: #fef3c7;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(5)::before {
+    border-color: transparent #fef3c7 transparent transparent;
+}
+
+#pretty-content ul:nth-of-type(2) li:nth-child(5) .pronunciation {
+    background: #fde68a;
+    color: #92400e;
+}
+
+
+#pretty-content ul:nth-of-type(2) li strong {
+    font-size: 1.5rem;
     font-weight: 700;
     color: #111827;
+    font-family: "Rubik", sans-serif;
+    line-height: 1.2;
 }
 
-.card-vocab:hover strong {
-    color: #fff;
+#pretty-content ul:nth-of-type(2) li .pronunciation {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    padding: 0.25rem 0.75rem;
+    background: #f3f4f6;
+    border-radius: 0.375rem;
+    width: fit-content;
 }
 
-.card-vocab p {
+#pretty-content ul:nth-of-type(2) li p {
     font-size: 1rem;
     line-height: 1.6;
     color: #4b5563;
-}
-
-.card-vocab:hover p {
-    color: #e5e7eb;
-}
-
-.card-vocab:last-child {
-    position: relative;
-}
-
-.card-vocab:last-child::after {
-    display: block;
-    width: 11px;
-    height: 1px;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    visibility: hidden;
-    content: "";
+    margin: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f3f4f6;
 }
 
 div.janky {
@@ -629,6 +629,11 @@ div.janky div {
 #pretty-content figure img {
     max-width: 100%;
     height: auto;
+    border-radius: 16px;
+}
+
+#pretty-content img {
+    border-radius: 16px;
 }
 
 #pretty-content figcaption {
@@ -728,11 +733,53 @@ div.janky div {
     width: 40px;
 }
 
+/* Color variations for ordered list items */
+#pretty-content ol li:nth-child(1):before {
+    background: #ec4899;
+}
+
+#pretty-content ol li:nth-child(2):before {
+    background: #8b5cf6;
+}
+
+#pretty-content ol li:nth-child(3):before {
+    background: #06b6d4;
+}
+
+#pretty-content ol li:nth-child(4):before {
+    background: #10b981;
+}
+
+#pretty-content ol li:nth-child(5):before {
+    background: #f59e0b;
+}
+
+#pretty-content ol li:nth-child(6):before {
+    background: #ef4444;
+}
+
+#pretty-content ol li:nth-child(7):before {
+    background: #6366f1;
+}
+
+#pretty-content ol li:nth-child(8):before {
+    background: #14b8a6;
+}
+
+#pretty-content ol li:nth-child(9):before {
+    background: #f97316;
+}
+
+#pretty-content ol li:nth-child(10):before {
+    background: #a855f7;
+}
+
 /* Responsive Design - Mobile First */
 @media (min-width: 640px) {
     .glass-overlay h1 {
         font-size: 2.5rem;
         padding: 40px;
+        letter-spacing: -1px;
     }
     
     .blob-1 {
