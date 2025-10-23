@@ -640,123 +640,28 @@ body {
     border-top: 1px solid #f3f4f6;
 }
 
-div.janky {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-@media (min-width: 768px) {
-    div.janky {
-        flex-direction: row;
-    }
-}
-
-div.janky div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 1rem;
-}
-
-@property --angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-}
-
 #pretty-content figure {
     align-items: center;
     display: flex;
     flex-direction: column;
-    flex: 1;
     gap: 0.5rem;
-    position: relative;
 }
 
-#pretty-content figure img {
-    position: relative;
-    z-index: 1;
+/* Apply vocab colors to image borders */
+#pretty-content figure:nth-of-type(1) img {
+    border-color: #fbcfe8;
 }
 
-#pretty-content figure::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 2rem;
-    z-index: 0;
-    padding: 2px;
-    border-radius: 48px;
-    animation: 3s spin linear infinite;
-    pointer-events: none;
+#pretty-content figure:nth-of-type(2) img {
+    border-color: #e9d5ff;
 }
 
-#pretty-content figure::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 2rem;
-    z-index: 0;
-    padding: 2px;
-    border-radius: 48px;
-    animation: 3s spin linear infinite;
-    pointer-events: none;
-    filter: blur(1rem);
-    opacity: 0.5;
+#pretty-content figure:nth-of-type(3) img {
+    border-color: #a5f3fc;
 }
 
-/* All figures use all vocab colors */
-#pretty-content figure:nth-of-type(1)::after {
-    background-image: conic-gradient(from var(--angle), #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0, #fde68a, #fbcfe8);
-}
-
-#pretty-content figure:nth-of-type(1)::before {
-    background-image: conic-gradient(from var(--angle), #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0, #fde68a, #fbcfe8);
-}
-
-#pretty-content figure:nth-of-type(2)::after {
-    background-image: conic-gradient(from var(--angle), #e9d5ff, #a5f3fc, #a7f3d0, #fde68a, #fbcfe8, #e9d5ff);
-}
-
-#pretty-content figure:nth-of-type(2)::before {
-    background-image: conic-gradient(from var(--angle), #e9d5ff, #a5f3fc, #a7f3d0, #fde68a, #fbcfe8, #e9d5ff);
-}
-
-#pretty-content figure:nth-of-type(3)::after {
-    background-image: conic-gradient(from var(--angle), #a5f3fc, #a7f3d0, #fde68a, #fbcfe8, #e9d5ff, #a5f3fc);
-}
-
-#pretty-content figure:nth-of-type(3)::before {
-    background-image: conic-gradient(from var(--angle), #a5f3fc, #a7f3d0, #fde68a, #fbcfe8, #e9d5ff, #a5f3fc);
-}
-
-#pretty-content figure:nth-of-type(4)::after {
-    background-image: conic-gradient(from var(--angle), #a7f3d0, #fde68a, #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0);
-}
-
-#pretty-content figure:nth-of-type(4)::before {
-    background-image: conic-gradient(from var(--angle), #a7f3d0, #fde68a, #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0);
-}
-
-#pretty-content figure:nth-of-type(5)::after {
-    background-image: conic-gradient(from var(--angle), #fde68a, #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0, #fde68a);
-}
-
-#pretty-content figure:nth-of-type(5)::before {
-    background-image: conic-gradient(from var(--angle), #fde68a, #fbcfe8, #e9d5ff, #a5f3fc, #a7f3d0, #fde68a);
-}
-
-@keyframes spin {
-    from {
-        --angle: 0deg;
-    }
-    to {
-        --angle: 360deg;
-    }
+#pretty-content figure:nth-of-type(4) img {
+    border-color: #a7f3d0;
 }
 
 #pretty-content figure img {
@@ -764,6 +669,7 @@ div.janky div {
     height: auto;
     border-radius: 48px;
     corner-shape: squircle;
+    border: 2px solid;
 }
 
 #pretty-content img {
