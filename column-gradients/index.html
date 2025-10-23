@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Column Gradients - Animated Experiment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        // Generate 720 columns dynamically
+        const container = document.querySelector('.container');
+        for (let i = 0; i < 720; i++) {
+            const column = document.createElement('div');
+            column.className = 'column';
+            container.appendChild(column);
+        }
+    </script>
+</body>
+</html>

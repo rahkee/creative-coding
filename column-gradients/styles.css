@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #000000;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.column {
+    flex: 1;
+    position: relative;
+    min-width: 1px;
+    overflow: hidden;
+}
+
+/* Create gradient in ::before pseudo-element */
+.column::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 0;
+    right: 0;
+    height: 200%;
+    background: linear-gradient(
+        180deg,
+        hsl(262, 90%, 58%) 0%,
+        hsl(262, 80%, 45%) 17%,
+        hsl(262, 70%, 30%) 34%,
+        hsl(262, 60%, 18%) 42%,
+        #000000 50%,
+        #000000 100%
+    );
+    will-change: transform;
+}
+
+/* Assign different animation speeds to each column using nth-child */
+.column:nth-child(10n+1)::before { animation: slideGradient 3.2s ease-in-out infinite; }
+.column:nth-child(10n+2)::before { animation: slideGradient 4.8s ease-in-out infinite; }
+.column:nth-child(10n+3)::before { animation: slideGradient 3.7s ease-in-out infinite; }
+.column:nth-child(10n+4)::before { animation: slideGradient 5.3s ease-in-out infinite; }
+.column:nth-child(10n+5)::before { animation: slideGradient 2.9s ease-in-out infinite; }
+.column:nth-child(10n+6)::before { animation: slideGradient 4.1s ease-in-out infinite; }
+.column:nth-child(10n+7)::before { animation: slideGradient 4.6s ease-in-out infinite; }
+.column:nth-child(10n+8)::before { animation: slideGradient 3.4s ease-in-out infinite; }
+.column:nth-child(10n+9)::before { animation: slideGradient 5.7s ease-in-out infinite; }
+.column:nth-child(10n)::before { animation: slideGradient 2.5s ease-in-out infinite; }
+
+/* Layer with prime numbers for more speed randomness */
+.column:nth-child(13n+2)::before { animation: slideGradient 5.1s ease-in-out infinite; }
+.column:nth-child(13n+5)::before { animation: slideGradient 3.6s ease-in-out infinite; }
+.column:nth-child(13n+8)::before { animation: slideGradient 4.3s ease-in-out infinite; }
+.column:nth-child(13n+11)::before { animation: slideGradient 2.8s ease-in-out infinite; }
+
+.column:nth-child(17n+3)::before { animation: slideGradient 4.9s ease-in-out infinite; }
+.column:nth-child(17n+7)::before { animation: slideGradient 3.3s ease-in-out infinite; }
+.column:nth-child(17n+11)::before { animation: slideGradient 5.8s ease-in-out infinite; }
+.column:nth-child(17n+14)::before { animation: slideGradient 3.9s ease-in-out infinite; }
+
+.column:nth-child(19n+4)::before { animation: slideGradient 4.4s ease-in-out infinite; }
+.column:nth-child(19n+9)::before { animation: slideGradient 5.4s ease-in-out infinite; }
+.column:nth-child(19n+14)::before { animation: slideGradient 2.6s ease-in-out infinite; }
+
+.column:nth-child(23n+6)::before { animation: slideGradient 5.0s ease-in-out infinite; }
+.column:nth-child(23n+12)::before { animation: slideGradient 3.1s ease-in-out infinite; }
+.column:nth-child(23n+18)::before { animation: slideGradient 4.7s ease-in-out infinite; }
+
+.column:nth-child(29n+7)::before { animation: slideGradient 3.5s ease-in-out infinite; }
+.column:nth-child(29n+15)::before { animation: slideGradient 5.9s ease-in-out infinite; }
+.column:nth-child(29n+22)::before { animation: slideGradient 2.7s ease-in-out infinite; }
+
+.column:nth-child(31n+10)::before { animation: slideGradient 4.0s ease-in-out infinite; }
+.column:nth-child(31n+20)::before { animation: slideGradient 5.2s ease-in-out infinite; }
+
+.column:nth-child(37n+13)::before { animation: slideGradient 4.2s ease-in-out infinite; }
+.column:nth-child(37n+26)::before { animation: slideGradient 5.5s ease-in-out infinite; }
+
+.column:nth-child(41n+16)::before { animation: slideGradient 3.0s ease-in-out infinite; }
+.column:nth-child(41n+32)::before { animation: slideGradient 4.5s ease-in-out infinite; }
+
+.column:nth-child(43n+19)::before { animation: slideGradient 2.4s ease-in-out infinite; }
+.column:nth-child(47n+23)::before { animation: slideGradient 6.0s ease-in-out infinite; }
+.column:nth-child(53n+27)::before { animation: slideGradient 3.8s ease-in-out infinite; }
+.column:nth-child(59n+31)::before { animation: slideGradient 4.4s ease-in-out infinite; }
+
+.column:nth-child(61n+35)::before { animation: slideGradient 3.3s ease-in-out infinite; }
+.column:nth-child(67n+40)::before { animation: slideGradient 5.6s ease-in-out infinite; }
+.column:nth-child(71n+45)::before { animation: slideGradient 4.1s ease-in-out infinite; }
+
+/* Simple transform animation - much more performant */
+@keyframes slideGradient {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(25%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .column {
+        min-width: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .column {
+        min-width: 3px;
+    }
+}

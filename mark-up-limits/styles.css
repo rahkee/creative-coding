@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    padding: 3rem 1.5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   MAIN STYLING: H2 followed by UL
+   ============================================ */
+
+/* Style the h2 that is followed by a ul */
+h2 + ul {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2.5rem 2rem 2rem 3.5rem;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    list-style: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h2 + ul:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Add decorative element before the list */
+h2 + ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    border-radius: 16px 16px 0 0;
+}
+
+/* Add decorative corner accent */
+h2 + ul::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    opacity: 0.15;
+}
+
+/* Style list items within the targeted ul */
+h2 + ul li {
+    position: relative;
+    padding: 0.75rem 0 0.75rem 2rem;
+    color: #2d3748;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+h2 + ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+h2 + ul li:hover {
+    color: #667eea;
+    padding-left: 2.5rem;
+}
+
+/* Custom bullet points using ::before */
+h2 + ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+h2 + ul li:hover::before {
+    width: 14px;
+    height: 14px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+}
+
+/* Add a subtle indicator after list items */
+h2 + ul li::after {
+    content: '→';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+    color: #667eea;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+h2 + ul li:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Style the h2 itself when it precedes a ul */
+h2:has(+ ul) {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding-left: 2rem;
+    transition: all 0.3s ease;
+}
+
+h2:has(+ ul):hover {
+    transform: translateX(8px);
+}
+
+/* Add a decorative bar before h2 */
+h2:has(+ ul)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #f093fb, #f5576c);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(245, 87, 108, 0.5);
+}
+
+/* Add a subtle glow effect */
+h2:has(+ ul)::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: radial-gradient(ellipse at left, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+h2:has(+ ul):hover::after {
+    opacity: 1;
+}
+
+/* ============================================
+   SPECIAL STYLING FOR FIRST H2 ONLY
+   ============================================ */
+
+/* Override the first h2's ::before with SVG doodle */
+.container > h2:has(+ ul):first-of-type::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/blue/3lines.svg') no-repeat center;
+    background-size: contain;
+    box-shadow: none;
+    border-radius: 0;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.container > h2:has(+ ul):first-of-type:hover::before {
+    transform: translateY(-50%) scale(1.1) rotate(-5deg);
+    opacity: 1;
+}
+
+/* Add another SVG doodle after the first h2 */
+.container > h2:has(+ ul):first-of-type::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/crown.svg') no-repeat center;
+    background-size: contain;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.container > h2:has(+ ul):first-of-type:hover::after {
+    transform: translateY(-50%) scale(1.1) rotate(5deg);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    body {
+        padding: 2rem 1rem;
+    }
+    
+    .container {
+        gap: 2rem;
+    }
+    
+    h2:has(+ ul) {
+        font-size: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    
+    h2 + ul {
+        padding: 2rem 1.5rem 1.5rem 2.5rem;
+    }
+    
+    h2 + ul li {
+        font-size: 1rem;
+        padding-left: 1.5rem;
+    }
+}
+
