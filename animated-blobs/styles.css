@@ -32,7 +32,7 @@ body {
 .blob-1 {
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, #ff6b6b, #ee5a6f);
+    background: radial-gradient(circle, #fce7f3, #fbcfe8);
     top: 10%;
     left: 10%;
     animation: float-1 8s infinite;
@@ -41,7 +41,7 @@ body {
 .blob-2 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, #4ecdc4, #44a4b0);
+    background: radial-gradient(circle, #cffafe, #a5f3fc);
     top: 50%;
     right: 10%;
     animation: float-2 10s infinite;
@@ -50,7 +50,7 @@ body {
 .blob-3 {
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, #f9ca24, #f0932b);
+    background: radial-gradient(circle, #fef3c7, #fde68a);
     bottom: 10%;
     left: 20%;
     animation: float-3 12s infinite;
@@ -59,10 +59,19 @@ body {
 .blob-4 {
     width: 280px;
     height: 280px;
-    background: radial-gradient(circle, #a29bfe, #6c5ce7);
+    background: radial-gradient(circle, #f3e8ff, #e9d5ff);
     top: 30%;
     left: 50%;
     animation: float-4 9s infinite;
+}
+
+.blob-5 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, #d1fae5, #a7f3d0);
+    bottom: 20%;
+    right: 15%;
+    animation: float-5 11s infinite;
 }
 
 /* Keyframe Animations */
@@ -126,13 +135,29 @@ body {
     }
 }
 
+@keyframes float-5 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(40px, -70px) scale(1.06);
+    }
+    66% {
+        transform: translate(-60px, 50px) scale(0.94);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
 /* Glassmorphism Card Container */
 .glass-card {
     display: flex;
     flex-direction: column;
     flex: 1;
     max-width: 1400px;
-    border-radius: 20px;
+    border-radius: 16px;
+    corner-shape: squircle;
     overflow: hidden;
     border: 1px solid #d0d0d0;
 }
@@ -143,7 +168,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 150px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 16px 16px 0 0;
+    corner-shape: squircle;
     overflow: hidden;
 }
 
@@ -155,7 +181,7 @@ body {
     flex-direction: column;
 }
 
-/* Dark purple gradient background - behind everything in header */
+/* Pastel gradient background - behind everything in header */
 .header-section::before {
     content: '';
     position: absolute;
@@ -163,14 +189,14 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #e9d5ff 0%, #fce7f3 50%, #cffafe 100%);
     z-index: 0;
     pointer-events: none;
 }
 
 /* Glassmorphism blur effect - applies to entire glass-overlay */
 .glass-overlay {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
@@ -180,7 +206,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    color: white;
+    color: #374151;
     padding: 30px;
     z-index: 20;
     font-family: "Rubik", sans-serif;
@@ -266,7 +292,8 @@ body {
 
 .course-label {
     background-color: #3f3f46;
-    border-radius: 1rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     color: #fafafa;
     display: flex;
     font-size: 0.75rem;
@@ -276,17 +303,17 @@ body {
 
 .course-label.emerald {
     background-color: #d1fae5;
-    color: #059669;
+    color: #065f46;
 }
 
 .course-label.rose {
-    background-color: #ffe4e6;
-    color: #e11d48;
+    background-color: #fce7f3;
+    color: #9f1239;
 }
 
 .course-label.orange {
-    background-color: #ffedd5;
-    color: #ea580c;
+    background-color: #fef3c7;
+    color: #92400e;
 }
 
 #course-date {
@@ -337,7 +364,7 @@ body {
     background-position: center;
 }
 
-/* Lesson Materials - Pink circle → Teal text (complementary) */
+/* Lesson Materials - Pink icon → Cyan text (complementary) */
 #pretty-content h2:nth-of-type(1) {
     color: #0891b2;
 }
@@ -346,76 +373,76 @@ body {
     background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/circle.svg');
 }
 
-/* Vocabulary - Purple diamond → Yellow/Gold text (complementary) */
+/* Vocabulary - Purple icon → Amber text (complementary) */
 #pretty-content h2:nth-of-type(2) {
-    color: #eab308;
+    color: #d97706;
 }
 
 #pretty-content h2:nth-of-type(2)::before {
     background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/purple-diamond.svg');
 }
 
-/* Solutions to Urban Sprawl Impacts - Green loops → Magenta text (complementary) */
+/* Solutions to Urban Sprawl Impacts - Light blue icon → Amber text (complementary) */
 #pretty-content h2:nth-of-type(3) {
-    color: #db2777;
+    color: #d97706;
 }
 
 #pretty-content h2:nth-of-type(3)::before {
-    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/loops.svg');
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
 }
 
-/* Investigate - Light Blue asterix → Orange text (complementary) */
+/* Investigate - Green icon → Pink text (complementary) */
 #pretty-content h2:nth-of-type(4) {
-    color: #ea580c;
+    color: #db2777;
 }
 
 #pretty-content h2:nth-of-type(4)::before {
-    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/loops.svg');
 }
 
-/* Manage Urban Sprawl Impacts - Coral 3lines → Blue text (complementary) */
+/* Manage Urban Sprawl Impacts - Yellow icon → Purple text (complementary) */
 #pretty-content h2:nth-of-type(5) {
-    color: #0369a1;
+    color: #9333ea;
 }
 
 #pretty-content h2:nth-of-type(5)::before {
-    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/3lines.svg');
-}
-
-/* Create - Yellow star → Purple text (complementary) */
-#pretty-content h2:nth-of-type(6) {
-    color: #7c3aed;
-}
-
-#pretty-content h2:nth-of-type(6)::before {
     background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/star.svg');
 }
 
-/* Housing Problems - Mint crown → Coral text (complementary) */
+/* Create - Pink icon → Cyan text (complementary) */
+#pretty-content h2:nth-of-type(6) {
+    color: #0891b2;
+}
+
+#pretty-content h2:nth-of-type(6)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/circle.svg');
+}
+
+/* Housing Problems - Purple icon → Amber text (complementary) */
 #pretty-content h2:nth-of-type(7) {
-    color: #f97316;
+    color: #d97706;
 }
 
 #pretty-content h2:nth-of-type(7)::before {
-    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/crown.svg');
-}
-
-/* Integrate - Purple diamond → Lime text (complementary) */
-#pretty-content h2:nth-of-type(8) {
-    color: #84cc16;
-}
-
-#pretty-content h2:nth-of-type(8)::before {
     background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/purple-diamond.svg');
 }
 
-/* Transportation Solutions - Light Blue asterix → Amber text (complementary) */
+/* Integrate - Light blue icon → Amber text (complementary) */
+#pretty-content h2:nth-of-type(8) {
+    color: #d97706;
+}
+
+#pretty-content h2:nth-of-type(8)::before {
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
+}
+
+/* Transportation Solutions - Green icon → Pink text (complementary) */
 #pretty-content h2:nth-of-type(9) {
-    color: #f59e0b;
+    color: #db2777;
 }
 
 #pretty-content h2:nth-of-type(9)::before {
-    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/asterix.svg');
+    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/loops.svg');
 }
 
 /* Materials List - Labels Style (First UL) */
@@ -432,33 +459,34 @@ body {
 #pretty-content ul:first-of-type li {
     background-color: #f4f4f4;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     font-size: 0.9375rem;
     font-weight: 500;
 }
 
 #pretty-content ul:first-of-type li.pink {
-    background-color: #fdf2f8;
-    border: 1px solid #ec4899;
-    color: #db2777;
+    background-color: #fce7f3;
+    border: 1px solid #fbcfe8;
+    color: #9f1239;
 }
 
 #pretty-content ul:first-of-type li.violet {
-    background-color: #f5f3ff;
-    border: 1px solid #8b5cf6;
-    color: #7c3aed;
+    background-color: #f3e8ff;
+    border: 1px solid #e9d5ff;
+    color: #6b21a8;
 }
 
 #pretty-content ul:first-of-type li.cyan {
-    background-color: #ecfeff;
-    border: 1px solid #06b6d4;
-    color: #0891b2;
+    background-color: #cffafe;
+    border: 1px solid #a5f3fc;
+    color: #0e7490;
 }
 
 #pretty-content ul:first-of-type li.lime {
-    background-color: #f7fee7;
-    border: 1px solid #84cc16;
-    color: #65a30d;
+    background-color: #d1fae5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
 }
 
 /* Vocabulary Cards - Deck Style (Second UL) */
@@ -474,7 +502,8 @@ body {
 #pretty-content ul:nth-of-type(2) li {
     background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
     border: 2px solid #e5e7eb;
-    border-radius: 1rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -586,7 +615,8 @@ body {
     letter-spacing: 0.025em;
     padding: 0.25rem 0.75rem;
     background: #f3f4f6;
-    border-radius: 0.375rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     width: fit-content;
 }
 
@@ -630,10 +660,12 @@ div.janky div {
     max-width: 100%;
     height: auto;
     border-radius: 16px;
+    corner-shape: squircle;
 }
 
 #pretty-content img {
     border-radius: 16px;
+    corner-shape: squircle;
 }
 
 #pretty-content figcaption {
@@ -646,8 +678,9 @@ div.janky div {
 
 .design-for-purpose {
     background-color: #f3e8ff;
-    border: 3px solid #5b21b6;
-    border-radius: 1rem;
+    border: 3px solid #e9d5ff;
+    border-radius: 16px;
+    corner-shape: squircle;
     padding: 2.5rem;
     margin: 4rem auto 0;
 }
@@ -657,7 +690,7 @@ div.janky div {
 }
 
 .design-for-purpose div.icon-container {
-    background: #5b21b6;
+    background: #6b21a8;
     padding: 1.25rem;
     border-radius: 5rem;
     position: absolute;
@@ -670,12 +703,12 @@ div.janky div {
 }
 
 .design-for-purpose div.icon-container i {
-    color: #facc15;
+    color: #fde68a;
     font-size: 3.2rem;
 }
 
 .design-for-purpose h1 {
-    color: #5b21b6;
+    color: #6b21a8;
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-family: "Abril Fatface", serif;
     text-align: center;
@@ -684,13 +717,13 @@ div.janky div {
 
 
 .design-for-purpose p {
-    color: #4c1d95;
+    color: #6b21a8;
     line-height: 1.75;
 }
 
 .design-for-purpose hr {
     border: none;
-    border-top: 2px solid #a78bfa;
+    border-top: 2px solid #e9d5ff;
     opacity: 0.5;
 }
 
@@ -707,7 +740,8 @@ div.janky div {
     display: flex;
     gap: 1.25rem;
     border: 1px solid #d1d5db;
-    border-radius: 0.75rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     overflow: hidden;
     padding: 1.25rem;
 }
@@ -721,7 +755,8 @@ div.janky div {
     content: counter(item);
     background: #6366f1;
     color: white;
-    border-radius: 0.5rem;
+    border-radius: 16px;
+    corner-shape: squircle;
     aspect-ratio: 1 / 1;
     display: flex;
     font-size: 1.25rem;
@@ -735,43 +770,43 @@ div.janky div {
 
 /* Color variations for ordered list items */
 #pretty-content ol li:nth-child(1):before {
-    background: #ec4899;
+    background: #9f1239;
 }
 
 #pretty-content ol li:nth-child(2):before {
-    background: #8b5cf6;
+    background: #6b21a8;
 }
 
 #pretty-content ol li:nth-child(3):before {
-    background: #06b6d4;
+    background: #0e7490;
 }
 
 #pretty-content ol li:nth-child(4):before {
-    background: #10b981;
+    background: #065f46;
 }
 
 #pretty-content ol li:nth-child(5):before {
-    background: #f59e0b;
+    background: #92400e;
 }
 
 #pretty-content ol li:nth-child(6):before {
-    background: #ef4444;
+    background: #9f1239;
 }
 
 #pretty-content ol li:nth-child(7):before {
-    background: #6366f1;
+    background: #6b21a8;
 }
 
 #pretty-content ol li:nth-child(8):before {
-    background: #14b8a6;
+    background: #0e7490;
 }
 
 #pretty-content ol li:nth-child(9):before {
-    background: #f97316;
+    background: #065f46;
 }
 
 #pretty-content ol li:nth-child(10):before {
-    background: #a855f7;
+    background: #92400e;
 }
 
 /* Responsive Design - Mobile First */
@@ -800,6 +835,11 @@ div.janky div {
     .blob-4 {
         width: 180px;
         height: 180px;
+    }
+    
+    .blob-5 {
+        width: 210px;
+        height: 210px;
     }
 }
 
