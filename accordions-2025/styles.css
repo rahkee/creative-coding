@@ -115,9 +115,9 @@ summary:hover {
     color: #818cf8;
 }
 
-/* Animated icon (CSS-only plus/minus) */
+/* Chevron icon */
 summary::after {
-    content: '';
+    content: '›';
     position: relative;
     flex-shrink: 0;
     width: 2rem;
@@ -125,32 +125,25 @@ summary::after {
     background: rgba(99, 102, 241, 0.2);
     border-radius: 0.5rem;
     margin-left: auto;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #818cf8;
+    font-weight: bold;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(0deg);
 }
 
-/* Plus icon using pseudo-element */
-summary::after {
-    background-image: 
-        linear-gradient(#818cf8, #818cf8),
-        linear-gradient(#818cf8, #818cf8);
-    background-size: 50% 2px, 2px 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Icon rotation and color change when open */
+/* Chevron rotates down when open */
 details[open] summary::after {
     background: #6366f1;
-    transform: rotate(180deg);
+    color: white;
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-    background-image: 
-        linear-gradient(white, white),
-        linear-gradient(white, white);
-}
-
-/* Horizontal line becomes visible (minus), vertical line opacity 0 */
-details[open] summary::after {
-    background-size: 50% 2px, 2px 0%;
+    transform: rotate(90deg);
 }
 
 /* Focus styles for accessibility */
