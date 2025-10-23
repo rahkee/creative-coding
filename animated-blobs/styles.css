@@ -647,21 +647,25 @@ body {
     gap: 0.5rem;
 }
 
-/* Apply vocab colors to image borders */
+/* Apply vocab colors to image borders and shadows */
 #pretty-content figure:nth-of-type(1) img {
     border-color: #fbcfe8;
+    box-shadow: 10px 10px 0 #e2bad1;
 }
 
 #pretty-content figure:nth-of-type(2) img {
     border-color: #e9d5ff;
+    box-shadow: 10px 10px 0 #d2c0e6;
 }
 
 #pretty-content figure:nth-of-type(3) img {
     border-color: #a5f3fc;
+    box-shadow: 10px 10px 0 #95dbe3;
 }
 
 #pretty-content figure:nth-of-type(4) img {
     border-color: #a7f3d0;
+    box-shadow: 10px 10px 0 #96dbbb;
 }
 
 #pretty-content figure img {
