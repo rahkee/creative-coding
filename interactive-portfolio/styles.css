@@ -29,48 +29,68 @@ main {
 main > section {
     grid-column: 1;
     grid-row: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
 }
 
 #layer-space-time {
-    .space-time-display {
-        display: flex;
-        gap: 2px;
+    .navigation-and-data-wrapper {
 
-        .space-container {
+        .navigation-data-layout {
             display: flex;
-            gap: 2px;
-            align-items: center;
-            padding: 12px;
+            justify-content: space-between;
+            gap: 24px;
 
-            .coordinate-group {
+            .navigation-container {
                 display: flex;
-                gap: 6px;
+                gap: 2px;
+                align-items: center;
+                padding: 12px;
 
-                .x-group,
-                .y-group {
-                    display: flex;
-                    gap: 0;
+                .nav-item {
+                    text-decoration: none;
+                    color: inherit;
                 }
             }
-        }
 
-        .time-container {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            padding: 12px;
+            .space-time-display {
+                .data-containers {
+                    display: flex;
+                    gap: 2px;
 
-            .date-group {
-                display: flex;
-                gap: 2px;
-            }
+                    .space-container {
+                        display: flex;
+                        gap: 2px;
+                        align-items: center;
+                        padding: 12px;
 
-            .time-group {
-                display: flex;
-                gap: 2px;
+                        .coordinate-group {
+                            display: flex;
+                            gap: 6px;
+
+                            .x-group,
+                            .y-group {
+                                display: flex;
+                                gap: 0;
+                            }
+                        }
+                    }
+
+                    .time-container {
+                        display: flex;
+                        gap: 6px;
+                        align-items: center;
+                        padding: 12px;
+
+                        .date-group {
+                            display: flex;
+                            gap: 2px;
+                        }
+
+                        .time-group {
+                            display: flex;
+                            gap: 2px;
+                        }
+                    }
+                }
             }
         }
     }
