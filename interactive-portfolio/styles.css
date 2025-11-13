@@ -7,7 +7,6 @@
 body {
     align-content: center;
     background-color: #222;
-    display: block;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 200;
     height: 100vh;
@@ -54,7 +53,6 @@ main > section {
                 gap: 2px;
 
                 .nav-item {
-                    align-items: center;
                     padding: 12px;
                     background: none;
                     border: none;
@@ -104,7 +102,7 @@ main > section {
                     gap: 2px;
 
                     .space-container {
-                        align-items: center;
+                        display: flex;
                         padding: 12px;
 
                         .coordinate-group {
