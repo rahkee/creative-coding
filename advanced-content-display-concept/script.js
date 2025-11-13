@@ -92,7 +92,7 @@ function renderContent(data) {
     // Render lessons
     data.lessons.forEach(lesson => {
         const lessonSection = document.createElement('section');
-        lessonSection.className = 'lesson';
+        lessonSection.className = `lesson lesson-${lesson.id}`;
         lessonSection.setAttribute('data-lesson-id', lesson.id);
         
         const lessonHeader = document.createElement('h2');
