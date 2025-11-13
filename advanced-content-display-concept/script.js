@@ -1,81 +1,116 @@
 // Advanced Content Display Concept JavaScript
 
+// Helper: Create DOM element with optional class and text
+function createElement(tag, className = '', textContent = '') {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (textContent) el.textContent = textContent;
+    return el;
+}
+
+// Helper: Save current topic to lesson if it exists
+function saveTopic(currentTopic, currentParagraphs, currentLesson) {
+    if (currentTopic && currentParagraphs.length > 0) {
+        currentTopic.paragraphs = currentParagraphs;
+        currentLesson.topics.push(currentTopic);
+    }
+}
+
+// Helper: Extract lesson ID and title from markdown line
+function parseLessonTitle(line) {
+    const lessonTitle = line.substring(3).trim();
+    const lessonMatch = lessonTitle.match(/^Lesson (\d+):\s*(.+)$/);
+    return {
+        id: lessonMatch ? parseInt(lessonMatch[1]) : null,
+        title: lessonMatch ? lessonMatch[2] : lessonTitle
+    };
+}
+
 // MDX Parser: Converts MDX content to structured JSON
 function parseMDXToJSON(mdxContent) {
     const lines = mdxContent.split('\n');
-    const result = {
-        title: '',
-        lessons: []
-    };
+    const result = { title: '', lessons: [] };
     
     let currentLesson = null;
     let currentTopic = null;
     let currentParagraphs = [];
     
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+    lines.forEach(line => {
+        const trimmed = line.trim();
         
-        // Parse H1 - Course Title
-        if (line.startsWith('# ') && !line.startsWith('##')) {
-            result.title = line.substring(2).trim();
+        if (trimmed.startsWith('# ') && !trimmed.startsWith('##')) {
+            result.title = trimmed.substring(2).trim();
         }
-        // Parse H2 - Lesson
-        else if (line.startsWith('## ')) {
-            // Save previous topic if exists
-            if (currentTopic && currentParagraphs.length > 0) {
-                currentTopic.paragraphs = currentParagraphs;
-                currentLesson.topics.push(currentTopic);
-                currentParagraphs = [];
-            }
-            
-            // Save previous lesson if exists
+        else if (trimmed.startsWith('## ')) {
+            // Save previous topic and lesson
             if (currentLesson) {
+                saveTopic(currentTopic, currentParagraphs, currentLesson);
                 result.lessons.push(currentLesson);
             }
             
             // Start new lesson
-            const lessonTitle = line.substring(3).trim();
-            const lessonMatch = lessonTitle.match(/^Lesson (\d+):\s*(.+)$/);
+            const { id, title } = parseLessonTitle(trimmed);
             currentLesson = {
-                id: lessonMatch ? parseInt(lessonMatch[1]) : result.lessons.length + 1,
-                title: lessonMatch ? lessonMatch[2] : lessonTitle,
+                id: id || result.lessons.length + 1,
+                title,
                 topics: []
             };
             currentTopic = null;
+            currentParagraphs = [];
         }
-        // Parse H3 - Topic
-        else if (line.startsWith('### ')) {
-            // Save previous topic if exists
-            if (currentTopic && currentParagraphs.length > 0) {
-                currentTopic.paragraphs = currentParagraphs;
-                currentLesson.topics.push(currentTopic);
-                currentParagraphs = [];
+        else if (trimmed.startsWith('### ')) {
+            // Save previous topic
+            if (currentLesson) {
+                saveTopic(currentTopic, currentParagraphs, currentLesson);
             }
             
             // Start new topic
             currentTopic = {
-                title: line.substring(4).trim(),
+                title: trimmed.substring(4).trim(),
                 paragraphs: []
             };
+            currentParagraphs = [];
         }
-        // Parse paragraphs
-        else if (line.length > 0 && currentTopic) {
-            currentParagraphs.push(line);
+        else if (trimmed.length > 0 && currentTopic) {
+            currentParagraphs.push(trimmed);
         }
-    }
+    });
     
     // Save last topic and lesson
-    if (currentTopic && currentParagraphs.length > 0) {
-        currentTopic.paragraphs = currentParagraphs;
-        if (currentLesson) {
-            currentLesson.topics.push(currentTopic);
-        }
-    }
     if (currentLesson) {
+        saveTopic(currentTopic, currentParagraphs, currentLesson);
         result.lessons.push(currentLesson);
     }
     
     return result;
+}
+
+// Render helper: Create and append topic section
+function renderTopic(topic) {
+    const topicSection = createElement('div', 'topic');
+    topicSection.appendChild(createElement('h3', 'topic-title', topic.title));
+    
+    topic.paragraphs.forEach(paragraph => {
+        topicSection.appendChild(createElement('p', 'topic-paragraph', paragraph));
+    });
+    
+    return topicSection;
+}
+
+// Render helper: Create and append lesson section
+function renderLesson(lesson) {
+    const lessonSection = createElement('section', `lesson lesson-${lesson.id}`);
+    lessonSection.setAttribute('data-lesson-id', lesson.id);
+    
+    lessonSection.appendChild(
+        createElement('h2', 'lesson-title', `Lesson ${lesson.id}: ${lesson.title}`)
+    );
+    
+    lesson.topics.forEach(topic => {
+        lessonSection.appendChild(renderTopic(topic));
+    });
+    
+    return lessonSection;
 }
 
 // Render JSON data to HTML
@@ -83,76 +118,32 @@ function renderContent(data) {
     const container = document.getElementById('content-container');
     if (!container) return;
     
-    // Render course title
-    const titleEl = document.createElement('h1');
-    titleEl.className = 'course-title';
-    titleEl.textContent = data.title;
-    container.appendChild(titleEl);
+    container.appendChild(createElement('h1', 'course-title', data.title));
     
-    // Render lessons
     data.lessons.forEach(lesson => {
-        const lessonSection = document.createElement('section');
-        lessonSection.className = `lesson lesson-${lesson.id}`;
-        lessonSection.setAttribute('data-lesson-id', lesson.id);
-        
-        const lessonHeader = document.createElement('h2');
-        lessonHeader.className = 'lesson-title';
-        lessonHeader.textContent = `Lesson ${lesson.id}: ${lesson.title}`;
-        lessonSection.appendChild(lessonHeader);
-        
-        // Render topics
-        lesson.topics.forEach(topic => {
-            const topicSection = document.createElement('div');
-            topicSection.className = 'topic';
-            
-            const topicHeader = document.createElement('h3');
-            topicHeader.className = 'topic-title';
-            topicHeader.textContent = topic.title;
-            topicSection.appendChild(topicHeader);
-            
-            // Render paragraphs
-            topic.paragraphs.forEach(paragraph => {
-                const p = document.createElement('p');
-                p.className = 'topic-paragraph';
-                p.textContent = paragraph;
-                topicSection.appendChild(p);
-            });
-            
-            lessonSection.appendChild(topicSection);
-        });
-        
-        container.appendChild(lessonSection);
+        container.appendChild(renderLesson(lesson));
     });
 }
 
 // Initialize: Load MDX, parse to JSON, and render
 async function initialize() {
     try {
-        // Fetch MDX content
         const response = await fetch('content.mdx');
-        if (!response.ok) {
-            throw new Error('Failed to load MDX file');
-        }
+        if (!response.ok) throw new Error('Failed to load MDX file');
         
         const mdxContent = await response.text();
-        
-        // Parse MDX to JSON
         const jsonData = parseMDXToJSON(mdxContent);
         
-        // Update data.json (for reference, in a real app you might save this)
         console.log('Parsed JSON structure:', jsonData);
-        
-        // Render content
         renderContent(jsonData);
-        
-        // Optionally, you can also save the JSON structure
-        // This would typically be done server-side, but for demo purposes:
         window.courseData = jsonData;
         
     } catch (error) {
         console.error('Error initializing content:', error);
-        document.getElementById('content-container').innerHTML = 
-            '<p class="error">Error loading content. Please check the console for details.</p>';
+        const container = document.getElementById('content-container');
+        if (container) {
+            container.innerHTML = '<p class="error">Error loading content. Please check the console for details.</p>';
+        }
     }
 }
 
