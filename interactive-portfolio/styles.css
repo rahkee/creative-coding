@@ -30,21 +30,38 @@ main > section {
     align-items: flex-end;
 }
 
-#layer-time {
-    .time-container {
+#layer-space-time {
+    .space-time-display {
         display: flex;
         gap: 2px;
-        align-items: center;
-        padding: 12px;
 
-        .date-group {
+        .space-container {
             display: flex;
             gap: 2px;
+            align-items: center;
+            padding: 12px;
+
+            .coordinate-group {
+                display: flex;
+                gap: 2px;
+            }
         }
 
-        .time-group {
+        .time-container {
             display: flex;
             gap: 2px;
+            align-items: center;
+            padding: 12px;
+
+            .date-group {
+                display: flex;
+                gap: 2px;
+            }
+
+            .time-group {
+                display: flex;
+                gap: 2px;
+            }
         }
     }
 }

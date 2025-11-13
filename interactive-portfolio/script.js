@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const x = document.querySelector('.x');
+    const xDecimal = document.querySelector('.x-decimal');
+    const y = document.querySelector('.y');
+    const yDecimal = document.querySelector('.y-decimal');
     const year = document.querySelector('.year');
     const month = document.querySelector('.month');
     const day = document.querySelector('.day');
@@ -6,6 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const minute = document.querySelector('.minute');
     const second = document.querySelector('.second');
     const millisecond = document.querySelector('.millisecond');
+    
+    function updateMousePosition(e) {
+        const xValue = e.clientX;
+        const yValue = e.clientY;
+        
+        // Calculate decimal portion based on position relative to viewport
+        // Since clientX/clientY are integers, we calculate a decimal value
+        const xDecimalValue = Math.floor((xValue / window.innerWidth) * 100) % 100;
+        const yDecimalValue = Math.floor((yValue / window.innerHeight) * 100) % 100;
+        
+        x.textContent = String(Math.floor(xValue)).padStart(4, '0');
+        xDecimal.textContent = String(xDecimalValue).padStart(2, '0');
+        y.textContent = String(Math.floor(yValue)).padStart(4, '0');
+        yDecimal.textContent = String(yDecimalValue).padStart(2, '0');
+    }
     
     function updateTime() {
         const now = new Date();
@@ -20,5 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateTime();
     setInterval(updateTime, 1);
+    window.addEventListener('mousemove', updateMousePosition);
 });
 
