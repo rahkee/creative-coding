@@ -1,23 +1,24 @@
-// Interactive Portfolio - Game Interface
-console.log('Interactive Portfolio loaded!');
-
-// Initialize the interactive experience
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Portfolio initialized');
+    const year = document.querySelector('.year');
+    const month = document.querySelector('.month');
+    const day = document.querySelector('.day');
+    const hour = document.querySelector('.hour');
+    const minute = document.querySelector('.minute');
+    const second = document.querySelector('.second');
+    const millisecond = document.querySelector('.millisecond');
     
-    const main = document.querySelector('main');
-    const layer1 = document.querySelector('.layer-1');
-    
-    function updateDimensions() {
-        const width = main.offsetWidth;
-        const height = main.offsetHeight;
-        layer1.textContent = `Width: ${width}px | Height: ${height}px`;
+    function updateTime() {
+        const now = new Date();
+        year.textContent = String(now.getFullYear());
+        month.textContent = String(now.getMonth() + 1).padStart(2, '0');
+        day.textContent = String(now.getDate()).padStart(2, '0');
+        hour.textContent = String(now.getHours()).padStart(2, '0');
+        minute.textContent = String(now.getMinutes()).padStart(2, '0');
+        second.textContent = String(now.getSeconds()).padStart(2, '0');
+        millisecond.textContent = String(now.getMilliseconds()).padStart(3, '0');
     }
     
-    // Update on load
-    updateDimensions();
-    
-    // Update on resize
-    window.addEventListener('resize', updateDimensions);
+    updateTime();
+    setInterval(updateTime, 1);
 });
 

@@ -25,4 +25,26 @@ main {
 main > section {
     grid-column: 1;
     grid-row: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#layer-time {
+    .time-container {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        padding: 12px;
+
+        .date-group {
+            display: flex;
+            gap: 2px;
+        }
+
+        .time-group {
+            display: flex;
+            gap: 2px;
+        }
+    }
 }
