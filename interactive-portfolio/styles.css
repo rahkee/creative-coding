@@ -31,6 +31,10 @@ main > section {
     grid-row: 1;
 }
 
+#layer-menu-text-background {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
 #layer-space-time {
     display: flex;
 
@@ -50,8 +54,45 @@ main > section {
                 gap: 2px;
 
                 .nav-item {
-                    text-decoration: none;
+                    padding: 12px;
+                    background: none;
+                    border: none;
                     color: inherit;
+                    font-family: inherit;
+                    font-weight: inherit;
+                    cursor: pointer;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+
+                    .nav-text-normal {
+                        grid-column: 1;
+                        grid-row: 1;
+                        opacity: 1;
+                        transform: translateY(0);
+                        transition: opacity 0.3s, transform 0.3s;
+                    }
+
+                    .nav-text-bold {
+                        grid-column: 1;
+                        grid-row: 1;
+                        opacity: 0;
+                        font-weight: 600;
+                        transform: translateY(6px);
+                        transition: opacity 0.3s, transform 0.3s;
+                    }
+
+                    &:hover {
+                        .nav-text-normal {
+                            opacity: 0;
+                            transform: translateY(-6px);
+                        }
+
+                        .nav-text-bold {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
                 }
             }
 
