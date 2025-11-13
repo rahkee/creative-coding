@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-container {
+    background: white;
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+    border-bottom: 3px solid #4a90e2;
+    padding-bottom: 1rem;
+}
+
+.lesson {
+    margin-bottom: 4rem;
+}
+
+.lesson:last-child {
+    margin-bottom: 0;
+}
+
+.lesson-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    padding-left: 1rem;
+    border-left: 4px solid #4a90e2;
+}
+
+.topic {
+    margin-bottom: 2.5rem;
+}
+
+.topic:last-child {
+    margin-bottom: 0;
+}
+
+.topic-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #34495e;
+}
+
+.topic-paragraph {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+    text-align: justify;
+}
+
+.topic-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.error {
+    color: #e74c3c;
+    padding: 1rem;
+    background-color: #fee;
+    border-radius: 4px;
+    border-left: 4px solid #e74c3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .content-container {
+        padding: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 2rem;
+    }
+    
+    .lesson-title {
+        font-size: 1.5rem;
+    }
+    
+    .topic-title {
+        font-size: 1.125rem;
+    }
+}
