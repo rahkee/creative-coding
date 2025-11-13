@@ -54,12 +54,10 @@ main > section {
                 gap: 2px;
 
                 .nav-item {
+                    align-items: center;
                     padding: 12px;
                     background: none;
                     border: none;
-                    color: inherit;
-                    font-family: inherit;
-                    font-weight: inherit;
                     cursor: pointer;
                     display: grid;
                     grid-template-columns: 1fr;
@@ -69,6 +67,8 @@ main > section {
                         grid-column: 1;
                         grid-row: 1;
                         opacity: 1;
+                        letter-spacing: -0.05em;
+                        text-transform: uppercase;
                         transform: translateY(0);
                         transition: opacity 0.3s, transform 0.3s;
                     }
@@ -78,14 +78,16 @@ main > section {
                         grid-row: 1;
                         opacity: 0;
                         font-weight: 600;
-                        transform: translateY(6px);
+                        letter-spacing: -0.05em;
+                        text-transform: uppercase;
+                        transform: translateY(24px);
                         transition: opacity 0.3s, transform 0.3s;
                     }
 
                     &:hover {
                         .nav-text-normal {
                             opacity: 0;
-                            transform: translateY(-6px);
+                            transform: translateY(-24px);
                         }
 
                         .nav-text-bold {
@@ -102,17 +104,22 @@ main > section {
                     gap: 2px;
 
                     .space-container {
-                        display: flex;
-                        gap: 2px;
                         align-items: center;
                         padding: 12px;
 
                         .coordinate-group {
                             display: flex;
-                            gap: 6px;
+                            gap: 12px;
 
                             .x-group,
                             .y-group {
+                                display: flex;
+                                gap: 6px;
+                                align-items: center;
+                            }
+
+                            .x-coordinate,
+                            .y-coordinate {
                                 display: flex;
                                 gap: 0;
                             }
