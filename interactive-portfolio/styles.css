@@ -78,41 +78,19 @@ main > section {
 .nav-item {
     padding: 12px;
     background: none;
-    border: none;
+    border: 1px solid #ffffff;
     cursor: pointer;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-
-    .nav-text-normal,
-    .nav-text-bold {
-        grid-column: 1;
-        grid-row: 1;
-        letter-spacing: -0.05em;
-        text-transform: uppercase;
-        transition: opacity 0.3s, transform 0.3s;
-    }
 
     .nav-text-normal {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .nav-text-bold {
-        opacity: 0;
-        font-weight: 600;
-        transform: translateY(24px);
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
     }
 
     &:hover {
-        .nav-text-normal {
-            opacity: 0;
-            transform: translateY(-24px);
-        }
+        background-color: #000000;
 
-        .nav-text-bold {
-            opacity: 1;
-            transform: translateY(0);
+        .nav-text-normal {
+            color: #ffffff;
         }
     }
 }
