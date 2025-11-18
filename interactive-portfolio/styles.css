@@ -43,6 +43,7 @@ main > section {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    overflow: hidden;
 
     .menu-item-1,
     .menu-item-2,
@@ -50,15 +51,27 @@ main > section {
     .menu-item-4 {
         grid-column: 1;
         grid-row: 1;
-        font-size: 20rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        
+
+        span {
+            display: block;
+            font-size: 66vw;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            line-height: .6;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translate(-500px, -50px);
+        }
     }
 
-    .active {
+    .active span {
         opacity: 1;
+        transform: translate(-50px, -50px);
     }
 }
 
@@ -97,7 +110,7 @@ main > section {
 
 .nav-item {
     background: none;
-    border: 1px solid #ffffff;
+    border: none;
     cursor: pointer;
     display: grid;
     grid-template-columns: 1fr;
