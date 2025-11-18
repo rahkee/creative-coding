@@ -76,18 +76,58 @@ main > section {
 }
 
 .nav-item {
-    padding: 12px;
     background: none;
     border: 1px solid #ffffff;
     cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 
     .nav-text-normal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: 1;
+        grid-row: 1;
         letter-spacing: -0.05em;
+        padding: 12px 16px;
         text-transform: uppercase;
+        z-index: 10;
+    }
+
+    .nav-border-layer {
+        grid-column: 1;
+        grid-row: 1;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        padding-inline: 32px;
+        z-index: 0;
+
+        &::after {
+            content: '';
+            grid-column: 1;
+            grid-row: 1;
+            align-self: flex-end;
+            background-color: #ffffff;
+            height: 1px;
+            opacity: 0;
+            transform: translateY(0px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
     }
 
     &:hover {
         background-color: #000000;
+
+        .nav-border-layer {
+
+            &::after {
+                opacity: 1;
+                transform: translateY(-6px);
+            }
+        }
 
         .nav-text-normal {
             color: #ffffff;
