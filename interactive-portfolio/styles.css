@@ -113,8 +113,8 @@ main > section {
             background-color: #ffffff;
             height: 1px;
             opacity: 0;
-            transform: translateY(0px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-2px);
+            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
     }
 
@@ -122,10 +122,10 @@ main > section {
         background-color: #000000;
 
         .nav-border-layer {
-
             &::after {
                 opacity: 1;
-                transform: translateY(-6px);
+                transform: translateY(-8px);
+                animation: nav-line-blink 2s infinite .5s;
             }
         }
 
@@ -235,6 +235,18 @@ main > section {
         opacity: 0;
     }
     50% {
+        opacity: 1;
+    }
+}
+
+@keyframes nav-line-blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
         opacity: 1;
     }
 }
