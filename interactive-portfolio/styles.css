@@ -39,7 +39,7 @@ main > section {
 }
 
 #layer-menu-text-background {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -59,8 +59,8 @@ main > section {
         span {
             display: block;
             font-size: 66vw;
-            font-weight: 900;
-            letter-spacing: -0.025em;
+            font-weight: 700;
+            letter-spacing: -0.1em;
             line-height: .6;
             text-transform: uppercase;
             opacity: 0;
