@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const minute = document.querySelector('.minute');
     const second = document.querySelector('.second');
     const millisecond = document.querySelector('.millisecond');
+    const millisecondSpacerBlink = document.querySelector('.millisecond-spacer-blink');
+    
+    let previousSecond = -1;
     
     function updateMousePosition(e) {
         const xValue = e.clientX;
@@ -28,13 +31,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function updateTime() {
         const now = new Date();
+        const currentSecond = now.getSeconds();
+        
         year.textContent = String(now.getFullYear());
         month.textContent = String(now.getMonth() + 1).padStart(2, '0');
         day.textContent = String(now.getDate()).padStart(2, '0');
         hour.textContent = String(now.getHours()).padStart(2, '0');
         minute.textContent = String(now.getMinutes()).padStart(2, '0');
-        second.textContent = String(now.getSeconds()).padStart(2, '0');
+        second.textContent = String(currentSecond).padStart(2, '0');
         millisecond.textContent = String(now.getMilliseconds()).padStart(3, '0');
+        
+        // Blink the spacer when seconds change
+        if (currentSecond !== previousSecond) {
+            millisecondSpacerBlink.classList.remove('blink');
+            // Force reflow to restart animation
+            void millisecondSpacerBlink.offsetWidth;
+            millisecondSpacerBlink.classList.add('blink');
+            previousSecond = currentSecond;
+        }
     }
     
     updateTime();

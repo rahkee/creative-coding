@@ -1,3 +1,7 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +19,10 @@ body {
 strong {
     font-weight: 600;
 }
+
+/* ============================================
+   LAYOUT STRUCTURE
+   ============================================ */
 
 main {
     display: grid;
@@ -36,112 +44,179 @@ main > section {
 
 #layer-space-time {
     display: flex;
+}
 
-    .navigation-and-data-wrapper {
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.navigation-and-data-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+
+    .navigation-data-layout {
         flex: 1;
         display: flex;
-        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
 
-        .navigation-data-layout {
-            flex: 1;
+        .navigation-container {
             display: flex;
-            justify-content: space-between;
-            gap: 24px;
+            gap: 2px;
+        }
 
-            .navigation-container {
+        .space-time-display {
+            .data-containers {
                 display: flex;
                 gap: 2px;
-
-                .nav-item {
-                    padding: 12px;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    grid-template-rows: 1fr;
-
-                    .nav-text-normal {
-                        grid-column: 1;
-                        grid-row: 1;
-                        opacity: 1;
-                        letter-spacing: -0.05em;
-                        text-transform: uppercase;
-                        transform: translateY(0);
-                        transition: opacity 0.3s, transform 0.3s;
-                    }
-
-                    .nav-text-bold {
-                        grid-column: 1;
-                        grid-row: 1;
-                        opacity: 0;
-                        font-weight: 600;
-                        letter-spacing: -0.05em;
-                        text-transform: uppercase;
-                        transform: translateY(24px);
-                        transition: opacity 0.3s, transform 0.3s;
-                    }
-
-                    &:hover {
-                        .nav-text-normal {
-                            opacity: 0;
-                            transform: translateY(-24px);
-                        }
-
-                        .nav-text-bold {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                }
-            }
-
-            .space-time-display {
-                .data-containers {
-                    display: flex;
-                    gap: 2px;
-
-                    .space-container {
-                        display: flex;
-                        padding: 12px;
-
-                        .coordinate-group {
-                            display: flex;
-                            gap: 12px;
-
-                            .x-group,
-                            .y-group {
-                                display: flex;
-                                gap: 6px;
-                                align-items: center;
-                            }
-
-                            .x-coordinate,
-                            .y-coordinate {
-                                display: flex;
-                                gap: 0;
-                            }
-                        }
-                    }
-
-                    .time-container {
-                        display: flex;
-                        gap: 6px;
-                        align-items: center;
-                        padding: 12px;
-
-                        .date-group {
-                            display: flex;
-                            gap: 2px;
-                        }
-
-                        .time-group {
-                            display: flex;
-                            gap: 2px;
-                        }
-                    }
-                }
             }
         }
+    }
+}
+
+.nav-item {
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .nav-text-normal,
+    .nav-text-bold {
+        grid-column: 1;
+        grid-row: 1;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .nav-text-normal {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-text-bold {
+        opacity: 0;
+        font-weight: 600;
+        transform: translateY(24px);
+    }
+
+    &:hover {
+        .nav-text-normal {
+            opacity: 0;
+            transform: translateY(-24px);
+        }
+
+        .nav-text-bold {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* ============================================
+   COORDINATE DISPLAY
+   ============================================ */
+
+.space-container {
+    display: flex;
+    padding: 12px;
+
+    .coordinate-group {
+        display: flex;
+        gap: 12px;
+    }
+}
+
+.x-group,
+.y-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+
+    .x-cube,
+    .y-cube {
+        background-color: #000000;
+        padding: 2px 6px;
+
+        i {
+            color: #ffffff;
+        }
+    }
+
+    .x-coordinate,
+    .y-coordinate {
+        display: flex;
+        padding: 2px 6px;
+    }
+}
+
+/* ============================================
+   TIME DISPLAY
+   ============================================ */
+
+.time-container {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 12px;
+    line-height: .75;
+
+    .date-group {
+        display: flex;
+        gap: 2px;
+        font-size: 1.2rem;
+    }
+
+    .time-group {
+        display: flex;
+        gap: 2px;
+        font-size: 1.8rem;
+
+        .millisecond-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .millisecond-spacer,
+            .millisecond {
+                flex: 1;
+            }
+
+            .millisecond-spacer {
+                display: flex;
+                padding: 2px 2px 0;
+            }
+
+            .millisecond {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.millisecond-spacer-blink {
+    flex: 1;
+    background-color: #000000;
+    opacity: 0;
+
+    &.blink {
+        animation: blink 0.2s;
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
     }
 }
