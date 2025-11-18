@@ -40,6 +40,26 @@ main > section {
 
 #layer-menu-text-background {
     font-family: 'Barlow Condensed', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .menu-item-1,
+    .menu-item-2,
+    .menu-item-3,
+    .menu-item-4 {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 20rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .active {
+        opacity: 1;
+    }
 }
 
 #layer-space-time {

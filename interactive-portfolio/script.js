@@ -54,5 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTime();
     setInterval(updateTime, 1);
     window.addEventListener('mousemove', updateMousePosition);
+    
+    // Handle menu item hover
+    const navItems = document.querySelectorAll('.nav-item');
+    const menuTextBackground = document.querySelector('#layer-menu-text-background');
+    const menuItems = document.querySelectorAll('.menu-item-1, .menu-item-2, .menu-item-3, .menu-item-4');
+    
+    navItems.forEach(navItem => {
+        const menuItemNumber = navItem.getAttribute('data-menu-item');
+        const targetMenuItem = document.querySelector(`.menu-item-${menuItemNumber}`);
+        
+        navItem.addEventListener('mouseenter', () => {
+            // Remove all classes from all menu items, keeping only the base menu-item-X class
+            menuItems.forEach(item => {
+                const baseClass = Array.from(item.classList).find(cls => cls.match(/^menu-item-\d+$/));
+                item.className = baseClass || '';
+            });
+            
+            // Add active class to target menu item
+            targetMenuItem.classList.add('active');
+        });
+        
+        navItem.addEventListener('mouseleave', () => {
+            // Remove active class from menu item
+            targetMenuItem.classList.remove('active');
+        });
+    });
 });
 
