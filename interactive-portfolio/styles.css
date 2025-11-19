@@ -39,7 +39,7 @@ main > section {
 }
 
 #layer-menu-text-background {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -58,20 +58,22 @@ main > section {
 
         span {
             display: block;
-            font-size: 66vw;
+            font-size: 60vw;
             font-weight: 700;
             letter-spacing: -0.1em;
             line-height: .6;
             text-transform: uppercase;
             opacity: 0;
-            transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: translate(-500px, -50px);
+            transition-property: opacity, transform;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.02, 1, 0.03, 0.99);
+            transform: translate(-250px, 0);
         }
     }
 
     .active span {
         opacity: 1;
-        transform: translate(-50px, -50px);
+        transform: translate(-50px, 0);
     }
 }
 
@@ -147,7 +149,9 @@ main > section {
             height: 1px;
             opacity: 0;
             transform: translateY(-2px);
-            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-property: opacity, transform;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
     }
 
