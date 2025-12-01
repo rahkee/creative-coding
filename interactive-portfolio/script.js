@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const second = document.querySelector('.second');
     const millisecond = document.querySelector('.millisecond');
     const millisecondSpacerBlink = document.querySelector('.millisecond-spacer-blink');
+    const reticle1 = document.querySelector('.reticle-1');
+    const reticle2 = document.querySelector('.reticle-2');
+    const reticle3 = document.querySelector('.reticle-3');
     
     let previousSecond = -1;
     
@@ -27,6 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
         xDecimal.textContent = String(xDecimalValue).padStart(2, '0');
         y.textContent = String(Math.floor(yValue)).padStart(4, '0');
         yDecimal.textContent = String(yDecimalValue).padStart(2, '0');
+        
+        // Get main element's position to convert viewport coordinates to relative coordinates
+        const mainElement = document.querySelector('main');
+        const mainRect = mainElement ? mainElement.getBoundingClientRect() : { left: 0, top: 0 };
+        const relativeX = xValue - mainRect.left;
+        const relativeY = yValue - mainRect.top;
+        
+        // Update reticle positions using CSS variable dimensions
+        [reticle1, reticle2, reticle3].forEach(reticle => {
+            if (reticle) {
+                const computedStyle = getComputedStyle(reticle);
+                const dimension = parseFloat(computedStyle.getPropertyValue('--dimension'));
+                const offset = dimension / 2;
+                
+                reticle.style.setProperty('--reticle-x', `${relativeX - offset}px`);
+                reticle.style.setProperty('--reticle-y', `${relativeY - offset}px`);
+            }
+        });
     }
     
     function updateTime() {
@@ -54,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTime();
     setInterval(updateTime, 1);
     window.addEventListener('mousemove', updateMousePosition);
+    
     
     // Handle menu item hover
     const navItems = document.querySelectorAll('.nav-item');
