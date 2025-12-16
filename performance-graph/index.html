@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Graph</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Student Performance Dashboard</h1>
+            <p class="subtitle">Track completed assignments and assessments across all disciplines</p>
+        </header>
+
+        <div class="controls">
+            <div class="time-toggle">
+                <button class="time-btn active" data-period="daily">Daily</button>
+                <button class="time-btn" data-period="weekly">Weekly</button>
+                <button class="time-btn" data-period="monthly">Monthly</button>
+                <button class="time-btn" data-period="yearly">Yearly</button>
+            </div>
+            <div class="status-indicator">
+                <span class="status-label">Status:</span>
+                <span class="status-value" id="statusValue">On Track</span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-header">
+                <div class="chart-title">
+                    <h2 id="chartTitle">Today's Performance</h2>
+                    <p class="chart-subtitle" id="chartSubtitle">Completed assignments and assessments</p>
+                </div>
+                <div class="legend">
+                    <div class="legend-item" data-discipline="ela">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">English Language Arts</span>
+                    </div>
+                    <div class="legend-item" data-discipline="math">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Mathematics</span>
+                    </div>
+                    <div class="legend-item" data-discipline="science">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Science</span>
+                    </div>
+                    <div class="legend-item" data-discipline="social">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Social Studies</span>
+                    </div>
+                    <div class="legend-item" data-discipline="electives">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Electives</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-wrapper">
+                <svg id="chart" class="chart" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet">
+                    <!-- Chart will be rendered here -->
+                </svg>
+                <div class="chart-labels">
+                    <div class="y-axis-label">Completed</div>
+                    <div class="x-axis-label" id="xAxisLabel">Time Period</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" data-discipline="ela">
+                <div class="stat-header">
+                    <h3>English Language Arts</h3>
+                    <span class="stat-badge" id="elaBadge">0</span>
+                </div>
+                <div class="stat-progress">
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="elaProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="stat-percentage" id="elaPercent">0%</span>
+                </div>
+            </div>
+            <div class="stat-card" data-discipline="math">
+                <div class="stat-header">
+                    <h3>Mathematics</h3>
+                    <span class="stat-badge" id="mathBadge">0</span>
+                </div>
+                <div class="stat-progress">
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="mathProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="stat-percentage" id="mathPercent">0%</span>
+                </div>
+            </div>
+            <div class="stat-card" data-discipline="science">
+                <div class="stat-header">
+                    <h3>Science</h3>
+                    <span class="stat-badge" id="scienceBadge">0</span>
+                </div>
+                <div class="stat-progress">
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="scienceProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="stat-percentage" id="sciencePercent">0%</span>
+                </div>
+            </div>
+            <div class="stat-card" data-discipline="social">
+                <div class="stat-header">
+                    <h3>Social Studies</h3>
+                    <span class="stat-badge" id="socialBadge">0</span>
+                </div>
+                <div class="stat-progress">
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="socialProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="stat-percentage" id="socialPercent">0%</span>
+                </div>
+            </div>
+            <div class="stat-card" data-discipline="electives">
+                <div class="stat-header">
+                    <h3>Electives</h3>
+                    <span class="stat-badge" id="electivesBadge">0</span>
+                </div>
+                <div class="stat-progress">
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="electivesProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="stat-percentage" id="electivesPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

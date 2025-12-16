@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 32px;
+    flex: 1;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 16px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.time-toggle {
+    display: flex;
+    gap: 8px;
+}
+
+.time-btn {
+    padding: 10px 20px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+    background: #f0f0ff;
+}
+
+.time-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.status-value {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    background: #10b981;
+    color: white;
+}
+
+.status-value.behind {
+    background: #ef4444;
+}
+
+.status-value.at-risk {
+    background: #f59e0b;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.chart-title h2 {
+    font-size: 1.75rem;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.chart-subtitle {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.legend-item[data-discipline="ela"] .legend-color {
+    background: #3b82f6;
+}
+
+.legend-item[data-discipline="math"] .legend-color {
+    background: #10b981;
+}
+
+.legend-item[data-discipline="science"] .legend-color {
+    background: #f59e0b;
+}
+
+.legend-item[data-discipline="social"] .legend-color {
+    background: #8b5cf6;
+}
+
+.legend-item[data-discipline="electives"] .legend-color {
+    background: #ec4899;
+}
+
+.legend-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.chart-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chart {
+    width: 100%;
+    height: 400px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.y-axis-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.x-axis-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-header h3 {
+    font-size: 0.95rem;
+    color: #374151;
+    font-weight: 600;
+}
+
+.stat-badge {
+    background: #e5e7eb;
+    color: #374151;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.stat-card[data-discipline="ela"] .stat-badge {
+    background: #dbeafe;
+    color: #3b82f6;
+}
+
+.stat-card[data-discipline="math"] .stat-badge {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+.stat-card[data-discipline="science"] .stat-badge {
+    background: #fef3c7;
+    color: #f59e0b;
+}
+
+.stat-card[data-discipline="social"] .stat-badge {
+    background: #ede9fe;
+    color: #8b5cf6;
+}
+
+.stat-card[data-discipline="electives"] .stat-badge {
+    background: #fce7f3;
+    color: #ec4899;
+}
+
+.stat-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.stat-card[data-discipline="ela"] .stat-fill {
+    background: #3b82f6;
+}
+
+.stat-card[data-discipline="math"] .stat-fill {
+    background: #10b981;
+}
+
+.stat-card[data-discipline="science"] .stat-fill {
+    background: #f59e0b;
+}
+
+.stat-card[data-discipline="social"] .stat-fill {
+    background: #8b5cf6;
+}
+
+.stat-card[data-discipline="electives"] .stat-fill {
+    background: #ec4899;
+}
+
+.stat-percentage {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 45px;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .time-toggle {
+        flex-wrap: wrap;
+    }
+
+    .time-btn {
+        flex: 1;
+        min-width: calc(50% - 4px);
+    }
+
+    .chart-header {
+        flex-direction: column;
+    }
+
+    .legend {
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
