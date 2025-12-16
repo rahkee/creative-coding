@@ -120,7 +120,7 @@ function generateData(period) {
             }
             break;
         case 'yearly':
-            // Last 12 months
+            // Last 12 months - showing credit points instead of assignments
             for (let i = 11; i >= 0; i--) {
                 const date = new Date(today);
                 date.setMonth(date.getMonth() - i);
@@ -128,14 +128,14 @@ function generateData(period) {
                 const monthIndex = 12 - i; // 1, 2, 3, ..., 12
                 data[monthKey] = {};
                 Object.keys(disciplines).forEach(discipline => {
-                    const expected = disciplines[discipline].max * 20; // 20 assignments per month
+                    const expected = 5; // 5 credit points per month per discipline
                     if (monthIndex <= 4) {
-                        // Months 1-4: fully completed
+                        // Months 1-4: fully completed (5 credit points each)
                         data[monthKey][discipline] = expected;
                     } else if (monthIndex === 5) {
-                        // Month 5: in progress (random between 30% and 70%)
-                        const progress = Math.floor(expected * 0.3) + Math.floor(Math.random() * (expected * 0.4));
-                        data[monthKey][discipline] = progress;
+                        // Month 5: in progress (random between 1.5 and 3.5 credit points)
+                        const progress = 1.5 + (Math.random() * 2);
+                        data[monthKey][discipline] = Math.round(progress * 10) / 10; // Round to 1 decimal
                     } else {
                         // Months 6-12: empty
                         data[monthKey][discipline] = 0;
@@ -158,22 +158,24 @@ function calculateStatus(period, data) {
     
     // Calculate total completion
     const total = Object.values(latestData).reduce((sum, val) => sum + val, 0);
-    const maxTotal = Object.values(disciplines).reduce((sum, d) => sum + d.max, 0);
     
     // Determine thresholds based on period
     let threshold;
     switch(period) {
         case 'daily':
-            threshold = maxTotal * 0.6; // 60% for daily
+            const maxTotalDaily = Object.values(disciplines).reduce((sum, d) => sum + d.max, 0);
+            threshold = maxTotalDaily * 0.6; // 60% for daily
             break;
         case 'weekly':
-            threshold = maxTotal * 5 * 0.7; // 70% for 5 days
+            const maxTotalWeekly = Object.values(disciplines).reduce((sum, d) => sum + d.max, 0);
+            threshold = maxTotalWeekly * 5 * 0.7; // 70% for 5 days
             break;
         case 'monthly':
-            threshold = maxTotal * 5 * 4 * 0.75; // 75% for 4 weeks
+            const maxTotalMonthly = Object.values(disciplines).reduce((sum, d) => sum + d.max, 0);
+            threshold = maxTotalMonthly * 5 * 4 * 0.75; // 75% for 4 weeks
             break;
         case 'yearly':
-            threshold = maxTotal * 20 * 12 * 0.8; // 80% for 12 months
+            threshold = 5 * 12 * 0.8; // 80% of 60 credit points (5 per month * 12 months)
             break;
     }
     
@@ -197,7 +199,7 @@ function getExpectedValue(discipline) {
         case 'monthly':
             return max * 5; // Per week in monthly view
         case 'yearly':
-            return max * 20; // Per month in yearly view
+            return 5; // 5 credit points per month in yearly view
     }
 }
 
@@ -308,13 +310,18 @@ function renderChart() {
                 unfilledArea.setAttribute('fill', 'transparent');
                 unfilledArea.setAttribute('class', 'chart-bar-unfilled');
                 unfilledArea.setAttribute('data-discipline', discipline);
-                unfilledArea.setAttribute('data-missing', expected - value);
+                const missingValue = currentPeriod === 'yearly' ? (expected - value).toFixed(1) : (expected - value);
+                unfilledArea.setAttribute('data-missing', missingValue);
                 
                 // Add tooltip on hover
                 unfilledArea.addEventListener('mouseenter', function() {
                     const tooltip = document.getElementById('tooltip');
-                    const missing = this.getAttribute('data-missing');
-                    tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining`;
+                    const missing = parseFloat(this.getAttribute('data-missing'));
+                    if (currentPeriod === 'yearly') {
+                        tooltip.textContent = `${missing.toFixed(1)} credit point${missing !== 1 ? 's' : ''} remaining`;
+                    } else {
+                        tooltip.textContent = `${Math.round(missing)} assignment${Math.round(missing) !== 1 ? 's' : ''} remaining`;
+                    }
                     tooltip.classList.add('visible');
                 });
                 
@@ -339,7 +346,9 @@ function renderChart() {
                 // Add click handler to show modal
                 unfilledArea.addEventListener('click', function() {
                     const discipline = this.getAttribute('data-discipline');
-                    const missing = parseInt(this.getAttribute('data-missing'));
+                    const missing = currentPeriod === 'yearly' 
+                        ? parseFloat(this.getAttribute('data-missing'))
+                        : parseInt(this.getAttribute('data-missing'));
                     showAssignmentsModal(discipline, missing, null);
                 });
                 
@@ -412,14 +421,19 @@ function renderChart() {
                     unfilledArea.setAttribute('class', 'chart-bar-unfilled');
                     unfilledArea.setAttribute('data-discipline', discipline);
                     unfilledArea.setAttribute('data-period', period);
-                    unfilledArea.setAttribute('data-missing', expected - value);
+                    const missingValue = currentPeriod === 'yearly' ? (expected - value).toFixed(1) : (expected - value);
+                    unfilledArea.setAttribute('data-missing', missingValue);
                     
                     // Add tooltip on hover
                     unfilledArea.addEventListener('mouseenter', function() {
                         const tooltip = document.getElementById('tooltip');
-                        const missing = this.getAttribute('data-missing');
+                        const missing = parseFloat(this.getAttribute('data-missing'));
                         const periodName = this.getAttribute('data-period');
-                        tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining (${periodName})`;
+                        if (currentPeriod === 'yearly') {
+                            tooltip.textContent = `${missing.toFixed(1)} credit point${missing !== 1 ? 's' : ''} remaining (${periodName})`;
+                        } else {
+                            tooltip.textContent = `${Math.round(missing)} assignment${Math.round(missing) !== 1 ? 's' : ''} remaining (${periodName})`;
+                        }
                         tooltip.classList.add('visible');
                     });
                     
@@ -445,7 +459,9 @@ function renderChart() {
                     unfilledArea.addEventListener('click', function() {
                         const discipline = this.getAttribute('data-discipline');
                         const period = this.getAttribute('data-period');
-                        const missing = parseInt(this.getAttribute('data-missing'));
+                        const missing = currentPeriod === 'yearly'
+                            ? parseFloat(this.getAttribute('data-missing'))
+                            : parseInt(this.getAttribute('data-missing'));
                         showAssignmentsModal(discipline, missing, period);
                     });
                     
@@ -507,13 +523,18 @@ function updateStats() {
                 periodMax = max * 5 * 4; // 4 weeks
                 break;
             case 'yearly':
-                periodMax = max * 20 * 12; // 12 months
+                periodMax = 5 * 12; // 5 credit points per month for 12 months
                 break;
         }
         
         const percentage = Math.min(100, Math.round((total / periodMax) * 100));
         
-        document.getElementById(`${discipline}Badge`).textContent = total;
+        // Format display based on period
+        if (currentPeriod === 'yearly') {
+            document.getElementById(`${discipline}Badge`).textContent = total.toFixed(1);
+        } else {
+            document.getElementById(`${discipline}Badge`).textContent = total;
+        }
         document.getElementById(`${discipline}Progress`).style.setProperty('--progress-width', `${percentage}%`);
         document.getElementById(`${discipline}Percent`).textContent = `${percentage}%`;
     });
@@ -532,7 +553,7 @@ function updateChartInfo() {
         daily: "Today's completed assignments and assessments",
         weekly: "Monday through Friday",
         monthly: "Last 4 weeks",
-        yearly: "Last 12 months"
+        yearly: "Credit points acquired over the last 12 months"
     };
     
     document.getElementById('chartTitle').textContent = titles[currentPeriod];
@@ -603,11 +624,12 @@ function init() {
     updateStatus();
 }
 
-// Generate sample assignments
+// Generate sample assignments or credit points
 function generateAssignments(discipline, count, period) {
     const assignments = [];
     const disciplineName = disciplines[discipline].name;
     const today = new Date();
+    const isYearly = currentPeriod === 'yearly';
     
     const assignmentTemplates = {
         ela: [
@@ -650,33 +672,47 @@ function generateAssignments(discipline, count, period) {
     const templates = assignmentTemplates[discipline] || assignmentTemplates.ela;
     
     for (let i = 0; i < count; i++) {
-        const template = templates[i % templates.length];
-        const dueDate = new Date(today);
-        
-        // Set due dates based on period
-        if (period === null || currentPeriod === 'daily') {
-            // Daily: due today or tomorrow
-            dueDate.setDate(today.getDate() + (i % 2));
-        } else if (currentPeriod === 'weekly') {
-            // Weekly: spread across the week
-            dueDate.setDate(today.getDate() + (i % 5));
-        } else if (currentPeriod === 'monthly') {
-            // Monthly: spread across 4 weeks
-            dueDate.setDate(today.getDate() + (i * 7));
-        } else if (currentPeriod === 'yearly') {
-            // Yearly: spread across months
+        if (isYearly) {
+            // For yearly view, show credit point requirements instead of assignments
+            const creditAmount = 0.5 + (i * 0.5); // 0.5, 1.0, 1.5, 2.0, etc.
+            const dueDate = new Date(today);
             dueDate.setMonth(today.getMonth() + (i % 12));
+            
+            assignments.push({
+                title: `${creditAmount} Credit Point${creditAmount !== 1 ? 's' : ''} - ${disciplineName}`,
+                description: `Complete coursework to earn ${creditAmount} credit point${creditAmount !== 1 ? 's' : ''} in ${disciplineName}.`,
+                dueDate: dueDate.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    year: 'numeric' 
+                })
+            });
+        } else {
+            // For daily, weekly, monthly views, show assignments
+            const template = templates[i % templates.length];
+            const dueDate = new Date(today);
+            
+            // Set due dates based on period
+            if (period === null || currentPeriod === 'daily') {
+                // Daily: due today or tomorrow
+                dueDate.setDate(today.getDate() + (i % 2));
+            } else if (currentPeriod === 'weekly') {
+                // Weekly: spread across the week
+                dueDate.setDate(today.getDate() + (i % 5));
+            } else if (currentPeriod === 'monthly') {
+                // Monthly: spread across 4 weeks
+                dueDate.setDate(today.getDate() + (i * 7));
+            }
+            
+            assignments.push({
+                title: `${template.title} ${i + 1}`,
+                description: template.desc,
+                dueDate: dueDate.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                })
+            });
         }
-        
-        assignments.push({
-            title: `${template.title} ${i + 1}`,
-            description: template.desc,
-            dueDate: dueDate.toLocaleDateString('en-US', { 
-                month: 'short', 
-                day: 'numeric', 
-                year: 'numeric' 
-            })
-        });
     }
     
     return assignments;
@@ -688,22 +724,32 @@ function showAssignmentsModal(discipline, missing, period) {
     const modalTitle = document.getElementById('modalTitle');
     const assignmentsList = document.getElementById('assignmentsList');
     
-    // Determine how many assignments to show
-    let assignmentCount = missing;
-    if (currentPeriod === 'daily') {
-        assignmentCount = Math.min(missing, 3); // Max 3 for daily
-    } else if (currentPeriod === 'weekly') {
-        assignmentCount = Math.min(missing, 5); // Max 5 for weekly
-    } else if (currentPeriod === 'monthly') {
-        assignmentCount = Math.min(missing, 8); // Max 8 for monthly
-    } else if (currentPeriod === 'yearly') {
-        assignmentCount = Math.min(missing, 10); // Max 10 for yearly
+    // Determine how many items to show
+    let assignmentCount;
+    if (currentPeriod === 'yearly') {
+        // For yearly, show credit point requirements (up to 10)
+        const missingCredits = parseFloat(missing);
+        assignmentCount = Math.min(Math.ceil(missingCredits * 2), 10); // Convert credits to items (0.5 credit per item)
+    } else {
+        assignmentCount = missing;
+        if (currentPeriod === 'daily') {
+            assignmentCount = Math.min(missing, 3); // Max 3 for daily
+        } else if (currentPeriod === 'weekly') {
+            assignmentCount = Math.min(missing, 5); // Max 5 for weekly
+        } else if (currentPeriod === 'monthly') {
+            assignmentCount = Math.min(missing, 8); // Max 8 for monthly
+        }
     }
     
     // Set modal title
     const disciplineName = disciplines[discipline].name;
     const periodText = period ? ` (${period})` : '';
-    modalTitle.textContent = `${disciplineName}${periodText} - ${missing} Assignment${missing !== 1 ? 's' : ''} Remaining`;
+    if (currentPeriod === 'yearly') {
+        const missingCredits = parseFloat(missing);
+        modalTitle.textContent = `${disciplineName}${periodText} - ${missingCredits.toFixed(1)} Credit Point${missingCredits !== 1 ? 's' : ''} Remaining`;
+    } else {
+        modalTitle.textContent = `${disciplineName}${periodText} - ${missing} Assignment${missing !== 1 ? 's' : ''} Remaining`;
+    }
     
     // Generate and display assignments
     const assignments = generateAssignments(discipline, assignmentCount, period);
