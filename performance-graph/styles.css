@@ -1,17 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-800) 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 24px;
-    color: #333;
+    color: var(--gray-900);
 }
 
 .container {
@@ -46,7 +39,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: var(--gray-0);
     border-radius: 12px;
     padding: 16px 24px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -61,9 +54,9 @@ body {
 
 .time-btn {
     padding: 10px 20px;
-    border: 2px solid #667eea;
-    background: white;
-    color: #667eea;
+    border: 2px solid var(--purple-600);
+    background: var(--gray-0);
+    color: var(--purple-600);
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
@@ -72,12 +65,12 @@ body {
 }
 
 .time-btn:hover {
-    background: #f0f0ff;
+    background: var(--purple-50);
 }
 
 .time-btn.active {
-    background: #667eea;
-    color: white;
+    background: var(--purple-600);
+    color: var(--gray-0);
 }
 
 .status-indicator {
@@ -88,27 +81,27 @@ body {
 
 .status-label {
     font-weight: 600;
-    color: #666;
+    color: var(--gray-600);
 }
 
 .status-value {
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 600;
-    background: #10b981;
-    color: white;
+    background: var(--green-600);
+    color: var(--gray-0);
 }
 
 .status-value.behind {
-    background: #ef4444;
+    background: var(--red-600);
 }
 
 .status-value.at-risk {
-    background: #f59e0b;
+    background: var(--orange-600);
 }
 
 .chart-container {
-    background: white;
+    background: var(--gray-0);
     border-radius: 12px;
     padding: 32px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -127,12 +120,12 @@ body {
 
 .chart-title h2 {
     font-size: 1.75rem;
-    color: #1f2937;
+    color: var(--gray-900);
     margin-bottom: 4px;
 }
 
 .chart-subtitle {
-    color: #6b7280;
+    color: var(--gray-600);
     font-size: 0.95rem;
 }
 
@@ -155,28 +148,28 @@ body {
 }
 
 .legend-item[data-discipline="ela"] .legend-color {
-    background: #3b82f6;
+    background: var(--blue-600);
 }
 
 .legend-item[data-discipline="math"] .legend-color {
-    background: #10b981;
+    background: var(--green-600);
 }
 
 .legend-item[data-discipline="science"] .legend-color {
-    background: #f59e0b;
+    background: var(--orange-600);
 }
 
 .legend-item[data-discipline="social"] .legend-color {
-    background: #8b5cf6;
+    background: var(--purple-600);
 }
 
 .legend-item[data-discipline="electives"] .legend-color {
-    background: #ec4899;
+    background: var(--pink-600);
 }
 
 .legend-label {
     font-size: 0.875rem;
-    color: #4b5563;
+    color: var(--gray-600);
     font-weight: 500;
 }
 
@@ -190,7 +183,7 @@ body {
 .chart {
     width: 100%;
     height: 400px;
-    background: #f9fafb;
+    background: var(--gray-50);
     border-radius: 8px;
 }
 
@@ -205,15 +198,36 @@ body {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--gray-600);
     font-weight: 500;
 }
 
 .x-axis-label {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--gray-600);
     font-weight: 500;
 }
+
+.tooltip {
+    position: absolute;
+    background: var(--gray-800);
+    color: var(--gray-0);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
 
 .stats-grid {
     display: grid;
@@ -222,7 +236,7 @@ body {
 }
 
 .stat-card {
-    background: white;
+    background: var(--gray-0);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -245,13 +259,13 @@ body {
 
 .stat-header h3 {
     font-size: 0.95rem;
-    color: #374151;
+    color: var(--gray-700);
     font-weight: 600;
 }
 
 .stat-badge {
-    background: #e5e7eb;
-    color: #374151;
+    background: var(--gray-200);
+    color: var(--gray-700);
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 0.875rem;
@@ -259,28 +273,28 @@ body {
 }
 
 .stat-card[data-discipline="ela"] .stat-badge {
-    background: #dbeafe;
-    color: #3b82f6;
+    background: var(--blue-100);
+    color: var(--blue-600);
 }
 
 .stat-card[data-discipline="math"] .stat-badge {
-    background: #d1fae5;
-    color: #10b981;
+    background: var(--green-100);
+    color: var(--green-600);
 }
 
 .stat-card[data-discipline="science"] .stat-badge {
-    background: #fef3c7;
-    color: #f59e0b;
+    background: var(--orange-100);
+    color: var(--orange-600);
 }
 
 .stat-card[data-discipline="social"] .stat-badge {
-    background: #ede9fe;
-    color: #8b5cf6;
+    background: var(--purple-100);
+    color: var(--purple-600);
 }
 
 .stat-card[data-discipline="electives"] .stat-badge {
-    background: #fce7f3;
-    color: #ec4899;
+    background: var(--pink-100);
+    color: var(--pink-600);
 }
 
 .stat-progress {
@@ -292,7 +306,7 @@ body {
 .stat-bar {
     flex: 1;
     height: 8px;
-    background: #e5e7eb;
+    background: var(--gray-200);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -304,29 +318,29 @@ body {
 }
 
 .stat-card[data-discipline="ela"] .stat-fill {
-    background: #3b82f6;
+    background: var(--blue-600);
 }
 
 .stat-card[data-discipline="math"] .stat-fill {
-    background: #10b981;
+    background: var(--green-600);
 }
 
 .stat-card[data-discipline="science"] .stat-fill {
-    background: #f59e0b;
+    background: var(--orange-600);
 }
 
 .stat-card[data-discipline="social"] .stat-fill {
-    background: #8b5cf6;
+    background: var(--purple-600);
 }
 
 .stat-card[data-discipline="electives"] .stat-fill {
-    background: #ec4899;
+    background: var(--pink-600);
 }
 
 .stat-percentage {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--gray-600);
     min-width: 45px;
     text-align: right;
 }

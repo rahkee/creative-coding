@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Performance Graph</title>
+    <link rel="stylesheet" href="https://cdn.strongmind.com/backpack-ui/latest/assets/css/BackpackUI.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
                 <button class="time-btn active" data-period="daily">Daily</button>
                 <button class="time-btn" data-period="weekly">Weekly</button>
                 <button class="time-btn" data-period="monthly">Monthly</button>
-                <button class="time-btn" data-period="yearly">Yearly</button>
+                <button class="time-btn" data-period="yearly">Needed to Graduate</button>
             </div>
             <div class="status-indicator">
                 <span class="status-label">Status:</span>
@@ -60,9 +61,8 @@
                     <!-- Chart will be rendered here -->
                 </svg>
                 <div class="chart-labels">
-                    <div class="y-axis-label">Completed</div>
-                    <div class="x-axis-label" id="xAxisLabel">Time Period</div>
                 </div>
+                <div id="tooltip" class="tooltip"></div>
             </div>
         </div>
 

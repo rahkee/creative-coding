@@ -1,11 +1,11 @@
 // Performance Graph Script
 
 const disciplines = {
-    ela: { name: 'English Language Arts', color: '#3b82f6', max: 10 },
-    math: { name: 'Mathematics', color: '#10b981', max: 10 },
-    science: { name: 'Science', color: '#f59e0b', max: 10 },
-    social: { name: 'Social Studies', color: '#8b5cf6', max: 10 },
-    electives: { name: 'Electives', color: '#ec4899', max: 10 }
+    ela: { name: 'English Language Arts', color: '#2563eb', max: 10 }, // blue-600
+    math: { name: 'Mathematics', color: '#16a34a', max: 10 }, // green-600
+    science: { name: 'Science', color: '#ea580c', max: 10 }, // orange-600
+    social: { name: 'Social Studies', color: '#9333ea', max: 10 }, // purple-600
+    electives: { name: 'Electives', color: '#db2777', max: 10 } // pink-600
 };
 
 let currentPeriod = 'daily';
@@ -33,13 +33,26 @@ function generateData(period) {
             monday.setDate(today.getDate() - daysFromMonday);
             
             const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+            const disciplineKeys = Object.keys(disciplines);
             for (let i = 0; i < 5; i++) {
                 const day = new Date(monday);
                 day.setDate(monday.getDate() + i);
                 const dayKey = dayNames[i];
                 data[dayKey] = {};
-                Object.keys(disciplines).forEach(discipline => {
-                    data[dayKey][discipline] = Math.floor(Math.random() * disciplines[discipline].max) + 1;
+                disciplineKeys.forEach((discipline, discIndex) => {
+                    const expected = disciplines[discipline].max;
+                    if (i < 2) {
+                        // Mon, Tue: fully completed
+                        data[dayKey][discipline] = expected;
+                    } else if (i === 2) {
+                        // Wed: different heights for each discipline (varying between 30% and 80%)
+                        const percentages = [0.6, 0.4, 0.7, 0.5, 0.3]; // Different percentages for each discipline
+                        const percentage = percentages[discIndex] || 0.5;
+                        data[dayKey][discipline] = Math.floor(expected * percentage);
+                    } else {
+                        // Thu, Fri: empty
+                        data[dayKey][discipline] = 0;
+                    }
                 });
             }
             break;
@@ -49,9 +62,21 @@ function generateData(period) {
                 const date = new Date(today);
                 date.setDate(date.getDate() - (i * 7));
                 const weekKey = `Week ${4 - i}`;
+                const weekIndex = 4 - i; // 1, 2, 3, 4
                 data[weekKey] = {};
                 Object.keys(disciplines).forEach(discipline => {
-                    data[weekKey][discipline] = Math.floor(Math.random() * (disciplines[discipline].max * 5)) + 5;
+                    const expected = disciplines[discipline].max * 5; // 5 days per week
+                    if (weekIndex <= 2) {
+                        // Week 1, 2: fully completed
+                        data[weekKey][discipline] = expected;
+                    } else if (weekIndex === 3) {
+                        // Week 3: in progress (random between 30% and 70%)
+                        const progress = Math.floor(expected * 0.3) + Math.floor(Math.random() * (expected * 0.4));
+                        data[weekKey][discipline] = progress;
+                    } else {
+                        // Week 4: empty
+                        data[weekKey][discipline] = 0;
+                    }
                 });
             }
             break;
@@ -61,9 +86,21 @@ function generateData(period) {
                 const date = new Date(today);
                 date.setMonth(date.getMonth() - i);
                 const monthKey = date.toLocaleDateString('en-US', { month: 'short' });
+                const monthIndex = 12 - i; // 1, 2, 3, ..., 12
                 data[monthKey] = {};
                 Object.keys(disciplines).forEach(discipline => {
-                    data[monthKey][discipline] = Math.floor(Math.random() * (disciplines[discipline].max * 20)) + 10;
+                    const expected = disciplines[discipline].max * 20; // 20 assignments per month
+                    if (monthIndex <= 4) {
+                        // Months 1-4: fully completed
+                        data[monthKey][discipline] = expected;
+                    } else if (monthIndex === 5) {
+                        // Month 5: in progress (random between 30% and 70%)
+                        const progress = Math.floor(expected * 0.3) + Math.floor(Math.random() * (expected * 0.4));
+                        data[monthKey][discipline] = progress;
+                    } else {
+                        // Months 6-12: empty
+                        data[monthKey][discipline] = 0;
+                    }
                 });
             }
             break;
@@ -110,6 +147,21 @@ function calculateStatus(period, data) {
     }
 }
 
+// Get expected value for a discipline based on period
+function getExpectedValue(discipline) {
+    const max = disciplines[discipline].max;
+    switch(currentPeriod) {
+        case 'daily':
+            return max;
+        case 'weekly':
+            return max; // Per day in weekly view
+        case 'monthly':
+            return max * 5; // Per week in monthly view
+        case 'yearly':
+            return max * 20; // Per month in yearly view
+    }
+}
+
 // Render chart
 function renderChart() {
     const svg = document.getElementById('chart');
@@ -125,12 +177,11 @@ function renderChart() {
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
     
-    // Calculate max value for scaling
+    // Calculate max expected value for scaling (use expected values, not just completed)
     let maxValue = 0;
-    periods.forEach(period => {
-        Object.values(data[period]).forEach(val => {
-            maxValue = Math.max(maxValue, val);
-        });
+    Object.keys(disciplines).forEach(discipline => {
+        const expected = getExpectedValue(discipline);
+        maxValue = Math.max(maxValue, expected);
     });
     maxValue = Math.ceil(maxValue * 1.1); // Add 10% padding
     
@@ -176,29 +227,77 @@ function renderChart() {
         
         disciplineKeys.forEach((discipline, discIndex) => {
             const value = todayData[discipline];
-            const barHeight = (value / maxValue) * chartHeight;
+            const expected = getExpectedValue(discipline);
+            const completedHeight = (value / maxValue) * chartHeight;
+            const expectedHeight = (expected / maxValue) * chartHeight;
             const barX = (discIndex * (barWidth + barSpacing)) + (barSpacing / 2);
             
-            const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            bar.setAttribute('x', barX);
-            bar.setAttribute('y', chartHeight - barHeight);
-            bar.setAttribute('width', barWidth);
-            bar.setAttribute('height', barHeight);
-            bar.setAttribute('fill', disciplines[discipline].color);
-            bar.setAttribute('rx', '2');
-            bar.setAttribute('class', 'chart-bar');
-            bar.setAttribute('data-discipline', discipline);
-            bar.setAttribute('data-value', value);
+            // Draw gray background bar (expected)
+            const bgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            bgBar.setAttribute('x', barX);
+            bgBar.setAttribute('y', chartHeight - expectedHeight);
+            bgBar.setAttribute('width', barWidth);
+            bgBar.setAttribute('height', expectedHeight);
+            bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
+            bgBar.setAttribute('rx', '2');
+            bgBar.setAttribute('class', 'chart-bar-bg');
+            chartGroup.appendChild(bgBar);
             
-            // Add hover effect
-            bar.addEventListener('mouseenter', function() {
-                this.style.opacity = '0.8';
-            });
-            bar.addEventListener('mouseleave', function() {
-                this.style.opacity = '1';
-            });
+            // Draw colored foreground bar (completed)
+            const fgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            fgBar.setAttribute('x', barX);
+            fgBar.setAttribute('y', chartHeight - completedHeight);
+            fgBar.setAttribute('width', barWidth);
+            fgBar.setAttribute('height', completedHeight);
+            fgBar.setAttribute('fill', disciplines[discipline].color);
+            fgBar.setAttribute('rx', '2');
+            fgBar.setAttribute('class', 'chart-bar-fg');
+            chartGroup.appendChild(fgBar);
             
-            chartGroup.appendChild(bar);
+            // Draw unfilled area (for tooltip hover)
+            if (completedHeight < expectedHeight) {
+                const unfilledArea = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                unfilledArea.setAttribute('x', barX);
+                unfilledArea.setAttribute('y', chartHeight - expectedHeight);
+                unfilledArea.setAttribute('width', barWidth);
+                unfilledArea.setAttribute('height', expectedHeight - completedHeight);
+                unfilledArea.setAttribute('fill', 'transparent');
+                unfilledArea.setAttribute('class', 'chart-bar-unfilled');
+                unfilledArea.setAttribute('data-discipline', discipline);
+                unfilledArea.setAttribute('data-missing', expected - value);
+                unfilledArea.style.cursor = 'pointer';
+                
+                // Add tooltip on hover
+                unfilledArea.addEventListener('mouseenter', function() {
+                    const tooltip = document.getElementById('tooltip');
+                    const missing = this.getAttribute('data-missing');
+                    tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining`;
+                    tooltip.classList.add('visible');
+                    
+                    // Get the bounding box of the unfilled area
+                    const bbox = this.getBBox();
+                    const chartWrapper = svg.closest('.chart-wrapper');
+                    const svgRect = svg.getBoundingClientRect();
+                    const wrapperRect = chartWrapper.getBoundingClientRect();
+                    
+                    // Calculate center X of the bar in screen coordinates
+                    const centerX = bbox.x + (bbox.width / 2);
+                    const centerXScreen = (centerX / width) * svgRect.width;
+                    const topY = bbox.y;
+                    const topYScreen = ((topY + padding.top) / height) * svgRect.height;
+                    
+                    // Position tooltip centered above the bar (transform: translateX(-50%) handles centering)
+                    tooltip.style.left = `${centerXScreen}px`;
+                    tooltip.style.top = `${topYScreen - 10}px`;
+                });
+                
+                unfilledArea.addEventListener('mouseleave', function() {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.remove('visible');
+                });
+                
+                chartGroup.appendChild(unfilledArea);
+            }
             
             // X-axis labels (discipline names)
             const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -222,29 +321,80 @@ function renderChart() {
             
             disciplineKeys.forEach((discipline, discIndex) => {
                 const value = data[period][discipline];
-                const barHeight = (value / maxValue) * chartHeight;
+                const expected = getExpectedValue(discipline);
+                const completedHeight = (value / maxValue) * chartHeight;
+                const expectedHeight = (expected / maxValue) * chartHeight;
                 const barX = x + (discIndex * barWidthPerDiscipline);
+                const barW = barWidthPerDiscipline - 2;
                 
-                const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                bar.setAttribute('x', barX);
-                bar.setAttribute('y', chartHeight - barHeight);
-                bar.setAttribute('width', barWidthPerDiscipline - 2);
-                bar.setAttribute('height', barHeight);
-                bar.setAttribute('fill', disciplines[discipline].color);
-                bar.setAttribute('rx', '2');
-                bar.setAttribute('class', 'chart-bar');
-                bar.setAttribute('data-discipline', discipline);
-                bar.setAttribute('data-value', value);
+                // Draw gray background bar (expected)
+                const bgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                bgBar.setAttribute('x', barX);
+                bgBar.setAttribute('y', chartHeight - expectedHeight);
+                bgBar.setAttribute('width', barW);
+                bgBar.setAttribute('height', expectedHeight);
+                bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
+                bgBar.setAttribute('rx', '2');
+                bgBar.setAttribute('class', 'chart-bar-bg');
+                chartGroup.appendChild(bgBar);
                 
-                // Add hover effect
-                bar.addEventListener('mouseenter', function() {
-                    this.style.opacity = '0.8';
-                });
-                bar.addEventListener('mouseleave', function() {
-                    this.style.opacity = '1';
-                });
+                // Draw colored foreground bar (completed)
+                const fgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                fgBar.setAttribute('x', barX);
+                fgBar.setAttribute('y', chartHeight - completedHeight);
+                fgBar.setAttribute('width', barW);
+                fgBar.setAttribute('height', completedHeight);
+                fgBar.setAttribute('fill', disciplines[discipline].color);
+                fgBar.setAttribute('rx', '2');
+                fgBar.setAttribute('class', 'chart-bar-fg');
+                chartGroup.appendChild(fgBar);
                 
-                chartGroup.appendChild(bar);
+                // Draw unfilled area (for tooltip hover)
+                if (completedHeight < expectedHeight) {
+                    const unfilledArea = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    unfilledArea.setAttribute('x', barX);
+                    unfilledArea.setAttribute('y', chartHeight - expectedHeight);
+                    unfilledArea.setAttribute('width', barW);
+                    unfilledArea.setAttribute('height', expectedHeight - completedHeight);
+                    unfilledArea.setAttribute('fill', 'transparent');
+                    unfilledArea.setAttribute('class', 'chart-bar-unfilled');
+                    unfilledArea.setAttribute('data-discipline', discipline);
+                    unfilledArea.setAttribute('data-period', period);
+                    unfilledArea.setAttribute('data-missing', expected - value);
+                    unfilledArea.style.cursor = 'pointer';
+                    
+                    // Add tooltip on hover
+                    unfilledArea.addEventListener('mouseenter', function() {
+                        const tooltip = document.getElementById('tooltip');
+                        const missing = this.getAttribute('data-missing');
+                        const periodName = this.getAttribute('data-period');
+                        tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining (${periodName})`;
+                        tooltip.classList.add('visible');
+                        
+                        // Get the bounding box of the unfilled area
+                        const bbox = this.getBBox();
+                        const chartWrapper = svg.closest('.chart-wrapper');
+                        const svgRect = svg.getBoundingClientRect();
+                        const wrapperRect = chartWrapper.getBoundingClientRect();
+                        
+                        // Calculate center X of the bar in screen coordinates
+                        const centerX = bbox.x + (bbox.width / 2);
+                        const centerXScreen = (centerX / width) * svgRect.width;
+                        const topY = bbox.y;
+                        const topYScreen = ((topY + padding.top) / height) * svgRect.height;
+                        
+                        // Position tooltip centered above the bar (transform: translateX(-50%) handles centering)
+                        tooltip.style.left = `${centerXScreen}px`;
+                        tooltip.style.top = `${topYScreen - 10}px`;
+                    });
+                    
+                    unfilledArea.addEventListener('mouseleave', function() {
+                        const tooltip = document.getElementById('tooltip');
+                        tooltip.classList.remove('visible');
+                    });
+                    
+                    chartGroup.appendChild(unfilledArea);
+                }
             });
             
             // X-axis labels
@@ -319,7 +469,7 @@ function updateChartInfo() {
         daily: "Today's Performance",
         weekly: "This Week's Performance",
         monthly: "This Month's Performance",
-        yearly: "This Year's Performance"
+        yearly: "Needed to Graduate"
     };
     
     const subtitles = {
