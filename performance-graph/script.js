@@ -269,7 +269,7 @@ function renderChart() {
             bgBar.setAttribute('width', barWidth);
             bgBar.setAttribute('height', expectedHeight);
             bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
-            bgBar.setAttribute('rx', '2');
+            bgBar.setAttribute('rx', '8');
             bgBar.setAttribute('class', 'chart-bar-bg');
             chartGroup.appendChild(bgBar);
             
@@ -280,7 +280,7 @@ function renderChart() {
             fgBar.setAttribute('width', barWidth);
             fgBar.setAttribute('height', completedHeight);
             fgBar.setAttribute('fill', disciplines[discipline].color);
-            fgBar.setAttribute('rx', '2');
+            fgBar.setAttribute('rx', '8');
             fgBar.setAttribute('class', 'chart-bar-fg');
             chartGroup.appendChild(fgBar);
             
@@ -372,7 +372,7 @@ function renderChart() {
                 bgBar.setAttribute('width', barW);
                 bgBar.setAttribute('height', expectedHeight);
                 bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
-                bgBar.setAttribute('rx', '2');
+                bgBar.setAttribute('rx', '8');
                 bgBar.setAttribute('class', 'chart-bar-bg');
                 chartGroup.appendChild(bgBar);
                 
@@ -383,7 +383,7 @@ function renderChart() {
                 fgBar.setAttribute('width', barW);
                 fgBar.setAttribute('height', completedHeight);
                 fgBar.setAttribute('fill', disciplines[discipline].color);
-                fgBar.setAttribute('rx', '2');
+                fgBar.setAttribute('rx', '8');
                 fgBar.setAttribute('class', 'chart-bar-fg');
                 chartGroup.appendChild(fgBar);
                 
@@ -706,7 +706,10 @@ function showAssignmentsModal(discipline, missing, period) {
         item.innerHTML = `
             <div class="assignment-title">${assignment.title}</div>
             <div class="assignment-description">${assignment.description}</div>
-            <div class="assignment-due-date">Due: ${assignment.dueDate}</div>
+            <div class="assignment-due-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Due: ${assignment.dueDate}</span>
+            </div>
         `;
         assignmentsList.appendChild(item);
     });

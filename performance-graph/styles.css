@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-800) 100%);
+    background: linear-gradient(135deg, var(--purple-400) 0%, var(--purple-600) 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,10 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
-    font-size: 1.1rem;
     opacity: 0.95;
 }
 
@@ -40,9 +37,9 @@ body {
     justify-content: space-between;
     align-items: center;
     background: var(--gray-0);
-    border-radius: 12px;
+    border-radius: 20px;
     padding: 16px 24px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     flex-wrap: wrap;
     gap: 16px;
 }
@@ -54,23 +51,25 @@ body {
 
 .time-btn {
     padding: 10px 20px;
-    border: 2px solid var(--purple-600);
+    border: 2px solid var(--purple-400);
     background: var(--gray-0);
     color: var(--purple-600);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .time-btn:hover {
     background: var(--purple-50);
+    border-color: var(--purple-500);
+    transform: translateY(-1px);
 }
 
 .time-btn.active {
-    background: var(--purple-600);
+    background: var(--purple-500);
     color: var(--gray-0);
+    border-color: var(--purple-500);
+    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3);
 }
 
 .status-indicator {
@@ -80,31 +79,32 @@ body {
 }
 
 .status-label {
-    font-weight: 600;
     color: var(--gray-600);
 }
 
 .status-value {
     padding: 8px 16px;
     border-radius: 20px;
-    font-weight: 600;
-    background: var(--green-600);
+    background: var(--green-500);
     color: var(--gray-0);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
 }
 
 .status-value.behind {
-    background: var(--red-600);
+    background: var(--red-500);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
 }
 
 .status-value.at-risk {
-    background: var(--orange-600);
+    background: var(--orange-500);
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
 }
 
 .chart-container {
     background: var(--gray-0);
-    border-radius: 12px;
+    border-radius: 24px;
     padding: 32px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -119,14 +119,12 @@ body {
 }
 
 .chart-title h2 {
-    font-size: 1.75rem;
     color: var(--gray-900);
     margin-bottom: 4px;
 }
 
 .chart-subtitle {
     color: var(--gray-600);
-    font-size: 0.95rem;
 }
 
 .legend {
@@ -168,9 +166,7 @@ body {
 }
 
 .legend-label {
-    font-size: 0.875rem;
     color: var(--gray-600);
-    font-weight: 500;
 }
 
 .chart-wrapper {
@@ -184,7 +180,7 @@ body {
     width: 100%;
     height: 400px;
     background: var(--gray-50);
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 .chart-labels {
@@ -197,15 +193,11 @@ body {
 .y-axis-label {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 0.875rem;
     color: var(--gray-600);
-    font-weight: 500;
 }
 
 .x-axis-label {
-    font-size: 0.875rem;
     color: var(--gray-600);
-    font-weight: 500;
 }
 
 .tooltip {
@@ -214,7 +206,6 @@ body {
     color: var(--gray-0);
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 0.875rem;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -269,16 +260,16 @@ body {
 .modal-content {
     position: relative;
     background: var(--gray-0);
-    border-radius: 12px;
+    border-radius: 24px;
     max-width: 600px;
     width: 90%;
     max-height: 80vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     z-index: 1001;
     transform: scale(0.9);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal.active .modal-content {
@@ -296,14 +287,11 @@ body {
 .modal-header h2 {
     margin: 0;
     color: var(--gray-900);
-    font-size: 1.5rem;
-    font-weight: 600;
 }
 
 .modal-close {
     background: none;
     border: none;
-    font-size: 2rem;
     color: var(--gray-500);
     cursor: pointer;
     padding: 0;
@@ -336,41 +324,36 @@ body {
 .assignment-item {
     padding: 16px;
     border: 1px solid var(--gray-200);
-    border-radius: 8px;
+    border-radius: 16px;
     background: var(--gray-50);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .assignment-item:hover {
     border-color: var(--gray-300);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .assignment-title {
-    font-size: 1rem;
-    font-weight: 600;
     color: var(--gray-900);
     margin-bottom: 8px;
 }
 
 .assignment-description {
-    font-size: 0.875rem;
     color: var(--gray-600);
     margin-bottom: 12px;
-    line-height: 1.5;
 }
 
 .assignment-due-date {
-    font-size: 0.875rem;
     color: var(--gray-500);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
-.assignment-due-date::before {
-    content: '📅';
-    font-size: 0.875rem;
+.assignment-due-date i {
+    color: var(--gray-400);
 }
 
 .stats-grid {
@@ -381,18 +364,18 @@ body {
 
 .stat-card {
     background: var(--gray-0);
-    border-radius: 12px;
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .stat-header {
@@ -402,18 +385,14 @@ body {
 }
 
 .stat-header h3 {
-    font-size: 0.95rem;
     color: var(--gray-700);
-    font-weight: 600;
 }
 
 .stat-badge {
     background: var(--gray-200);
     color: var(--gray-700);
     padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.875rem;
-    font-weight: 700;
+    border-radius: 16px;
 }
 
 .stat-card[data-discipline="ela"] .stat-badge {
@@ -449,16 +428,16 @@ body {
 
 .stat-bar {
     flex: 1;
-    height: 8px;
+    height: 10px;
     background: var(--gray-200);
-    border-radius: 4px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .stat-fill {
     height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease;
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat-card[data-discipline="ela"] .stat-fill {
@@ -482,18 +461,12 @@ body {
 }
 
 .stat-percentage {
-    font-size: 0.875rem;
-    font-weight: 600;
     color: var(--gray-600);
     min-width: 45px;
     text-align: right;
 }
 
 @media (max-width: 768px) {
-    .header h1 {
-        font-size: 2rem;
-    }
-
     .controls {
         flex-direction: column;
         align-items: stretch;
