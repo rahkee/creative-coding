@@ -146,23 +146,23 @@ body {
 }
 
 .legend-item[data-discipline="ela"] .legend-color {
-    background: var(--blue-600);
+    background: var(--pink-600);
 }
 
 .legend-item[data-discipline="math"] .legend-color {
-    background: var(--green-600);
+    background: var(--lime-600);
 }
 
 .legend-item[data-discipline="science"] .legend-color {
-    background: var(--orange-600);
+    background: var(--sky-600);
 }
 
 .legend-item[data-discipline="social"] .legend-color {
-    background: var(--purple-600);
+    background: var(--emerald-600);
 }
 
 .legend-item[data-discipline="electives"] .legend-color {
-    background: var(--pink-600);
+    background: var(--purple-600);
 }
 
 .legend-label {
@@ -212,10 +212,11 @@ body {
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
-    position-anchor: --tooltip-anchor;
-    top: anchor(--tooltip-anchor top);
-    left: anchor(--tooltip-anchor center);
-    translate: -50% calc(-100% - 10px);
+    --tooltip-x: 0;
+    --tooltip-y: 0;
+    left: var(--tooltip-x);
+    top: var(--tooltip-y);
+    transform: translate(-50%, calc(-100% - 10px));
 }
 
 .tooltip.visible {
@@ -224,6 +225,14 @@ body {
 
 .chart-bar-unfilled {
     anchor-name: --tooltip-anchor;
+    cursor: pointer;
+}
+
+.tooltip {
+    --tooltip-x: 0;
+    --tooltip-y: 0;
+    left: var(--tooltip-x);
+    top: var(--tooltip-y);
 }
 
 /* Modal Styles */
@@ -396,28 +405,28 @@ body {
 }
 
 .stat-card[data-discipline="ela"] .stat-badge {
-    background: var(--blue-100);
-    color: var(--blue-600);
+    background: var(--pink-100);
+    color: var(--pink-600);
 }
 
 .stat-card[data-discipline="math"] .stat-badge {
-    background: var(--green-100);
-    color: var(--green-600);
+    background: var(--lime-100);
+    color: var(--lime-600);
 }
 
 .stat-card[data-discipline="science"] .stat-badge {
-    background: var(--orange-100);
-    color: var(--orange-600);
+    background: var(--sky-100);
+    color: var(--sky-600);
 }
 
 .stat-card[data-discipline="social"] .stat-badge {
-    background: var(--purple-100);
-    color: var(--purple-600);
+    background: var(--emerald-100);
+    color: var(--emerald-600);
 }
 
 .stat-card[data-discipline="electives"] .stat-badge {
-    background: var(--pink-100);
-    color: var(--pink-600);
+    background: var(--purple-100);
+    color: var(--purple-600);
 }
 
 .stat-progress {
@@ -438,26 +447,27 @@ body {
     height: 100%;
     border-radius: 10px;
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: var(--progress-width, 0%);
 }
 
 .stat-card[data-discipline="ela"] .stat-fill {
-    background: var(--blue-600);
+    background: var(--pink-600);
 }
 
 .stat-card[data-discipline="math"] .stat-fill {
-    background: var(--green-600);
+    background: var(--lime-600);
 }
 
 .stat-card[data-discipline="science"] .stat-fill {
-    background: var(--orange-600);
+    background: var(--sky-600);
 }
 
 .stat-card[data-discipline="social"] .stat-fill {
-    background: var(--purple-600);
+    background: var(--emerald-600);
 }
 
 .stat-card[data-discipline="electives"] .stat-fill {
-    background: var(--pink-600);
+    background: var(--purple-600);
 }
 
 .stat-percentage {

@@ -30,12 +30,21 @@ function initializeDisciplineColors() {
     }
 }
 
+// Fallback colors if CSS variables aren't available
+const fallbackColors = {
+    ela: '#db2777',    // pink-600
+    math: '#65a30d',   // lime-600
+    science: '#0284c7', // sky-600
+    social: '#059669', // emerald-600
+    electives: '#9333ea' // purple-600
+};
+
 const disciplines = {
-    ela: { name: 'English Language Arts', color: '#2563eb', max: 10 }, // fallback, will be updated
-    math: { name: 'Mathematics', color: '#16a34a', max: 10 },
-    science: { name: 'Science', color: '#ea580c', max: 10 },
-    social: { name: 'Social Studies', color: '#9333ea', max: 10 },
-    electives: { name: 'Electives', color: '#db2777', max: 10 }
+    ela: { name: 'English Language Arts', color: fallbackColors.ela, max: 10 }, // fallback, will be updated
+    math: { name: 'Mathematics', color: fallbackColors.math, max: 10 },
+    science: { name: 'Science', color: fallbackColors.science, max: 10 },
+    social: { name: 'Social Studies', color: fallbackColors.social, max: 10 },
+    electives: { name: 'Electives', color: fallbackColors.electives, max: 10 }
 };
 
 let currentPeriod = 'daily';
@@ -262,6 +271,9 @@ function renderChart() {
             const expectedHeight = (expected / maxValue) * chartHeight;
             const barX = (discIndex * (barWidth + barSpacing)) + (barSpacing / 2);
             
+            // Calculate rounded corner radius (half of bar width for fully rounded ends)
+            const cornerRadius = Math.min(barWidth / 2, 12);
+            
             // Draw gray background bar (expected)
             const bgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             bgBar.setAttribute('x', barX);
@@ -269,7 +281,8 @@ function renderChart() {
             bgBar.setAttribute('width', barWidth);
             bgBar.setAttribute('height', expectedHeight);
             bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
-            bgBar.setAttribute('rx', '8');
+            bgBar.setAttribute('rx', cornerRadius.toString());
+            bgBar.setAttribute('ry', cornerRadius.toString());
             bgBar.setAttribute('class', 'chart-bar-bg');
             chartGroup.appendChild(bgBar);
             
@@ -280,7 +293,8 @@ function renderChart() {
             fgBar.setAttribute('width', barWidth);
             fgBar.setAttribute('height', completedHeight);
             fgBar.setAttribute('fill', disciplines[discipline].color);
-            fgBar.setAttribute('rx', '8');
+            fgBar.setAttribute('rx', cornerRadius.toString());
+            fgBar.setAttribute('ry', cornerRadius.toString());
             fgBar.setAttribute('class', 'chart-bar-fg');
             chartGroup.appendChild(fgBar);
             
@@ -295,10 +309,6 @@ function renderChart() {
                 unfilledArea.setAttribute('class', 'chart-bar-unfilled');
                 unfilledArea.setAttribute('data-discipline', discipline);
                 unfilledArea.setAttribute('data-missing', expected - value);
-                unfilledArea.style.cursor = 'pointer';
-                
-                // Set anchor name for CSS anchor positioning
-                unfilledArea.style.anchorName = '--tooltip-anchor';
                 
                 // Add tooltip on hover
                 unfilledArea.addEventListener('mouseenter', function() {
@@ -316,10 +326,9 @@ function renderChart() {
                     const chartWrapper = svg.closest('.chart-wrapper');
                     const wrapperRect = chartWrapper.getBoundingClientRect();
                     
-                    // Update tooltip position to follow cursor
-                    tooltip.style.left = `${e.clientX - wrapperRect.left}px`;
-                    tooltip.style.top = `${e.clientY - wrapperRect.top - 10}px`;
-                    tooltip.style.translate = '-50% -100%';
+                    // Update tooltip position using CSS custom properties
+                    tooltip.style.setProperty('--tooltip-x', `${e.clientX - wrapperRect.left}px`);
+                    tooltip.style.setProperty('--tooltip-y', `${e.clientY - wrapperRect.top - 10}px`);
                 });
                 
                 unfilledArea.addEventListener('mouseleave', function() {
@@ -365,6 +374,9 @@ function renderChart() {
                 const barX = x + (discIndex * barWidthPerDiscipline);
                 const barW = barWidthPerDiscipline - 2;
                 
+                // Calculate rounded corner radius (half of bar width for fully rounded ends)
+                const cornerRadius = Math.min(barW / 2, 12);
+                
                 // Draw gray background bar (expected)
                 const bgBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 bgBar.setAttribute('x', barX);
@@ -372,7 +384,8 @@ function renderChart() {
                 bgBar.setAttribute('width', barW);
                 bgBar.setAttribute('height', expectedHeight);
                 bgBar.setAttribute('fill', '#e5e7eb'); // gray-200
-                bgBar.setAttribute('rx', '8');
+                bgBar.setAttribute('rx', cornerRadius.toString());
+                bgBar.setAttribute('ry', cornerRadius.toString());
                 bgBar.setAttribute('class', 'chart-bar-bg');
                 chartGroup.appendChild(bgBar);
                 
@@ -383,7 +396,8 @@ function renderChart() {
                 fgBar.setAttribute('width', barW);
                 fgBar.setAttribute('height', completedHeight);
                 fgBar.setAttribute('fill', disciplines[discipline].color);
-                fgBar.setAttribute('rx', '8');
+                fgBar.setAttribute('rx', cornerRadius.toString());
+                fgBar.setAttribute('ry', cornerRadius.toString());
                 fgBar.setAttribute('class', 'chart-bar-fg');
                 chartGroup.appendChild(fgBar);
                 
@@ -399,10 +413,6 @@ function renderChart() {
                     unfilledArea.setAttribute('data-discipline', discipline);
                     unfilledArea.setAttribute('data-period', period);
                     unfilledArea.setAttribute('data-missing', expected - value);
-                    unfilledArea.style.cursor = 'pointer';
-                    
-                    // Set anchor name for CSS anchor positioning
-                    unfilledArea.style.anchorName = '--tooltip-anchor';
                     
                     // Add tooltip on hover
                     unfilledArea.addEventListener('mouseenter', function() {
@@ -421,10 +431,9 @@ function renderChart() {
                         const chartWrapper = svg.closest('.chart-wrapper');
                         const wrapperRect = chartWrapper.getBoundingClientRect();
                         
-                        // Update tooltip position to follow cursor
-                        tooltip.style.left = `${e.clientX - wrapperRect.left}px`;
-                        tooltip.style.top = `${e.clientY - wrapperRect.top - 10}px`;
-                        tooltip.style.translate = '-50% -100%';
+                        // Update tooltip position using CSS custom properties
+                        tooltip.style.setProperty('--tooltip-x', `${e.clientX - wrapperRect.left}px`);
+                        tooltip.style.setProperty('--tooltip-y', `${e.clientY - wrapperRect.top - 10}px`);
                     });
                     
                     unfilledArea.addEventListener('mouseleave', function() {
@@ -505,7 +514,7 @@ function updateStats() {
         const percentage = Math.min(100, Math.round((total / periodMax) * 100));
         
         document.getElementById(`${discipline}Badge`).textContent = total;
-        document.getElementById(`${discipline}Progress`).style.width = `${percentage}%`;
+        document.getElementById(`${discipline}Progress`).style.setProperty('--progress-width', `${percentage}%`);
         document.getElementById(`${discipline}Percent`).textContent = `${percentage}%`;
     });
 }
