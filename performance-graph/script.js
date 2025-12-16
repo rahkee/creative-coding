@@ -1,11 +1,41 @@
 // Performance Graph Script
 
+// Get colors from legend elements to ensure exact match
+function initializeDisciplineColors() {
+    const legendEla = document.querySelector('.legend-item[data-discipline="ela"] .legend-color');
+    const legendMath = document.querySelector('.legend-item[data-discipline="math"] .legend-color');
+    const legendScience = document.querySelector('.legend-item[data-discipline="science"] .legend-color');
+    const legendSocial = document.querySelector('.legend-item[data-discipline="social"] .legend-color');
+    const legendElectives = document.querySelector('.legend-item[data-discipline="electives"] .legend-color');
+    
+    if (legendEla) {
+        const style = getComputedStyle(legendEla);
+        disciplines.ela.color = style.backgroundColor;
+    }
+    if (legendMath) {
+        const style = getComputedStyle(legendMath);
+        disciplines.math.color = style.backgroundColor;
+    }
+    if (legendScience) {
+        const style = getComputedStyle(legendScience);
+        disciplines.science.color = style.backgroundColor;
+    }
+    if (legendSocial) {
+        const style = getComputedStyle(legendSocial);
+        disciplines.social.color = style.backgroundColor;
+    }
+    if (legendElectives) {
+        const style = getComputedStyle(legendElectives);
+        disciplines.electives.color = style.backgroundColor;
+    }
+}
+
 const disciplines = {
-    ela: { name: 'English Language Arts', color: '#2563eb', max: 10 }, // blue-600
-    math: { name: 'Mathematics', color: '#16a34a', max: 10 }, // green-600
-    science: { name: 'Science', color: '#ea580c', max: 10 }, // orange-600
-    social: { name: 'Social Studies', color: '#9333ea', max: 10 }, // purple-600
-    electives: { name: 'Electives', color: '#db2777', max: 10 } // pink-600
+    ela: { name: 'English Language Arts', color: '#2563eb', max: 10 }, // fallback, will be updated
+    math: { name: 'Mathematics', color: '#16a34a', max: 10 },
+    science: { name: 'Science', color: '#ea580c', max: 10 },
+    social: { name: 'Social Studies', color: '#9333ea', max: 10 },
+    electives: { name: 'Electives', color: '#db2777', max: 10 }
 };
 
 let currentPeriod = 'daily';
@@ -267,33 +297,41 @@ function renderChart() {
                 unfilledArea.setAttribute('data-missing', expected - value);
                 unfilledArea.style.cursor = 'pointer';
                 
+                // Set anchor name for CSS anchor positioning
+                unfilledArea.style.anchorName = '--tooltip-anchor';
+                
                 // Add tooltip on hover
                 unfilledArea.addEventListener('mouseenter', function() {
                     const tooltip = document.getElementById('tooltip');
                     const missing = this.getAttribute('data-missing');
                     tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining`;
                     tooltip.classList.add('visible');
+                });
+                
+                // Make tooltip follow cursor
+                unfilledArea.addEventListener('mousemove', function(e) {
+                    const tooltip = document.getElementById('tooltip');
+                    if (!tooltip.classList.contains('visible')) return;
                     
-                    // Get the bounding box of the unfilled area
-                    const bbox = this.getBBox();
                     const chartWrapper = svg.closest('.chart-wrapper');
-                    const svgRect = svg.getBoundingClientRect();
                     const wrapperRect = chartWrapper.getBoundingClientRect();
                     
-                    // Calculate center X of the bar in screen coordinates
-                    const centerX = bbox.x + (bbox.width / 2);
-                    const centerXScreen = (centerX / width) * svgRect.width;
-                    const topY = bbox.y;
-                    const topYScreen = ((topY + padding.top) / height) * svgRect.height;
-                    
-                    // Position tooltip centered above the bar (transform: translateX(-50%) handles centering)
-                    tooltip.style.left = `${centerXScreen}px`;
-                    tooltip.style.top = `${topYScreen - 10}px`;
+                    // Update tooltip position to follow cursor
+                    tooltip.style.left = `${e.clientX - wrapperRect.left}px`;
+                    tooltip.style.top = `${e.clientY - wrapperRect.top - 10}px`;
+                    tooltip.style.translate = '-50% -100%';
                 });
                 
                 unfilledArea.addEventListener('mouseleave', function() {
                     const tooltip = document.getElementById('tooltip');
                     tooltip.classList.remove('visible');
+                });
+                
+                // Add click handler to show modal
+                unfilledArea.addEventListener('click', function() {
+                    const discipline = this.getAttribute('data-discipline');
+                    const missing = parseInt(this.getAttribute('data-missing'));
+                    showAssignmentsModal(discipline, missing, null);
                 });
                 
                 chartGroup.appendChild(unfilledArea);
@@ -363,6 +401,9 @@ function renderChart() {
                     unfilledArea.setAttribute('data-missing', expected - value);
                     unfilledArea.style.cursor = 'pointer';
                     
+                    // Set anchor name for CSS anchor positioning
+                    unfilledArea.style.anchorName = '--tooltip-anchor';
+                    
                     // Add tooltip on hover
                     unfilledArea.addEventListener('mouseenter', function() {
                         const tooltip = document.getElementById('tooltip');
@@ -370,27 +411,33 @@ function renderChart() {
                         const periodName = this.getAttribute('data-period');
                         tooltip.textContent = `${missing} assignment${missing !== '1' ? 's' : ''} remaining (${periodName})`;
                         tooltip.classList.add('visible');
+                    });
+                    
+                    // Make tooltip follow cursor
+                    unfilledArea.addEventListener('mousemove', function(e) {
+                        const tooltip = document.getElementById('tooltip');
+                        if (!tooltip.classList.contains('visible')) return;
                         
-                        // Get the bounding box of the unfilled area
-                        const bbox = this.getBBox();
                         const chartWrapper = svg.closest('.chart-wrapper');
-                        const svgRect = svg.getBoundingClientRect();
                         const wrapperRect = chartWrapper.getBoundingClientRect();
                         
-                        // Calculate center X of the bar in screen coordinates
-                        const centerX = bbox.x + (bbox.width / 2);
-                        const centerXScreen = (centerX / width) * svgRect.width;
-                        const topY = bbox.y;
-                        const topYScreen = ((topY + padding.top) / height) * svgRect.height;
-                        
-                        // Position tooltip centered above the bar (transform: translateX(-50%) handles centering)
-                        tooltip.style.left = `${centerXScreen}px`;
-                        tooltip.style.top = `${topYScreen - 10}px`;
+                        // Update tooltip position to follow cursor
+                        tooltip.style.left = `${e.clientX - wrapperRect.left}px`;
+                        tooltip.style.top = `${e.clientY - wrapperRect.top - 10}px`;
+                        tooltip.style.translate = '-50% -100%';
                     });
                     
                     unfilledArea.addEventListener('mouseleave', function() {
                         const tooltip = document.getElementById('tooltip');
                         tooltip.classList.remove('visible');
+                    });
+                    
+                    // Add click handler to show modal
+                    unfilledArea.addEventListener('click', function() {
+                        const discipline = this.getAttribute('data-discipline');
+                        const period = this.getAttribute('data-period');
+                        const missing = parseInt(this.getAttribute('data-missing'));
+                        showAssignmentsModal(discipline, missing, period);
                     });
                     
                     chartGroup.appendChild(unfilledArea);
@@ -516,6 +563,9 @@ function updateStatus() {
 
 // Initialize
 function init() {
+    // Initialize discipline colors from CSS variables
+    initializeDisciplineColors();
+    
     // Generate initial data
     chartData = {
         daily: generateData('daily'),
@@ -544,10 +594,159 @@ function init() {
     updateStatus();
 }
 
+// Generate sample assignments
+function generateAssignments(discipline, count, period) {
+    const assignments = [];
+    const disciplineName = disciplines[discipline].name;
+    const today = new Date();
+    
+    const assignmentTemplates = {
+        ela: [
+            { title: 'Reading Comprehension', desc: 'Read and analyze the assigned text, then answer comprehension questions.' },
+            { title: 'Essay Writing', desc: 'Write a 500-word essay on the given topic with proper citations.' },
+            { title: 'Grammar Exercise', desc: 'Complete the grammar worksheet focusing on sentence structure.' },
+            { title: 'Vocabulary Quiz', desc: 'Study and prepare for the vocabulary quiz covering this week\'s words.' },
+            { title: 'Literary Analysis', desc: 'Analyze the themes and literary devices in the assigned reading.' }
+        ],
+        math: [
+            { title: 'Algebra Problems', desc: 'Solve 20 algebraic equations showing all work.' },
+            { title: 'Geometry Worksheet', desc: 'Complete geometry problems on angles and shapes.' },
+            { title: 'Statistics Project', desc: 'Collect data and create a statistical analysis report.' },
+            { title: 'Calculus Practice', desc: 'Work through derivative and integral problems.' },
+            { title: 'Word Problems', desc: 'Solve real-world math problems using equations.' }
+        ],
+        science: [
+            { title: 'Lab Report', desc: 'Complete the lab report for the chemistry experiment.' },
+            { title: 'Research Paper', desc: 'Write a research paper on a scientific topic of your choice.' },
+            { title: 'Science Quiz', desc: 'Study for the upcoming quiz on biology concepts.' },
+            { title: 'Experiment Design', desc: 'Design and document a scientific experiment.' },
+            { title: 'Data Analysis', desc: 'Analyze experimental data and draw conclusions.' }
+        ],
+        social: [
+            { title: 'History Essay', desc: 'Write an essay on a historical event and its impact.' },
+            { title: 'Geography Project', desc: 'Create a presentation on a country\'s geography and culture.' },
+            { title: 'Civics Assignment', desc: 'Research and present on a current political issue.' },
+            { title: 'Timeline Creation', desc: 'Create a timeline of important historical events.' },
+            { title: 'Document Analysis', desc: 'Analyze primary source documents from history.' }
+        ],
+        electives: [
+            { title: 'Art Portfolio', desc: 'Create and submit 5 pieces for your art portfolio.' },
+            { title: 'Music Theory', desc: 'Complete music theory exercises and notation practice.' },
+            { title: 'PE Fitness Log', desc: 'Maintain a fitness log for the week with activities.' },
+            { title: 'Foreign Language', desc: 'Practice vocabulary and complete conversation exercises.' },
+            { title: 'Creative Project', desc: 'Work on your independent creative project.' }
+        ]
+    };
+    
+    const templates = assignmentTemplates[discipline] || assignmentTemplates.ela;
+    
+    for (let i = 0; i < count; i++) {
+        const template = templates[i % templates.length];
+        const dueDate = new Date(today);
+        
+        // Set due dates based on period
+        if (period === null || currentPeriod === 'daily') {
+            // Daily: due today or tomorrow
+            dueDate.setDate(today.getDate() + (i % 2));
+        } else if (currentPeriod === 'weekly') {
+            // Weekly: spread across the week
+            dueDate.setDate(today.getDate() + (i % 5));
+        } else if (currentPeriod === 'monthly') {
+            // Monthly: spread across 4 weeks
+            dueDate.setDate(today.getDate() + (i * 7));
+        } else if (currentPeriod === 'yearly') {
+            // Yearly: spread across months
+            dueDate.setMonth(today.getMonth() + (i % 12));
+        }
+        
+        assignments.push({
+            title: `${template.title} ${i + 1}`,
+            description: template.desc,
+            dueDate: dueDate.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            })
+        });
+    }
+    
+    return assignments;
+}
+
+// Show assignments modal
+function showAssignmentsModal(discipline, missing, period) {
+    const modal = document.getElementById('assignmentsModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const assignmentsList = document.getElementById('assignmentsList');
+    
+    // Determine how many assignments to show
+    let assignmentCount = missing;
+    if (currentPeriod === 'daily') {
+        assignmentCount = Math.min(missing, 3); // Max 3 for daily
+    } else if (currentPeriod === 'weekly') {
+        assignmentCount = Math.min(missing, 5); // Max 5 for weekly
+    } else if (currentPeriod === 'monthly') {
+        assignmentCount = Math.min(missing, 8); // Max 8 for monthly
+    } else if (currentPeriod === 'yearly') {
+        assignmentCount = Math.min(missing, 10); // Max 10 for yearly
+    }
+    
+    // Set modal title
+    const disciplineName = disciplines[discipline].name;
+    const periodText = period ? ` (${period})` : '';
+    modalTitle.textContent = `${disciplineName}${periodText} - ${missing} Assignment${missing !== 1 ? 's' : ''} Remaining`;
+    
+    // Generate and display assignments
+    const assignments = generateAssignments(discipline, assignmentCount, period);
+    assignmentsList.innerHTML = '';
+    
+    assignments.forEach(assignment => {
+        const item = document.createElement('div');
+        item.className = 'assignment-item';
+        item.innerHTML = `
+            <div class="assignment-title">${assignment.title}</div>
+            <div class="assignment-description">${assignment.description}</div>
+            <div class="assignment-due-date">Due: ${assignment.dueDate}</div>
+        `;
+        assignmentsList.appendChild(item);
+    });
+    
+    // Show modal
+    modal.classList.add('active');
+}
+
+// Close modal
+function closeAssignmentsModal() {
+    const modal = document.getElementById('assignmentsModal');
+    modal.classList.remove('active');
+}
+
 // Start when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
+
+// Set up modal close handlers
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('assignmentsModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    
+    if (modalClose) {
+        modalClose.addEventListener('click', closeAssignmentsModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeAssignmentsModal);
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeAssignmentsModal();
+        }
+    });
+});
 
