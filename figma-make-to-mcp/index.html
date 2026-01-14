@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeschool Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1 class="dashboard-title">Homeschool Dashboard</h1>
+                <div class="header-controls">
+                    <div id="child-selector-container" class="child-selector-container">
+                        <!-- ChildSelector component will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <aside class="dashboard-sidebar">
+                <div id="day-selector-container" class="day-selector-container">
+                    <!-- DaySelector component will be rendered here -->
+                </div>
+            </aside>
+
+            <section class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">Today's Tasks</h2>
+                    <div id="task-list-container" class="task-list-container">
+                        <!-- TaskList component will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <aside class="dashboard-assistant">
+                <div id="ai-assistant-container" class="ai-assistant-container">
+                    <!-- AIAssistant component will be rendered here -->
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
