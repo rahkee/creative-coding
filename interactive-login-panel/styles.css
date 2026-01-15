@@ -62,6 +62,18 @@ body {
   justify-content: center;
   perspective: 1000px;
 
+  .gradient-canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .graphics-image {
     position: absolute;
     inset: 0;
@@ -397,6 +409,8 @@ body {
 }
 
 #a {
+  position: relative;
+  z-index: 10;
   transform-style: preserve-3d;
   will-change: transform;
 
