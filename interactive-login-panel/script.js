@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // SVG letter animation - add play class on hover, remove when animation ends
+  const svg = document.getElementById('a');
+  if (svg) {
+    const lastE = svg.querySelectorAll('.e')[21]; // Last (22nd) .e element
+    
+    svg.addEventListener('mouseenter', () => {
+      svg.classList.add('play');
+    });
+    
+    // Listen for animation end on the last element
+    if (lastE) {
+      lastE.addEventListener('animationend', () => {
+        svg.classList.remove('play');
+      });
+    }
+  }
+
   const form = document.getElementById('signup-form');
   const passwordInput = document.getElementById('password');
   const togglePasswordBtn = document.querySelector('.toggle-password');
