@@ -273,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.container = container;
         this.width = container.offsetWidth;
         this.height = container.offsetHeight;
+        this.isEnabled = true;
         
         this.renderer = new THREE.WebGLRenderer({
           antialias: true,
@@ -523,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       tick() {
+        if (!this.isEnabled) return;
         const delta = Math.min(this.clock.getDelta(), 0.1);
         this.uniforms.uTime.value += delta;
         this.touchTexture.update();
@@ -530,7 +532,29 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(() => this.tick());
       }
 
+      disable() {
+        this.isEnabled = false;
+        this.renderer.domElement.style.opacity = '0';
+      }
+
+      enable() {
+        this.isEnabled = true;
+        this.renderer.domElement.style.opacity = '1';
+        this.tick();
+      }
+
       setColorScheme(scheme) {
+        // Handle disable (scheme 0)
+        if (scheme === 0) {
+          this.disable();
+          return;
+        }
+
+        // Re-enable if was disabled
+        if (!this.isEnabled) {
+          this.enable();
+        }
+
         const colorSchemes = {
           1: {
             // Orange + Navy Blue
