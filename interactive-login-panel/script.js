@@ -529,9 +529,133 @@ document.addEventListener('DOMContentLoaded', function() {
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(() => this.tick());
       }
+
+      setColorScheme(scheme) {
+        const colorSchemes = {
+          1: {
+            // Orange + Navy Blue
+            color1: new THREE.Vector3(0.945, 0.353, 0.133), // F15A22 - Orange
+            color2: new THREE.Vector3(0.039, 0.055, 0.153), // 0a0e27 - Navy Blue
+            background: 0x0a0e27,
+            darkBase: new THREE.Vector3(0.039, 0.055, 0.153)
+          },
+          2: {
+            // Turquoise + Coral Red-Orange
+            color1: new THREE.Vector3(1.0, 0.424, 0.314),   // FF6C50 - Coral Red-Orange
+            color2: new THREE.Vector3(0.251, 0.878, 0.816), // 40E0D0 - Turquoise
+            background: 0x0a0e27,
+            darkBase: new THREE.Vector3(0.039, 0.055, 0.153)
+          },
+          3: {
+            // Orange + Navy + Turquoise
+            color1: new THREE.Vector3(0.945, 0.353, 0.133), // F15A22 - Orange
+            color2: new THREE.Vector3(0.039, 0.055, 0.153), // 0a0e27 - Navy Blue
+            color3: new THREE.Vector3(0.251, 0.878, 0.816), // 40E0D0 - Turquoise
+            background: 0x0a0e27,
+            darkBase: new THREE.Vector3(0.039, 0.055, 0.153)
+          },
+          4: {
+            // Orange/Coral + Teal + Beige/Peach
+            color1: new THREE.Vector3(0.949, 0.4, 0.2),     // F26633 - Orange/Coral
+            color2: new THREE.Vector3(0.176, 0.42, 0.427),  // 2D6B6D - Teal/Blue-Green
+            color3: new THREE.Vector3(0.82, 0.686, 0.612),  // D1AF9C - Beige/Peach
+            background: 0x2D6B6D,
+            darkBase: new THREE.Vector3(0.176, 0.42, 0.427)
+          },
+          5: {
+            // Orange + Dark Teal + Black
+            color1: new THREE.Vector3(0.945, 0.353, 0.133), // F15A22 - Orange
+            color2: new THREE.Vector3(0.0, 0.259, 0.22),    // 004238 - Dark Teal
+            color3: new THREE.Vector3(0.0, 0.0, 0.0),       // 000000 - Black
+            background: 0x004238,
+            darkBase: new THREE.Vector3(0.0, 0.259, 0.22)
+          }
+        };
+
+        const colors = colorSchemes[scheme];
+        if (!colors) return;
+
+        const uniforms = this.uniforms;
+
+        // Update scene background
+        this.scene.background = new THREE.Color(colors.background);
+        uniforms.uDarkNavy.value.copy(colors.darkBase);
+
+        // Apply colors based on scheme
+        if (scheme === 3) {
+          uniforms.uColor1.value.copy(colors.color1);
+          uniforms.uColor2.value.copy(colors.color2);
+          uniforms.uColor3.value.copy(colors.color3);
+          uniforms.uColor4.value.copy(colors.color1);
+          uniforms.uColor5.value.copy(colors.color2);
+          uniforms.uColor6.value.copy(colors.color3);
+        } else if (scheme === 4) {
+          uniforms.uColor1.value.copy(colors.color1);
+          uniforms.uColor2.value.copy(colors.color2);
+          uniforms.uColor3.value.copy(colors.color3);
+          uniforms.uColor4.value.copy(colors.color1);
+          uniforms.uColor5.value.copy(colors.color2);
+          uniforms.uColor6.value.copy(colors.color3);
+        } else if (scheme === 5) {
+          uniforms.uColor1.value.copy(colors.color1);
+          uniforms.uColor2.value.copy(colors.color2);
+          uniforms.uColor3.value.copy(colors.color1);
+          uniforms.uColor4.value.copy(colors.color3);
+          uniforms.uColor5.value.copy(colors.color1);
+          uniforms.uColor6.value.copy(colors.color3);
+        } else {
+          // Schemes 1 and 2 - alternate between 2 colors
+          uniforms.uColor1.value.copy(colors.color1);
+          uniforms.uColor2.value.copy(colors.color2);
+          uniforms.uColor3.value.copy(colors.color1);
+          uniforms.uColor4.value.copy(colors.color2);
+          uniforms.uColor5.value.copy(colors.color1);
+          uniforms.uColor6.value.copy(colors.color2);
+        }
+
+        // Adjust settings per scheme
+        if (scheme === 1) {
+          uniforms.uGradientSize.value = 0.45;
+          uniforms.uGradientCount.value = 12.0;
+          uniforms.uSpeed.value = 1.5;
+          uniforms.uColor1Weight.value = 0.5;
+          uniforms.uColor2Weight.value = 1.8;
+        } else if (scheme === 2) {
+          uniforms.uGradientSize.value = 1.0;
+          uniforms.uGradientCount.value = 6.0;
+          uniforms.uSpeed.value = 1.2;
+          uniforms.uColor1Weight.value = 1.0;
+          uniforms.uColor2Weight.value = 1.0;
+        } else if (scheme === 5) {
+          uniforms.uGradientSize.value = 0.45;
+          uniforms.uGradientCount.value = 12.0;
+          uniforms.uSpeed.value = 1.5;
+          uniforms.uColor1Weight.value = 0.5;
+          uniforms.uColor2Weight.value = 1.8;
+        } else {
+          uniforms.uGradientSize.value = 0.6;
+          uniforms.uGradientCount.value = 10.0;
+          uniforms.uSpeed.value = 1.3;
+          uniforms.uColor1Weight.value = 0.8;
+          uniforms.uColor2Weight.value = 1.2;
+        }
+      }
     }
 
     // Initialize liquid gradient
-    new LiquidGradient(gradientContainer);
+    const liquidGradient = new LiquidGradient(gradientContainer);
+
+    // Scheme buttons
+    const schemeButtons = document.querySelectorAll('.scheme-btn');
+    schemeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const scheme = parseInt(btn.dataset.scheme);
+        liquidGradient.setColorScheme(scheme);
+
+        // Update active state
+        schemeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
   }
 });
