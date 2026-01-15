@@ -1,19 +1,81 @@
 document.addEventListener('DOMContentLoaded', function() {
   // SVG letter animation - add play class on hover, remove when animation ends
   const svg = document.getElementById('a');
-  if (svg) {
-    const lastE = svg.querySelectorAll('.e')[21]; // Last (22nd) .e element
+  const graphicsPanel = document.querySelector('.graphics-panel');
+  const textGroup = document.querySelector('#a .text-group');
+  
+  if (svg && textGroup) {
+    const lastE = textGroup.querySelectorAll('.e')[21]; // Last (22nd) .e element
     
     svg.addEventListener('mouseenter', () => {
-      svg.classList.add('play');
+      textGroup.classList.add('play');
     });
     
     // Listen for animation end on the last element
     if (lastE) {
       lastE.addEventListener('animationend', () => {
-        svg.classList.remove('play');
+        textGroup.classList.remove('play');
       });
     }
+  }
+
+  // 3D tilt effect following mouse cursor with smooth lerping
+  if (svg && graphicsPanel) {
+    const maxTilt = 30;
+    const lerpFactor = 0.15; // Smoothing factor (0-1, lower = smoother)
+    
+    let targetRotateX = 0;
+    let targetRotateY = 0;
+    let currentRotateX = 0;
+    let currentRotateY = 0;
+    let isHovering = false;
+    let animationId = null;
+    
+    function lerp(current, target, factor) {
+      return current + (target - current) * factor;
+    }
+    
+    function animate() {
+      currentRotateX = lerp(currentRotateX, targetRotateX, lerpFactor);
+      currentRotateY = lerp(currentRotateY, targetRotateY, lerpFactor);
+      
+      svg.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+      
+      // Continue animating if values haven't settled
+      if (Math.abs(currentRotateX - targetRotateX) > 0.01 || 
+          Math.abs(currentRotateY - targetRotateY) > 0.01 || 
+          isHovering) {
+        animationId = requestAnimationFrame(animate);
+      }
+    }
+    
+    graphicsPanel.addEventListener('mousemove', (e) => {
+      const rect = graphicsPanel.getBoundingClientRect();
+      
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      
+      targetRotateY = x * maxTilt;
+      targetRotateX = -y * maxTilt;
+      
+      if (!animationId) {
+        animationId = requestAnimationFrame(animate);
+      }
+    });
+    
+    graphicsPanel.addEventListener('mouseenter', () => {
+      isHovering = true;
+      if (!animationId) {
+        animationId = requestAnimationFrame(animate);
+      }
+    });
+    
+    graphicsPanel.addEventListener('mouseleave', () => {
+      isHovering = false;
+      targetRotateX = 0;
+      targetRotateY = 0;
+      // Animation continues until values settle back to 0
+    });
   }
 
   const form = document.getElementById('signup-form');
