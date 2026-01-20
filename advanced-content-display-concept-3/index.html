@@ -18,6 +18,8 @@
             @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
             /* Code Font Monospace */
             @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+            /* Font Awesome */
+            @import url('https://kit.fontawesome.com/ff279f72be.css');
 
             @scope {
 
@@ -301,7 +303,121 @@
                         border-bottom: none;
                     }
                 }
+
+                @keyframes iconSway {
+                    0%, 100% {
+                        transform: rotate(12deg);
+                    }
+                    50% {
+                        transform: rotate(-12deg);
+                    }
+                }
+
+                /* Admonition Styles */
+                .ast-admonition {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    padding: 1.25rem;
+                    margin: 1.5rem 0;
+                    border-radius: 0.5rem;
+                    border: 2px solid;
+                    box-shadow: 2px 2px 0 currentColor;
+                    transition: box-shadow 0.2s ease, transform 0.2s ease;
+                    transform: perspective(1000px) translate(0, 0);
+
+                    &:hover {
+                        box-shadow: 4px 6px 0 currentColor;
+                        transform: perspective(1000px) translate(-2px, -4px);
+                    }
+
+                    .ast-admonition-title {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        font-family: 'Special Gothic Expanded One', sans-serif;
+                        font-size: 2rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        margin: 0;
+
+                        &::before {
+                            font: var(--fa-font-light);
+                            font-size: 2.25rem;
+                            line-height: 1;
+                            flex-shrink: 0;
+                            transform-origin: bottom center;
+                            animation: iconSway 2s infinite;
+                        }
+                    }
+
+                    .ast-admonition-content {
+                        p {
+                            margin: 0;
+                            font-size: 0.9375rem;
+                        }
+                    }
+
+                    /* Note - Blue */
+                    &.ast-admonition--note {
+                        background: #e8f4fd;
+                        border-color: #1976d2;
+                        color: #1976d2;
+
+                        .ast-admonition-title::before {
+                            content: '\f05a'; /* circle-info */
+                        }
+                    }
+
+                    /* Tip - Green */
+                    &.ast-admonition--tip {
+                        background: #e8f5e9;
+                        border-color: #388e3c;
+                        color: #388e3c;
+
+                        .ast-admonition-title::before {
+                            content: '\f0eb'; /* lightbulb */
+                        }
+                    }
+
+                    /* Important - Purple */
+                    &.ast-admonition--important {
+                        background: #f3e5f5;
+                        border-color: #7b1fa2;
+                        color: #7b1fa2;
+
+                        .ast-admonition-title::before {
+                            content: '\f005'; /* star */
+                        }
+                    }
+
+                    /* Warning - Orange */
+                    &.ast-admonition--warning {
+                        background: #fff3e0;
+                        border-color: #f57c00;
+                        color: #f57c00;
+
+                        .ast-admonition-title::before {
+                            content: '\f071'; /* triangle-exclamation */
+                        }
+                    }
+
+                    /* Caution - Red */
+                    &.ast-admonition--caution {
+                        background: #ffebee;
+                        border-color: #d32f2f;
+                        color: #d32f2f;
+
+                        .ast-admonition-title::before {
+                            content: '\f06a'; /* circle-exclamation */
+                        }
+                    }
+                }
+
+                
             }
+
+            
         </style>
 
         <div class="ast-document">
