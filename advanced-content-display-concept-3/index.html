@@ -194,6 +194,7 @@
                     font-family: 'Google Sans', sans-serif;
                     line-height: 1.5;
                     max-width: 96ch;
+                    margin: 0 auto;
                 }
 
                 h1,
@@ -259,8 +260,17 @@
                 }
 
                 img {
-                    border-radius: 0.5rem;
+                    border: 2px solid #000;
+                    border-collapse: collapse;
+                    border-radius: 1rem;
+                    corner-shape: squircle;
                     display: inline-block;
+                    box-shadow: 2px 4px 0;
+                    transition: transform 0.2s ease;
+
+                    &:hover {
+                        transform: scale(1.025);
+                    }
                 }
 
                 /* Table Styles */
