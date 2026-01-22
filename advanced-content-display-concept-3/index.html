@@ -12,14 +12,25 @@
         <style>
             /* TEMP!!! This will be removed once we're in ShadowDOM mode */
             @import url('https://cdn.strongmind.com/backpack-ui/latest/assets/css/tailwind-preflight.css');
+
             /* Heading Font */
-            @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+
             /* Body Font */
             @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
             /* Blockquote Font */
             @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
             /* Code Font Monospace */
             @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
             /* Font Awesome */
             @import url('https://kit.fontawesome.com/ff279f72be.css');
 
@@ -192,58 +203,143 @@
                 }
 
                 /* Custom Styles */
-                > div {
+                >div {
+                    background-color: #F6F0E9;
                     font-family: 'Google Sans', sans-serif;
+                    font-family: 'Nunito', sans-serif;
                     line-height: 1.5;
-                    max-width: 96ch;
-                    margin: 0 auto;
+                    
                 }
 
-                h1,
+                section {
+                    max-width: 96ch;
+                    margin: 0 auto;
+                    padding: 0 48px;
+                }
+
+                header:has(h1) {
+                    /* background-color: #212121; */
+                    max-width: 96ch;
+                    margin: 0 auto;
+                    padding: 48px;
+
+                    h1 {
+                        font-family: "Jua", sans-serif;
+                        font-family: "Dosis", sans-serif;
+                        font-family: "Bagel Fat One", cursive;
+                        font-family: "DynaPuff", cursive;
+                        font-weight: 900;
+                        font-style: normal;
+                        font-size: 4.6rem;
+                        line-height: 1;
+                        margin: 0;
+
+                        span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
+                        span:nth-child(5n+2) { color: #7A5C8E; text-shadow: 2px 4px 0px #5B456B; }
+                        span:nth-child(5n+3) { color: #0D5A84; text-shadow: 2px 4px 0px #093D5A; }
+                        span:nth-child(5n+4) { color: #EB5847; text-shadow: 2px 4px 0px #A33D31; }
+                        span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; }
+                    }
+                }
+
                 h2,
                 h3,
                 h4,
                 h5,
                 h6 {
-                    font-family: 'Special Gothic Expanded One', sans-serif;
+                    font-family: "Bagel Fat One", cursive;
+                    font-family: "DynaPuff", cursive;
+                    font-family: "Dosis", sans-serif;
+                    font-weight: 900;
+                    letter-spacing: -.5px;
                 }
 
-                h1 {
-                    background-color: #212121;
-                    color: #fff;
-                    font-size: 4.6rem;
-                    line-height: 1;
-                    padding: 24px 36px;
-                }
+                section:has(h2) {
 
-                h2 {
-                    font-size: 2.4rem;
-                    line-height: 1.2;
-                    margin-bottom: 1rem;
+                    h2 {
+                        font-size: 2.4rem;
+                        line-height: 1.2;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            transform: translateX(-48px);
+                            width: 12px;
+                            height: 100%;
+                            border-radius: 16px;
+                            background-color: red;
+                        }
+                    }
+
+                    &:nth-of-type(5n+1) { 
+                        h2 {
+                            position: relative;
+
+                            &::before {
+                            background-color: #543979;
+                        }
+                     }
+                    }
+
+                    &:nth-of-type(5n+2) { 
+                        h2 {
+                            position: relative;
+
+                            &::before {
+                                background-color: #7A5C8E;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(5n+3) { 
+                        h2 {
+                            position: relative;
+
+                            &::before {
+                                background-color: #0D5A84;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(5n+4) { 
+                        h2 {
+                            position: relative;
+
+                            &::before {
+                                background-color: #EB5847;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(5n+5) { 
+                        h2 {
+                            position: relative;
+
+                            &::before {
+                                background-color: #F0B253;
+                            }
+                        }
+                    }
                 }
 
                 h3 {
                     font-size: 1.8rem;
                     line-height: 1.3;
-                    margin-bottom: 1rem;
                 }
 
                 h4 {
                     font-size: 1.6rem;
                     line-height: 1.4;
-                    margin-bottom: 1rem;
                 }
 
                 h5 {
                     font-size: 1.4rem;
                     line-height: 1.5;
-                    margin-bottom: 1rem;
                 }
 
                 h6 {
                     font-size: 1.2rem;
                     line-height: 1.6;
-                    margin-bottom: 1rem;
                 }
 
                 hr {
@@ -341,9 +437,12 @@
                 }
 
                 @keyframes iconSway {
-                    0%, 100% {
+
+                    0%,
+                    100% {
                         transform: rotate(12deg);
                     }
+
                     50% {
                         transform: rotate(-12deg);
                     }
@@ -402,7 +501,8 @@
                         color: #1976d2;
 
                         .sm-dfp-title::before {
-                            content: '\f05a'; /* circle-info */
+                            content: '\f05a';
+                            /* circle-info */
                         }
                     }
 
@@ -413,7 +513,8 @@
                         color: #388e3c;
 
                         .sm-dfp-title::before {
-                            content: '\f0eb'; /* lightbulb */
+                            content: '\f0eb';
+                            /* lightbulb */
                         }
                     }
 
@@ -424,7 +525,8 @@
                         color: #7b1fa2;
 
                         .sm-dfp-title::before {
-                            content: '\f005'; /* star */
+                            content: '\f005';
+                            /* star */
                         }
                     }
 
@@ -435,7 +537,8 @@
                         color: #f57c00;
 
                         .sm-dfp-title::before {
-                            content: '\f071'; /* triangle-exclamation */
+                            content: '\f071';
+                            /* triangle-exclamation */
                         }
                     }
 
@@ -446,7 +549,8 @@
                         color: #d32f2f;
 
                         .sm-dfp-title::before {
-                            content: '\f06a'; /* circle-exclamation */
+                            content: '\f06a';
+                            /* circle-exclamation */
                         }
                     }
                 }
@@ -517,112 +621,205 @@
         </style>
 
         <div class="ast-document">
-            <h1>H1: The Complete Guide to Understanding Document Structure and
-                Semantic HTML</h1>
-            <h2>H2: How Typography and Visual Hierarchy Improve User Experience</h2>
-            <h3>H3: Best Practices for Accessible Content Design and Development</h3>
-            <h4>H4: Understanding the Role of Headings in Navigation and Screen
-                Readers</h4>
-            <h5>H5: Key Considerations When Choosing Font Sizes for Multi-Line
-                Headings</h5>
-            <h6>H6: Additional Notes on Line Height and Letter Spacing for Wrapped
-                Text</h6>
+            <header>
+                <h1>How Typography and Visual Hierarchy Improve User Experience</h1>
+            </header>
 
-            <hr />
+            <section>
+                <h2>How Typography and Visual Hierarchy Improve User Experience</h2>
+            </section>
+            <section>
+                <h3>Best Practices for Accessible Content Design and Development</h3>
+            </section>
+            <section>
+                <h4>Understanding the Role of Headings in Navigation and Screen
+                    Readers</h4>
+            </section>
+            <section>
+                <h5>Key Considerations When Choosing Font Sizes for Multi-Line
+                    Headings</h5>
+            </section>
+            <section>
+                <h6>Additional Notes on Line Height and Letter Spacing for Wrapped
+                    Text</h6>
+            </section>
 
-            <h2>Paragraphs and Inline Formatting</h2>
-            <p>This is a regular paragraph with <strong>bold text</strong>, <em>italic text</em>,
-                and <em><strong>bold italic text</strong></em>. You can also use <del>strikethrough</del> for deleted
-                content.</p>
-            <p>Here's some <code>inline code</code> within a sentence.</p>
-            <p>Here's a line with a hard break:<br />This text appears on a new line.</p>
+            <section>
+                <hr />
+            </section>
 
-            <hr />
+            <section>
+                <h2>Paragraphs and Inline Formatting</h2>
+            </section>
 
-            <h2>Links and Images</h2>
-            <p>Visit <a href="https://www.strongmind.com"
-                    title="StrongMind Homepage">StrongMind</a> for more information.</p>
-            <figure>
-                <img src="https://picsum.photos/150" alt="Inline Image" />
-            </figure>
+            <section>
+                <p>This is a regular paragraph with <strong>bold text</strong>, <em>italic text</em>,
+                    and <em><strong>bold italic text</strong></em>. You can also use <del>strikethrough</del> for
+                    deleted
+                    content.</p>
+            </section>
+            
+            <section>
+                <p>Here's some <code>inline code</code> within a sentence.</p>
+            </section>
+            
+            <section>
+                <p>Here's a line with a hard break:<br />This text appears on a new line.</p>
+            </section>
 
-            <hr />
+            <section>
+                <hr />
+            </section>
 
-            <h2>Block Image with Caption</h2>
-            <figure>
-                <img src="https://picsum.photos/800/400"
-                    alt="A beautiful landscape photograph showing mountains at sunset" />
-            </figure>
-            <p><em>Figure 1: A stunning mountain landscape at golden hour</em></p>
+            <section>
+                <h2>Links and Images</h2>
+            </section>
+            
+            <section>
+                <p>Visit <a href="https://www.strongmind.com" title="StrongMind Homepage">StrongMind</a> for more
+                    information.</p>
+            </section>
+            
+            <section>
+                <figure>
+                    <img src="https://picsum.photos/150" alt="Inline Image" />
+                </figure>
+            </section>
 
-            <hr />
+            <section>
+                <hr />
+            </section>
 
-            <h2>Lists</h2>
+            <section>
+                <h2>Block Image with Caption</h2>
+            </section>
+            
+            <section>
+                <figure>
+                    <img src="https://picsum.photos/800/400"
+                        alt="A beautiful landscape photograph showing mountains at sunset" />
+                </figure>
+            </section>
+            
+            <section>
+                <p><em>Figure 1: A stunning mountain landscape at golden hour</em></p>
+            </section>
 
-            <h3>Unordered List</h3>
-            <ul>
-                <li>First item with <strong>bold</strong></li>
-                <li>Second item with <em>italic</em></li>
-                <li>
-                    Third item with <code>code</code>
-                    <ul>
-                        <li>Nested item one</li>
-                        <li>Nested item two</li>
-                    </ul>
-                </li>
-                <li>Fourth item with a <a href="https://example.com">link</a></li>
-            </ul>
+            <section>
+                <hr />
+            </section>
 
-            <h3>Ordered List</h3>
-            <ol start="1">
-                <li>First step</li>
-                <li>Second step</li>
-                <li>
-                    Third step
-                    <ol>
-                        <li>Sub-step A</li>
-                        <li>Sub-step B</li>
-                    </ol>
-                </li>
-                <li>Fourth step</li>
-            </ol>
+            <section>
+                <h2>Lists</h2>
+            </section>
 
-            <h3>Task List</h3>
-            <ul>
-                <li><input type="checkbox" checked disabled />Completed task</li>
-                <li><input type="checkbox" checked disabled />Another completed task</li>
-                <li><input type="checkbox" disabled />Incomplete task</li>
-                <li><input type="checkbox" disabled />Another incomplete task</li>
-            </ul>
+            <section>
+                <h3>Unordered List</h3>
+            </section>
+            
+            <section>
+                <ul>
+                    <li>First item with <strong>bold</strong></li>
+                    <li>Second item with <em>italic</em></li>
+                    <li>
+                        Third item with <code>code</code>
+                        <ul>
+                            <li>Nested item one</li>
+                            <li>Nested item two</li>
+                        </ul>
+                    </li>
+                    <li>Fourth item with a <a href="https://example.com">link</a></li>
+                </ul>
+            </section>
 
-            <hr />
+            <section>
+                <h3>Ordered List</h3>
+            </section>
+            
+            <section>
+                <ol start="1">
+                    <li>First step</li>
+                    <li>Second step</li>
+                    <li>
+                        Third step
+                        <ol>
+                            <li>Sub-step A</li>
+                            <li>Sub-step B</li>
+                        </ol>
+                    </li>
+                    <li>Fourth step</li>
+                </ol>
+            </section>
 
-            <h2>Blockquotes</h2>
-            <blockquote>
-                <p>Deep within the ancient <strong>Sherwood Forest</strong>, a legend was born of a man who defied the
-                    cruel laws of the land. <em>Robin Hood</em>, once a nobleman stripped of his title, became the
-                    unlikely hero of the poor and downtrodden. With his trusted band of <strong>Merry Men</strong>, he
-                    lived among the towering oaks and winding streams. They swore an oath to take from the wealthy and
-                    give to those who had nothing. The forest itself seemed to protect them, hiding their camps from the
-                    <em>Sheriff of Nottingham's</em> relentless pursuit.</p>
-                <p>One fateful morning, Robin drew his bow and aimed at a carriage bearing the <strong>Prince's
-                        gold</strong>. The arrow flew true, striking the lock and spilling coins onto the muddy road.
-                    <em>"For the people of England!"</em> he cried, as his men gathered the treasure. By nightfall, the
-                    villages surrounding Sherwood rejoiced with full bellies and renewed hope. And so the tale spread
-                    across the kingdom—of an outlaw with a <strong>heart of gold</strong> and aim that <em>never</em>
-                    missed.</p>
-            </blockquote>
-            <blockquote>
-                <p>This is a blockquote with <strong>bold</strong> and <em>italic</em> text.</p>
-                <p>It can span multiple paragraphs.</p>
-            </blockquote>
+            <section>
+                <h3>Task List</h3>
+            </section>
+            
+            <section>
+                <ul>
+                    <li><input type="checkbox" checked disabled />Completed task</li>
+                    <li><input type="checkbox" checked disabled />Another completed task</li>
+                    <li><input type="checkbox" disabled />Incomplete task</li>
+                    <li><input type="checkbox" disabled />Another incomplete task</li>
+                </ul>
+            </section>
 
-            <hr />
+            <section>
+                <hr />
+            </section>
 
-            <h2>Code Blocks</h2>
-            <p>Inline: Use the <code>console.log()</code> function to debug.</p>
+            <section>
+                <h2>Blockquotes</h2>
+            </section>
+            
+            <section>
+                <blockquote>
+                    <p>Deep within the ancient <strong>Sherwood Forest</strong>, a legend was born of a man who defied
+                        the
+                        cruel laws of the land. <em>Robin Hood</em>, once a nobleman stripped of his title, became the
+                        unlikely hero of the poor and downtrodden. With his trusted band of <strong>Merry Men</strong>,
+                        he
+                        lived among the towering oaks and winding streams. They swore an oath to take from the wealthy
+                        and
+                        give to those who had nothing. The forest itself seemed to protect them, hiding their camps from
+                        the
+                        <em>Sheriff of Nottingham's</em> relentless pursuit.
+                    </p>
+                    <p>One fateful morning, Robin drew his bow and aimed at a carriage bearing the <strong>Prince's
+                            gold</strong>. The arrow flew true, striking the lock and spilling coins onto the muddy
+                        road.
+                        <em>"For the people of England!"</em> he cried, as his men gathered the treasure. By nightfall,
+                        the
+                        villages surrounding Sherwood rejoiced with full bellies and renewed hope. And so the tale
+                        spread
+                        across the kingdom—of an outlaw with a <strong>heart of gold</strong> and aim that
+                        <em>never</em>
+                        missed.
+                    </p>
+                </blockquote>
+            </section>
+            
+            <section>
+                <blockquote>
+                    <p>This is a blockquote with <strong>bold</strong> and <em>italic</em> text.</p>
+                    <p>It can span multiple paragraphs.</p>
+                </blockquote>
+            </section>
 
-            <pre data-language="javascript"><code>// JavaScript code with syntax highlighting
+            <section>
+                <hr />
+            </section>
+
+            <section>
+                <h2>Code Blocks</h2>
+            </section>
+            
+            <section>
+                <p>Inline: Use the <code>console.log()</code> function to debug.</p>
+            </section>
+
+            <section>
+                <pre data-language="javascript"><code>// JavaScript code with syntax highlighting
 function calculateArea(radius) {
     const PI = 3.14159;
     return PI * radius ** 2;
@@ -630,8 +827,10 @@ function calculateArea(radius) {
 
 const area = calculateArea(5);
 console.log(`The area is ${area}`);</code></pre>
+            </section>
 
-            <pre data-language="python"><code># Python example
+            <section>
+                <pre data-language="python"><code># Python example
 def fibonacci(n):
     &quot;&quot;&quot;Generate Fibonacci sequence up to n.&quot;&quot;&quot;
     a, b = 0, 1
@@ -641,8 +840,10 @@ def fibonacci(n):
 
 for num in fibonacci(100):
     print(num)</code></pre>
+            </section>
 
-            <pre data-language="ruby"><code># Ruby example
+            <section>
+                <pre data-language="ruby"><code># Ruby example
 class LearningComponent &lt; ApplicationRecord
     validates :title, presence: true
 
@@ -650,88 +851,124 @@ class LearningComponent &lt; ApplicationRecord
         structured_content&amp;.dig(&#39;schema_version&#39;) || &#39;1.0&#39;
     end
 end</code></pre>
+            </section>
 
-            <hr />
+            <section>
+                <hr />
+            </section>
 
-            <h2>Tables</h2>
-            <table>
-                <tr>
-                    <th>Feature</th>
-                    <th>Supported</th>
-                    <th>Notes</th>
-                </tr>
-                <tr>
-                    <td>Bold</td>
-                    <td>Yes</td>
-                    <td>Use <code>**text**</code></td>
-                </tr>
-                <tr>
-                    <td>Italic</td>
-                    <td>Yes</td>
-                    <td>Use <code>*text*</code></td>
-                </tr>
-                <tr>
-                    <td>Strikethrough</td>
-                    <td>Yes</td>
-                    <td>Use <code>~~text~~</code></td>
-                </tr>
-                <tr>
-                    <td>Code</td>
-                    <td>Yes</td>
-                    <td>Use backticks</td>
-                </tr>
-                <tr>
-                    <td>Links</td>
-                    <td>Yes</td>
-                    <td><code>[text](url)</code></td>
-                </tr>
-            </table>
+            <section>
+                <h2>Tables</h2>
+            </section>
 
-            <table>
-                <tr>
-                    <th>Left Aligned</th>
-                    <th>Center Aligned</th>
-                    <th>Right Aligned</th>
-                </tr>
-                <tr>
-                    <td>Row 1, Col 1</td>
-                    <td>Row 1, Col 2</td>
-                    <td>Row 1, Col 3</td>
-                </tr>
-                <tr>
-                    <td>Row 2, Col 1</td>
-                    <td>Row 2, Col 2</td>
-                    <td>Row 2, Col 3</td>
-                </tr>
-                <tr>
-                    <td><strong>Bold cell</strong></td>
-                    <td><em>Italic cell</em></td>
-                    <td><code>Code cell</code></td>
-                </tr>
-            </table>
+            <section>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Supported</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Bold</td>
+                        <td>Yes</td>
+                        <td>Use <code>**text**</code></td>
+                    </tr>
+                    <tr>
+                        <td>Italic</td>
+                        <td>Yes</td>
+                        <td>Use <code>*text*</code></td>
+                    </tr>
+                    <tr>
+                        <td>Strikethrough</td>
+                        <td>Yes</td>
+                        <td>Use <code>~~text~~</code></td>
+                    </tr>
+                    <tr>
+                        <td>Code</td>
+                        <td>Yes</td>
+                        <td>Use backticks</td>
+                    </tr>
+                    <tr>
+                        <td>Links</td>
+                        <td>Yes</td>
+                        <td><code>[text](url)</code></td>
+                    </tr>
+                </table>
+            </section>
 
-            <hr />
+            <section>
+                <table>
+                    <tr>
+                        <th>Left Aligned</th>
+                        <th>Center Aligned</th>
+                        <th>Right Aligned</th>
+                    </tr>
+                    <tr>
+                        <td>Row 1, Col 1</td>
+                        <td>Row 1, Col 2</td>
+                        <td>Row 1, Col 3</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2, Col 1</td>
+                        <td>Row 2, Col 2</td>
+                        <td>Row 2, Col 3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bold cell</strong></td>
+                        <td><em>Italic cell</em></td>
+                        <td><code>Code cell</code></td>
+                    </tr>
+                </table>
+            </section>
 
-            <h2>Mathematics</h2>
-            <p>Inline math: The quadratic formula is <span>\(x = \frac{-b \pm
-                    \sqrt{b^2-4ac}}{2a}\)</span>.</p>
-            <p>Block math:</p>
-            <p>$$ \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} $$</p>
-            <p>$$ E = mc^2 $$</p>
-            <p>$$ \sum_{i=1}^{n} i = \frac{n(n+1)}{2} $$</p>
+            <section>
+                <hr />
+            </section>
 
-            <hr />
+            <section>
+                <h2>Mathematics</h2>
+            </section>
+            <section>
+                <p>Inline math: The quadratic formula is <span>\(x = \frac{-b \pm
+                        \sqrt{b^2-4ac}}{2a}\)</span>.</p>
+            </section>
 
-            <h2>Diagrams (Mermaid)</h2>
-            <pre>graph TD
+            <section>
+                <p>Block math:</p>
+            </section>
+
+            <section>
+                <p>$$ \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} $$</p>
+            </section>
+
+            <section>
+                <p>$$ E = mc^2 $$</p>
+            </section>
+
+            <section>
+                <p>$$ \sum_{i=1}^{n} i = \frac{n(n+1)}{2} $$</p>
+            </section>
+
+            <section>
+                <hr />
+            </section>
+
+            <section>
+                <h2>Diagrams (Mermaid)</h2>
+            </section>
+
+            <section>
+                <pre>graph TD
 A[Start] --&gt; B{Is content valid?}
 B --&gt;|Yes| C[Parse to AST]
 B --&gt;|No| D[Return error]
 C --&gt; E[Render template]
 E --&gt; F[Display HTML]
 D --&gt; G[Show error message]</pre>
+            </section>
 
-            <pre>sequenceDiagram
+            <section>
+                <pre>sequenceDiagram
 participant User
 participant Controller
 participant Parser
@@ -743,100 +980,157 @@ Parser--&gt;&gt;Controller: Return AST
 Controller-&gt;&gt;Template: Render with AST
 Template--&gt;&gt;Controller: HTML output
 Controller--&gt;&gt;User: Display page</pre>
+            </section>
 
-            <hr />
+            <section>
+                <hr />
+            </section>
 
-            <h2>Admonitions</h2>
-            <aside class="sm-dfp sm-dfp-note">
-                <p class="sm-dfp-title">Note</p>
-                <div class="sm-dfp-content">
-                    <p>This is a note admonition with helpful information.</p>
-                </div>
-            </aside>
+            <section>
+                <h2>Admonitions</h2>
+            </section>
 
-            <aside class="sm-dfp sm-dfp-tip">
-                <p class="sm-dfp-title">Tip</p>
-                <div class="sm-dfp-content">
-                    <p>This is a tip with a useful suggestion for the reader.</p>
-                </div>
-            </aside>
+            <section>
+                <aside class="sm-dfp sm-dfp-note">
+                    <p class="sm-dfp-title">Note</p>
+                    <div class="sm-dfp-content">
+                        <p>This is a note admonition with helpful information.</p>
+                    </div>
+                </aside>
+            </section>
 
-            <aside class="sm-dfp sm-dfp-important">
-                <p class="sm-dfp-title">Important</p>
-                <div class="sm-dfp-content">
-                    <p>This is important information that should not be overlooked.</p>
-                </div>
-            </aside>
+            <section>
+                <aside class="sm-dfp sm-dfp-tip">
+                    <p class="sm-dfp-title">Tip</p>
+                    <div class="sm-dfp-content">
+                        <p>This is a tip with a useful suggestion for the reader.</p>
+                    </div>
+                </aside>
+            </section>
 
-            <aside class="sm-dfp sm-dfp-warning">
-                <p class="sm-dfp-title">Warning</p>
-                <div class="sm-dfp-content">
-                    <p>This is a warning about potential issues or dangers.</p>
-                </div>
-            </aside>
+            <section>
+                <aside class="sm-dfp sm-dfp-important">
+                    <p class="sm-dfp-title">Important</p>
+                    <div class="sm-dfp-content">
+                        <p>This is important information that should not be overlooked.</p>
+                    </div>
+                </aside>
+            </section>
 
-            <aside class="sm-dfp sm-dfp-caution">
-                <p class="sm-dfp-title">Caution</p>
-                <div class="sm-dfp-content">
-                    <p>This is a caution about something that requires careful attention.</p>
-                </div>
-            </aside>
+            <section>
+                <aside class="sm-dfp sm-dfp-warning">
+                    <p class="sm-dfp-title">Warning</p>
+                    <div class="sm-dfp-content">
+                        <p>This is a warning about potential issues or dangers.</p>
+                    </div>
+                </aside>
+            </section>
 
-            <hr />
+            <section>
+                <aside class="sm-dfp sm-dfp-caution">
+                    <p class="sm-dfp-title">Caution</p>
+                    <div class="sm-dfp-content">
+                        <p>This is a caution about something that requires careful attention.</p>
+                    </div>
+                </aside>
+            </section>
 
-            <h2>Footnotes</h2>
-            <p>Here is a sentence with a footnote<sup class="sm-footnote-ref"><a
-                        href="#fn-1">[1]</a></sup>. And here's another one<sup class="sm-footnote-ref"><a
-                        href="#fn-2">[2]</a></sup>.</p>
-            <p>You can also use named footnotes<sup class="sm-footnote-ref"><a
-                        href="#fn-note">[note]</a></sup> for better organization.</p>
+            <section>
+                <hr />
+            </section>
 
-            <hr />
+            <section>
+                <h2>Footnotes</h2>
+            </section>
 
-            <h2>Complex Nested Example</h2>
-            <ol start="1">
-                <li>
-                    <strong>First major topic</strong>
-                    This paragraph explains the first topic with <em>emphasis</em> and <code>code examples</code>.
-                    <ul>
-                        <li>Sub-point A</li>
-                        <li>Sub-point B with a </li>
-                    </ul>
-                </li>
-                <li><strong>Second major topic</strong></li>
-                <li>
-                    <strong>Third major topic</strong>
-                    The formula a^2 + b^2 = c^2 is fundamental.
-                </li>
-            </ol>
+            <section>
+                <p>Here is a sentence with a footnote<sup class="sm-footnote-ref"><a href="#fn-1">[1]</a></sup>. And
+                    here's
+                    another one<sup class="sm-footnote-ref"><a href="#fn-2">[2]</a></sup>.</p>
+            </section>
 
-            <hr />
+            <section>
+                <p>You can also use named footnotes<sup class="sm-footnote-ref"><a href="#fn-note">[note]</a></sup> for
+                    better organization.</p>
+            </section>
 
-            <h2>Summary</h2>
-            <p>This document demonstrates all <strong>pure markdown</strong> features supported by
-                the structured content parser.</p>
+            <section>
+                <hr />
+            </section>
 
-            <aside class="sm-footnote" id="fn-1">
-                <sup>1</sup>
-                <p>This is the first footnote with a detailed explanation.</p>
-            </aside>
+            <section>
+                <h2>Complex Nested Example</h2>
+            </section>
 
-            <aside class="sm-footnote" id="fn-2">
-                <sup>2</sup>
-                <p>This is the second footnote.</p>
-            </aside>
+            <section>
+                <ol start="1">
+                    <li>
+                        <strong>First major topic</strong>
+                        This paragraph explains the first topic with <em>emphasis</em> and <code>code examples</code>.
+                        <ul>
+                            <li>Sub-point A</li>
+                            <li>Sub-point B with a </li>
+                        </ul>
+                    </li>
+                    <li><strong>Second major topic</strong></li>
+                    <li>
+                        <strong>Third major topic</strong>
+                        The formula a^2 + b^2 = c^2 is fundamental.
+                    </li>
+                </ol>
+            </section>
 
-            <aside class="sm-footnote" id="fn-note">
-                <sup>note</sup>
-                <p>Named footnotes are easier to manage in longer documents.</p>
-            </aside>
+            <section>
+                <hr />
+            </section>
 
-            <aside class="sm-footnote" id="fn-pythagoras">
-                <sup>pythagoras</sup>
-                <p>The Pythagorean theorem, named after the ancient Greek mathematician.</p>
-            </aside>
+            <section>
+                <h2>Summary</h2>
+            </section>
+
+            <section>
+                <p>This document demonstrates all <strong>pure markdown</strong> features supported by
+                    the structured content parser.</p>
+            </section>
+
+            <section>
+                <aside class="sm-footnote" id="fn-1">
+                    <sup>1</sup>
+                    <p>This is the first footnote with a detailed explanation.</p>
+                </aside>
+            </section>
+
+            <section>
+                <aside class="sm-footnote" id="fn-2">
+                    <sup>2</sup>
+                    <p>This is the second footnote.</p>
+                </aside>
+            </section>
+
+            <section>
+                <aside class="sm-footnote" id="fn-note">
+                    <sup>note</sup>
+                    <p>Named footnotes are easier to manage in longer documents.</p>
+                </aside>
+            </section>
+
+            <section>
+                <aside class="sm-footnote" id="fn-pythagoras">
+                    <sup>pythagoras</sup>
+                    <p>The Pythagorean theorem, named after the ancient Greek mathematician.</p>
+                </aside>
+            </section>
         </div>
     </article>
+
+    <script>
+        // Wrap h1 words in spans for CSS styling
+        document.querySelectorAll('header h1').forEach(h1 => {
+            const words = h1.textContent.split(' ');
+            h1.innerHTML = words.map(word => `<span>${word}</span>`).join(' ');
+        });
+
+    </script>
 </body>
 
 </html>
