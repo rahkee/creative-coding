@@ -350,7 +350,7 @@
                 }
 
                 /* Admonition Styles */
-                .ast-admonition {
+                .sm-dfp {
                     display: flex;
                     flex-direction: column;
                     gap: 0.75rem;
@@ -368,7 +368,7 @@
                         transform: perspective(1000px) translate(-2px, -4px);
                     }
 
-                    .ast-admonition-title {
+                    .sm-dfp-title {
                         display: flex;
                         align-items: center;
                         gap: 0.75rem;
@@ -388,7 +388,7 @@
                         }
                     }
 
-                    .ast-admonition-content {
+                    .sm-dfp-content {
                         p {
                             margin: 0;
                             font-size: 0.9375rem;
@@ -396,63 +396,63 @@
                     }
 
                     /* Note - Blue */
-                    &.ast-admonition--note {
+                    &.sm-dfp-note {
                         background: #e8f4fd;
                         border-color: #1976d2;
                         color: #1976d2;
 
-                        .ast-admonition-title::before {
+                        .sm-dfp-title::before {
                             content: '\f05a'; /* circle-info */
                         }
                     }
 
                     /* Tip - Green */
-                    &.ast-admonition--tip {
+                    &.sm-dfp-tip {
                         background: #e8f5e9;
                         border-color: #388e3c;
                         color: #388e3c;
 
-                        .ast-admonition-title::before {
+                        .sm-dfp-title::before {
                             content: '\f0eb'; /* lightbulb */
                         }
                     }
 
                     /* Important - Purple */
-                    &.ast-admonition--important {
+                    &.sm-dfp-important {
                         background: #f3e5f5;
                         border-color: #7b1fa2;
                         color: #7b1fa2;
 
-                        .ast-admonition-title::before {
+                        .sm-dfp-title::before {
                             content: '\f005'; /* star */
                         }
                     }
 
                     /* Warning - Orange */
-                    &.ast-admonition--warning {
+                    &.sm-dfp-warning {
                         background: #fff3e0;
                         border-color: #f57c00;
                         color: #f57c00;
 
-                        .ast-admonition-title::before {
+                        .sm-dfp-title::before {
                             content: '\f071'; /* triangle-exclamation */
                         }
                     }
 
                     /* Caution - Red */
-                    &.ast-admonition--caution {
+                    &.sm-dfp-caution {
                         background: #ffebee;
                         border-color: #d32f2f;
                         color: #d32f2f;
 
-                        .ast-admonition-title::before {
+                        .sm-dfp-title::before {
                             content: '\f06a'; /* circle-exclamation */
                         }
                     }
                 }
 
                 /* Footnote Reference (inline) */
-                .ast-footnote-ref {
+                .sm-footnote-ref {
                     margin-bottom: 1rem;
 
                     a {
@@ -476,7 +476,7 @@
                 }
 
                 /* Footnote Definition */
-                .ast-footnote {
+                .sm-footnote {
                     display: flex;
                     align-items: center;
                     gap: 1rem;
@@ -747,37 +747,37 @@ Controller--&gt;&gt;User: Display page</pre>
             <hr />
 
             <h2>Admonitions</h2>
-            <aside class="ast-admonition ast-admonition--note">
-                <p class="ast-admonition-title">Note</p>
-                <div class="ast-admonition-content">
+            <aside class="sm-dfp sm-dfp-note">
+                <p class="sm-dfp-title">Note</p>
+                <div class="sm-dfp-content">
                     <p>This is a note admonition with helpful information.</p>
                 </div>
             </aside>
 
-            <aside class="ast-admonition ast-admonition--tip">
-                <p class="ast-admonition-title">Tip</p>
-                <div class="ast-admonition-content">
+            <aside class="sm-dfp sm-dfp-tip">
+                <p class="sm-dfp-title">Tip</p>
+                <div class="sm-dfp-content">
                     <p>This is a tip with a useful suggestion for the reader.</p>
                 </div>
             </aside>
 
-            <aside class="ast-admonition ast-admonition--important">
-                <p class="ast-admonition-title">Important</p>
-                <div class="ast-admonition-content">
+            <aside class="sm-dfp sm-dfp-important">
+                <p class="sm-dfp-title">Important</p>
+                <div class="sm-dfp-content">
                     <p>This is important information that should not be overlooked.</p>
                 </div>
             </aside>
 
-            <aside class="ast-admonition ast-admonition--warning">
-                <p class="ast-admonition-title">Warning</p>
-                <div class="ast-admonition-content">
+            <aside class="sm-dfp sm-dfp-warning">
+                <p class="sm-dfp-title">Warning</p>
+                <div class="sm-dfp-content">
                     <p>This is a warning about potential issues or dangers.</p>
                 </div>
             </aside>
 
-            <aside class="ast-admonition ast-admonition--caution">
-                <p class="ast-admonition-title">Caution</p>
-                <div class="ast-admonition-content">
+            <aside class="sm-dfp sm-dfp-caution">
+                <p class="sm-dfp-title">Caution</p>
+                <div class="sm-dfp-content">
                     <p>This is a caution about something that requires careful attention.</p>
                 </div>
             </aside>
@@ -785,10 +785,10 @@ Controller--&gt;&gt;User: Display page</pre>
             <hr />
 
             <h2>Footnotes</h2>
-            <p>Here is a sentence with a footnote<sup class="ast-footnote-ref"><a
-                        href="#fn-1">[1]</a></sup>. And here's another one<sup class="ast-footnote-ref"><a
+            <p>Here is a sentence with a footnote<sup class="sm-footnote-ref"><a
+                        href="#fn-1">[1]</a></sup>. And here's another one<sup class="sm-footnote-ref"><a
                         href="#fn-2">[2]</a></sup>.</p>
-            <p>You can also use named footnotes<sup class="ast-footnote-ref"><a
+            <p>You can also use named footnotes<sup class="sm-footnote-ref"><a
                         href="#fn-note">[note]</a></sup> for better organization.</p>
 
             <hr />
@@ -816,22 +816,22 @@ Controller--&gt;&gt;User: Display page</pre>
             <p>This document demonstrates all <strong>pure markdown</strong> features supported by
                 the structured content parser.</p>
 
-            <aside class="ast-footnote" id="fn-1">
+            <aside class="sm-footnote" id="fn-1">
                 <sup>1</sup>
                 <p>This is the first footnote with a detailed explanation.</p>
             </aside>
 
-            <aside class="ast-footnote" id="fn-2">
+            <aside class="sm-footnote" id="fn-2">
                 <sup>2</sup>
                 <p>This is the second footnote.</p>
             </aside>
 
-            <aside class="ast-footnote" id="fn-note">
+            <aside class="sm-footnote" id="fn-note">
                 <sup>note</sup>
                 <p>Named footnotes are easier to manage in longer documents.</p>
             </aside>
 
-            <aside class="ast-footnote" id="fn-pythagoras">
+            <aside class="sm-footnote" id="fn-pythagoras">
                 <sup>pythagoras</sup>
                 <p>The Pythagorean theorem, named after the ancient Greek mathematician.</p>
             </aside>
