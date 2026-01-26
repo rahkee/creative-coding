@@ -652,20 +652,20 @@
                 <h2>Paragraphs and Inline Formatting</h2>
             </section>
 
-            <section>
+            <div>
                 <p>This is a regular paragraph with <strong>bold text</strong>, <em>italic text</em>,
                     and <em><strong>bold italic text</strong></em>. You can also use <del>strikethrough</del> for
                     deleted
                     content.</p>
-            </section>
+            </div>
             
-            <section>
+            <div>
                 <p>Here's some <code>inline code</code> within a sentence.</p>
-            </section>
+            </div>
             
-            <section>
+            <div>
                 <p>Here's a line with a hard break:<br />This text appears on a new line.</p>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -675,16 +675,16 @@
                 <h2>Links and Images</h2>
             </section>
             
-            <section>
+            <div>
                 <p>Visit <a href="https://www.strongmind.com" title="StrongMind Homepage">StrongMind</a> for more
                     information.</p>
-            </section>
+            </div>
             
-            <section>
+            <div>
                 <figure>
                     <img src="https://picsum.photos/150" alt="Inline Image" />
                 </figure>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -694,16 +694,16 @@
                 <h2>Block Image with Caption</h2>
             </section>
             
-            <section>
+            <div>
                 <figure>
                     <img src="https://picsum.photos/800/400"
                         alt="A beautiful landscape photograph showing mountains at sunset" />
                 </figure>
-            </section>
+            </div>
             
-            <section>
+            <div>
                 <p><em>Figure 1: A stunning mountain landscape at golden hour</em></p>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -717,7 +717,7 @@
                 <h3>Unordered List</h3>
             </section>
             
-            <section>
+            <div>
                 <ul>
                     <li>First item with <strong>bold</strong></li>
                     <li>Second item with <em>italic</em></li>
@@ -730,13 +730,13 @@
                     </li>
                     <li>Fourth item with a <a href="https://example.com">link</a></li>
                 </ul>
-            </section>
+            </div>
 
             <section>
                 <h3>Ordered List</h3>
             </section>
             
-            <section>
+            <div>
                 <ol start="1">
                     <li>First step</li>
                     <li>Second step</li>
@@ -749,20 +749,20 @@
                     </li>
                     <li>Fourth step</li>
                 </ol>
-            </section>
+            </div>
 
             <section>
                 <h3>Task List</h3>
             </section>
             
-            <section>
+            <div>
                 <ul>
                     <li><input type="checkbox" checked disabled />Completed task</li>
                     <li><input type="checkbox" checked disabled />Another completed task</li>
                     <li><input type="checkbox" disabled />Incomplete task</li>
                     <li><input type="checkbox" disabled />Another incomplete task</li>
                 </ul>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -772,7 +772,7 @@
                 <h2>Blockquotes</h2>
             </section>
             
-            <section>
+            <div>
                 <blockquote>
                     <p>Deep within the ancient <strong>Sherwood Forest</strong>, a legend was born of a man who defied
                         the
@@ -797,14 +797,14 @@
                         missed.
                     </p>
                 </blockquote>
-            </section>
+            </div>
             
-            <section>
+            <div>
                 <blockquote>
                     <p>This is a blockquote with <strong>bold</strong> and <em>italic</em> text.</p>
                     <p>It can span multiple paragraphs.</p>
                 </blockquote>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -814,11 +814,11 @@
                 <h2>Code Blocks</h2>
             </section>
             
-            <section>
+            <div>
                 <p>Inline: Use the <code>console.log()</code> function to debug.</p>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <pre data-language="javascript"><code>// JavaScript code with syntax highlighting
 function calculateArea(radius) {
     const PI = 3.14159;
@@ -827,9 +827,9 @@ function calculateArea(radius) {
 
 const area = calculateArea(5);
 console.log(`The area is ${area}`);</code></pre>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <pre data-language="python"><code># Python example
 def fibonacci(n):
     &quot;&quot;&quot;Generate Fibonacci sequence up to n.&quot;&quot;&quot;
@@ -840,9 +840,9 @@ def fibonacci(n):
 
 for num in fibonacci(100):
     print(num)</code></pre>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <pre data-language="ruby"><code># Ruby example
 class LearningComponent &lt; ApplicationRecord
     validates :title, presence: true
@@ -851,7 +851,7 @@ class LearningComponent &lt; ApplicationRecord
         structured_content&amp;.dig(&#39;schema_version&#39;) || &#39;1.0&#39;
     end
 end</code></pre>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -861,7 +861,7 @@ end</code></pre>
                 <h2>Tables</h2>
             </section>
 
-            <section>
+            <div>
                 <table>
                     <tr>
                         <th>Feature</th>
@@ -894,9 +894,9 @@ end</code></pre>
                         <td><code>[text](url)</code></td>
                     </tr>
                 </table>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <table>
                     <tr>
                         <th>Left Aligned</th>
@@ -919,7 +919,7 @@ end</code></pre>
                         <td><code>Code cell</code></td>
                     </tr>
                 </table>
-            </section>
+            </div>
 
             <div>
                 <hr />
@@ -928,6 +928,7 @@ end</code></pre>
             <section>
                 <h2>Mathematics</h2>
             </section>
+
             <section>
                 <p>Inline math: The quadratic formula is <span>\(x = \frac{-b \pm
                         \sqrt{b^2-4ac}}{2a}\)</span>.</p>
