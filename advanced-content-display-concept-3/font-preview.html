@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Preview</title>
+    <style>
+        .font-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            border: 2px solid #212121;
+            box-shadow: 4px 4px 0 #000;
+            z-index: 100;
+        }
+
+        .font-controls label {
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .font-controls button {
+            padding: 8px 16px;
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            border: 2px solid #212121;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+        }
+
+        .font-controls button:hover {
+            background: #f0f0f0;
+        }
+
+        .font-controls button.active {
+            background: #212121;
+            color: #fff;
+        }
+
+        .current-font {
+            font-family: system-ui, sans-serif;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="structured-content structured-content--v2">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="styles.css">
+
+        <div class="ast-document">
+            <header>
+                <h1 id="preview-h1">How Typography and Visual Hierarchy Improve User Experience</h1>
+            </header>
+
+            <div>
+                <p>Typography is far more than choosing a pretty font—it's the <strong>backbone of visual communication</strong>. When users land on a page, they don't read every word; instead, they scan for relevant information. Well-crafted typography guides this scanning behavior by establishing clear <em>entry points</em>, creating rhythm through spacing, and using weight and size to signal importance. A thoughtfully designed typographic system can reduce cognitive load by up to 20%, allowing users to find what they need faster and with less frustration.</p>
+            </div>
+
+            <div>
+                <p>Visual hierarchy works hand-in-hand with typography to create a <strong>roadmap for the eye</strong>. By varying font sizes, weights, and colors strategically, designers establish a clear order of importance. The largest, boldest elements naturally draw attention first, followed by secondary and tertiary content. This isn't arbitrary—it's rooted in <em>Gestalt principles</em> and decades of research into how humans process visual information. Without hierarchy, users face a wall of undifferentiated text that overwhelms rather than informs.</p>
+            </div>
+
+            <div>
+                <p>The relationship between <strong>readability and retention</strong> cannot be overstated. Studies show that proper line height (typically 1.4–1.6 for body text), appropriate line length (45–75 characters), and sufficient contrast between text and background directly impact how much information users absorb. Poor typography doesn't just look unprofessional—it actively harms comprehension. Users who struggle to read content are <em>significantly more likely</em> to abandon a page, regardless of how valuable the information might be.</p>
+            </div>
+
+            <div>
+                <p>Emotional resonance is another critical dimension of typographic choice. A <strong>playful, rounded typeface</strong> communicates friendliness and approachability, while a <em>sharp, geometric sans-serif</em> suggests precision and modernity. Serif fonts often evoke tradition and authority. These associations aren't conscious decisions users make—they're instant, visceral reactions that shape perception before a single word is read. Smart typography aligns these emotional cues with brand identity and user expectations.</p>
+            </div>
+
+            <div>
+                <p>Ultimately, great typography is <strong>invisible in the best way</strong>. Users don't notice excellent type choices—they simply enjoy a seamless reading experience. They find information effortlessly, understand content clearly, and feel at ease throughout their journey. This is the paradox of good design: <em>the more successful it is, the less attention it draws to itself</em>. When typography and visual hierarchy work together harmoniously, they create experiences that feel natural, intuitive, and deeply human.</p>
+            </div>
+        </div>
+    </article>
+
+    <div class="font-controls">
+        <button data-font="font-dosis">Dosis</button>
+        <button data-font="font-dynapuff" class="active">DynaPuff</button>
+        <button data-font="font-dm-sans">DM Sans</button>
+        <button data-font="font-bricolage">Bricolage Grotesque</button>
+        <button data-font="font-asap">Asap</button>
+        <button data-font="font-fredoka">Fredoka</button>
+        <button data-font="font-mona-sans">Mona Sans</button>
+        <button data-font="font-stack-sans">Stack Sans Headline</button>
+        <button data-font="font-familjen">Familjen Grotesk</button>
+        <button data-font="font-radio-canada">Radio Canada Big</button>
+        <button data-font="font-zalando">Zalando Sans</button>
+        <button data-font="font-solway">Solway</button>
+        <button data-font="font-tasa-orbiter">TASA Orbiter</button>
+        <button data-font="font-vend-sans">Vend Sans</button>
+        <button data-font="font-inclusive-sans">Inclusive Sans</button>
+        <button data-font="font-national-park">National Park</button>
+        <button data-font="font-nunito">Nunito</button>
+    </div>
+
+    <script>
+        const h1 = document.getElementById('preview-h1');
+        const buttons = document.querySelectorAll('.font-controls button');
+        const currentFontName = document.getElementById('current-font-name');
+
+        // Wrap h1 words in spans for color styling
+        const words = h1.textContent.split(' ');
+        h1.innerHTML = words.map(word => `<span>${word}</span>`).join(' ');
+
+        // Font names mapping
+        const fontNames = {
+            'font-dosis': 'Dosis',
+            'font-dynapuff': 'DynaPuff',
+            'font-dm-sans': 'DM Sans',
+            'font-bricolage': 'Bricolage Grotesque',
+            'font-asap': 'Asap',
+            'font-fredoka': 'Fredoka',
+            'font-mona-sans': 'Mona Sans',
+            'font-stack-sans': 'Stack Sans Headline',
+            'font-familjen': 'Familjen Grotesk',
+            'font-radio-canada': 'Radio Canada Big',
+            'font-zalando': 'Zalando Sans',
+            'font-solway': 'Solway',
+            'font-tasa-orbiter': 'TASA Orbiter',
+            'font-vend-sans': 'Vend Sans',
+            'font-inclusive-sans': 'Inclusive Sans',
+            'font-national-park': 'National Park',
+            'font-nunito': 'Nunito'
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove all font classes
+                h1.classList.remove(...Object.keys(fontNames));
+                
+                // Add selected font class
+                const fontClass = button.dataset.font;
+                h1.classList.add(fontClass);
+                
+                // Update active button
+                buttons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update current font display
+                currentFontName.textContent = fontNames[fontClass];
+            });
+        });
+    </script>
+</body>
+
+</html>

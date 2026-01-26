@@ -2,15 +2,24 @@
 @import url('https://cdn.strongmind.com/backpack-ui/latest/assets/css/tailwind-preflight.css');
 
 /* Heading Font */
-@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
 
 /* Body Font */
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* Blockquote Font */
@@ -24,209 +33,61 @@
 
 @scope {
 
-    h1 {
-        font-size: 2em;
-        margin: 0.67em 0;
-    }
-
-    hr {
-        box-sizing: content-box;
-        height: 0;
-        overflow: visible;
-    }
-
-    pre {
-        font-family: monospace, monospace;
-        font-size: 1em;
-    }
-
-    a {
-        background-color: transparent;
-    }
-
-    abbr[title] {
-        border-bottom: none;
-        text-decoration: underline dotted;
-    }
-
-    b,
-    strong {
-        font-weight: bolder;
-    }
-
-    code,
-    kbd,
-    samp {
-        font-family: monospace, monospace;
-        font-size: 1em;
-    }
-
-    small {
-        font-size: 80%;
-    }
-
-    sub,
-    sup {
-        font-size: 75%;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-    }
-
-    sub {
-        bottom: -0.25em;
-    }
-
-    sup {
-        top: -0.5em;
-    }
-
-    img {
-        border-style: none;
-    }
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
-    }
-
-    button,
-    input {
-        overflow: visible;
-    }
-
-    button,
-    select {
-        text-transform: none;
-    }
-
-    button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"] {
-        -webkit-appearance: button;
-    }
-
-    button::-moz-focus-inner,
-    [type="button"]::-moz-focus-inner,
-    [type="reset"]::-moz-focus-inner,
-    [type="submit"]::-moz-focus-inner {
-        border-style: none;
-        padding: 0;
-    }
-
-    button:-moz-focusring,
-    [type="button"]:-moz-focusring,
-    [type="reset"]:-moz-focusring,
-    [type="submit"]:-moz-focusring {
-        outline: 1px dotted ButtonText;
-    }
-
-    fieldset {
-        padding: 0.35em 0.75em 0.625em;
-    }
-
-    legend {
-        box-sizing: border-box;
-        color: inherit;
-        display: table;
-        max-width: 100%;
-        padding: 0;
-        white-space: normal;
-    }
-
-    progress {
-        vertical-align: baseline;
-    }
-
-    textarea {
-        overflow: auto;
-    }
-
-    [type="checkbox"],
-    [type="radio"] {
-        box-sizing: border-box;
-        padding: 0;
-    }
-
-    [type="number"]::-webkit-inner-spin-button,
-    [type="number"]::-webkit-outer-spin-button {
-        height: auto;
-    }
-
-    [type="search"] {
-        -webkit-appearance: textfield;
-        outline-offset: -2px;
-    }
-
-    [type="search"]::-webkit-search-decoration {
-        -webkit-appearance: none;
-    }
-
-    ::-webkit-file-upload-button {
-        -webkit-appearance: button;
-        font: inherit;
-    }
-
-    details {
-        display: block;
-    }
-
-    summary {
-        display: list-item;
-    }
-
-    template {
-        display: none;
-    }
-
-    [hidden] {
-        display: none;
-    }
-
     /* Custom Styles */
-    >div {
+    .ast-document {
         background-color: #F6F0E9;
-        font-family: 'Google Sans', sans-serif;
         font-family: 'Nunito', sans-serif;
-        line-height: 1.5;
-        
+        max-width: 100%;
+        padding-block: 48px;
+
+        > div {
+            max-width: 96ch;
+            margin: 0 auto;
+            padding: 12px 48px;
+        }
     }
 
     section {
         max-width: 96ch;
         margin: 0 auto;
-        padding: 0 48px;
+        padding: 12px 48px;
     }
 
     header:has(h1) {
         /* background-color: #212121; */
         max-width: 96ch;
         margin: 0 auto;
-        padding: 48px;
+        padding: 0 48px;
 
         h1 {
-            font-family: "Jua", sans-serif;
-            font-family: "Dosis", sans-serif;
-            font-family: "Bagel Fat One", cursive;
             font-family: "DynaPuff", cursive;
-            font-weight: 900;
             font-style: normal;
             font-size: 4.6rem;
-            line-height: 1;
-            margin: 0;
+            line-height: 1.05;
 
-            span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
+            /* span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
             span:nth-child(5n+2) { color: #7A5C8E; text-shadow: 2px 4px 0px #5B456B; }
             span:nth-child(5n+3) { color: #0D5A84; text-shadow: 2px 4px 0px #093D5A; }
             span:nth-child(5n+4) { color: #EB5847; text-shadow: 2px 4px 0px #A33D31; }
-            span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; }
+            span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; } */
+
+            &.font-dosis { font-family: "Dosis", sans-serif; font-weight: 800; }
+            &.font-dynapuff { font-family: "DynaPuff", cursive; font-weight: 500; }
+            &.font-dm-sans { font-family: "DM Sans", sans-serif; font-weight: 600; }
+            &.font-bricolage { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; }
+            &.font-asap { font-family: "Asap", sans-serif; font-weight: 700; letter-spacing: -1px; }
+            &.font-fredoka { font-family: "Fredoka", sans-serif; font-weight: 500; }
+            &.font-mona-sans { font-family: "Mona Sans", sans-serif; font-weight: 600; letter-spacing: -1px; }
+            &.font-stack-sans { font-family: "Stack Sans Headline", sans-serif; font-weight: 200; }
+            &.font-familjen { font-family: "Familjen Grotesk", sans-serif; font-weight: 400; letter-spacing: -1px; }
+            &.font-radio-canada { font-family: "Radio Canada Big", sans-serif; font-weight: 500; }
+            &.font-zalando { font-family: "Zalando Sans", sans-serif; font-weight: 500; letter-spacing: -1px; }
+            &.font-solway { font-family: "Solway", serif; font-weight: 500; letter-spacing: -2px; }
+            &.font-tasa-orbiter { font-family: "TASA Orbiter", sans-serif; font-weight: 400; letter-spacing: -2px; }
+            &.font-vend-sans { font-family: "Vend Sans", sans-serif; font-weight: 900; }
+            &.font-inclusive-sans { font-family: "Inclusive Sans", sans-serif; font-weight: 600; letter-spacing: -1px; }
+            &.font-national-park { font-family: "National Park", sans-serif; font-weight: 600; letter-spacing: -1px; }
+            &.font-nunito { font-family: "Nunito", sans-serif; font-weight: 800; letter-spacing: -1px; }
         }
     }
 
@@ -235,7 +96,6 @@
     h4,
     h5,
     h6 {
-        font-family: "Bagel Fat One", cursive;
         font-family: "DynaPuff", cursive;
         font-family: "Dosis", sans-serif;
         font-weight: 900;
