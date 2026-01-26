@@ -65,11 +65,13 @@
             font-size: 4.6rem;
             line-height: 1.05;
 
-            /* span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
-            span:nth-child(5n+2) { color: #7A5C8E; text-shadow: 2px 4px 0px #5B456B; }
-            span:nth-child(5n+3) { color: #0D5A84; text-shadow: 2px 4px 0px #093D5A; }
-            span:nth-child(5n+4) { color: #EB5847; text-shadow: 2px 4px 0px #A33D31; }
-            span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; } */
+            &.hyper-style {
+                span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
+                span:nth-child(5n+2) { color: #7A5C8E; text-shadow: 2px 4px 0px #5B456B; }
+                span:nth-child(5n+3) { color: #0D5A84; text-shadow: 2px 4px 0px #093D5A; }
+                span:nth-child(5n+4) { color: #EB5847; text-shadow: 2px 4px 0px #A33D31; }
+                span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; }
+            }
 
             &.font-dosis { font-family: "Dosis", sans-serif; font-weight: 800; }
             &.font-dynapuff { font-family: "DynaPuff", cursive; font-weight: 500; }
@@ -79,13 +81,13 @@
             &.font-fredoka { font-family: "Fredoka", sans-serif; font-weight: 500; }
             &.font-mona-sans { font-family: "Mona Sans", sans-serif; font-weight: 600; letter-spacing: -1px; }
             &.font-stack-sans { font-family: "Stack Sans Headline", sans-serif; font-weight: 200; }
-            &.font-familjen { font-family: "Familjen Grotesk", sans-serif; font-weight: 400; letter-spacing: -1px; }
+            &.font-familjen { font-family: "Familjen Grotesk", sans-serif; font-weight: 600; letter-spacing: -1px; }
             &.font-radio-canada { font-family: "Radio Canada Big", sans-serif; font-weight: 500; }
             &.font-zalando { font-family: "Zalando Sans", sans-serif; font-weight: 500; letter-spacing: -1px; }
             &.font-solway { font-family: "Solway", serif; font-weight: 500; letter-spacing: -2px; }
             &.font-tasa-orbiter { font-family: "TASA Orbiter", sans-serif; font-weight: 400; letter-spacing: -2px; }
             &.font-vend-sans { font-family: "Vend Sans", sans-serif; font-weight: 900; }
-            &.font-inclusive-sans { font-family: "Inclusive Sans", sans-serif; font-weight: 600; letter-spacing: -1px; }
+            &.font-inclusive-sans { font-family: "Inclusive Sans", sans-serif; font-weight: 600; letter-spacing: -2px; }
             &.font-national-park { font-family: "National Park", sans-serif; font-weight: 600; letter-spacing: -1px; }
             &.font-nunito { font-family: "Nunito", sans-serif; font-weight: 800; letter-spacing: -1px; }
         }
