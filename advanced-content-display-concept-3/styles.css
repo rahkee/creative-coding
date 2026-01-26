@@ -66,11 +66,11 @@
             line-height: 1.05;
 
             &.hyper-style {
-                span:nth-child(5n+1) { color: #543979; text-shadow: 2px 4px 0px #3A2754; }
-                span:nth-child(5n+2) { color: #7A5C8E; text-shadow: 2px 4px 0px #5B456B; }
-                span:nth-child(5n+3) { color: #0D5A84; text-shadow: 2px 4px 0px #093D5A; }
-                span:nth-child(5n+4) { color: #EB5847; text-shadow: 2px 4px 0px #A33D31; }
-                span:nth-child(5n+5) { color: #F0B253; text-shadow: 2px 4px 0px #A87C3A; }
+                span:nth-child(5n+1) { color: #543979; }
+                span:nth-child(5n+2) { color: #7A5C8E; }
+                span:nth-child(5n+3) { color: #0D5A84; }
+                span:nth-child(5n+4) { color: #EB5847; }
+                span:nth-child(5n+5) { color: #F0B253; }
             }
 
             &.font-dosis { font-family: "Dosis", sans-serif; font-weight: 800; }
