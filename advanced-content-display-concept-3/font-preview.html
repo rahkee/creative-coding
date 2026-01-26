@@ -57,6 +57,32 @@
             padding-top: 8px;
             border-top: 1px solid #e0e0e0;
         }
+
+        .font-option {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .font-option button {
+            flex: 1;
+        }
+
+        .favorite-star {
+            cursor: pointer;
+            font-size: 16px;
+            color: #ccc;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .favorite-star:hover {
+            color: #f0b253;
+            transform: scale(1.1);
+        }
+
+        .favorite-star.favorited {
+            color: #f0b253;
+        }
     </style>
 </head>
 
@@ -93,28 +119,80 @@
     </article>
 
     <div class="font-controls">
-        <button data-font="font-dosis">Dosis</button>
-        <button data-font="font-dynapuff" class="active">DynaPuff</button>
-        <button data-font="font-dm-sans">DM Sans</button>
-        <button data-font="font-bricolage">Bricolage Grotesque</button>
-        <button data-font="font-asap">Asap</button>
-        <button data-font="font-fredoka">Fredoka</button>
-        <button data-font="font-mona-sans">Mona Sans</button>
-        <button data-font="font-stack-sans">Stack Sans Headline</button>
-        <button data-font="font-familjen">Familjen Grotesk</button>
-        <button data-font="font-radio-canada">Radio Canada Big</button>
-        <button data-font="font-zalando">Zalando Sans</button>
-        <button data-font="font-solway">Solway</button>
-        <button data-font="font-tasa-orbiter">TASA Orbiter</button>
-        <button data-font="font-vend-sans">Vend Sans</button>
-        <button data-font="font-inclusive-sans">Inclusive Sans</button>
-        <button data-font="font-national-park">National Park</button>
-        <button data-font="font-nunito">Nunito</button>
+        <div class="font-option">
+            <button data-font="font-dosis">Dosis</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-dynapuff" class="active">DynaPuff</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-dm-sans">DM Sans</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-bricolage">Bricolage Grotesque</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-asap">Asap</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-fredoka">Fredoka</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-mona-sans">Mona Sans</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-stack-sans">Stack Sans Headline</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-familjen">Familjen Grotesk</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-radio-canada">Radio Canada Big</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-zalando">Zalando Sans</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-solway">Solway</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-tasa-orbiter">TASA Orbiter</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-vend-sans">Vend Sans</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-inclusive-sans">Inclusive Sans</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-national-park">National Park</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-nunito">Nunito</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
     </div>
 
     <script>
         const h1 = document.getElementById('preview-h1');
         const buttons = document.querySelectorAll('.font-controls button');
+        const stars = document.querySelectorAll('.favorite-star');
         const currentFontName = document.getElementById('current-font-name');
 
         // Wrap h1 words in spans for color styling
@@ -157,6 +235,21 @@
                 
                 // Update current font display
                 currentFontName.textContent = fontNames[fontClass];
+            });
+        });
+
+        // Favorite star toggle
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const isFavorited = star.classList.contains('favorited');
+                
+                if (isFavorited) {
+                    star.classList.remove('favorited', 'fa-solid');
+                    star.classList.add('fa-regular');
+                } else {
+                    star.classList.add('favorited', 'fa-solid');
+                    star.classList.remove('fa-regular');
+                }
             });
         });
     </script>
