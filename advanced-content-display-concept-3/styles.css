@@ -66,6 +66,7 @@
             line-height: 1.05;
 
             &.hyper-style {
+                span { text-shadow: 8px 8px 0px rgba(0, 0, 0, 0.125); }
                 span:nth-child(5n+1) { color: #543979; }
                 span:nth-child(5n+2) { color: #7A5C8E; }
                 span:nth-child(5n+3) { color: #0D5A84; }

@@ -83,6 +83,44 @@
             color: #f0b253;
         }
 
+        .weight-slider {
+            width: 60px;
+            height: 4px;
+            appearance: none;
+            background: #ccc;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .weight-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 2px solid #212121;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .weight-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 2px solid #212121;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .weight-slider::-webkit-slider-thumb:hover {
+            background: #f0f0f0;
+        }
+
+        .weight-slider::-moz-range-thumb:hover {
+            background: #f0f0f0;
+        }
+
         .style-controls {
             position: fixed;
             top: 20px;
@@ -207,70 +245,87 @@
     <div class="font-controls">
         <div class="font-option">
             <button data-font="font-dosis">Dosis</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-dynapuff" class="active">DynaPuff</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-dm-sans">DM Sans</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-bricolage">Bricolage Grotesque</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-asap">Asap</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-fredoka">Fredoka</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-mona-sans">Mona Sans</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-stack-sans">Stack Sans Headline</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-familjen">Familjen Grotesk</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-radio-canada">Radio Canada Big</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-zalando">Zalando Sans</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-solway">Solway</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-tasa-orbiter">TASA Orbiter</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-vend-sans">Vend Sans</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-inclusive-sans">Inclusive Sans</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-national-park">National Park</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
             <button data-font="font-nunito">Nunito</button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
     </div>
@@ -278,6 +333,7 @@
     <script>
         const h1 = document.getElementById('preview-h1');
         const buttons = document.querySelectorAll('.font-controls button');
+        const sliders = document.querySelectorAll('.weight-slider');
         const stars = document.querySelectorAll('.favorite-star');
         const currentFontName = document.getElementById('current-font-name');
 
@@ -319,8 +375,22 @@
                 buttons.forEach(b => b.classList.remove('active'));
                 button.classList.add('active');
                 
+                // Apply font weight from this font's slider
+                const slider = button.parentElement.querySelector('.weight-slider');
+                h1.style.fontWeight = slider.value;
+                
                 // Update current font display
                 currentFontName.textContent = fontNames[fontClass];
+            });
+        });
+
+        // Font weight slider handling
+        sliders.forEach(slider => {
+            slider.addEventListener('input', () => {
+                const button = slider.parentElement.querySelector('button');
+                if (button.classList.contains('active')) {
+                    h1.style.fontWeight = slider.value;
+                }
             });
         });
 
