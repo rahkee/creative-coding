@@ -50,6 +50,7 @@
         --font-weight: 800;
         font-weight: var(--font-weight);
         letter-spacing: -1px;
+        margin-block-end: 2.4rem;
 
         &.hyper-style {
             span {
