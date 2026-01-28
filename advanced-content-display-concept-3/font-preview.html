@@ -225,20 +225,196 @@
                 <p>Typography is far more than choosing a pretty font—it's the <strong>backbone of visual communication</strong>. When users land on a page, they don't read every word; instead, they scan for relevant information. Well-crafted typography guides this scanning behavior by establishing clear <em>entry points</em>, creating rhythm through spacing, and using weight and size to signal importance. A thoughtfully designed typographic system can reduce cognitive load by up to 20%, allowing users to find what they need faster and with less frustration.</p>
             </div>
 
+            <div><hr /></div>
+
+            <!-- Section: The Science of Reading -->
+            <section>
+                <h2>The Science of Reading</h2>
+            </section>
+            <section>
+                <h3>How the Eye Processes Text</h3>
+            </section>
             <div>
-                <p>Visual hierarchy works hand-in-hand with typography to create a <strong>roadmap for the eye</strong>. By varying font sizes, weights, and colors strategically, designers establish a clear order of importance. The largest, boldest elements naturally draw attention first, followed by secondary and tertiary content. This isn't arbitrary—it's rooted in <em>Gestalt principles</em> and decades of research into how humans process visual information. Without hierarchy, users face a wall of undifferentiated text that overwhelms rather than informs.</p>
+                <p>When we read, our eyes don't move smoothly across the page. Instead, they make rapid movements called <strong>saccades</strong>, jumping from one fixation point to another. Each fixation lasts about 200-250 milliseconds, during which the brain processes roughly 7-9 characters. Understanding this biological reality is crucial for designers—it explains why line length, letter spacing, and word spacing all matter so much.</p>
+            </div>
+            <section>
+                <h3>Cognitive Load and Comprehension</h3>
+            </section>
+            <div>
+                <p>Every design decision either adds to or reduces <em>cognitive load</em>. Poor typography forces readers to work harder, diverting mental resources from understanding content to simply decoding it. Research from the Nielsen Norman Group shows that users read only about 20% of text on an average web page. Making that 20% as effortless as possible is the typographer's primary mission.</p>
+            </div>
+            <section>
+                <h4>The Role of Working Memory</h4>
+            </section>
+            <div>
+                <p>Working memory can hold approximately 4-7 chunks of information at once. Long, complex sentences with poor visual breaks overwhelm this capacity. Strategic use of headings, bullet points, and paragraph breaks creates natural "rest stops" that allow information to be processed and stored in long-term memory.</p>
             </div>
 
+            <div><hr /></div>
+
+            <!-- Section: Building a Type System -->
+            <section>
+                <h2>Building a Type System</h2>
+            </section>
             <div>
-                <p>The relationship between <strong>readability and retention</strong> cannot be overstated. Studies show that proper line height (typically 1.4–1.6 for body text), appropriate line length (45–75 characters), and sufficient contrast between text and background directly impact how much information users absorb. Poor typography doesn't just look unprofessional—it actively harms comprehension. Users who struggle to read content are <em>significantly more likely</em> to abandon a page, regardless of how valuable the information might be.</p>
+                <p>A robust type system isn't a collection of arbitrary choices—it's a <strong>coherent framework</strong> that scales across an entire product. The best systems are built on mathematical relationships, creating harmony between elements while maintaining clear visual hierarchy.</p>
+            </div>
+            <section>
+                <h3>Establishing a Modular Scale</h3>
+            </section>
+            <div>
+                <p>Modular scales use a ratio (like 1.25, 1.333, or 1.618) to generate a series of harmonious type sizes. Starting from a base size—typically 16px for body text—each step up the scale multiplies by the ratio. This creates sizes that feel mathematically related rather than randomly chosen.</p>
+            </div>
+            <section>
+                <h4>Common Scale Ratios</h4>
+            </section>
+            <section>
+                <h5>Minor Third (1.2)</h5>
+            </section>
+            <div>
+                <p>A subtle progression ideal for interfaces with many heading levels. Creates gentle distinctions without dramatic jumps.</p>
+            </div>
+            <section>
+                <h5>Major Third (1.25)</h5>
+            </section>
+            <div>
+                <p>Slightly more pronounced than minor third. Popular for editorial designs and marketing pages where headings need presence.</p>
+            </div>
+            <section>
+                <h5>Perfect Fourth (1.333)</h5>
+            </section>
+            <div>
+                <p>Strong, confident progression. Works well for bold, modern designs with fewer heading levels.</p>
+            </div>
+            <section>
+                <h6>Note on Browser Defaults</h6>
+            </section>
+            <div>
+                <p>Browser default heading sizes don't follow a consistent ratio—they're legacy decisions from the early web. Custom type systems almost always improve upon these defaults.</p>
+            </div>
+            <section>
+                <h3>Choosing Typeface Pairings</h3>
+            </section>
+            <div>
+                <p>The art of pairing typefaces is about creating <em>contrast with harmony</em>. A serif heading with a sans-serif body creates visual interest while maintaining readability. The key is ensuring the fonts share similar proportions or historical origins—a geometric sans pairs beautifully with a geometric serif, while a humanist sans complements old-style serifs.</p>
             </div>
 
+            <div><hr /></div>
+
+            <!-- Section: Accessibility Considerations -->
+            <section>
+                <h2>Accessibility Considerations</h2>
+            </section>
+            <section>
+                <h3>WCAG Guidelines for Text</h3>
+            </section>
             <div>
-                <p>Emotional resonance is another critical dimension of typographic choice. A <strong>playful, rounded typeface</strong> communicates friendliness and approachability, while a <em>sharp, geometric sans-serif</em> suggests precision and modernity. Serif fonts often evoke tradition and authority. These associations aren't conscious decisions users make—they're instant, visceral reactions that shape perception before a single word is read. Smart typography aligns these emotional cues with brand identity and user expectations.</p>
+                <p>The Web Content Accessibility Guidelines (WCAG) set minimum standards for text accessibility. Level AA requires a contrast ratio of at least <strong>4.5:1</strong> for normal text and 3:1 for large text (18px+ or 14px+ bold). Level AAA raises these to 7:1 and 4.5:1 respectively.</p>
+            </div>
+            <section>
+                <h4>Testing Contrast Ratios</h4>
+            </section>
+            <div>
+                <p>Tools like WebAIM's contrast checker, Stark, or browser DevTools can quickly evaluate whether your color combinations meet accessibility standards. Don't rely on visual judgment alone—what looks readable to you may be illegible to someone with low vision or color blindness.</p>
+            </div>
+            <section>
+                <h3>Dyslexia-Friendly Typography</h3>
+            </section>
+            <div>
+                <p>Approximately 10% of the population has some form of dyslexia. While "dyslexia fonts" have questionable evidence, several typographic choices genuinely help: increased letter spacing, generous line height, left-aligned text (not justified), and sans-serif fonts with distinct letterforms.</p>
+            </div>
+            <section>
+                <h4>Letterform Differentiation</h4>
+            </section>
+            <section>
+                <h5>Problematic Characters</h5>
+            </section>
+            <div>
+                <p>The letters <code>b/d</code>, <code>p/q</code>, and <code>I/l/1</code> are commonly confused. Fonts like <strong>Lexie Readable</strong>, <strong>OpenDyslexic</strong>, or simply well-designed sans-serifs with distinct character shapes can significantly improve readability for dyslexic readers.</p>
+            </div>
+            <section>
+                <h5>The Importance of x-Height</h5>
+            </section>
+            <div>
+                <p>Fonts with larger x-heights (the height of lowercase letters) are generally more readable at smaller sizes. This is why Verdana, designed specifically for screens, has an unusually large x-height compared to similar typefaces.</p>
             </div>
 
+            <div><hr /></div>
+
+            <!-- Section: Responsive Typography -->
+            <section>
+                <h2>Responsive Typography</h2>
+            </section>
             <div>
-                <p>Ultimately, great typography is <strong>invisible in the best way</strong>. Users don't notice excellent type choices—they simply enjoy a seamless reading experience. They find information effortlessly, understand content clearly, and feel at ease throughout their journey. This is the paradox of good design: <em>the more successful it is, the less attention it draws to itself</em>. When typography and visual hierarchy work together harmoniously, they create experiences that feel natural, intuitive, and deeply human.</p>
+                <p>Typography that works beautifully on desktop may fail completely on mobile. <strong>Responsive typography</strong> adapts not just size, but also line height, letter spacing, and even font weight based on viewport conditions and reading context.</p>
+            </div>
+            <section>
+                <h3>Fluid Type Techniques</h3>
+            </section>
+            <section>
+                <h4>CSS clamp() Function</h4>
+            </section>
+            <div>
+                <p>The <code>clamp()</code> function allows type to scale smoothly between minimum and maximum values. For example: <code>font-size: clamp(1rem, 2.5vw, 2rem)</code> creates text that grows with the viewport but never becomes too small or too large.</p>
+            </div>
+            <section>
+                <h4>Viewport-Based Units</h4>
+            </section>
+            <div>
+                <p>Using <code>vw</code> units for font sizes creates type that scales proportionally with screen width. However, pure viewport units should be combined with fixed minimums to prevent text from becoming unreadably small on narrow screens.</p>
+            </div>
+            <section>
+                <h3>Touch Target Considerations</h3>
+            </section>
+            <div>
+                <p>On touch devices, interactive text elements (links, buttons) need sufficient tap targets. Apple recommends minimum 44×44 points; Google suggests 48×48 density-independent pixels. This affects not just button design but also line height and spacing around inline links.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- Section: Performance & Loading -->
+            <section>
+                <h2>Performance and Font Loading</h2>
+            </section>
+            <section>
+                <h3>Web Font Strategies</h3>
+            </section>
+            <div>
+                <p>Custom fonts enhance brand identity but come with performance costs. A typical font file ranges from 20KB to 200KB—multiply this by multiple weights and styles, and fonts can easily become the heaviest assets on a page.</p>
+            </div>
+            <section>
+                <h4>Font Loading Strategies</h4>
+            </section>
+            <section>
+                <h5>FOIT vs FOUT</h5>
+            </section>
+            <div>
+                <p><strong>Flash of Invisible Text (FOIT)</strong> hides text until fonts load—bad for perceived performance. <strong>Flash of Unstyled Text (FOUT)</strong> shows fallback fonts first—better for users but can cause layout shift. The <code>font-display</code> CSS property lets you choose your strategy.</p>
+            </div>
+            <section>
+                <h5>Subsetting Fonts</h5>
+            </section>
+            <div>
+                <p>If you only need Latin characters, subset your fonts to exclude Cyrillic, Greek, and other character sets. This can reduce file sizes by 50-80%. Tools like <strong>glyphhanger</strong> or <strong>FontSquirrel's generator</strong> make subsetting straightforward.</p>
+            </div>
+            <section>
+                <h6>Variable Fonts: The Future</h6>
+            </section>
+            <div>
+                <p>Variable fonts contain multiple weights, widths, and styles in a single file. Instead of loading Regular, Bold, and Italic separately, one variable font file can provide infinite variations along defined axes—often at smaller total file size than two static fonts.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- Final thoughts -->
+            <section>
+                <h2>Putting It All Together</h2>
+            </section>
+            <div>
+                <p>Great typography is the product of countless small decisions made thoughtfully. It requires understanding both the <strong>technical constraints</strong> of screens and the <em>human factors</em> of reading. The best typographic systems feel effortless precisely because enormous effort went into their creation.</p>
+            </div>
+            <div>
+                <p>As you build your own type systems, remember that typography serves content, not the other way around. The goal isn't to showcase beautiful fonts—it's to help users understand, engage with, and act upon information. When typography succeeds, readers don't notice it at all. They're too busy being moved, informed, or inspired by the words themselves.</p>
             </div>
         </div>
     </article>
