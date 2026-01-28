@@ -1,25 +1,15 @@
 /* TEMP!!! This will be removed once we're in ShadowDOM mode */
 @import url('https://cdn.strongmind.com/backpack-ui/latest/assets/css/tailwind-preflight.css');
 
-/* Heading Font */
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+/* Heading Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
 
-/* Body Font */
+/* Body Font (also used for H1) */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* Blockquote Font */
@@ -55,7 +45,7 @@
     h1 {
         font-family: "Nunito", sans-serif;
         font-style: normal;
-        font-size: 3.2rem;
+        font-size: 2.8rem;
         line-height: 1.05;
         --font-weight: 800;
         font-weight: var(--font-weight);
@@ -87,19 +77,16 @@
             }
         }
 
-        &.font-dosis {
-            font-family: "Dosis", sans-serif;
+        &.font-nunito {
+            font-family: "Nunito", sans-serif;
             --font-weight: 800;
+            letter-spacing: -1px;
         }
 
-        &.font-dynapuff {
-            font-family: "DynaPuff", cursive;
-            --font-weight: 500;
-        }
-
-        &.font-dm-sans {
-            font-family: "DM Sans", sans-serif;
+        &.font-national-park {
+            font-family: "National Park", sans-serif;
             --font-weight: 600;
+            letter-spacing: -1px;
         }
 
         &.font-bricolage {
@@ -118,92 +105,14 @@
             --font-weight: 500;
         }
 
-        &.font-mona-sans {
-            font-family: "Mona Sans", sans-serif;
-            --font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        &.font-stack-sans {
-            font-family: "Stack Sans Headline", sans-serif;
-            --font-weight: 200;
-        }
-
-        &.font-familjen {
-            font-family: "Familjen Grotesk", sans-serif;
-            --font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        &.font-radio-canada {
-            font-family: "Radio Canada Big", sans-serif;
-            --font-weight: 500;
-        }
-
-        &.font-zalando {
-            font-family: "Zalando Sans", sans-serif;
-            --font-weight: 500;
-            letter-spacing: -1px;
-        }
-
-        &.font-solway {
-            font-family: "Solway", serif;
-            --font-weight: 500;
-            letter-spacing: -2px;
-        }
-
-        &.font-tasa-orbiter {
-            font-family: "TASA Orbiter", sans-serif;
-            --font-weight: 400;
-            letter-spacing: -2px;
-        }
-
         &.font-vend-sans {
             font-family: "Vend Sans", sans-serif;
             --font-weight: 900;
         }
 
-        &.font-inclusive-sans {
-            font-family: "Inclusive Sans", sans-serif;
-            --font-weight: 600;
-            letter-spacing: -2px;
-        }
-
-        &.font-national-park {
-            font-family: "National Park", sans-serif;
-            --font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        &.font-nunito {
-            font-family: "Nunito", sans-serif;
-            --font-weight: 800;
-            letter-spacing: -1px;
-        }
-    }
-
-    @keyframes bubbleBounce {
-        0% {
-            opacity: 0;
-            transform: translateY(0) scale(0);
-        }
-
-        40% {
-            opacity: 1;
-            transform: translateY(-8px) scale(1.2);
-        }
-
-        60% {
-            transform: translateY(-4px) scale(0.9);
-        }
-
-        80% {
-            transform: translateY(-6px) scale(1.05);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(-5px) scale(1);
+        &.font-radio-canada {
+            font-family: "Radio Canada Big", sans-serif;
+            --font-weight: 500;
         }
     }
 
@@ -217,31 +126,6 @@
         letter-spacing: -.375px;
         position: relative;
         cursor: default;
-
-        &::after {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: -2rem;
-            transform: translateY(-5px) scale(1);
-            padding: 0.2rem 0.5rem;
-            background: #543979;
-            color: #fff;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
-            font-weight: 600;
-            border-radius: 0.375rem;
-            opacity: 0;
-            pointer-events: none;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            transform-origin: bottom right;
-        }
-
-        &:hover::after {
-            animation: bubbleBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
     }
 
     h2 {
