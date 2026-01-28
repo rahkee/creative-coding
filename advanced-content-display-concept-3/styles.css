@@ -48,12 +48,13 @@
     }
 
     h1 {
-        font-family: "DynaPuff", cursive;
+        font-family: "Nunito", sans-serif;
         font-style: normal;
         font-size: 3.2rem;
         line-height: 1.05;
-        --font-weight: 500;
+        --font-weight: 800;
         font-weight: var(--font-weight);
+        letter-spacing: -1px;
 
         &.hyper-style {
             span { text-shadow: 8px 8px 0px rgba(0, 0, 0, 0.125); }
@@ -183,7 +184,7 @@
         padding: 12px 48px;
 
         &:has(h2) {
-
+            
             /* &:nth-of-type(5n+1) { 
                 h2 {
                     position: relative;
