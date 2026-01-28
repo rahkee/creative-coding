@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading Test (H2-H6)</title>
+</head>
+
+<body>
+    <article class="structured-content structured-content--v2">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="styles.css">
+
+        <div class="ast-document">
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 1: Standard H2 → H3 → Paragraph    -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Introduction to Web Accessibility</h2>
+            </section>
+            <section>
+                <h3>Why Accessibility Matters</h3>
+            </section>
+            <div>
+                <p>Web accessibility ensures that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can perceive, understand, navigate, and interact with the web.</p>
+            </div>
+            <section>
+                <h3>Key Accessibility Guidelines</h3>
+            </section>
+            <div>
+                <p>The Web Content Accessibility Guidelines (WCAG) provide a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 2: Deep Nesting H2 → H3 → H4 → H5 → H6 -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Complete Guide to CSS Layout Systems</h2>
+            </section>
+            <section>
+                <h3>Flexbox Layout Model</h3>
+            </section>
+            <div>
+                <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items flex (expand) to fill additional space or shrink to fit into smaller spaces.</p>
+            </div>
+            <section>
+                <h4>Main Axis Properties</h4>
+            </section>
+            <div>
+                <p>The main axis is defined by the <code>flex-direction</code> property. Items are placed along this axis using <code>justify-content</code>.</p>
+            </div>
+            <section>
+                <h5>justify-content Values</h5>
+            </section>
+            <div>
+                <p>Common values include <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, and <code>space-around</code>.</p>
+            </div>
+            <section>
+                <h6>Browser Support Notes</h6>
+            </section>
+            <div>
+                <p>All modern browsers fully support flexbox. IE 11 has partial support with some known issues.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 3: Multiple H3s Under One H2       -->
+            <!-- ============================================ -->
+            <section>
+                <h2>JavaScript Fundamentals</h2>
+            </section>
+            <div>
+                <p>JavaScript is a versatile programming language that powers the interactive web. Understanding its core concepts is essential for any web developer.</p>
+            </div>
+            <section>
+                <h3>Variables and Data Types</h3>
+            </section>
+            <div>
+                <p>JavaScript has three ways to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>. Each has different scoping rules and use cases.</p>
+            </div>
+            <section>
+                <h3>Functions and Scope</h3>
+            </section>
+            <div>
+                <p>Functions are reusable blocks of code. JavaScript supports function declarations, function expressions, and arrow functions.</p>
+            </div>
+            <section>
+                <h3>Objects and Arrays</h3>
+            </section>
+            <div>
+                <p>Objects store keyed collections of data, while arrays store ordered collections. Both are fundamental to JavaScript programming.</p>
+            </div>
+            <section>
+                <h3>Asynchronous Programming</h3>
+            </section>
+            <div>
+                <p>Callbacks, Promises, and async/await are patterns for handling asynchronous operations like API calls and file reading.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 4: FAQ-Style with H4s              -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Frequently Asked Questions</h2>
+            </section>
+            <section>
+                <h3>Account Management</h3>
+            </section>
+            <section>
+                <h4>How do I reset my password?</h4>
+            </section>
+            <div>
+                <p>Click the "Forgot Password" link on the login page. Enter your email address, and we'll send you a reset link within 5 minutes.</p>
+            </div>
+            <section>
+                <h4>Can I change my username?</h4>
+            </section>
+            <div>
+                <p>Usernames can be changed once every 30 days. Go to Settings → Account → Edit Profile to make changes.</p>
+            </div>
+            <section>
+                <h4>How do I delete my account?</h4>
+            </section>
+            <div>
+                <p>Account deletion is permanent. Navigate to Settings → Privacy → Delete Account. You'll have 14 days to change your mind.</p>
+            </div>
+            <section>
+                <h3>Billing Questions</h3>
+            </section>
+            <section>
+                <h4>What payment methods do you accept?</h4>
+            </section>
+            <div>
+                <p>We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
+            </div>
+            <section>
+                <h4>How do I request a refund?</h4>
+            </section>
+            <div>
+                <p>Refund requests must be submitted within 30 days of purchase. Contact support with your order number.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 5: Documentation/API Reference     -->
+            <!-- ============================================ -->
+            <section>
+                <h2>API Reference Documentation</h2>
+            </section>
+            <section>
+                <h3>Authentication Endpoints</h3>
+            </section>
+            <div>
+                <p>All authentication endpoints require HTTPS. Rate limiting applies: 100 requests per minute.</p>
+            </div>
+            <section>
+                <h4>POST /api/auth/login</h4>
+            </section>
+            <div>
+                <p>Authenticates a user and returns a JWT token. Required fields: <code>email</code>, <code>password</code>.</p>
+            </div>
+            <section>
+                <h5>Request Body</h5>
+            </section>
+            <div>
+                <pre><code>{
+  "email": "user@example.com",
+  "password": "securepassword123"
+}</code></pre>
+            </div>
+            <section>
+                <h5>Response</h5>
+            </section>
+            <div>
+                <pre><code>{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "expiresIn": 3600
+}</code></pre>
+            </div>
+            <section>
+                <h6>Error Codes</h6>
+            </section>
+            <div>
+                <p><code>401</code> - Invalid credentials. <code>429</code> - Rate limit exceeded. <code>500</code> - Server error.</p>
+            </div>
+            <section>
+                <h4>POST /api/auth/logout</h4>
+            </section>
+            <div>
+                <p>Invalidates the current session token. Requires Authorization header with valid JWT.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 6: Tutorial with Step-by-Step H4s  -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Setting Up Your Development Environment</h2>
+            </section>
+            <section>
+                <h3>Prerequisites</h3>
+            </section>
+            <div>
+                <p>Before starting, ensure you have administrator access to your computer and a stable internet connection.</p>
+            </div>
+            <section>
+                <h3>Installation Steps</h3>
+            </section>
+            <section>
+                <h4>Step 1: Install Node.js</h4>
+            </section>
+            <div>
+                <p>Download the LTS version from <a href="https://nodejs.org">nodejs.org</a>. Run the installer and follow the prompts.</p>
+            </div>
+            <section>
+                <h4>Step 2: Verify Installation</h4>
+            </section>
+            <div>
+                <p>Open your terminal and run <code>node --version</code> and <code>npm --version</code> to confirm successful installation.</p>
+            </div>
+            <section>
+                <h4>Step 3: Install VS Code</h4>
+            </section>
+            <div>
+                <p>Download Visual Studio Code from the official website. Install recommended extensions for your tech stack.</p>
+            </div>
+            <section>
+                <h4>Step 4: Configure Git</h4>
+            </section>
+            <div>
+                <p>Set your username and email with <code>git config --global user.name</code> and <code>git config --global user.email</code>.</p>
+            </div>
+            <section>
+                <h3>Troubleshooting</h3>
+            </section>
+            <section>
+                <h5>Common Issue: Command Not Found</h5>
+            </section>
+            <div>
+                <p>This usually means the PATH variable wasn't set correctly. Restart your terminal or reinstall with the "Add to PATH" option checked.</p>
+            </div>
+            <section>
+                <h5>Common Issue: Permission Denied</h5>
+            </section>
+            <div>
+                <p>On macOS/Linux, you may need to use <code>sudo</code> or fix npm permissions by changing the default directory.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 7: Glossary/Dictionary Style H5s   -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Glossary of Web Development Terms</h2>
+            </section>
+            <section>
+                <h3>Frontend Terms</h3>
+            </section>
+            <section>
+                <h4>Layout & Styling</h4>
+            </section>
+            <section>
+                <h5>CSS (Cascading Style Sheets)</h5>
+            </section>
+            <div>
+                <p>A stylesheet language used to describe the presentation of a document written in HTML or XML.</p>
+            </div>
+            <section>
+                <h5>Responsive Design</h5>
+            </section>
+            <div>
+                <p>An approach to web design that makes web pages render well on a variety of devices and window sizes.</p>
+            </div>
+            <section>
+                <h5>Flexbox</h5>
+            </section>
+            <div>
+                <p>A CSS layout model that allows responsive elements within a container to be automatically arranged.</p>
+            </div>
+            <section>
+                <h4>JavaScript Concepts</h4>
+            </section>
+            <section>
+                <h5>DOM (Document Object Model)</h5>
+            </section>
+            <div>
+                <p>A programming interface for web documents that represents the page as a tree of nodes and objects.</p>
+            </div>
+            <section>
+                <h5>Event Loop</h5>
+            </section>
+            <div>
+                <p>The mechanism that allows JavaScript to perform non-blocking operations despite being single-threaded.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 8: Legal/Policy Document with H6s  -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Terms of Service</h2>
+            </section>
+            <section>
+                <h3>1. Acceptance of Terms</h3>
+            </section>
+            <div>
+                <p>By accessing and using this service, you accept and agree to be bound by the terms and provisions of this agreement.</p>
+            </div>
+            <section>
+                <h4>1.1 User Responsibilities</h4>
+            </section>
+            <div>
+                <p>Users must provide accurate information and maintain the security of their account credentials.</p>
+            </div>
+            <section>
+                <h5>1.1.1 Account Security</h5>
+            </section>
+            <div>
+                <p>You are responsible for all activities that occur under your account.</p>
+            </div>
+            <section>
+                <h6>a) Password Requirements</h6>
+            </section>
+            <div>
+                <p>Passwords must be at least 8 characters and include uppercase, lowercase, numbers, and special characters.</p>
+            </div>
+            <section>
+                <h6>b) Two-Factor Authentication</h6>
+            </section>
+            <div>
+                <p>We strongly recommend enabling 2FA for enhanced account protection.</p>
+            </div>
+            <section>
+                <h5>1.1.2 Prohibited Activities</h5>
+            </section>
+            <div>
+                <p>Users may not use the service for any illegal or unauthorized purpose.</p>
+            </div>
+            <section>
+                <h6>a) Spam and Abuse</h6>
+            </section>
+            <div>
+                <p>Sending unsolicited messages or automated requests is strictly prohibited.</p>
+            </div>
+            <section>
+                <h6>b) Data Harvesting</h6>
+            </section>
+            <div>
+                <p>Scraping, crawling, or harvesting user data without permission is not allowed.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 9: Course Outline/Syllabus         -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Course: Advanced React Development</h2>
+            </section>
+            <section>
+                <h3>Module 1: React Fundamentals Review</h3>
+            </section>
+            <section>
+                <h4>Week 1: Components and Props</h4>
+            </section>
+            <section>
+                <h5>Day 1: Functional Components</h5>
+            </section>
+            <div>
+                <p>Review of functional component syntax, JSX, and the component lifecycle in modern React.</p>
+            </div>
+            <section>
+                <h5>Day 2: Props and Composition</h5>
+            </section>
+            <div>
+                <p>Deep dive into props, children, and component composition patterns.</p>
+            </div>
+            <section>
+                <h4>Week 2: State Management</h4>
+            </section>
+            <section>
+                <h5>Day 1: useState and useReducer</h5>
+            </section>
+            <div>
+                <p>Understanding local state management with React hooks.</p>
+            </div>
+            <section>
+                <h5>Day 2: Context API</h5>
+            </section>
+            <div>
+                <p>Global state management without external libraries using React Context.</p>
+            </div>
+            <section>
+                <h3>Module 2: Advanced Patterns</h3>
+            </section>
+            <section>
+                <h4>Week 3: Custom Hooks</h4>
+            </section>
+            <div>
+                <p>Creating reusable logic with custom hooks. Best practices and common patterns.</p>
+            </div>
+            <section>
+                <h4>Week 4: Performance Optimization</h4>
+            </section>
+            <section>
+                <h5>Memoization Techniques</h5>
+            </section>
+            <div>
+                <p>Using <code>useMemo</code>, <code>useCallback</code>, and <code>React.memo</code> effectively.</p>
+            </div>
+            <section>
+                <h5>Code Splitting</h5>
+            </section>
+            <div>
+                <p>Lazy loading components with <code>React.lazy</code> and Suspense.</p>
+            </div>
+
+            <div><hr /></div>
+
+            <!-- ============================================ -->
+            <!-- SCENARIO 10: Comparison of All Heading Sizes -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Visual Heading Size Comparison</h2>
+            </section>
+            <div>
+                <p>The following demonstrates all heading levels displayed sequentially for visual comparison:</p>
+            </div>
+            <section>
+                <h2>This is an H2 Heading (1.5rem)</h2>
+            </section>
+            <section>
+                <h3>This is an H3 Heading (1.17rem)</h3>
+            </section>
+            <section>
+                <h4>This is an H4 Heading (1rem)</h4>
+            </section>
+            <section>
+                <h5>This is an H5 Heading (0.83rem)</h5>
+            </section>
+            <section>
+                <h6>This is an H6 Heading (0.67rem)</h6>
+            </section>
+            <div>
+                <p>This is regular paragraph text for comparison. Notice how H4 matches the body text size, while H5 and H6 are smaller than the paragraph text.</p>
+            </div>
+
+        </div>
+    </article>
+</body>
+
+</html>
