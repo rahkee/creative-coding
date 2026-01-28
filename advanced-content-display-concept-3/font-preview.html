@@ -430,7 +430,8 @@
         </div>
     </div>
 
-    <div class="font-controls">        <!-- 3 votes -->
+    <div class="font-controls">
+        <!-- 3 votes -->
         <div class="font-option">
             <button data-font="font-nunito" class="active"><span class="font-name">Nunito</span> <span class="weight-value">800</span></button>
             <input type="range" class="weight-slider" min="200" max="900" step="100" value="800">
@@ -438,34 +439,14 @@
         </div>
         <!-- 2 votes -->
         <div class="font-option">
-            <button data-font="font-solway"><span class="font-name">Solway</span> <span class="weight-value">500</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="500">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="font-option">
-            <button data-font="font-national-park"><span class="font-name">National Park</span> <span class="weight-value">600</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="600">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="font-option">
             <button data-font="font-asap"><span class="font-name">Asap</span> <span class="weight-value">700</span></button>
             <input type="range" class="weight-slider" min="200" max="900" step="100" value="700">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
-        <div class="font-option">
-            <button data-font="font-bricolage"><span class="font-name">Bricolage Grotesque</span> <span class="weight-value">700</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="700">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
+        <!-- 1 vote -->
         <div class="font-option">
             <button data-font="font-fredoka"><span class="font-name">Fredoka</span> <span class="weight-value">500</span></button>
             <input type="range" class="weight-slider" min="200" max="900" step="100" value="500">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <!-- 1 vote -->
-        <div class="font-option">
-            <button data-font="font-tasa-orbiter"><span class="font-name">TASA Orbiter</span> <span class="weight-value">400</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="400">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
@@ -474,18 +455,13 @@
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
         <div class="font-option">
-            <button data-font="font-dynapuff"><span class="font-name">DynaPuff</span> <span class="weight-value">500</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="500">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="font-option">
-            <button data-font="font-dm-sans"><span class="font-name">DM Sans</span> <span class="weight-value">600</span></button>
-            <input type="range" class="weight-slider" min="200" max="900" step="100" value="600">
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="font-option">
             <button data-font="font-radio-canada"><span class="font-name">Radio Canada Big</span> <span class="weight-value">500</span></button>
             <input type="range" class="weight-slider" min="200" max="900" step="100" value="500">
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="font-option">
+            <button data-font="font-bricolage"><span class="font-name">Bricolage Grotesque</span> <span class="weight-value">700</span></button>
+            <input type="range" class="weight-slider" min="200" max="900" step="100" value="700">
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
     </div>
@@ -504,16 +480,11 @@
         // Font names mapping (ordered by votes)
         const fontNames = {
             'font-nunito': 'Nunito',              // 3 votes
-            'font-solway': 'Solway',              // 2 votes
-            'font-national-park': 'National Park', // 2 votes
             'font-asap': 'Asap',                  // 2 votes
-            'font-bricolage': 'Bricolage Grotesque', // 2 votes
-            'font-fredoka': 'Fredoka',            // 2 votes
-            'font-tasa-orbiter': 'TASA Orbiter',  // 1 vote
+            'font-fredoka': 'Fredoka',            // 1 vote
             'font-vend-sans': 'Vend Sans',        // 1 vote
-            'font-dynapuff': 'DynaPuff',          // 1 vote
-            'font-dm-sans': 'DM Sans',            // 1 vote
-            'font-radio-canada': 'Radio Canada Big' // 1 vote
+            'font-radio-canada': 'Radio Canada Big', // 1 vote
+            'font-bricolage': 'Bricolage Grotesque' // 1 vote
         };
 
         buttons.forEach(button => {

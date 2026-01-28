@@ -43,19 +43,18 @@
         > div {
             max-width: 96ch;
             margin: 0 auto;
-            padding: 6px 48px;
+            padding: 12px 48px;
         }
 
         /* Drop cap for first paragraph */
-        > div:has(p):first-of-type p::first-letter {
+        div:has(p):first-of-type p::first-letter {
             float: left;
             font-size: 2.4rem;
             line-height: 0.75;
             font-weight: 900;
         }
-    }
 
-    h1 {
+        h1 {
         font-family: "Nunito", sans-serif;
         font-style: normal;
         font-size: 3.2rem;
@@ -189,7 +188,7 @@
     section {
         max-width: 96ch;
         margin: 0 auto;
-        padding: 12px 48px;
+        padding: 24px 48px;
 
         &:has(h2) {
             
@@ -246,6 +245,10 @@
 
         &:has(h3), &:has(h4), &:has(h5), &:has(h6) {
             padding-block-end: 0;
+        }
+
+        + div {
+            padding-block-start: 6px;
         }
     }
 
@@ -524,4 +527,7 @@
             color: #424242;
         }
     }
+    }
+
+    
 }
