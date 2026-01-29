@@ -40,7 +40,8 @@ const stars = document.querySelectorAll('.favorite-star');
 const styleClasses = [
     'default',
     'style-left-border',
-    'style-biggie'
+    'style-biggie',
+    'style-biggie-quotes'
 ];
 
 // Style button click handling
