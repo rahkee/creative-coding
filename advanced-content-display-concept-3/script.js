@@ -9,19 +9,22 @@ document.querySelectorAll('header h1').forEach(h1 => {
 });
 
 // ============================================
-// H2 Style Toggle (colored decorations on sections with h2)
+// Hyper Style Toggle (colored decorations on h2s and hrs)
 // ============================================
-const h2StyleToggle = document.getElementById('h2-style-toggle');
+const hyperStyleToggle = document.getElementById('hyper-style-toggle');
 const h2Sections = document.querySelectorAll('section:has(h2)');
+const hrContainers = document.querySelectorAll('div:has(hr)');
 
-if (h2StyleToggle && h2Sections.length > 0) {
-    h2StyleToggle.addEventListener('change', () => {
+if (hyperStyleToggle) {
+    hyperStyleToggle.addEventListener('change', () => {
+        const isEnabled = hyperStyleToggle.checked;
+        
         h2Sections.forEach(section => {
-            if (h2StyleToggle.checked) {
-                section.classList.add('h2-style-enabled');
-            } else {
-                section.classList.remove('h2-style-enabled');
-            }
+            section.classList.toggle('hyper-style-enabled', isEnabled);
+        });
+        
+        hrContainers.forEach(container => {
+            container.classList.toggle('hyper-style-enabled', isEnabled);
         });
     });
 }
