@@ -288,14 +288,39 @@
             }
         }
 
+        /* Generic styles for all Biggie Quotes variants */
         &[class*="style-biggie-quotes-"] {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 48px 80px;
+            margin-block: 24px;
+
             blockquote {
+                font-style: normal;
+                opacity: 1;
+                position: relative;
+
+                &::before,
+                &::after {
+                    font-size: 16rem;
+                    font-weight: 400;
+                    line-height: 0;
+                    color: #E4D8CC;
+                    position: absolute;
+                }
+
                 &::before {
                     content: '“';
+                    top: 0;
+                    left: 0;
+                    transform: translate(-4rem, 1rem);
                 }
-    
+
                 &::after {
                     content: '”';
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(3rem, 2rem);
                 }
             }
         }
@@ -315,184 +340,45 @@
         }
 
         /* Style: Biggie Quotes - Original Surfer */
-        &.style-biggie-quotes-original-surfer {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
+        &.style-biggie-quotes-original-surfer blockquote {
+            &::before,
+            &::after {
+                font-family: 'Original Surfer', serif;
+                font-weight: 500;
+            }
 
-            blockquote {
-                font-style: normal;
-                opacity: 1;
-                position: relative;
+            &::before {
+                transform: translate(-4rem, 1.5rem);
+            }
 
-                &::before,
-                &::after {
-                    font-family: 'Original Surfer', serif;
-                    font-size: 16rem;
-                    font-weight: 500;
-                    line-height: 0;
-                    color: #F1EBE3;
-                    position: absolute;
-                    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.125);
-                }
-
-                &::before {
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
+            &::after {
+                transform: translate(4rem, 6rem);
             }
         }
 
         /* Style: Biggie Quotes - Modak */
-        &.style-biggie-quotes-modak {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
-
-            blockquote {
-                font-style: normal;
-                opacity: 1;
-                position: relative;
-
-                &::before,
-                &::after {
-                    font-family: 'Modak', serif;
-                    font-size: 16rem;
-                    font-weight: 400;
-                    line-height: 0;
-                    color: #F1EBE3;
-                    position: absolute;
-                }
-
-                &::before {
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
-            }
+        &.style-biggie-quotes-modak blockquote::before,
+        &.style-biggie-quotes-modak blockquote::after {
+            font-family: 'Modak', serif;
         }
 
         /* Style: Biggie Quotes - Dokdo */
-        &.style-biggie-quotes-dokdo {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
-
-            blockquote {
-                font-style: normal;
-                opacity: 1;
-                position: relative;
-
-                &::before,
-                &::after {
-                    font-family: 'Dokdo', serif;
-                    font-size: 16rem;
-                    font-weight: 400;
-                    line-height: 0;
-                    color: #F1EBE3;
-                    position: absolute;
-                }
-
-                &::before {
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
-            }
+        &.style-biggie-quotes-dokdo blockquote::before,
+        &.style-biggie-quotes-dokdo blockquote::after {
+            font-family: 'Dokdo', serif;
         }
 
         /* Style: Biggie Quotes - Bungee */
-        &.style-biggie-quotes-bungee {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
-
-            blockquote {
-                font-style: normal;
-                opacity: 1;
-                position: relative;
-
-                &::before,
-                &::after {
-                    font-family: 'Bungee', serif;
-                    font-size: 16rem;
-                    font-weight: 400;
-                    line-height: 0;
-                    color: #F1EBE3;
-                    position: absolute;
-                }
-
-                &::before {
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
-            }
+        &.style-biggie-quotes-bungee blockquote::before,
+        &.style-biggie-quotes-bungee blockquote::after {
+            font-family: 'Bungee', serif;
         }
 
         /* Style: Biggie Quotes - Sniglet */
-        &.style-biggie-quotes-sniglet {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
-
-            blockquote {
-                font-style: normal;
-                opacity: 1;
-                position: relative;
-
-                &::before,
-                &::after {
-                    font-family: 'Sniglet', serif;
-                    font-size: 16rem;
-                    font-weight: 800;
-                    line-height: 0;
-                    color: #F1EBE3;
-                    position: absolute;
-                }
-
-                &::before {
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
-            }
+        &.style-biggie-quotes-sniglet blockquote::before,
+        &.style-biggie-quotes-sniglet blockquote::after {
+            font-family: 'Sniglet', serif;
+            font-weight: 800;
         }
     }
 
