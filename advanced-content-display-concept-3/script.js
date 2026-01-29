@@ -9,13 +9,29 @@ document.querySelectorAll('header h1').forEach(h1 => {
 });
 
 // ============================================
+// Hyper Style Toggle for H1
+// ============================================
+const hyperStyleToggle = document.getElementById('hyper-style-toggle');
+const h1Element = document.querySelector('header h1');
+
+if (hyperStyleToggle && h1Element) {
+    hyperStyleToggle.addEventListener('change', () => {
+        if (hyperStyleToggle.checked) {
+            h1Element.classList.add('hyper-style');
+        } else {
+            h1Element.classList.remove('hyper-style');
+        }
+    });
+}
+
+// ============================================
 // Blockquote Style Selector
 // ============================================
-const blockquotes = document.querySelectorAll('blockquote');
-const styleButtons = document.querySelectorAll('.blockquote-controls button');
+const blockquoteContainers = document.querySelectorAll('div:has(blockquote)');
+const styleButtons = document.querySelectorAll('.control-section button[data-style]');
 const stars = document.querySelectorAll('.favorite-star');
 
-// Style classes
+// Style classes applied to the container div
 const styleClasses = [
     'default',
     'style-left-border'
@@ -27,17 +43,17 @@ if (styleButtons.length > 0) {
         button.addEventListener('click', () => {
             const selectedStyle = button.dataset.style;
             
-            // Remove all style classes from blockquotes
-            blockquotes.forEach(bq => {
+            // Remove all style classes from blockquote containers
+            blockquoteContainers.forEach(container => {
                 styleClasses.forEach(cls => {
                     if (cls !== 'default') {
-                        bq.classList.remove(cls);
+                        container.classList.remove(cls);
                     }
                 });
                 
                 // Add selected style (unless it's default)
                 if (selectedStyle !== 'default') {
-                    bq.classList.add(selectedStyle);
+                    container.classList.add(selectedStyle);
                 }
             });
             
@@ -45,20 +61,6 @@ if (styleButtons.length > 0) {
             styleButtons.forEach(b => b.classList.remove('active'));
             button.classList.add('active');
         });
-    });
-}
-
-// Hyper style toggle for H1
-const hyperStyleToggle = document.getElementById('hyper-style-toggle');
-const h1Element = document.querySelector('header h1');
-
-if (hyperStyleToggle && h1Element) {
-    hyperStyleToggle.addEventListener('change', () => {
-        if (hyperStyleToggle.checked) {
-            h1Element.classList.add('hyper-style');
-        } else {
-            h1Element.classList.remove('hyper-style');
-        }
     });
 }
 
