@@ -361,6 +361,7 @@
             &::before,
             &::after {
                 font-family: 'Modak', serif;
+                font-size: 12rem;
             }
 
             &::before {
@@ -377,14 +378,15 @@
             &::before,
             &::after {
                 font-family: 'Dokdo', serif;
+                font-size: 20rem;
             }
 
             &::before {
-                transform: translate(-4rem, 1.5rem);
+                transform: translate(-4rem, 4rem);
             }
 
             &::after {
-                transform: translate(4rem, 6rem);
+                transform: translate(4rem, 8rem);
             }
         }
 
@@ -393,14 +395,15 @@
             &::before,
             &::after {
                 font-family: 'Bungee', serif;
+                font-size: 10rem;
             }
 
             &::before {
-                transform: translate(-4rem, 1.5rem);
+                transform: translate(-4rem, -1.5rem);
             }
 
             &::after {
-                transform: translate(4rem, 6rem);
+                transform: translate(4rem, 5rem);
             }
         }
 
@@ -409,11 +412,12 @@
             &::before,
             &::after {
                 font-family: 'Sniglet', serif;
-                font-weight: 800;
+                font-weight: 600;
+                font-size: 13rem;
             }
 
             &::before {
-                transform: translate(-4rem, 1.5rem);
+                transform: translate(-4rem, 0rem);
             }
 
             &::after {
