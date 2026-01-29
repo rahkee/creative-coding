@@ -28,29 +28,29 @@
     max-width: 100%;
     padding-block: 48px;
 
-    >div {
+    >header, >section, >div {
         max-width: 96ch;
         margin: 0 auto;
         padding: 12px 48px;
     }
 
     /* Drop cap for first paragraph */
-    div:has(p):first-of-type p::first-letter {
+    /* div:has(p):first-of-type p::first-letter {
         float: left;
         font-size: 2.4rem;
         line-height: 0.75;
         font-weight: 900;
-    }
+    } */
 
     h1 {
         font-family: "Nunito", sans-serif;
         font-style: normal;
         font-size: 2.8rem;
-        line-height: 1.05;
+        line-height: 1.25;
         --font-weight: 800;
         font-weight: var(--font-weight);
         letter-spacing: -1px;
-        margin-block-end: 2.4rem;
+        margin: 0;
 
         &.hyper-style {
             span {
@@ -154,16 +154,7 @@
         line-height: 1.6;
     }
 
-    header:has(h1) {
-        max-width: 96ch;
-        margin: 0 auto;
-        padding: 0 48px;
-    }
-
     section {
-        max-width: 96ch;
-        margin: 0 auto;
-        padding: 24px 48px;
 
         &:has(h2) {
 
@@ -218,15 +209,8 @@
             } */
         }
 
-        &:has(h3),
-        &:has(h4),
-        &:has(h5),
-        &:has(h6) {
-            padding-block-end: 0;
-        }
-
         +div {
-            padding-block-start: 6px;
+            padding-block-start: 0;
         }
     }
 
