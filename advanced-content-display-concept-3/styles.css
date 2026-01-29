@@ -1,14 +1,6 @@
 /* TEMP!!! This will be removed once we're in ShadowDOM mode */
 @import url('https://cdn.strongmind.com/backpack-ui/latest/assets/css/tailwind-preflight.css');
 
-/* Heading Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
-
 /* Body Font (also used for H1) */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -96,43 +88,6 @@
             }
         }
 
-        &.font-nunito {
-            font-family: "Nunito", sans-serif;
-            --font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        &.font-national-park {
-            font-family: "National Park", sans-serif;
-            --font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        &.font-bricolage {
-            font-family: "Bricolage Grotesque", sans-serif;
-            --font-weight: 700;
-        }
-
-        &.font-asap {
-            font-family: "Asap", sans-serif;
-            --font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        &.font-fredoka {
-            font-family: "Fredoka", sans-serif;
-            --font-weight: 500;
-        }
-
-        &.font-vend-sans {
-            font-family: "Vend Sans", sans-serif;
-            --font-weight: 900;
-        }
-
-        &.font-radio-canada {
-            font-family: "Radio Canada Big", sans-serif;
-            --font-weight: 500;
-        }
     }
 
     h2,
