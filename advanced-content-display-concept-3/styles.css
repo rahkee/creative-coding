@@ -302,7 +302,6 @@
         &.style-biggie-quotes {
             background-color: #fff;
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow) inset;
             padding: 48px 80px;
             margin-block: 24px;
 
@@ -319,7 +318,6 @@
                     line-height: 0;
                     color: #F1EBE3;
                     position: absolute;
-                    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
                 }
 
                 &::before {
