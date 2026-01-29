@@ -16,9 +16,8 @@ const h2Sections = document.querySelectorAll('section:has(h2)');
 const hrContainers = document.querySelectorAll('div:has(hr)');
 
 if (hyperStyleToggle) {
-    hyperStyleToggle.addEventListener('change', () => {
-        const isEnabled = hyperStyleToggle.checked;
-        
+    // Apply initial state on page load
+    const applyHyperStyle = (isEnabled) => {
         h2Sections.forEach(section => {
             section.classList.toggle('hyper-style-enabled', isEnabled);
         });
@@ -26,6 +25,16 @@ if (hyperStyleToggle) {
         hrContainers.forEach(container => {
             container.classList.toggle('hyper-style-enabled', isEnabled);
         });
+    };
+
+    // Apply on page load if checked
+    if (hyperStyleToggle.checked) {
+        applyHyperStyle(true);
+    }
+
+    // Apply on toggle change
+    hyperStyleToggle.addEventListener('change', () => {
+        applyHyperStyle(hyperStyleToggle.checked);
     });
 }
 
