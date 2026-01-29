@@ -19,10 +19,7 @@ const stars = document.querySelectorAll('.favorite-star');
 const styleClasses = [
     'default',
     'style-left-border',
-    'style-accent',
-    'style-minimal',
-    'style-speech',
-    'style-highlight'
+    'style-accent'
 ];
 
 // Style button click handling
@@ -49,6 +46,20 @@ if (styleButtons.length > 0) {
             styleButtons.forEach(b => b.classList.remove('active'));
             button.classList.add('active');
         });
+    });
+}
+
+// Hyper style toggle for H1
+const hyperStyleToggle = document.getElementById('hyper-style-toggle');
+const h1Element = document.querySelector('header h1');
+
+if (hyperStyleToggle && h1Element) {
+    hyperStyleToggle.addEventListener('change', () => {
+        if (hyperStyleToggle.checked) {
+            h1Element.classList.add('hyper-style');
+        } else {
+            h1Element.classList.remove('hyper-style');
+        }
     });
 }
 

@@ -75,6 +75,82 @@
         .favorite-star.favorited {
             color: #f0b253;
         }
+
+        .style-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #fff;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            border: 2px solid #212121;
+            box-shadow: var(--box-shadow);
+            z-index: 100;
+        }
+
+        .style-controls label {
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .toggle-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #ccc;
+            border-radius: var(--border-radius);
+            border: 2px solid #212121;
+            transition: background 0.2s ease;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #212121;
+            transition: left 0.2s ease;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: #212121;
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            left: 24px;
+        }
+
+        .toggle-label {
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -392,6 +468,17 @@
         </div>
     </article>
 
+    <div class="style-controls">
+        <label>Style Options</label>
+        <div class="toggle-container">
+            <label class="toggle-switch">
+                <input type="checkbox" id="hyper-style-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label">Hyper Style</span>
+        </div>
+    </div>
+
     <div class="blockquote-controls">
         <label>Blockquote Style</label>
         <div class="style-option">
@@ -404,18 +491,6 @@
         </div>
         <div class="style-option">
             <button data-style="style-accent">Accent</button>
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="style-option">
-            <button data-style="style-minimal">Minimal</button>
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="style-option">
-            <button data-style="style-speech">Speech</button>
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="style-option">
-            <button data-style="style-highlight">Highlight</button>
             <i class="fa-regular fa-star favorite-star"></i>
         </div>
     </div>

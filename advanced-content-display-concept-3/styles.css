@@ -221,9 +221,8 @@
         font-family: 'Source Serif 4', serif;
         font-size: 1rem;
         line-height: 2;
-        padding: 1.5rem;
-        border: 2px solid #212121;
-        border-radius: var(--border-radius);
+        font-style: italic;
+        opacity: 0.85;
         position: relative;
 
         /* Style: Left Border */
@@ -241,50 +240,6 @@
             border-color: #543979;
         }
 
-        /* Style: Minimal */
-        &.style-minimal {
-            border: none;
-            padding: 0;
-            font-style: italic;
-            opacity: 0.85;
-        }
-
-        /* Style: Speech */
-        &.style-speech {
-            background: #fff;
-            border-radius: 1.5rem;
-            
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -12px;
-                left: 2rem;
-                width: 0;
-                height: 0;
-                border-left: 12px solid transparent;
-                border-right: 12px solid transparent;
-                border-top: 12px solid #212121;
-            }
-
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: -8px;
-                left: calc(2rem + 2px);
-                width: 0;
-                height: 0;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid #fff;
-                z-index: 1;
-            }
-        }
-
-        /* Style: Highlight */
-        &.style-highlight {
-            background: #fffbcc;
-            border-color: #e6d300;
-        }
     }
 
     pre,
