@@ -185,7 +185,7 @@
 
     div:has(hr) {
         hr {
-            margin-block: 2rem;
+            margin-block: 1rem;
             border: none;
             width: 100%;
             min-height: 24px;
@@ -194,28 +194,31 @@
             background-position: center;
         }
 
-        &:nth-of-type(6n+1) hr {
-            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/line.svg');
-        }
-
-        &:nth-of-type(6n+2) hr {
-            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/line.svg');
-        }
-
-        &:nth-of-type(6n+3) hr {
+        &:nth-child(6n+1 of div:has(hr)) hr {
+            
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/line.svg');
         }
 
-        &:nth-of-type(6n+4) hr {
+        &:nth-child(6n+2 of div:has(hr)) hr {
+            
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/line.svg');
         }
 
-        &:nth-of-type(6n+5) hr {
-            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/line.svg');
+        &:nth-child(6n+3 of div:has(hr)) hr {
+            
+            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/line.svg');
         }
 
-        &:nth-of-type(6n+6) hr {
-            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/line.svg');
+        &:nth-child(6n+4 of div:has(hr)) hr {
+            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/line.svg');
+        }
+
+        &:nth-child(6n+5 of div:has(hr)) hr {
+            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/line.svg');
+        }
+
+        &:nth-child(6n+6 of div:has(hr)) hr {
+            background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/line.svg');
         }
     }
 
@@ -350,11 +353,6 @@
         transition: box-shadow 0.2s ease, transform 0.2s ease;
         transform: perspective(1000px) translate(0, 0);
         margin-bottom: 1rem;
-
-        &:hover {
-            box-shadow: var(--box-shadow);
-            transform: perspective(1000px) translate(-2px, -4px);
-        }
 
         .sm-dfp-title {
             display: flex;
