@@ -9,18 +9,20 @@ document.querySelectorAll('header h1').forEach(h1 => {
 });
 
 // ============================================
-// H2 Style Toggle (colored nth-of-type decorations)
+// H2 Style Toggle (colored decorations on sections with h2)
 // ============================================
 const h2StyleToggle = document.getElementById('h2-style-toggle');
-const astDocument = document.querySelector('.ast-document');
+const h2Sections = document.querySelectorAll('section:has(h2)');
 
-if (h2StyleToggle && astDocument) {
+if (h2StyleToggle && h2Sections.length > 0) {
     h2StyleToggle.addEventListener('change', () => {
-        if (h2StyleToggle.checked) {
-            astDocument.classList.add('h2-style-enabled');
-        } else {
-            astDocument.classList.remove('h2-style-enabled');
-        }
+        h2Sections.forEach(section => {
+            if (h2StyleToggle.checked) {
+                section.classList.add('h2-style-enabled');
+            } else {
+                section.classList.remove('h2-style-enabled');
+            }
+        });
     });
 }
 

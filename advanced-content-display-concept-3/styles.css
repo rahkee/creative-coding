@@ -133,10 +133,9 @@
         }
     }
 
-    /* H2 Style: Colored nth-of-type decorations */
-    &.h2-style-enabled {
-        section:has(h2) {
-
+    /* H2 Style: Colored decorations (class added to section:has(h2) via JS) */
+    section:has(h2) {
+        &.h2-style-enabled {
             h2::before {
                 content: '';
                 position: absolute;
@@ -150,27 +149,27 @@
                 background-position: center;
             }
 
-            &:nth-of-type(6n+1) h2::before {
+            &:nth-child(6n+1 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/3lines.svg');
             }
 
-            &:nth-of-type(6n+2) h2::before {
+            &:nth-child(6n+2 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/3lines.svg');
             }
 
-            &:nth-of-type(6n+3) h2::before {
+            &:nth-child(6n+3 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/3lines.svg');
             }
 
-            &:nth-of-type(6n+4) h2::before {
+            &:nth-child(6n+4 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/3lines.svg');
             }
 
-            &:nth-of-type(6n+5) h2::before {
+            &:nth-child(6n+5 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/3lines.svg');
             }
 
-            &:nth-of-type(6n+6) h2::before {
+            &:nth-child(6n+6 of section:has(h2)) h2::before {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/3lines.svg');
             }
         }
@@ -182,14 +181,14 @@
         }
     }
 
-    
+
 
     div:has(hr) {
         hr {
             margin-block: 2rem;
             border: none;
             width: 100%;
-            min-height: 8px;
+            min-height: 24px;
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
