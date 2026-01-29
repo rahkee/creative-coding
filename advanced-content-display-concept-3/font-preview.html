@@ -5,6 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Street Food Guide</title>
+    <style>
+        .blockquote-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: #fff;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            border: 2px solid #212121;
+            box-shadow: var(--box-shadow);
+            z-index: 100;
+        }
+
+        .blockquote-controls label {
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .blockquote-controls button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            border: 2px solid #212121;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+        }
+
+        .blockquote-controls button:hover {
+            background: #f0f0f0;
+        }
+
+        .blockquote-controls button.active {
+            background: #212121;
+            color: #fff;
+        }
+
+        .style-option {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .style-option button {
+            flex: 1;
+        }
+
+        .favorite-star {
+            cursor: pointer;
+            font-size: 16px;
+            color: #ccc;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .favorite-star:hover {
+            transform: scale(1.1);
+        }
+
+        .favorite-star.favorited {
+            color: #f0b253;
+        }
+    </style>
 </head>
 
 <body>
@@ -320,6 +391,34 @@
             </section>
         </div>
     </article>
+
+    <div class="blockquote-controls">
+        <label>Blockquote Style</label>
+        <div class="style-option">
+            <button data-style="default" class="active">Default</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="style-option">
+            <button data-style="style-left-border">Left Border</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="style-option">
+            <button data-style="style-accent">Accent</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="style-option">
+            <button data-style="style-minimal">Minimal</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="style-option">
+            <button data-style="style-speech">Speech</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+        <div class="style-option">
+            <button data-style="style-highlight">Highlight</button>
+            <i class="fa-regular fa-star favorite-star"></i>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
