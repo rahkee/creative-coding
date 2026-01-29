@@ -209,37 +209,29 @@
         }
     }
 
+    /* Blockquote container styles */
     div:has(blockquote) {
-        background-color: #fff;
         padding-block: 48px;
         margin-block: 24px;
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow) inset;
-    }
 
-    blockquote {
-        font-family: 'Source Serif 4', serif;
-        font-size: 1rem;
-        line-height: 2;
-        font-style: italic;
-        opacity: 0.85;
-        position: relative;
+        blockquote {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1rem;
+            line-height: 2;
+            font-style: italic;
+            opacity: 0.85;
+            position: relative;
+        }
 
         /* Style: Left Border */
-        &.style-left-border {
-            border: none;
-            border-left: 4px solid #543979;
-            border-radius: 0;
-            padding-left: 1.5rem;
-            background: transparent;
+        &.style-left-border blockquote {
+            background-color: #fff;
+            padding: 1.5rem;
+            padding-left: 2rem;
+            border-left: 8px solid #543979;
+            font-style: normal;
+            opacity: 1;
         }
-
-        /* Style: Accent */
-        &.style-accent {
-            background: linear-gradient(135deg, #f8f4ff 0%, #fff 100%);
-            border-color: #543979;
-        }
-
     }
 
     pre,

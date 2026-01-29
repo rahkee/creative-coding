@@ -6,29 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Street Food Guide</title>
     <style>
-        .blockquote-controls {
+        .control-panel {
             position: fixed;
             bottom: 20px;
             right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 16px;
             background: #fff;
             padding: 16px;
             border-radius: var(--border-radius);
             border: 2px solid #212121;
             box-shadow: var(--box-shadow);
             z-index: 100;
+            font-family: system-ui, sans-serif;
         }
 
-        .blockquote-controls label {
-            font-family: system-ui, sans-serif;
+        .control-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-section + .control-section {
+            padding-top: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .control-section label {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 4px;
         }
 
-        .blockquote-controls button {
+        .control-section button {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,11 +52,11 @@
             background: #fff;
         }
 
-        .blockquote-controls button:hover {
+        .control-section button:hover {
             background: #f0f0f0;
         }
 
-        .blockquote-controls button.active {
+        .control-section button.active {
             background: #212121;
             color: #fff;
         }
@@ -74,27 +84,6 @@
 
         .favorite-star.favorited {
             color: #f0b253;
-        }
-
-        .style-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: #fff;
-            padding: 16px;
-            border-radius: var(--border-radius);
-            border: 2px solid #212121;
-            box-shadow: var(--box-shadow);
-            z-index: 100;
-        }
-
-        .style-controls label {
-            font-family: system-ui, sans-serif;
-            font-size: 14px;
-            font-weight: 600;
         }
 
         .toggle-container {
@@ -148,7 +137,6 @@
         }
 
         .toggle-label {
-            font-family: system-ui, sans-serif;
             font-size: 14px;
         }
     </style>
@@ -468,30 +456,28 @@
         </div>
     </article>
 
-    <div class="style-controls">
-        <label>Style Options</label>
-        <div class="toggle-container">
-            <label class="toggle-switch">
-                <input type="checkbox" id="hyper-style-toggle">
-                <span class="toggle-slider"></span>
-            </label>
-            <span class="toggle-label">Hyper Style</span>
+    <div class="control-panel">
+        <div class="control-section">
+            <label>Hyper Style</label>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="hyper-style-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label">Enable</span>
+            </div>
         </div>
-    </div>
 
-    <div class="blockquote-controls">
-        <label>Blockquote Style</label>
-        <div class="style-option">
-            <button data-style="default" class="active">Default</button>
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="style-option">
-            <button data-style="style-left-border">Left Border</button>
-            <i class="fa-regular fa-star favorite-star"></i>
-        </div>
-        <div class="style-option">
-            <button data-style="style-accent">Accent</button>
-            <i class="fa-regular fa-star favorite-star"></i>
+        <div class="control-section">
+            <label>Blockquote Style</label>
+            <div class="style-option">
+                <button data-style="default" class="active">Default</button>
+                <i class="fa-regular fa-star favorite-star"></i>
+            </div>
+            <div class="style-option">
+                <button data-style="style-left-border">Left Border</button>
+                <i class="fa-regular fa-star favorite-star"></i>
+            </div>
         </div>
     </div>
 

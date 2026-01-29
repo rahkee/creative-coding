@@ -18,8 +18,7 @@ const stars = document.querySelectorAll('.favorite-star');
 // Style classes
 const styleClasses = [
     'default',
-    'style-left-border',
-    'style-accent'
+    'style-left-border'
 ];
 
 // Style button click handling
