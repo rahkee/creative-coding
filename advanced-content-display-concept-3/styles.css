@@ -154,14 +154,12 @@
                 &::after {
                     content: '';
                     position: absolute;
-                    right: 0;
-                    width: 100px;
-                    height: 12px;
-                    bottom: -8px;
-                    transform: translateX(10%);
-                    background-size: contain;
+                    left: 0;
+                    width: 100%;
+                    min-height: 8px;
+                    bottom: -9px;
                     background-repeat: no-repeat;
-                    background-position: center;
+                    background-size: contain;
                 }
             }
 
@@ -206,7 +204,7 @@
                     background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/3lines.svg');
                 }
                 &::after {
-                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/line.svg');
+                    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/green/line.svg');
                 }
             }
 
