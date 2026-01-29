@@ -57,6 +57,11 @@ const styleClasses = [
     'style-biggie-quotes-sniglet'
 ];
 
+// Apply default style (Left Border) on page load
+blockquoteContainers.forEach(container => {
+    container.classList.add('style-left-border');
+});
+
 // Style button click handling
 if (styleButtons.length > 0) {
     styleButtons.forEach(button => {
