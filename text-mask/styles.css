@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6f0e9;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 75ch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#canvas {
+    /* Hide canvas - it's only used as the source for the text background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.masked-text {
+    position: relative;
+    z-index: 1;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    line-height: 1.1;
+    text-align: left;
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    user-select: none;
+    pointer-events: none;
+}
