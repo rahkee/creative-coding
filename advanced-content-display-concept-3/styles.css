@@ -13,8 +13,12 @@
 /* Font Awesome */
 @import url('https://kit.fontawesome.com/ff279f72be.css');
 
-/* Decorative Quote Font */
+/* Decorative Quote Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
 
 /* CSS Variables */
 :root {
@@ -267,7 +271,7 @@
             line-height: 1.875;
             font-style: italic;
             opacity: 0.85;
-            position: relative;
+            position: relative;            
         }
 
         /* Style: Left Border */
@@ -281,6 +285,18 @@
                 border-left: 8px solid #543979;
                 font-style: normal;
                 opacity: 1;
+            }
+        }
+
+        &[class*="style-biggie-quotes-"] {
+            blockquote {
+                &::before {
+                    content: '“';
+                }
+    
+                &::after {
+                    content: '”';
+                }
             }
         }
 
@@ -298,8 +314,8 @@
             }
         }
 
-        /* Style: Biggie Quotes */
-        &.style-biggie-quotes {
+        /* Style: Biggie Quotes - Original Surfer */
+        &.style-biggie-quotes-original-surfer {
             background-color: #fff;
             border-radius: var(--border-radius);
             padding: 48px 80px;
@@ -318,17 +334,160 @@
                     line-height: 0;
                     color: #F1EBE3;
                     position: absolute;
+                    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.125);
                 }
 
                 &::before {
-                    content: '“';
                     top: 0;
                     left: 0;
                     transform: translate(-4rem, 1rem);
                 }
 
                 &::after {
-                    content: '”';
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(3rem, 2rem);
+                }
+            }
+        }
+
+        /* Style: Biggie Quotes - Modak */
+        &.style-biggie-quotes-modak {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 48px 80px;
+            margin-block: 24px;
+
+            blockquote {
+                font-style: normal;
+                opacity: 1;
+                position: relative;
+
+                &::before,
+                &::after {
+                    font-family: 'Modak', serif;
+                    font-size: 16rem;
+                    font-weight: 400;
+                    line-height: 0;
+                    color: #F1EBE3;
+                    position: absolute;
+                }
+
+                &::before {
+                    top: 0;
+                    left: 0;
+                    transform: translate(-4rem, 1rem);
+                }
+
+                &::after {
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(3rem, 2rem);
+                }
+            }
+        }
+
+        /* Style: Biggie Quotes - Dokdo */
+        &.style-biggie-quotes-dokdo {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 48px 80px;
+            margin-block: 24px;
+
+            blockquote {
+                font-style: normal;
+                opacity: 1;
+                position: relative;
+
+                &::before,
+                &::after {
+                    font-family: 'Dokdo', serif;
+                    font-size: 16rem;
+                    font-weight: 400;
+                    line-height: 0;
+                    color: #F1EBE3;
+                    position: absolute;
+                }
+
+                &::before {
+                    top: 0;
+                    left: 0;
+                    transform: translate(-4rem, 1rem);
+                }
+
+                &::after {
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(3rem, 2rem);
+                }
+            }
+        }
+
+        /* Style: Biggie Quotes - Bungee */
+        &.style-biggie-quotes-bungee {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 48px 80px;
+            margin-block: 24px;
+
+            blockquote {
+                font-style: normal;
+                opacity: 1;
+                position: relative;
+
+                &::before,
+                &::after {
+                    font-family: 'Bungee', serif;
+                    font-size: 16rem;
+                    font-weight: 400;
+                    line-height: 0;
+                    color: #F1EBE3;
+                    position: absolute;
+                }
+
+                &::before {
+                    top: 0;
+                    left: 0;
+                    transform: translate(-4rem, 1rem);
+                }
+
+                &::after {
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(3rem, 2rem);
+                }
+            }
+        }
+
+        /* Style: Biggie Quotes - Sniglet */
+        &.style-biggie-quotes-sniglet {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 48px 80px;
+            margin-block: 24px;
+
+            blockquote {
+                font-style: normal;
+                opacity: 1;
+                position: relative;
+
+                &::before,
+                &::after {
+                    font-family: 'Sniglet', serif;
+                    font-size: 16rem;
+                    font-weight: 800;
+                    line-height: 0;
+                    color: #F1EBE3;
+                    position: absolute;
+                }
+
+                &::before {
+                    top: 0;
+                    left: 0;
+                    transform: translate(-4rem, 1rem);
+                }
+
+                &::after {
                     bottom: 0;
                     right: 0;
                     transform: translate(3rem, 2rem);

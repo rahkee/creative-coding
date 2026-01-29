@@ -41,7 +41,11 @@ const styleClasses = [
     'default',
     'style-left-border',
     'style-biggie',
-    'style-biggie-quotes'
+    'style-biggie-quotes-original-surfer',
+    'style-biggie-quotes-modak',
+    'style-biggie-quotes-dokdo',
+    'style-biggie-quotes-bungee',
+    'style-biggie-quotes-sniglet'
 ];
 
 // Style button click handling
