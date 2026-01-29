@@ -38,19 +38,17 @@
     max-width: 100%;
     padding-block: 48px;
 
-    >header, >section, >div {
-        max-width: 96ch;
+    >header {
+        padding: 24px 48px;
+        max-width: 75ch;
+        margin: 0 auto;
+    }
+
+    >section, >div {
+        max-width: 75ch;
         margin: 0 auto;
         padding: 12px 48px;
     }
-
-    /* Drop cap for first paragraph */
-    /* div:has(p):first-of-type p::first-letter {
-        float: left;
-        font-size: 2.4rem;
-        line-height: 0.75;
-        font-weight: 900;
-    } */
 
     h1 {
         font-family: "Nunito", sans-serif;
@@ -220,7 +218,13 @@
         }
 
         +div {
-            padding-block-start: 0;
+            padding-block-start: 8px;
+        }
+    }
+
+    div {
+        + section {
+            padding-block-start: 48px;
         }
     }
 
@@ -257,10 +261,6 @@
         margin-bottom: 1rem;
     }
 
-    figure {
-        margin: 0 auto 2rem;
-    }
-
     img {
         border: 2px solid #000;
         border-collapse: collapse;
@@ -269,7 +269,6 @@
         display: inline-block;
         box-shadow: 2px 4px 0;
         transition: transform 0.2s ease-in-out;
-        margin-block: 1rem;
 
         &:hover {
             transform: scale(1.025);
