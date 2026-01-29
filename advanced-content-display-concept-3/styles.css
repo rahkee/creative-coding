@@ -21,6 +21,16 @@
 /* Font Awesome */
 @import url('https://kit.fontawesome.com/ff279f72be.css');
 
+/* Keyframe Animations */
+@keyframes iconSway {
+    0%, 100% {
+        transform: rotate(12deg);
+    }
+    50% {
+        transform: rotate(-12deg);
+    }
+}
+
 /* Custom Styles */
 .ast-document {
     background-color: #F6F0E9;
@@ -305,18 +315,6 @@
 
         tr:last-child td {
             border-bottom: none;
-        }
-    }
-
-    @keyframes iconSway {
-
-        0%,
-        100% {
-            transform: rotate(12deg);
-        }
-
-        50% {
-            transform: rotate(-12deg);
         }
     }
 
