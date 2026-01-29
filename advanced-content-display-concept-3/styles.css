@@ -128,63 +128,96 @@
     }
 
     section {
-
-        &:has(h2) {
-
-
-            &:nth-of-type(5n+1) {
-                h2 {
-                    position: relative;
-
-                    &::before {
-                        background-color: #543979;
-                    }
-                }
-            }
-
-            &:nth-of-type(5n+2) {
-                h2 {
-                    position: relative;
-
-                    &::before {
-                        background-color: #7A5C8E;
-                    }
-                }
-            }
-
-            &:nth-of-type(5n+3) {
-                h2 {
-                    position: relative;
-
-                    &::before {
-                        background-color: #0D5A84;
-                    }
-                }
-            }
-
-            &:nth-of-type(5n+4) {
-                h2 {
-                    position: relative;
-
-                    &::before {
-                        background-color: #EB5847;
-                    }
-                }
-            }
-
-            &:nth-of-type(5n+5) {
-                h2 {
-                    position: relative;
-
-                    &::before {
-                        background-color: #F0B253;
-                    }
-                }
-            }
-        }
-
         +div {
             padding-block-start: 8px;
+        }
+    }
+
+    /* H2 Style: Colored nth-of-type decorations */
+    &.h2-style-enabled {
+        section:has(h2) {
+
+            h2 {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    width: 24px;
+                    height: 36px;
+                    top: 0;
+                    transform: translate(-32px, -24px) rotate(33deg);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    width: 100px;
+                    height: 12px;
+                    bottom: -8px;
+                    transform: translateX(10%);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+
+            &:nth-of-type(6n+1) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/line.svg');
+                }
+            }
+
+            &:nth-of-type(6n+2) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/line.svg');
+                }
+            }
+
+            &:nth-of-type(6n+3) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/line.svg');
+                }
+            }
+
+            &:nth-of-type(6n+4) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/line.svg');
+                }
+            }
+
+            &:nth-of-type(6n+5) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/line.svg');
+                }
+            }
+
+            &:nth-of-type(6n+6) h2 {
+                &::before {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/3lines.svg');
+                }
+                &::after {
+                    background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/line.svg');
+                }
+            }
         }
     }
 

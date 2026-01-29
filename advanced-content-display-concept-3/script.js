@@ -9,17 +9,17 @@ document.querySelectorAll('header h1').forEach(h1 => {
 });
 
 // ============================================
-// Hyper Style Toggle for H1
+// H2 Style Toggle (colored nth-of-type decorations)
 // ============================================
-const hyperStyleToggle = document.getElementById('hyper-style-toggle');
-const h1Element = document.querySelector('header h1');
+const h2StyleToggle = document.getElementById('h2-style-toggle');
+const astDocument = document.querySelector('.ast-document');
 
-if (hyperStyleToggle && h1Element) {
-    hyperStyleToggle.addEventListener('change', () => {
-        if (hyperStyleToggle.checked) {
-            h1Element.classList.add('hyper-style');
+if (h2StyleToggle && astDocument) {
+    h2StyleToggle.addEventListener('change', () => {
+        if (h2StyleToggle.checked) {
+            astDocument.classList.add('h2-style-enabled');
         } else {
-            h1Element.classList.remove('hyper-style');
+            astDocument.classList.remove('h2-style-enabled');
         }
     });
 }
