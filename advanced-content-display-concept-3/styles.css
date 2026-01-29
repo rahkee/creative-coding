@@ -211,26 +211,41 @@
 
     /* Blockquote container styles */
     div:has(blockquote) {
-        padding-block: 48px;
-        margin-block: 24px;
-
         blockquote {
             font-family: 'Source Serif 4', serif;
             font-size: 1rem;
-            line-height: 2;
+            line-height: 1.875;
             font-style: italic;
             opacity: 0.85;
             position: relative;
         }
 
         /* Style: Left Border */
-        &.style-left-border blockquote {
+        &.style-left-border {
+            padding-block: 24px;
+
+            blockquote {
+                background-color: #fff;
+                padding: 1.5rem;
+                padding-left: 2rem;
+                border-left: 8px solid #543979;
+                font-style: normal;
+                opacity: 1;
+            }
+        }
+
+        /* Style: Biggie */
+        &.style-biggie {
             background-color: #fff;
-            padding: 1.5rem;
-            padding-left: 2rem;
-            border-left: 8px solid #543979;
-            font-style: normal;
-            opacity: 1;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow) inset;
+            padding: 24px 48px;
+            margin-block: 24px;
+
+            blockquote {
+                font-style: normal;
+                opacity: 1;
+            }
         }
     }
 

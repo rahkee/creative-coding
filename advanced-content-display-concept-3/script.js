@@ -34,7 +34,8 @@ const stars = document.querySelectorAll('.favorite-star');
 // Style classes applied to the container div
 const styleClasses = [
     'default',
-    'style-left-border'
+    'style-left-border',
+    'style-biggie'
 ];
 
 // Style button click handling
