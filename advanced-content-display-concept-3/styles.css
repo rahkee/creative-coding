@@ -14,11 +14,9 @@
 @import url('https://kit.fontawesome.com/ff279f72be.css');
 
 /* Decorative Quote Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
 
 /* CSS Variables */
 :root {
@@ -211,7 +209,7 @@
     div:has(hr) {
         /* Default HR */
         hr {
-            margin-block: 1rem;
+            margin-block: 5rem 2.5rem;
             border: none;
             border-top: 1px solid #ccc;
         }
@@ -220,7 +218,7 @@
         &.hyper-style-enabled {
             hr {
                 border: none;
-                min-height: 24px;
+                min-height: 16px;
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
@@ -249,6 +247,27 @@
             &:nth-child(6n+6 of div:has(hr)) hr {
                 background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/line.svg');
             }
+
+            /* Last HR with Trophy graphic on top */
+            &:last-of-type hr {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 128px;
+                    height: 128px;
+                    border: 16px solid #F6F0E9;
+                    background-color: #F6F0E9;
+                    background-image: url('http://cdn.strongmind.com/backpack-ui/latest/assets/images/icons/svgs/TrophyCE.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
         }
     }
 
@@ -269,8 +288,6 @@
             font-family: 'Source Serif 4', serif;
             font-size: 1rem;
             line-height: 1.875;
-            font-style: italic;
-            opacity: 0.85;
             position: relative;            
         }
 
@@ -283,8 +300,6 @@
                 padding: 1.5rem;
                 padding-left: 2rem;
                 border-left: 8px solid #543979;
-                font-style: normal;
-                opacity: 1;
             }
         }
 
@@ -296,8 +311,6 @@
             margin-block: 24px;
 
             blockquote {
-                font-style: normal;
-                opacity: 1;
                 position: relative;
 
                 &::before,
@@ -325,17 +338,21 @@
             }
         }
 
-        /* Style: Biggie */
-        &.style-biggie {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow) inset;
-            padding: 24px 48px;
-            margin-block: 24px;
+        /* Style: Biggie Quotes - Sniglet */
+        &.style-biggie-quotes-sniglet blockquote {
+            &::before,
+            &::after {
+                font-family: 'Sniglet', serif;
+                font-weight: 600;
+                font-size: 13rem;
+            }
 
-            blockquote {
-                font-style: normal;
-                opacity: 1;
+            &::before {
+                transform: translate(-4rem, 0rem);
+            }
+
+            &::after {
+                transform: translate(4rem, 6rem);
             }
         }
 
@@ -366,58 +383,6 @@
 
             &::before {
                 transform: translate(-4rem, 1.5rem);
-            }
-
-            &::after {
-                transform: translate(4rem, 6rem);
-            }
-        }
-
-        /* Style: Biggie Quotes - Dokdo */
-        &.style-biggie-quotes-dokdo blockquote {
-            &::before,
-            &::after {
-                font-family: 'Dokdo', serif;
-                font-size: 20rem;
-            }
-
-            &::before {
-                transform: translate(-4rem, 4rem);
-            }
-
-            &::after {
-                transform: translate(4rem, 8rem);
-            }
-        }
-
-        /* Style: Biggie Quotes - Bungee */
-        &.style-biggie-quotes-bungee blockquote {
-            &::before,
-            &::after {
-                font-family: 'Bungee', serif;
-                font-size: 10rem;
-            }
-
-            &::before {
-                transform: translate(-4rem, -1.5rem);
-            }
-
-            &::after {
-                transform: translate(4rem, 5rem);
-            }
-        }
-
-        /* Style: Biggie Quotes - Sniglet */
-        &.style-biggie-quotes-sniglet blockquote {
-            &::before,
-            &::after {
-                font-family: 'Sniglet', serif;
-                font-weight: 600;
-                font-size: 13rem;
-            }
-
-            &::before {
-                transform: translate(-4rem, 0rem);
             }
 
             &::after {
@@ -509,7 +474,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-family: 'Special Gothic Expanded One', sans-serif;
+            font-family: 'Nunito', sans-serif;
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;

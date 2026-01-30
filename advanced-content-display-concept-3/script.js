@@ -47,14 +47,10 @@ const stars = document.querySelectorAll('.favorite-star');
 
 // Style classes applied to the container div
 const styleClasses = [
-    'default',
     'style-left-border',
-    'style-biggie',
+    'style-biggie-quotes-sniglet',
     'style-biggie-quotes-original-surfer',
-    'style-biggie-quotes-modak',
-    'style-biggie-quotes-dokdo',
-    'style-biggie-quotes-bungee',
-    'style-biggie-quotes-sniglet'
+    'style-biggie-quotes-modak'
 ];
 
 // Apply default style (Left Border) on page load
@@ -70,16 +66,10 @@ if (styleButtons.length > 0) {
             
             // Remove all style classes from blockquote containers
             blockquoteContainers.forEach(container => {
-                styleClasses.forEach(cls => {
-                    if (cls !== 'default') {
-                        container.classList.remove(cls);
-                    }
-                });
+                styleClasses.forEach(cls => container.classList.remove(cls));
                 
-                // Add selected style (unless it's default)
-                if (selectedStyle !== 'default') {
-                    container.classList.add(selectedStyle);
-                }
+                // Add selected style
+                container.classList.add(selectedStyle);
             });
             
             // Update active button
