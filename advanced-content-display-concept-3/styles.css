@@ -38,7 +38,7 @@
 }
 
 /* Custom Styles */
-.ast-document {
+.strongmind-content-layer {
     background-color: #F6F0E9;
     font-family: 'Nunito', sans-serif;
     max-width: 100%;
@@ -204,8 +204,6 @@
         }
     }
 
-
-
     div:has(hr) {
         /* Default HR */
         hr {
@@ -218,7 +216,7 @@
         &.hyper-style-enabled {
             hr {
                 border: none;
-                min-height: 16px;
+                min-height: 12px;
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
