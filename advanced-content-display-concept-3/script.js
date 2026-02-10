@@ -128,3 +128,35 @@ if (tableStyleButtons.length > 0) {
         });
     });
 }
+
+// ============================================
+// Image Style Selector
+// ============================================
+const figures = document.querySelectorAll('figure');
+const imageStyleButtons = document.querySelectorAll('.control-section button[data-image-style]');
+
+const imageStyleClasses = [
+    'style-img-default',
+    'style-img-rounded',
+    'style-img-contained'
+];
+
+figures.forEach(figure => {
+    figure.classList.add('style-img-default');
+});
+
+if (imageStyleButtons.length > 0) {
+    imageStyleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedStyle = button.dataset.imageStyle;
+
+            figures.forEach(figure => {
+                imageStyleClasses.forEach(cls => figure.classList.remove(cls));
+                figure.classList.add(selectedStyle);
+            });
+
+            imageStyleButtons.forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+}

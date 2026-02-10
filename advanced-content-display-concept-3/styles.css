@@ -396,16 +396,33 @@
     }
 
     img {
-        border: 2px solid #000;
-        border-collapse: collapse;
-        border-radius: var(--border-radius);
         display: inline-block;
-        box-shadow: var(--box-shadow);
+        max-width: 100%;
+        height: auto;
         transition: transform 0.2s ease-in-out;
+    }
 
-        &:hover {
-            transform: scale(1.025);
-        }
+    /* Image Style: Default */
+    figure.style-img-default img {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* Image Style: Rounded */
+    figure.style-img-rounded img {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: none;
+    }
+
+    /* Image Style: Contained */
+    figure.style-img-contained img {
+        border: 2px solid #E4D8CC;
+        border-radius: 16px;
+        box-shadow: none;
+        padding: 8px;
+        background: #F9FAFB;
     }
 
     /* Table Styles - Base */
