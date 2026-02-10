@@ -416,7 +416,7 @@
 
     /* Table Styles */
     table {
-        --border-radius: 40px;
+        --border-radius: 48px;
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
@@ -443,13 +443,13 @@
             letter-spacing: 0.025em;
 
             &:first-child {
-                border-top-left-radius: 32px;
-                border-bottom-left-radius: 32px;
+                border-top-left-radius: 40px;
+                border-bottom-left-radius: 40px;
             }
 
             &:last-child {
-                border-top-right-radius: 32px;
-                border-bottom-right-radius: 32px;
+                border-top-right-radius: 40px;
+                border-bottom-right-radius: 40px;
             }
         }
 
