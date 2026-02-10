@@ -140,12 +140,23 @@ const imageStyleClasses = [
     'style-img-rounded',
     'style-img-rounded-border',
     'style-img-border-gradients',
-    'style-img-contained'
+    'style-img-contained',
+    'style-img-contained-color'
 ];
 
 figures.forEach(figure => {
     figure.classList.add('style-img-default');
 });
+
+// Gradient cycle (1→2→3, 3→4→5, 5→6→7) by image order, not div nth-of-type
+const contentLayer = document.querySelector('.strongmind-content-layer');
+if (contentLayer) {
+    const figureWrappers = Array.from(contentLayer.children).filter(el => el.tagName === 'DIV' && el.querySelector('figure'));
+    figureWrappers.forEach((div, index) => {
+        div.classList.remove('gradient-set-1', 'gradient-set-2', 'gradient-set-3');
+        div.classList.add('gradient-set-' + ((index % 3) + 1));
+    });
+}
 
 if (imageStyleButtons.length > 0) {
     imageStyleButtons.forEach(button => {
