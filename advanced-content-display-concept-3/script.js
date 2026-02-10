@@ -95,3 +95,36 @@ if (stars.length > 0) {
         });
     });
 }
+
+// ============================================
+// Table Style Selector
+// ============================================
+const tables = document.querySelectorAll('table');
+const tableStyleButtons = document.querySelectorAll('.control-section button[data-table-style]');
+
+// Table style classes
+const tableStyleClasses = [
+    'style-floating-header',
+    'style-contained'
+];
+
+// Table style button click handling
+if (tableStyleButtons.length > 0) {
+    tableStyleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedStyle = button.dataset.tableStyle;
+            
+            // Remove all table style classes from tables
+            tables.forEach(table => {
+                tableStyleClasses.forEach(cls => table.classList.remove(cls));
+                
+                // Add selected style
+                table.classList.add(selectedStyle);
+            });
+            
+            // Update active button
+            tableStyleButtons.forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+}
