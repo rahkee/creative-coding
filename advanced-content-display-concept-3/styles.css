@@ -140,6 +140,7 @@
 
     /* Hyper Style: Colored decorations (class added to section:has(h2) via JS) */
     section:has(h2).hyper-style-enabled {
+
         h2::before,
         h2::after {
             content: '';
@@ -154,7 +155,7 @@
         h2::before {
             left: 0;
             top: 0;
-            
+
         }
 
         h2::after {
@@ -205,6 +206,7 @@
     }
 
     div:has(hr) {
+
         /* Default HR */
         hr {
             margin-block: 5rem 2.5rem;
@@ -280,7 +282,7 @@
             font-family: 'Source Serif 4', serif;
             font-size: 1rem;
             line-height: 1.875;
-            position: relative;            
+            position: relative;
         }
 
         /* Style: Left Border */
@@ -332,6 +334,7 @@
 
         /* Style: Biggie Quotes - Sniglet */
         &.style-biggie-quotes-sniglet blockquote {
+
             &::before,
             &::after {
                 font-family: 'Sniglet', serif;
@@ -350,6 +353,7 @@
 
         /* Style: Biggie Quotes - Original Surfer */
         &.style-biggie-quotes-original-surfer blockquote {
+
             &::before,
             &::after {
                 font-family: 'Original Surfer', serif;
@@ -367,6 +371,7 @@
 
         /* Style: Biggie Quotes - Modak */
         &.style-biggie-quotes-modak blockquote {
+
             &::before,
             &::after {
                 font-family: 'Modak', serif;
@@ -402,27 +407,52 @@
         transition: transform 0.2s ease-in-out;
     }
 
-    /* Image Style: Default */
-    figure.style-img-default img {
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-    }
+    figure {
+        display: flex;
+            flex-direction: column;
+            gap: 8px;
 
-    /* Image Style: Rounded */
-    figure.style-img-rounded img {
-        border: none;
-        border-radius: var(--border-radius);
-        box-shadow: none;
-    }
+        figcaption {
+            font-size: 0.875rem;
+            color: rgba(0, 0, 0, 0.5);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.5;
+        }
 
-    /* Image Style: Contained */
-    figure.style-img-contained img {
-        border: 2px solid #E4D8CC;
-        border-radius: 16px;
-        box-shadow: none;
-        padding: 8px;
-        background: #F9FAFB;
+        /* Image Style: Default */
+        &.style-img-default img {
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        /* Image Style: Rounded */
+        &.style-img-rounded img {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: none;
+        }
+
+        /* Image Style: Rounded Border */
+        &.style-img-rounded-border img {
+            border: 2px solid #000;
+            border-radius: var(--border-radius);
+            box-shadow: none;
+        }
+
+        /* Image Style: Contained */
+        &.style-img-contained {
+            border: 2px solid #E4D8CC;
+            border-radius: var(--border-radius);
+            box-shadow: none;
+            padding: 16px;
+            background: #F9FAFB;
+
+            img {
+                border-radius: 8px;
+            }
+        }
     }
 
     /* Table Styles - Base */
@@ -643,7 +673,7 @@
         display: inline-block;
 
         a {
-            display:inline-block;
+            display: inline-block;
             text-decoration: none;
             transition: background-color 0.2s ease, transform 0.2s ease;
 

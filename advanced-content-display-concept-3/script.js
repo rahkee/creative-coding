@@ -138,6 +138,7 @@ const imageStyleButtons = document.querySelectorAll('.control-section button[dat
 const imageStyleClasses = [
     'style-img-default',
     'style-img-rounded',
+    'style-img-rounded-border',
     'style-img-contained'
 ];
 
