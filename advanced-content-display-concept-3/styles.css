@@ -416,78 +416,55 @@
 
     /* Table Styles */
     table {
-        --border-radius: 48px;
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
         margin: 1.5rem 0;
-        background: #F9FAFB;
         overflow: hidden;
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow);
         margin-bottom: 1rem;
-        padding: 1.25rem;
 
         th,
         td {
-            padding: 1rem 1.25rem;
+            padding: 1rem 1.5rem;
             text-align: left;
             border: none;
         }
 
         th {
-            background: #E5E7EB;
-            color: #374151;
+            background: #6E8F55;
             font-weight: 600;
             font-size: 1rem;
             letter-spacing: 0.025em;
+            color: #fff;
 
             &:first-child {
-                border-top-left-radius: 40px;
-                border-bottom-left-radius: 40px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
             }
 
             &:last-child {
-                border-top-right-radius: 40px;
-                border-bottom-right-radius: 40px;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
             }
         }
 
         tbody {
             tr {
-                background: #F9FAFB;
                 transition: background-color 0.2s ease, transform 0.2s ease;
 
                 &:not(:first-child) {
                     td {
-                        border-bottom: 1px solid #E5E7EB;
-                    }
-
-                    &:hover {
-                        background: #fff;
-                        transform: scale(1.025);
+                        border-color: #CEB7A3;
+                        border-bottom-width: 2px;
+                        border-bottom-style: solid;
                     }
                 }
 
                 &:last-child {
-                    --border-radius: 32px;
-
                     td {
                         border-bottom: none;
-
-                        &:first-child {
-                            border-bottom-left-radius: var(--border-radius);
-                        }
-
-                        &:last-child {
-                            border-bottom-right-radius: var(--border-radius);
-                        }
                     }
                 }
-            }
-
-            td {
-                color: #374151;
             }
         }
     }
