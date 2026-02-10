@@ -440,20 +440,88 @@
             border-radius: var(--border-radius);
             box-shadow: none;
         }
+        /* Image Style: Border Gradients (gradient on image border via .img-border-gradient-wrap) */
+        &.style-img-border-gradients .img-border-gradient-wrap {
+            position: relative;
+            box-sizing: border-box;
+            padding: 4px;
+            border: solid 2px transparent;
+            border-radius: var(--border-radius);
+            background: #F6F0E9;
+            background-clip: padding-box;
+            display: inline-block;
+        }
+
+        &.style-img-border-gradients .img-border-gradient-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            margin: -2px;
+            border-radius: inherit;
+        }
+
+        &.style-img-border-gradients .img-border-gradient-wrap img {
+            position: relative;
+            z-index: 1;
+            border: none;
+            border-radius: 12px;
+            box-shadow: none;
+            display: block;
+        }
 
         /* Image Style: Contained */
         &.style-img-contained {
-            border: 2px solid #E4D8CC;
+            border: 3px solid #E4D8CC;
             border-radius: var(--border-radius);
             box-shadow: none;
             padding: 16px;
             background: #F9FAFB;
 
             img {
+                border: 1.5px solid #E4D8CC;
                 border-radius: 8px;
             }
         }
+
     }
+
+    /* Cycling border colors for Rounded Border and Contained (div:has(figure) nth, same palette as footnotes) */
+    > div:has(figure):nth-of-type(7n+1) figure.style-img-rounded-border img { border-color: #4A6840; }
+    > div:has(figure):nth-of-type(7n+2) figure.style-img-rounded-border img { border-color: #356565; }
+    > div:has(figure):nth-of-type(7n+3) figure.style-img-rounded-border img { border-color: #2B7BC0; }
+    > div:has(figure):nth-of-type(7n+4) figure.style-img-rounded-border img { border-color: #206090; }
+    > div:has(figure):nth-of-type(7n+5) figure.style-img-rounded-border img { border-color: #454898; }
+    > div:has(figure):nth-of-type(7n+6) figure.style-img-rounded-border img { border-color: #704888; }
+    > div:has(figure):nth-of-type(7n+7) figure.style-img-rounded-border img { border-color: #904870; }
+
+    > div:has(figure):nth-of-type(7n+1) figure.style-img-contained { border-color: #4A6840; }
+    > div:has(figure):nth-of-type(7n+2) figure.style-img-contained { border-color: #356565; }
+    > div:has(figure):nth-of-type(7n+3) figure.style-img-contained { border-color: #2B7BC0; }
+    > div:has(figure):nth-of-type(7n+4) figure.style-img-contained { border-color: #206090; }
+    > div:has(figure):nth-of-type(7n+5) figure.style-img-contained { border-color: #454898; }
+    > div:has(figure):nth-of-type(7n+6) figure.style-img-contained { border-color: #704888; }
+    > div:has(figure):nth-of-type(7n+7) figure.style-img-contained { border-color: #904870; }
+
+    > div:has(figure):nth-of-type(7n+1) figure.style-img-contained img { border-color: #4A6840; }
+    > div:has(figure):nth-of-type(7n+2) figure.style-img-contained img { border-color: #356565; }
+    > div:has(figure):nth-of-type(7n+3) figure.style-img-contained img { border-color: #2B7BC0; }
+    > div:has(figure):nth-of-type(7n+4) figure.style-img-contained img { border-color: #206090; }
+    > div:has(figure):nth-of-type(7n+5) figure.style-img-contained img { border-color: #454898; }
+    > div:has(figure):nth-of-type(7n+6) figure.style-img-contained img { border-color: #704888; }
+    > div:has(figure):nth-of-type(7n+7) figure.style-img-contained img { border-color: #904870; }
+
+    /* Border Gradients: gradient on image wrapper .img-border-gradient-wrap (cycling 3-color combos) */
+    > div:has(figure):nth-of-type(7n+1) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #4A6840, #356565, #2B7BC0); }
+    > div:has(figure):nth-of-type(7n+2) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #356565, #2B7BC0, #206090); }
+    > div:has(figure):nth-of-type(7n+3) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #2B7BC0, #206090, #454898); }
+    > div:has(figure):nth-of-type(7n+4) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #206090, #454898, #704888); }
+    > div:has(figure):nth-of-type(7n+5) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #454898, #704888, #904870); }
+    > div:has(figure):nth-of-type(7n+6) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #704888, #904870, #4A6840); }
+    > div:has(figure):nth-of-type(7n+7) figure.style-img-border-gradients .img-border-gradient-wrap::before { background: linear-gradient(to right, #904870, #4A6840, #356565); }
 
     /* Table Styles - Base */
     table {
@@ -570,7 +638,7 @@
 
     /* Admonition Styles */
     .sm-dfp {
-        display: flex;
+        display: none;
         flex-direction: column;
         gap: 0.75rem;
         padding: 1.25rem;

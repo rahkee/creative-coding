@@ -139,6 +139,7 @@ const imageStyleClasses = [
     'style-img-default',
     'style-img-rounded',
     'style-img-rounded-border',
+    'style-img-border-gradients',
     'style-img-contained'
 ];
 
