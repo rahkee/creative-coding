@@ -486,10 +486,11 @@
 
     /* Table Style: Contained */
     table.style-contained {
-        border-spacing: 8px;
+
         background: #F9FAFB;
         border: 2px solid #E4D8CC;
         border-radius: 24px;
+        padding: 16px;
 
         th {
             background: #E4D8CC;
