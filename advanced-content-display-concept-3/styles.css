@@ -582,34 +582,47 @@
     /* Footnote Definition */
     .sm-footnote {
         display: flex;
+        align-items: start;
         gap: 1rem;
 
         span {
+            background-color: #2a2a2a;
+            font-size: .825rem;
             font-weight: bold;
             display: inline-block;
-            width: 24px;
-            height: 24px;
             text-align: center;
             color: #fff;
-            border-radius: 50%;
-            aspect-ratio: 1/1;
+            padding: 0.125rem .5rem;
+            border-radius: var(--border-radius);
         }
     }
 
     /* Cycling footnote colors by section */
-    section:nth-of-type(4n+1) .sm-footnote span {
-        background-color: #3498DB;
+    section:nth-of-type(7n+1) .sm-footnote span {
+        background-color: #4A6840;
     }
 
-    section:nth-of-type(4n+2) .sm-footnote span {
-        background-color: #7066C0;
+    section:nth-of-type(7n+2) .sm-footnote span {
+        background-color: #356565;
     }
 
-    section:nth-of-type(4n+3) .sm-footnote span {
-        background-color: #A070B0;
+    section:nth-of-type(7n+3) .sm-footnote span {
+        background-color: #2B7BC0;
     }
 
-    section:nth-of-type(4n+4) .sm-footnote span {
-        background-color: #C87898;
+    section:nth-of-type(7n+4) .sm-footnote span {
+        background-color: #206090;
+    }
+
+    section:nth-of-type(7n+5) .sm-footnote span {
+        background-color: #454898;
+    }
+
+    section:nth-of-type(7n+6) .sm-footnote span {
+        background-color: #704888;
+    }
+
+    section:nth-of-type(7n+7) .sm-footnote span {
+        background-color: #904870;
     }
 }
