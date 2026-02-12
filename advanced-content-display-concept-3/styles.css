@@ -569,13 +569,6 @@
             line-height: 1.5;
         }
 
-        /* Image Style: Default */
-        &.style-img-default img {
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-        }
-
         /* Image Style: Rounded */
         &.style-img-rounded img {
             border: none;
@@ -622,22 +615,8 @@
             display: block;
         }
 
-        /* Image Style: Contained (same as Contained (Color), fixed border) */
+        /* Image Style: Contained */
         &.style-img-contained {
-            border: 3px solid #E4D8CC;
-            border-radius: var(--border-radius);
-            box-shadow: none;
-            padding: 16px;
-            background: #F9FAFB;
-
-            img {
-                border: 1.5px solid #E4D8CC;
-                border-radius: 8px;
-            }
-        }
-
-        /* Image Style: Contained (Color) (cycling border colors via nth rules) */
-        &.style-img-contained-color {
             border: 3px solid #E4D8CC;
             border-radius: var(--border-radius);
             box-shadow: none;
@@ -652,8 +631,7 @@
 
     }
 
-    /* Cycling border colors for Rounded Border and Contained (Color) (div:has(figure) nth) */
-    /* Cycling border colors (9-color palette) */
+    /* Cycling border colors for Rounded Border (9-color palette) */
     > div:has(figure):nth-of-type(9n+1) figure.style-img-rounded-border img { border-color: #CB6D52; }
     > div:has(figure):nth-of-type(9n+2) figure.style-img-rounded-border img { border-color: #DF904D; }
     > div:has(figure):nth-of-type(9n+3) figure.style-img-rounded-border img { border-color: #6B8B52; }
@@ -663,26 +641,6 @@
     > div:has(figure):nth-of-type(9n+7) figure.style-img-rounded-border img { border-color: #5C64C5; }
     > div:has(figure):nth-of-type(9n+8) figure.style-img-rounded-border img { border-color: #946DC6; }
     > div:has(figure):nth-of-type(9n+9) figure.style-img-rounded-border img { border-color: #C74D82; }
-
-    > div:has(figure):nth-of-type(9n+1) figure.style-img-contained-color { border-color: #CB6D52; }
-    > div:has(figure):nth-of-type(9n+2) figure.style-img-contained-color { border-color: #DF904D; }
-    > div:has(figure):nth-of-type(9n+3) figure.style-img-contained-color { border-color: #6B8B52; }
-    > div:has(figure):nth-of-type(9n+4) figure.style-img-contained-color { border-color: #4A8B87; }
-    > div:has(figure):nth-of-type(9n+5) figure.style-img-contained-color { border-color: #4F91F2; }
-    > div:has(figure):nth-of-type(9n+6) figure.style-img-contained-color { border-color: #4A8EB5; }
-    > div:has(figure):nth-of-type(9n+7) figure.style-img-contained-color { border-color: #5C64C5; }
-    > div:has(figure):nth-of-type(9n+8) figure.style-img-contained-color { border-color: #946DC6; }
-    > div:has(figure):nth-of-type(9n+9) figure.style-img-contained-color { border-color: #C74D82; }
-
-    > div:has(figure):nth-of-type(9n+1) figure.style-img-contained-color img { border-color: #CB6D52; }
-    > div:has(figure):nth-of-type(9n+2) figure.style-img-contained-color img { border-color: #DF904D; }
-    > div:has(figure):nth-of-type(9n+3) figure.style-img-contained-color img { border-color: #6B8B52; }
-    > div:has(figure):nth-of-type(9n+4) figure.style-img-contained-color img { border-color: #4A8B87; }
-    > div:has(figure):nth-of-type(9n+5) figure.style-img-contained-color img { border-color: #4F91F2; }
-    > div:has(figure):nth-of-type(9n+6) figure.style-img-contained-color img { border-color: #4A8EB5; }
-    > div:has(figure):nth-of-type(9n+7) figure.style-img-contained-color img { border-color: #5C64C5; }
-    > div:has(figure):nth-of-type(9n+8) figure.style-img-contained-color img { border-color: #946DC6; }
-    > div:has(figure):nth-of-type(9n+9) figure.style-img-contained-color img { border-color: #C74D82; }
 
     /* Border Gradients: 3 sets by image order (1→2→3, 4→5→6, 7→8→9) via .gradient-set-* from JS */
     > div.gradient-set-1 figure.style-img-border-gradients .img-wrapper::before { background: linear-gradient(135deg, #CB6D52, #DF904D, #6B8B52); }

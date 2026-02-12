@@ -106,16 +106,14 @@ const figures = document.querySelectorAll('figure');
 const imageStyleButtons = document.querySelectorAll('.control-section button[data-image-style]');
 
 const imageStyleClasses = [
-    'style-img-default',
     'style-img-rounded',
     'style-img-rounded-border',
     'style-img-border-gradients',
-    'style-img-contained',
-    'style-img-contained-color'
+    'style-img-contained'
 ];
 
 figures.forEach(figure => {
-    figure.classList.add('style-img-default');
+    figure.classList.add('style-img-rounded');
 });
 
 // Gradient cycle (1→2→3, 3→4→5, 5→6→7) by image order, not div nth-of-type
