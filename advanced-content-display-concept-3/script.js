@@ -9,36 +9,6 @@ document.querySelectorAll('header h1').forEach(h1 => {
 });
 
 // ============================================
-// Hyper Style Toggle (colored decorations on h2s and hrs)
-// ============================================
-const hyperStyleToggle = document.getElementById('hyper-style-toggle');
-const h2Sections = document.querySelectorAll('section:has(h2)');
-const hrContainers = document.querySelectorAll('div:has(hr)');
-
-if (hyperStyleToggle) {
-    // Apply initial state on page load
-    const applyHyperStyle = (isEnabled) => {
-        h2Sections.forEach(section => {
-            section.classList.toggle('hyper-style-enabled', isEnabled);
-        });
-        
-        hrContainers.forEach(container => {
-            container.classList.toggle('hyper-style-enabled', isEnabled);
-        });
-    };
-
-    // Apply on page load if checked
-    if (hyperStyleToggle.checked) {
-        applyHyperStyle(true);
-    }
-
-    // Apply on toggle change
-    hyperStyleToggle.addEventListener('change', () => {
-        applyHyperStyle(hyperStyleToggle.checked);
-    });
-}
-
-// ============================================
 // Blockquote Style Selector
 // ============================================
 const blockquoteContainers = document.querySelectorAll('div:has(blockquote)');
@@ -155,6 +125,37 @@ if (contentLayer) {
     figureWrappers.forEach((div, index) => {
         div.classList.remove('gradient-set-1', 'gradient-set-2', 'gradient-set-3');
         div.classList.add('gradient-set-' + ((index % 3) + 1));
+    });
+
+    // Mark the first div that contains a ul so we can style it independently
+    const firstUlContainer = Array.from(contentLayer.children).find(el => el.tagName === 'DIV' && el.querySelector('ul'));
+    if (firstUlContainer) {
+        firstUlContainer.classList.add('first-ul-container');
+    }
+}
+
+// ============================================
+// First UL Style Selector (first ul on page only)
+// ============================================
+const firstUlStyleButtons = document.querySelectorAll('.control-section button[data-first-ul-style]');
+const firstUlStyleClasses = [
+    'first-ul-style-bordered',
+    'first-ul-style-cards',
+    'first-ul-style-left-bar',
+    'first-ul-style-minimal'
+];
+
+if (contentLayer && firstUlStyleButtons.length > 0) {
+    firstUlStyleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedStyle = button.dataset.firstUlStyle;
+
+            firstUlStyleClasses.forEach(cls => contentLayer.classList.remove(cls));
+            contentLayer.classList.add(selectedStyle);
+
+            firstUlStyleButtons.forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+        });
     });
 }
 

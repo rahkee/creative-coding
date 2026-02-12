@@ -271,6 +271,155 @@
         }
     }
 
+    /* List container styles: first div containing ul/ol styled differently than the rest */
+    > div:has(ul),
+    > div:has(ol) {
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        li {
+            margin-block: 0.35em;
+        }
+    }
+
+    /* First unordered list on the page (div marked with .first-ul-container via JS) — no bullets; li containers */
+    > .first-ul-container {
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #543979;
+        }
+
+        li:nth-child(9n+1) { border-color: #CB6D52; }
+        li:nth-child(9n+2) { border-color: #DF904D; }
+        li:nth-child(9n+3) { border-color: #6B8B52; }
+        li:nth-child(9n+4) { border-color: #4A8B87; }
+        li:nth-child(9n+5) { border-color: #4F91F2; }
+        li:nth-child(9n+6) { border-color: #4A8EB5; }
+        li:nth-child(9n+7) { border-color: #5C64C5; }
+        li:nth-child(9n+8) { border-color: #946DC6; }
+        li:nth-child(9n+9) { border-color: #C74D82; }
+    }
+
+    /* First UL style: Cards — li with background and shadow */
+    &.first-ul-style-cards > .first-ul-container li {
+        border: none;
+        background: #fff;
+        box-shadow: var(--box-shadow);
+    }
+
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+1) { border-left: 4px solid #CB6D52; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+2) { border-left: 4px solid #DF904D; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+3) { border-left: 4px solid #6B8B52; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+4) { border-left: 4px solid #4A8B87; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+5) { border-left: 4px solid #4F91F2; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+6) { border-left: 4px solid #4A8EB5; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+7) { border-left: 4px solid #5C64C5; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+8) { border-left: 4px solid #946DC6; }
+    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+9) { border-left: 4px solid #C74D82; }
+
+    /* First UL style: Left bar — thick left border only, same colors */
+    &.first-ul-style-left-bar > .first-ul-container li {
+        border: none;
+        border-left: 6px solid #543979;
+    }
+
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+1) { border-left-color: #CB6D52; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+2) { border-left-color: #DF904D; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+3) { border-left-color: #6B8B52; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+4) { border-left-color: #4A8B87; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+5) { border-left-color: #4F91F2; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+6) { border-left-color: #4A8EB5; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+7) { border-left-color: #5C64C5; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+8) { border-left-color: #946DC6; }
+    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+9) { border-left-color: #C74D82; }
+
+    /* First UL style: Minimal — light background, subtle border */
+    &.first-ul-style-minimal > .first-ul-container li {
+        border: 1px solid #E4D8CC;
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+1) { border-left: 3px solid #CB6D52; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+2) { border-left: 3px solid #DF904D; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+3) { border-left: 3px solid #6B8B52; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+4) { border-left: 3px solid #4A8B87; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+5) { border-left: 3px solid #4F91F2; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+6) { border-left: 3px solid #4A8EB5; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+7) { border-left: 3px solid #5C64C5; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+8) { border-left: 3px solid #946DC6; }
+    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+9) { border-left: 3px solid #C74D82; }
+
+    /* Subsequent unordered lists — regular bulleted list (disc), no card */
+    > div:has(ul) ~ div:has(ul) {
+        padding: 12px 48px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+
+        ul {
+            list-style-type: disc;
+        }
+    }
+
+    /* Cycle bullet colors for 2nd, 3rd, 4th… ul (nth-of-type among divs that contain ul) */
+    > div:has(ul):nth-child(9n+2 of div:has(ul)) li::marker { color: #CB6D52; }
+    > div:has(ul):nth-child(9n+3 of div:has(ul)) li::marker { color: #DF904D; }
+    > div:has(ul):nth-child(9n+4 of div:has(ul)) li::marker { color: #6B8B52; }
+    > div:has(ul):nth-child(9n+5 of div:has(ul)) li::marker { color: #4A8B87; }
+    > div:has(ul):nth-child(9n+6 of div:has(ul)) li::marker { color: #4F91F2; }
+    > div:has(ul):nth-child(9n+7 of div:has(ul)) li::marker { color: #4A8EB5; }
+    > div:has(ul):nth-child(9n+8 of div:has(ul)) li::marker { color: #5C64C5; }
+    > div:has(ul):nth-child(9n+9 of div:has(ul)) li::marker { color: #946DC6; }
+    > div:has(ul):nth-child(9n+10 of div:has(ul)) li::marker { color: #C74D82; }
+
+    /* First ordered list on the page (first div that contains an ol) — styled as a card */
+    > div:has(ol) {
+        padding: 1.25rem 1.5rem;
+        background: #E8F4F8;
+        border-radius: var(--border-radius);
+        border-left: 6px solid #0D5A84;
+        box-shadow: var(--box-shadow);
+
+        ol {
+            list-style-type: decimal;
+            font-weight: 500;
+        }
+
+        li::marker {
+            color: #0D5A84;
+            font-weight: 700;
+        }
+    }
+
+    /* Subsequent ordered lists — plain */
+    > div:has(ol) ~ div:has(ol) {
+        padding: 12px 48px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+
+        ol {
+            list-style-type: decimal;
+            color: #444;
+        }
+
+        li::marker {
+            color: #6B8B52;
+        }
+    }
+
     a {
         color: #0B80BE;
         text-decoration: underline;
