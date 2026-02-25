@@ -350,27 +350,8 @@
     > div:has(ul):nth-child(9n+9 of div:has(ul)) li::marker { color: #946DC6; }
     > div:has(ul):nth-child(9n+10 of div:has(ul)) li::marker { color: #C74D82; }
 
-    /* First ordered list on the page (first div that contains an ol) — styled as a card */
+    /* All ordered lists — plain (same design for every ol) */
     > div:has(ol) {
-        padding: 1.25rem 1.5rem;
-        background: #E8F4F8;
-        border-radius: var(--border-radius);
-        border-left: 6px solid #0D5A84;
-        box-shadow: var(--box-shadow);
-
-        ol {
-            list-style-type: decimal;
-            font-weight: 500;
-        }
-
-        li::marker {
-            color: #0D5A84;
-            font-weight: 700;
-        }
-    }
-
-    /* Subsequent ordered lists — plain */
-    > div:has(ol) ~ div:has(ol) {
         padding: 12px 48px;
         background: transparent;
         border: none;
@@ -689,11 +670,6 @@
         gap: 1rem;
         align-items: flex-start;
         font-size: 0.875rem; /* text-sm */
-    }
-
-    .sm-footnote span.font-semibold,
-    .sm-footnote > span {
-        font-weight: 600;
     }
 
     .sm-footnote p {
