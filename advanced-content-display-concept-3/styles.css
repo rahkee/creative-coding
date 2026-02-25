@@ -310,39 +310,6 @@
         li:nth-child(9n+9) { border-color: #C74D82; }
     }
 
-    /* First UL style: Cards — li with background and shadow */
-    &.first-ul-style-cards > .first-ul-container li {
-        border: none;
-        background: #fff;
-        box-shadow: var(--box-shadow);
-    }
-
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+1) { border-left: 4px solid #CB6D52; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+2) { border-left: 4px solid #DF904D; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+3) { border-left: 4px solid #6B8B52; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+4) { border-left: 4px solid #4A8B87; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+5) { border-left: 4px solid #4F91F2; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+6) { border-left: 4px solid #4A8EB5; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+7) { border-left: 4px solid #5C64C5; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+8) { border-left: 4px solid #946DC6; }
-    &.first-ul-style-cards > .first-ul-container li:nth-child(9n+9) { border-left: 4px solid #C74D82; }
-
-    /* First UL style: Left bar — thick left border only, same colors */
-    &.first-ul-style-left-bar > .first-ul-container li {
-        border: none;
-        border-left: 6px solid #543979;
-    }
-
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+1) { border-left-color: #CB6D52; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+2) { border-left-color: #DF904D; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+3) { border-left-color: #6B8B52; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+4) { border-left-color: #4A8B87; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+5) { border-left-color: #4F91F2; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+6) { border-left-color: #4A8EB5; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+7) { border-left-color: #5C64C5; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+8) { border-left-color: #946DC6; }
-    &.first-ul-style-left-bar > .first-ul-container li:nth-child(9n+9) { border-left-color: #C74D82; }
-
     /* First UL style: Minimal — light background, subtle border */
     &.first-ul-style-minimal > .first-ul-container li {
         border: 1px solid #E4D8CC;
@@ -434,19 +401,7 @@
             position: relative;
         }
 
-        /* Style: Left Border */
-        &.style-left-border {
-            padding-block: 24px;
-
-            blockquote {
-                background-color: #fff;
-                padding: 1.5rem;
-                padding-left: 2rem;
-                border-left: 8px solid #543979;
-            }
-        }
-
-        /* Generic styles for all Biggie Quotes variants */
+        /* Generic styles for Biggie Quotes (Sniglet) */
         &[class*="style-biggie-quotes-"] {
             background-color: #fff;
             border-radius: var(--border-radius);
@@ -500,41 +455,6 @@
             }
         }
 
-        /* Style: Biggie Quotes - Original Surfer */
-        &.style-biggie-quotes-original-surfer blockquote {
-
-            &::before,
-            &::after {
-                font-family: 'Original Surfer', serif;
-                font-weight: 500;
-            }
-
-            &::before {
-                transform: translate(-4rem, 1.5rem);
-            }
-
-            &::after {
-                transform: translate(4rem, 6rem);
-            }
-        }
-
-        /* Style: Biggie Quotes - Modak */
-        &.style-biggie-quotes-modak blockquote {
-
-            &::before,
-            &::after {
-                font-family: 'Modak', serif;
-                font-size: 12rem;
-            }
-
-            &::before {
-                transform: translate(-4rem, 1.5rem);
-            }
-
-            &::after {
-                transform: translate(4rem, 6rem);
-            }
-        }
     }
 
     pre,
@@ -569,52 +489,6 @@
             line-height: 1.5;
         }
 
-        /* Image Style: Rounded */
-        &.style-img-rounded img {
-            border: none;
-            border-radius: var(--border-radius);
-            box-shadow: none;
-        }
-
-        /* Image Style: Rounded Border */
-        &.style-img-rounded-border img {
-            border: 2px solid #000;
-            border-radius: var(--border-radius);
-            box-shadow: none;
-        }
-        /* Image Style: Border Gradients (gradient on image border via .img-wrapper) */
-        &.style-img-border-gradients .img-wrapper {
-            position: relative;
-            box-sizing: border-box;
-            padding: 4px;
-            border: solid 2px transparent;
-            border-radius: var(--border-radius);
-            background: #F6F0E9;
-            background-clip: padding-box;
-            display: inline-block;
-        }
-
-        &.style-img-border-gradients .img-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 0;
-            margin: -2px;
-            border-radius: inherit;
-        }
-
-        &.style-img-border-gradients .img-wrapper img {
-            position: relative;
-            z-index: 1;
-            border: none;
-            border-radius: 12px;
-            box-shadow: none;
-            display: block;
-        }
-
         /* Image Style: Contained */
         &.style-img-contained {
             border: 3px solid #E4D8CC;
@@ -630,22 +504,6 @@
         }
 
     }
-
-    /* Cycling border colors for Rounded Border (9-color palette) */
-    > div:has(figure):nth-of-type(9n+1) figure.style-img-rounded-border img { border-color: #CB6D52; }
-    > div:has(figure):nth-of-type(9n+2) figure.style-img-rounded-border img { border-color: #DF904D; }
-    > div:has(figure):nth-of-type(9n+3) figure.style-img-rounded-border img { border-color: #6B8B52; }
-    > div:has(figure):nth-of-type(9n+4) figure.style-img-rounded-border img { border-color: #4A8B87; }
-    > div:has(figure):nth-of-type(9n+5) figure.style-img-rounded-border img { border-color: #4F91F2; }
-    > div:has(figure):nth-of-type(9n+6) figure.style-img-rounded-border img { border-color: #4A8EB5; }
-    > div:has(figure):nth-of-type(9n+7) figure.style-img-rounded-border img { border-color: #5C64C5; }
-    > div:has(figure):nth-of-type(9n+8) figure.style-img-rounded-border img { border-color: #946DC6; }
-    > div:has(figure):nth-of-type(9n+9) figure.style-img-rounded-border img { border-color: #C74D82; }
-
-    /* Border Gradients: 3 sets by image order (1→2→3, 4→5→6, 7→8→9) via .gradient-set-* from JS */
-    > div.gradient-set-1 figure.style-img-border-gradients .img-wrapper::before { background: linear-gradient(135deg, #CB6D52, #DF904D, #6B8B52); }
-    > div.gradient-set-2 figure.style-img-border-gradients .img-wrapper::before { background: linear-gradient(135deg, #4A8B87, #4F91F2, #4A8EB5); }
-    > div.gradient-set-3 figure.style-img-border-gradients .img-wrapper::before { background: linear-gradient(135deg, #5C64C5, #946DC6, #C74D82); }
 
     /* Table Styles - Base */
     table {
@@ -669,57 +527,6 @@
 
         tbody tr {
             transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-    }
-
-    /* Table Style: Floating Header */
-    table.style-floating-header {
-        border-radius: 24px;
-
-        th {
-
-            &:first-child {
-                border-top-left-radius: 16px;
-                border-bottom-left-radius: 16px;
-            }
-
-            &:last-child {
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
-            }
-        }
-
-        tbody tr {
-            &:first-child {
-                background-color: #547040;
-                font-weight: bold;
-                color: #fff;
-
-                td {
-
-                    &:first-child {
-                        border-top-left-radius: 16px;
-                        border-bottom-left-radius: 16px;
-                    }
-
-                    &:last-child {
-                        border-top-right-radius: 16px;
-                        border-bottom-right-radius: 16px;
-                    }
-                }
-            }
-
-            &:not(:first-child) {
-                td {
-                    border-bottom-width: 2px;
-                    border-bottom-style: solid;
-                    border-bottom-color: #E4D8CC;
-                }
-            }
-
-            &:last-child td {
-                border-bottom: none;
-            }
         }
     }
 
@@ -876,58 +683,20 @@
         }
     }
 
-    /* Footnote Definition */
+    /* Footnote Definition: flex gap-4, text-sm on div; number is font-semibold */
     .sm-footnote {
         display: flex;
-        align-items: start;
         gap: 1rem;
-
-        span {
-            background-color: #2a2a2a;
-            font-size: .825rem;
-            font-weight: bold;
-            display: inline-block;
-            text-align: center;
-            color: #fff;
-            padding: 0.125rem .5rem;
-            border-radius: var(--border-radius);
-        }
+        align-items: flex-start;
+        font-size: 0.875rem; /* text-sm */
     }
 
-    /* Cycling footnote colors by section (9-color palette) */
-    section:nth-of-type(9n+1) .sm-footnote span {
-        background-color: #CB6D52;
+    .sm-footnote span.font-semibold,
+    .sm-footnote > span {
+        font-weight: 600;
     }
 
-    section:nth-of-type(9n+2) .sm-footnote span {
-        background-color: #DF904D;
-    }
-
-    section:nth-of-type(9n+3) .sm-footnote span {
-        background-color: #6B8B52;
-    }
-
-    section:nth-of-type(9n+4) .sm-footnote span {
-        background-color: #4A8B87;
-    }
-
-    section:nth-of-type(9n+5) .sm-footnote span {
-        background-color: #4F91F2;
-    }
-
-    section:nth-of-type(9n+6) .sm-footnote span {
-        background-color: #4A8EB5;
-    }
-
-    section:nth-of-type(9n+7) .sm-footnote span {
-        background-color: #5C64C5;
-    }
-
-    section:nth-of-type(9n+8) .sm-footnote span {
-        background-color: #946DC6;
-    }
-
-    section:nth-of-type(9n+9) .sm-footnote span {
-        background-color: #C74D82;
+    .sm-footnote p {
+        margin: 0;
     }
 }
