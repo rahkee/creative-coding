@@ -1,7 +1,3 @@
-/* TEMP!!! This will be removed once we're in ShadowDOM mode */
-@import url('https://cdn.strongmind.com/backpack-ui/latest/assets/css/tailwind-preflight.css');
-
-/* Body Font (also used for H1) */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* Blockquote Font */
@@ -15,8 +11,6 @@
 
 /* Decorative Quote Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
 /* CSS Variables */
 :root {
@@ -286,8 +280,8 @@
         }
     }
 
-    /* First unordered list on the page (div marked with .first-ul-container via JS) — no bullets; li containers */
-    > .first-ul-container {
+    /* First unordered list on the page — no bullets; li containers */
+    > div:has(ul):nth-child(1 of div:has(ul)) {
         ul {
             list-style: none;
             padding-left: 0;
@@ -309,22 +303,6 @@
         li:nth-child(9n+8) { border-color: #946DC6; }
         li:nth-child(9n+9) { border-color: #C74D82; }
     }
-
-    /* First UL style: Minimal — light background, subtle border */
-    &.first-ul-style-minimal > .first-ul-container li {
-        border: 1px solid #E4D8CC;
-        background: rgba(255, 255, 255, 0.6);
-    }
-
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+1) { border-left: 3px solid #CB6D52; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+2) { border-left: 3px solid #DF904D; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+3) { border-left: 3px solid #6B8B52; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+4) { border-left: 3px solid #4A8B87; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+5) { border-left: 3px solid #4F91F2; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+6) { border-left: 3px solid #4A8EB5; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+7) { border-left: 3px solid #5C64C5; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+8) { border-left: 3px solid #946DC6; }
-    &.first-ul-style-minimal > .first-ul-container li:nth-child(9n+9) { border-left: 3px solid #C74D82; }
 
     /* Subsequent unordered lists — regular bulleted list (disc), no card */
     > div:has(ul) ~ div:has(ul) {
@@ -380,62 +358,35 @@
             font-size: 1rem;
             line-height: 1.875;
             position: relative;
-        }
-
-        /* Generic styles for Biggie Quotes (Sniglet) */
-        &[class*="style-biggie-quotes-"] {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 48px 80px;
-            margin-block: 24px;
-
-            blockquote {
-                position: relative;
-
-                &::before,
-                &::after {
-                    font-size: 16rem;
-                    font-weight: 400;
-                    line-height: 0;
-                    color: #E4D8CC;
-                    position: absolute;
-                }
-
-                &::before {
-                    content: '“';
-                    top: 0;
-                    left: 0;
-                    transform: translate(-4rem, 1rem);
-                }
-
-                &::after {
-                    content: '”';
-                    bottom: 0;
-                    right: 0;
-                    transform: translate(3rem, 2rem);
-                }
-            }
-        }
-
-        /* Style: Biggie Quotes - Sniglet */
-        &.style-biggie-quotes-sniglet blockquote {
-
             &::before,
             &::after {
                 font-family: 'Sniglet', serif;
                 font-weight: 600;
                 font-size: 13rem;
+                line-height: 0;
+                color: #E4D8CC;
+                position: absolute;
             }
 
             &::before {
+                content: '“';
+                top: 0;
+                left: 0;
                 transform: translate(-4rem, 0rem);
             }
 
             &::after {
+                content: '”';
+                bottom: 0;
+                right: 0;
                 transform: translate(4rem, 6rem);
             }
         }
 
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        padding: 48px 80px;
+        margin-block: 24px;
     }
 
     pre,
@@ -461,6 +412,11 @@
         display: flex;
             flex-direction: column;
             gap: 8px;
+        border: 3px solid #E4D8CC;
+        border-radius: var(--border-radius);
+        box-shadow: none;
+        padding: 16px;
+        background: #F9FAFB;
 
         figcaption {
             font-size: 0.875rem;
@@ -471,17 +427,9 @@
         }
 
         /* Image Style: Contained */
-        &.style-img-contained {
-            border: 3px solid #E4D8CC;
-            border-radius: var(--border-radius);
-            box-shadow: none;
-            padding: 16px;
-            background: #F9FAFB;
-
-            img {
-                border: 1.5px solid #E4D8CC;
-                border-radius: 8px;
-            }
+        img {
+            border: 1.5px solid #E4D8CC;
+            border-radius: 8px;
         }
 
     }
@@ -511,8 +459,8 @@
         }
     }
 
-    /* Table Style: Contained */
-    table.style-contained {
+    /* Table style */
+    table {
         background: #F9FAFB;
         border: 2px solid #E4D8CC;
         border-radius: 24px;
