@@ -12,14 +12,8 @@
 /* Decorative Quote Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
 
-/* CSS Variables */
-:root {
-    --box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
-    --border-radius: 16px;
-}
-
 /* Keyframe Animations */
-@keyframes iconSway {
+@keyframes smContentLayerIconSway {
 
     0%,
     100% {
@@ -31,8 +25,241 @@
     }
 }
 
+/* Resetter */
+.strongmind-content-layer {
+    /* Tailwind v4 Preflight - Raw CSS version */
+    /* Based on modern-normalize and Tailwind's opinionated base styles */
+    /* The CSS is used in BackpackUI.less and in Course Builder Templating */
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0 solid;
+    }
+
+    html {
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+        -moz-tab-size: 4;
+        tab-size: 4;
+        font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+
+    body {
+        margin: 0;
+        line-height: inherit;
+    }
+
+    hr {
+        height: 0;
+        color: inherit;
+        border-top-width: 1px;
+    }
+
+    abbr:where([title]) {
+        text-decoration: underline dotted;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    b,
+    strong {
+        font-weight: bolder;
+    }
+
+    code,
+    kbd,
+    samp,
+    pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+        font-size: 1em;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    sup {
+        top: -0.5em;
+    }
+
+    table {
+        text-indent: 0;
+        border-color: inherit;
+        border-collapse: collapse;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+        padding: 0;
+    }
+
+    button,
+    select {
+        text-transform: none;
+    }
+
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        -webkit-appearance: button;
+        background-color: transparent;
+        background-image: none;
+    }
+
+    :-moz-focusring {
+        outline: auto;
+    }
+
+    :-moz-ui-invalid {
+        box-shadow: none;
+    }
+
+    progress {
+        vertical-align: baseline;
+    }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    [type='search'] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+    }
+
+    ::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+    }
+
+    summary {
+        display: list-item;
+    }
+
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+        margin: 0;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+    }
+
+    legend {
+        padding: 0;
+    }
+
+    ol,
+    ul,
+    menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        opacity: 1;
+        color: #9ca3af;
+    }
+
+    button,
+    [role="button"] {
+        cursor: pointer;
+    }
+
+    :disabled {
+        cursor: default;
+    }
+
+    img,
+    svg,
+    video,
+    canvas,
+    audio,
+    iframe,
+    embed,
+    object {
+        display: block;
+        vertical-align: middle;
+    }
+
+    img,
+    video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [hidden] {
+        display: none;
+    }
+}
+
 /* Custom Styles */
 .strongmind-content-layer {
+    --box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+    --border-radius: 16px;
+
     background-color: #F6F0E9;
     font-family: 'Nunito', sans-serif;
     max-width: 100%;
@@ -266,8 +493,9 @@
     }
 
     /* List container styles: first div containing ul/ol styled differently than the rest */
-    > div:has(ul),
-    > div:has(ol) {
+    >div:has(ul),
+    >div:has(ol) {
+
         ul,
         ol {
             margin: 0;
@@ -281,7 +509,7 @@
     }
 
     /* First unordered list on the page — no bullets; li containers */
-    > div:has(ul):nth-child(1 of div:has(ul)) {
+    >div:has(ul):nth-child(1 of div:has(ul)) {
         ul {
             list-style: none;
             padding-left: 0;
@@ -293,19 +521,45 @@
             border: 1px solid #543979;
         }
 
-        li:nth-child(9n+1) { border-color: #CB6D52; }
-        li:nth-child(9n+2) { border-color: #DF904D; }
-        li:nth-child(9n+3) { border-color: #6B8B52; }
-        li:nth-child(9n+4) { border-color: #4A8B87; }
-        li:nth-child(9n+5) { border-color: #4F91F2; }
-        li:nth-child(9n+6) { border-color: #4A8EB5; }
-        li:nth-child(9n+7) { border-color: #5C64C5; }
-        li:nth-child(9n+8) { border-color: #946DC6; }
-        li:nth-child(9n+9) { border-color: #C74D82; }
+        li:nth-child(9n+1) {
+            border-color: #CB6D52;
+        }
+
+        li:nth-child(9n+2) {
+            border-color: #DF904D;
+        }
+
+        li:nth-child(9n+3) {
+            border-color: #6B8B52;
+        }
+
+        li:nth-child(9n+4) {
+            border-color: #4A8B87;
+        }
+
+        li:nth-child(9n+5) {
+            border-color: #4F91F2;
+        }
+
+        li:nth-child(9n+6) {
+            border-color: #4A8EB5;
+        }
+
+        li:nth-child(9n+7) {
+            border-color: #5C64C5;
+        }
+
+        li:nth-child(9n+8) {
+            border-color: #946DC6;
+        }
+
+        li:nth-child(9n+9) {
+            border-color: #C74D82;
+        }
     }
 
     /* Subsequent unordered lists — regular bulleted list (disc), no card */
-    > div:has(ul) ~ div:has(ul) {
+    >div:has(ul)~div:has(ul) {
         padding: 12px 48px;
         background: transparent;
         border: none;
@@ -318,18 +572,44 @@
     }
 
     /* Cycle bullet colors for 2nd, 3rd, 4th… ul (nth-of-type among divs that contain ul) */
-    > div:has(ul):nth-child(9n+2 of div:has(ul)) li::marker { color: #CB6D52; }
-    > div:has(ul):nth-child(9n+3 of div:has(ul)) li::marker { color: #DF904D; }
-    > div:has(ul):nth-child(9n+4 of div:has(ul)) li::marker { color: #6B8B52; }
-    > div:has(ul):nth-child(9n+5 of div:has(ul)) li::marker { color: #4A8B87; }
-    > div:has(ul):nth-child(9n+6 of div:has(ul)) li::marker { color: #4F91F2; }
-    > div:has(ul):nth-child(9n+7 of div:has(ul)) li::marker { color: #4A8EB5; }
-    > div:has(ul):nth-child(9n+8 of div:has(ul)) li::marker { color: #5C64C5; }
-    > div:has(ul):nth-child(9n+9 of div:has(ul)) li::marker { color: #946DC6; }
-    > div:has(ul):nth-child(9n+10 of div:has(ul)) li::marker { color: #C74D82; }
+    >div:has(ul):nth-child(9n+2 of div:has(ul)) li::marker {
+        color: #CB6D52;
+    }
+
+    >div:has(ul):nth-child(9n+3 of div:has(ul)) li::marker {
+        color: #DF904D;
+    }
+
+    >div:has(ul):nth-child(9n+4 of div:has(ul)) li::marker {
+        color: #6B8B52;
+    }
+
+    >div:has(ul):nth-child(9n+5 of div:has(ul)) li::marker {
+        color: #4A8B87;
+    }
+
+    >div:has(ul):nth-child(9n+6 of div:has(ul)) li::marker {
+        color: #4F91F2;
+    }
+
+    >div:has(ul):nth-child(9n+7 of div:has(ul)) li::marker {
+        color: #4A8EB5;
+    }
+
+    >div:has(ul):nth-child(9n+8 of div:has(ul)) li::marker {
+        color: #5C64C5;
+    }
+
+    >div:has(ul):nth-child(9n+9 of div:has(ul)) li::marker {
+        color: #946DC6;
+    }
+
+    >div:has(ul):nth-child(9n+10 of div:has(ul)) li::marker {
+        color: #C74D82;
+    }
 
     /* All ordered lists — plain (same design for every ol) */
-    > div:has(ol) {
+    >div:has(ol) {
         padding: 12px 48px;
         background: transparent;
         border: none;
@@ -358,6 +638,7 @@
             font-size: 1rem;
             line-height: 1.875;
             position: relative;
+
             &::before,
             &::after {
                 font-family: 'Sniglet', serif;
@@ -410,8 +691,8 @@
 
     figure {
         display: flex;
-            flex-direction: column;
-            gap: 8px;
+        flex-direction: column;
+        gap: 8px;
         border: 3px solid #E4D8CC;
         border-radius: var(--border-radius);
         box-shadow: none;
@@ -524,7 +805,7 @@
                 line-height: 1;
                 flex-shrink: 0;
                 transform-origin: bottom center;
-                animation: iconSway 2s infinite;
+                animation: smContentLayerIconSway 2s infinite;
             }
         }
 
@@ -617,7 +898,8 @@
         display: flex;
         gap: 1rem;
         align-items: flex-start;
-        font-size: 0.875rem; /* text-sm */
+        font-size: 0.875rem;
+        /* text-sm */
     }
 
     .sm-footnote p {
