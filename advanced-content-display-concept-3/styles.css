@@ -250,7 +250,7 @@
     --font-weight: 800;
 
     font-family: var(--font-family);
-    max-width: 100%;
+    
     padding-block: 48px;
 
     .sm-content-container {
@@ -258,7 +258,7 @@
         max-width: 88ch;
     }
 
-    /* Wrapped row: children use min-width 45ch + flex-basis 45ch (not 50% + gap) so pairs stay on one line when there’s room, else they stack. */
+    /* Ratios via flex grow + basis 0. Min width aims for 45ch but caps at half the row minus gap so two columns fit inside an 88ch .sm-content-container. */
     .associated {
         display: flex;
         flex-direction: row;
@@ -266,33 +266,29 @@
         gap: 24px;
         align-items: flex-start;
 
-        > div {
-            min-width: 45ch;
-        }
-
         &.half-half {
             > div {
-                flex: 1 1 45ch;
+                flex: 1 1 0;
             }
         }
 
         &.two-thirds {
             > div:first-child {
-                flex: 2 1 45ch;
+                flex: 2 1 0;
             }
 
             > div:last-child {
-                flex: 1 1 45ch;
+                flex: 1 1 0;
             }
         }
 
         &.one-thirds {
             > div:first-child {
-                flex: 1 1 45ch;
+                flex: 1 1 0;
             }
 
             > div:last-child {
-                flex: 2 1 45ch;
+                flex: 2 1 0;
             }
         }
     }
