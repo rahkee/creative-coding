@@ -258,13 +258,41 @@
         max-width: 88ch;
     }
 
-    .two-column {
+    /* Wrapped row: children use min-width 45ch + flex-basis 45ch (not 50% + gap) so pairs stay on one line when there’s room, else they stack. */
+    .associated {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 24px;
+        align-items: flex-start;
+
+        > div {
+            min-width: 45ch;
+        }
 
         &.half-half {
-            >div {
-                flex-basis: 50%;
+            > div {
+                flex: 1 1 45ch;
+            }
+        }
+
+        &.two-thirds {
+            > div:first-child {
+                flex: 2 1 45ch;
+            }
+
+            > div:last-child {
+                flex: 1 1 45ch;
+            }
+        }
+
+        &.one-thirds {
+            > div:first-child {
+                flex: 1 1 45ch;
+            }
+
+            > div:last-child {
+                flex: 2 1 45ch;
             }
         }
     }
