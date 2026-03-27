@@ -244,6 +244,9 @@
 
 /* Custom Styles */
 .strongmind-content-layer {
+    /* Size container for CQ below — cannot put this on .associated and style .associated from that same box. */
+    container-type: inline-size;
+
     --box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
     --border-radius: 16px;
     --font-family: 'Nunito', sans-serif;
@@ -255,41 +258,39 @@
 
     .sm-content-container {
         margin: 0 auto;
-        max-width: 88ch;
+        max-width: 75ch;
     }
 
-    /* Ratios via flex grow + basis 0. Min width aims for 45ch but caps at half the row minus gap so two columns fit inside an 88ch .sm-content-container. */
+    /* Associated: stacked by default; row layout when this layer is wide enough (container is this block, not .associated). */
     .associated {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 24px;
-        align-items: flex-start;
+    }
 
-        &.half-half {
-            > div {
-                flex: 1 1 0;
-            }
+    @container (min-width: 65ch) {
+        & .associated {
+            flex-direction: row;
         }
 
-        &.two-thirds {
-            > div:first-child {
-                flex: 2 1 0;
-            }
-
-            > div:last-child {
-                flex: 1 1 0;
-            }
+        & .associated.half-half > div {
+            flex: 1 1 0;
         }
 
-        &.one-thirds {
-            > div:first-child {
-                flex: 1 1 0;
-            }
+        & .associated.two-thirds > div:first-child {
+            flex: 2 1 0;
+        }
 
-            > div:last-child {
-                flex: 2 1 0;
-            }
+        & .associated.two-thirds > div:last-child {
+            flex: 1 1 0;
+        }
+
+        & .associated.one-thirds > div:first-child {
+            flex: 1 1 0;
+        }
+
+        & .associated.one-thirds > div:last-child {
+            flex: 2 1 0;
         }
     }
 
