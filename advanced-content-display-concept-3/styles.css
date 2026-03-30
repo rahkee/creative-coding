@@ -1146,7 +1146,7 @@
 .strongmind-content-layer .dfp-need-to-know__pill-label {
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.1rem, 3.6vw, 1.44rem);
+    font-size: 23.04px;
     line-height: 1.12;
     color: #583e36;
     white-space: nowrap;
@@ -1170,7 +1170,7 @@
     padding: 0 0.25rem;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    font-size: 19.2px;
     line-height: 1.12;
 }
 
@@ -1285,7 +1285,7 @@
     margin: 0;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.35rem, 5vw, 2.07rem);
+    font-size: 33.18px;
     line-height: 1.12;
     color: #4d1a72;
     text-align: center;
@@ -1297,7 +1297,7 @@
     margin: 0;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    font-size: 19.2px;
     line-height: 1.12;
     color: #4d1a72;
 }
@@ -1355,7 +1355,7 @@
     margin: 0 0 1rem;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    font-size: 19.2px;
     line-height: 1.12;
 }
 
@@ -1409,7 +1409,7 @@
     margin: 0;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1rem, 3.2vw, 1.44rem);
+    font-size: 23.04px;
     line-height: 1.12;
     color: #583e36;
     text-align: center;
@@ -1503,7 +1503,7 @@
     text-align: center;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.35rem, 5vw, 2.07rem);
+    font-size: 33.18px;
     line-height: 1.12;
     color: #9e6d58;
 }
@@ -1528,7 +1528,7 @@
     text-align: center;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.15rem, 4vw, 1.73rem);
+    font-size: 27.65px;
     line-height: 1.12;
     color: #65d4a5;
 }
@@ -1590,7 +1590,7 @@
     margin: 0 0 1.5rem;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.15rem, 4vw, 1.73rem);
+    font-size: 27.65px;
     line-height: 1.12;
     max-width: 36rem;
 }
@@ -1763,7 +1763,7 @@
     padding-right: clamp(3rem, 20vw, 5rem);
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1.15rem, 4vw, 1.73rem);
+    font-size: 27.65px;
     line-height: 1.12;
     color: #009290;
 }
@@ -1772,7 +1772,7 @@
     margin: 0 0 1.5rem;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    font-size: 19.2px;
     line-height: 1.12;
     color: #583e36;
 }
