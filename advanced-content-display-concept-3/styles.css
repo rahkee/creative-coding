@@ -964,12 +964,12 @@
 
 .strongmind-content-layer .dfp-formulas__svg--calculator {
     width: clamp(4.5rem, 22vw, 6.5rem);
-    aspect-ratio: 103 / 102;
+    aspect-ratio: 1;
 }
 
 .strongmind-content-layer .dfp-formulas__svg--spellbook {
     width: clamp(4.5rem, 20vw, 6.5625rem);
-    aspect-ratio: 117 / 114.003;
+    aspect-ratio: 1;
 }
 
 .strongmind-content-layer .dfp-formulas__svg--ruler {
@@ -1204,12 +1204,12 @@
 
 .strongmind-content-layer .dfp-need-to-know__svg--notebook {
     width: clamp(4.5rem, 18vw, 6.875rem);
-    aspect-ratio: 88 / 89;
+    aspect-ratio: 1;
 }
 
 .strongmind-content-layer .dfp-need-to-know__svg--quill {
     width: clamp(2.5rem, 12vw, 4rem);
-    aspect-ratio: 63 / 67;
+    aspect-ratio: 1;
 }
 
 /* —— Design for Purpose: Think About This —— */
@@ -1273,12 +1273,12 @@
 
 .strongmind-content-layer .dfp-think-about-this__svg--moon {
     width: clamp(3.5rem, 16vw, 6.875rem);
-    aspect-ratio: 110 / 109;
+    aspect-ratio: 1;
 }
 
 .strongmind-content-layer .dfp-think-about-this__svg--crow {
     width: clamp(2.75rem, 12vw, 4.75rem);
-    aspect-ratio: 75 / 82;
+    aspect-ratio: 1;
 }
 
 .strongmind-content-layer .dfp-think-about-this__ribbon-title {
@@ -1442,10 +1442,14 @@
 
 .strongmind-content-layer .dfp-do-you-remember__svg--ball {
     width: clamp(3rem, 14vw, 4rem);
+    aspect-ratio: 1;
+    height: auto;
 }
 
 .strongmind-content-layer .dfp-do-you-remember__svg--notebook {
     width: clamp(2.75rem, 12vw, 3.75rem);
+    aspect-ratio: 1;
+    height: auto;
 }
 
 @container (max-width: 32rem) {
@@ -1641,7 +1645,7 @@
 
 .strongmind-content-layer .dfp-explore-further__svg--acorn {
     width: clamp(2.25rem, 10vw, 2.85rem);
-    aspect-ratio: 48 / 52;
+    aspect-ratio: 40 / 45;
 }
 
 .strongmind-content-layer .dfp-explore-further__corner--br {
@@ -1649,14 +1653,51 @@
     bottom: clamp(-0.25rem, -1vw, 0);
 }
 
-.strongmind-content-layer .dfp-explore-further__sprout {
+.strongmind-content-layer .dfp-explore-further__garden {
+    position: relative;
     display: inline-block;
-    transform: translateY(10%);
+    width: clamp(10rem, 44vw, 12.5rem);
+    height: clamp(4.75rem, 21vw, 5.75rem);
+    vertical-align: bottom;
 }
 
-.strongmind-content-layer .dfp-explore-further__svg--garden {
-    width: clamp(6.5rem, 32vw, 8.75rem);
-    aspect-ratio: 140 / 100;
+.strongmind-content-layer .dfp-explore-further__garden-shadow {
+    position: absolute;
+    display: inline-block;
+    line-height: 0;
+}
+
+.strongmind-content-layer .dfp-explore-further__garden-shadow--sunflower {
+    z-index: 1;
+    right: clamp(3.5rem, 15vw, 4.25rem);
+    bottom: -0.15rem;
+}
+
+.strongmind-content-layer .dfp-explore-further__garden-shadow--tulip {
+    z-index: 2;
+    right: clamp(6.75rem, 29vw, 7.75rem);
+    bottom: 0;
+}
+
+.strongmind-content-layer .dfp-explore-further__garden-shadow--mushroom {
+    z-index: 3;
+    right: 0.15rem;
+    bottom: -0.35rem;
+}
+
+.strongmind-content-layer .dfp-explore-further__svg--sunflower {
+    width: clamp(3.35rem, 15vw, 4.1rem);
+    aspect-ratio: 1;
+}
+
+.strongmind-content-layer .dfp-explore-further__svg--tulip {
+    width: clamp(2.4rem, 11vw, 3rem);
+    aspect-ratio: 1;
+}
+
+.strongmind-content-layer .dfp-explore-further__svg--mushroom {
+    width: clamp(3rem, 13vw, 3.65rem);
+    aspect-ratio: 1;
 }
 
 /* —— Design for Purpose: The Objective —— */
