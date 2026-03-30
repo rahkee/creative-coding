@@ -1236,7 +1236,7 @@
     border: 8px solid #4d1a72;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: clamp(3.75rem, 10vw, 5.25rem) clamp(2rem, 5vw, 3rem) clamp(2.25rem, 5vw, 2.5rem);
+    padding: clamp(2.5rem, 6vw, 3rem) clamp(2rem, 5vw, 3rem) clamp(2rem, 5vw, 2.5rem);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -1336,7 +1336,7 @@
 .strongmind-content-layer .dfp-do-you-remember__shell {
     position: relative;
     width: 100%;
-    padding-right: clamp(1.5rem, 8vw, 3rem);
+    padding-right: clamp(2rem, 10vw, 5.5rem);
 }
 
 .strongmind-content-layer .dfp-do-you-remember__card {
@@ -1491,7 +1491,7 @@
     border: 8px solid #6b4a41;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: clamp(2.75rem, 6vw, 3rem) clamp(1.75rem, 5vw, 3rem) clamp(4.5rem, 12vw, 5.5rem);
+    padding: clamp(2.75rem, 6vw, 3rem) clamp(1.75rem, 5vw, 3rem) clamp(4rem, 10vw, 4.5rem);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -1580,9 +1580,7 @@
     border: 8px solid #583e36;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    background:
-        radial-gradient(120% 100% at 95% 8%, rgba(255, 247, 229, 0.95) 0%, transparent 55%),
-        linear-gradient(125deg, #c7efdf 0%, #fff7e5 45%, #d4f0e4 100%);
+    background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
     padding: clamp(2.25rem, 5vw, 2.5rem) clamp(1.75rem, 5vw, 3rem) clamp(3.5rem, 9vw, 4.75rem);
     color: #583e36;
     overflow: visible;
@@ -1719,15 +1717,15 @@
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
     padding: clamp(2.25rem, 5vw, 2.5rem) clamp(1.75rem, 5vw, 2.5rem);
-    padding-top: clamp(2.5rem, 6vw, 3rem);
+    padding-top: 2.5rem;
     overflow: visible;
 }
 
 .strongmind-content-layer .dfp-the-objective__corner--tr {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(12%, -18%);
+    top: -1.3125rem;
+    right: -1.125rem;
+    transform: none;
     z-index: 2;
     pointer-events: none;
 }
