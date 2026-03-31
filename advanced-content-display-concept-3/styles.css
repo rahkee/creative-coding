@@ -917,14 +917,14 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
     border: 8px solid #583e36;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 24px 28px 28px;
+    padding: 24px 40px 40px;
 }
 
 .dfp-formulas__body {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 24px;
 }
 
 .dfp-formulas__corner {
@@ -933,14 +933,14 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
 
 .dfp-formulas__corner--tl {
     position: absolute;
-    left: -9.2px;
-    top: -26px;
+    left: -18px;
+    top: -57px;
 }
 
 .dfp-formulas__corner--br {
     position: absolute;
-    right: 7px;
-    bottom: -16px;
+    right: 18px;
+    bottom: -21px;
 }
 
 /* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
@@ -957,12 +957,12 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-formulas__svg--calculator {
-    width: 74px;
+    width: 103px;
     aspect-ratio: 1;
 }
 
 .dfp-formulas__svg--spellbook {
-    width: 78px;
+    width: 105px;
     aspect-ratio: 1;
 }
 
@@ -971,15 +971,24 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
     height: 48px;
 }
 
+.dfp-formulas__title-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 88px;
+}
+
 .dfp-formulas__title {
     font-family: var(--font-family);
     font-weight: 900;
-    font-size: 33.92px;
+    font-size: 40px;
     line-height: 1.12;
     color: #583e36;
-    padding-left: 40px;
+}
+
+.dfp-formulas__intro-row {
     width: 100%;
-    max-width: none;
+    padding-right: 48px;
 }
 
 .dfp-formulas__intro {
@@ -987,26 +996,24 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
     font-size: 16px;
     line-height: 1.52;
     color: #583e36;
-    padding-right: 0;
 }
 
 .dfp-formulas__callout-row {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding-left: 8px;
+    gap: 16px;
+    padding-left: 40px;
 }
 
 .dfp-formulas__ruler-badge {
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translate(-15px, -42px);
+    top: 20px;
     background: #14a9c3;
     border: 6px solid #583e36;
     border-radius: 12px;
-    padding: 12px;
+    padding: 16px;
 }
 
 .dfp-formulas__ruler-flip {
@@ -1024,7 +1031,7 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
     background: #fff;
     border: 4px solid #583e36;
     border-radius: 16px;
-    padding: 14px 25px 14px 66px;
+    padding: 24px 72px 24px 64px;
 }
 
 .dfp-formulas__callout p {
@@ -1035,8 +1042,12 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
 }
 
 @container (max-width: 576px) {
-    .strongmind-content-layer .dfp-formulas__title {
+    .strongmind-content-layer .dfp-formulas__title-row {
         padding-left: 48px;
+    }
+
+    .strongmind-content-layer .dfp-formulas__intro-row {
+        padding-right: 0;
     }
 
     .strongmind-content-layer .dfp-formulas__callout-row {
@@ -1049,10 +1060,11 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
         top: auto;
         transform: none;
         align-self: flex-start;
+        padding: 12px;
     }
 
     .strongmind-content-layer .dfp-formulas__callout {
-        padding-left: 20px;
+        padding: 20px;
     }
 }
 
@@ -1074,22 +1086,18 @@ section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
     border: 8px solid #583e36;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-    padding: 54px 48px 36px
-        40px;
+    padding: 56px 80px 48px 48px;
     overflow: visible;
 }
 
 .dfp-need-to-know__header-cluster {
     position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-176px, -54px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
+    left: calc(50% - 176px);
+    top: -108px;
+    width: 352px;
+    height: 160px;
     pointer-events: none;
-    width: min(100%, 352px);
+    display: block;
 }
 
 .dfp-need-to-know__icon-shadow {
@@ -1109,27 +1117,34 @@ section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-need-to-know__svg--halo {
-    width: 88px;
+    width: 112px;
     aspect-ratio: 1;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 52px);
 }
 
 .dfp-need-to-know__crown-spin {
-    margin-top: -6px;
-    transform: rotate(-4deg);
+    position: absolute;
+    top: 0;
+    left: calc(50% - 38px);
+    transform: rotate(-5deg);
 }
 
 .dfp-need-to-know__svg--crown {
-    width: 64px;
+    width: 76px;
     aspect-ratio: 76 / 75;
 }
 
 .dfp-need-to-know__pill {
-    margin-top: -14px;
+    position: absolute;
+    top: 76px;
+    left: calc(50% - 84px);
     background: #fff2d4;
     border: 8px solid #583e36;
     border-radius: 96px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-    padding: 10px 26px;
+    padding: 16px 32px;
 }
 
 .dfp-need-to-know__pill-label {
@@ -1154,7 +1169,6 @@ section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
 
 .dfp-need-to-know__title {
     position: relative;
-    padding: 0 4px;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
     font-size: 19.2px;
@@ -1174,27 +1188,36 @@ section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-need-to-know__corner--br {
-    right: 8px;
-    bottom: -8px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 4px;
+    right: 17px;
+    bottom: -30px;
+    width: 130px;
+    height: 92px;
+    display: block;
 }
 
 .dfp-need-to-know__quill-flip {
-    display: inline-block;
+    position: absolute;
+    right: 21px;
+    bottom: -25px;
+    display: block;
     transform: scaleY(-1) rotate(180deg);
 }
 
 .dfp-need-to-know__svg--notebook {
-    width: 91px;
+    width: 88px;
     aspect-ratio: 1;
 }
 
 .dfp-need-to-know__svg--quill {
-    width: 52px;
+    width: 63px;
     aspect-ratio: 1;
+}
+
+.dfp-need-to-know__corner--br > .dfp-need-to-know__icon-shadow:first-child {
+    position: absolute;
+    right: 36px;
+    bottom: -26px;
+    display: block;
 }
 
 /* —— Design for Purpose: Think About This —— */
@@ -1231,20 +1254,19 @@ section.dfp-think-about-this.sm-content-container:has(h2) h2::after {
 
 .dfp-think-about-this__ribbon {
     position: absolute;
-    left: 16px;
-    right: 16px;
+    left: 0;
+    right: 0;
     top: 0;
-    transform: translate(0px, -52px);
+    transform: translate(0px, -55px);
     display: flex;
+    height: 79px;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 0 16px;
+    gap: 16px;
+    padding: 0 48px;
     pointer-events: none;
     width: auto;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: none;
 }
 
 .dfp-think-about-this__icon-shadow {
@@ -1260,12 +1282,12 @@ section.dfp-think-about-this.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-think-about-this__svg--moon {
-    width: 83px;
+    width: 110px;
     aspect-ratio: 1;
 }
 
 .dfp-think-about-this__svg--crow {
-    width: 60px;
+    width: 75px;
     aspect-ratio: 1;
 }
 
@@ -1277,7 +1299,8 @@ section.dfp-think-about-this.sm-content-container:has(h2) h2::after {
     color: #4d1a72;
     text-align: center;
     white-space: nowrap;
-    flex-shrink: 0;
+    flex: 1 0 0;
+    max-width: 288px;
 }
 
 .dfp-think-about-this__subtitle {
@@ -1325,7 +1348,7 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 .dfp-do-you-remember__shell {
     position: relative;
     width: 100%;
-    padding-right: 12px;
+    padding-right: 80px;
 }
 
 .dfp-do-you-remember__card {
@@ -1335,7 +1358,7 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
     border: 8px solid #583e36;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 28px 196px 24px 24px;
+    padding: 40px 160px 40px 40px;
     color: #583e36;
 }
 
@@ -1356,21 +1379,19 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 
 .dfp-do-you-remember__cloud {
     position: absolute;
-    right: -10px;
-    bottom: -8px;
-    width: min(192px, 52vw);
-    min-height: 128px;
+    right: -69px;
+    bottom: -29px;
+    width: 208px;
+    height: 161px;
     background: transparent;
-    border: 8px solid #583e36;
-    border-radius: 50% 55% 50% 52% / 48% 50% 52% 50%;
+    border: 0;
+    border-radius: 0;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 11px 10px 31px;
+    display: block;
+    padding: 0;
     pointer-events: none;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-    overflow: hidden;
+    filter: none;
+    overflow: visible;
 }
 
 .dfp-do-you-remember__cloud-shape {
@@ -1390,10 +1411,13 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-do-you-remember__cloud-title {
-    position: relative;
+    position: absolute;
+    left: 44px;
+    top: 40px;
+    width: 158px;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: 19.2px;
+    font-size: 23.04px;
     line-height: 1.12;
     color: #583e36;
     text-align: center;
@@ -1404,12 +1428,11 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 
 .dfp-do-you-remember__cloud-icons {
     position: absolute;
-    left: calc(50% - 40px);
-    bottom: 0;
-    transform: translate(0px, 12px);
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
+    left: 112px;
+    top: 100px;
+    width: 89px;
+    height: 153px;
+    display: block;
 }
 
 .dfp-do-you-remember__icon-shadow {
@@ -1419,20 +1442,28 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-do-you-remember__notebook-tilt {
-    transform: rotate(12deg);
-    margin-left: -8px;
+    position: absolute;
+    left: -35px;
+    top: -7px;
+    transform: rotate(13deg);
 }
 
 .dfp-do-you-remember__svg--ball {
-    width: 43.2px;
+    width: 63px;
     aspect-ratio: 1;
     height: auto;
 }
 
 .dfp-do-you-remember__svg--notebook {
-    width: 40px;
+    width: 68px;
     aspect-ratio: 1;
     height: auto;
+}
+
+.dfp-do-you-remember__cloud-icons > .dfp-do-you-remember__icon-shadow:first-child {
+    position: absolute;
+    left: 18px;
+    top: 0;
 }
 
 @container (max-width: 512px) {
@@ -1470,14 +1501,17 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
 .dfp-math-strategies__shell {
     position: relative;
     width: 100%;
+    max-width: 447px;
+    margin-left: auto;
+    margin-right: auto;
     background: #2e1f1c;
     border: 8px solid #6b4a41;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 37px 26px 46px;
+    padding: 48px 48px 64px;
     display: flex;
     flex-direction: column;
-    gap: 17.6px;
+    gap: 24px;
     overflow: visible;
 }
 
@@ -1493,7 +1527,7 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
 .dfp-math-strategies__text {
     font-weight: 300;
     font-size: 16px;
-    line-height: 1.45;
+    line-height: 1.52;
     color: #fff;
 }
 
@@ -1501,7 +1535,8 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
     background: #583e36;
     border-radius: 8px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 14px 16px;
+    padding: 16px;
+    width: 100%;
 }
 
 .dfp-math-strategies__formula-inner {
@@ -1520,9 +1555,9 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-math-strategies__corner--bc {
-    left: calc(50% - 39px);
-    bottom: 0;
-    transform: translate(0px, 33px);
+    left: calc(50% - 54px);
+    bottom: -49px;
+    transform: none;
 }
 
 .dfp-math-strategies__icon-shadow {
@@ -1532,7 +1567,7 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-math-strategies__svg--board {
-    width: 78px;
+    width: 107px;
     aspect-ratio: 1;
 }
 
