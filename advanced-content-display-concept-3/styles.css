@@ -1585,7 +1585,7 @@ section.dfp-explore-further.sm-content-container:has(h2) h2::after {
 .dfp-explore-further__shell {
     position: relative;
     width: 100%;
-    padding-bottom: 5.6px;
+    padding-bottom: 6px;
 }
 
 .dfp-explore-further__card {
@@ -1595,7 +1595,7 @@ section.dfp-explore-further.sm-content-container:has(h2) h2::after {
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
     background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
-    padding: 38px 38px 66px;
+    padding: 40px 80px 72px 48px;
     color: #583e36;
     overflow: visible;
 }
@@ -1639,36 +1639,36 @@ section.dfp-explore-further.sm-content-container:has(h2) h2::after {
 }
 
 .dfp-explore-further__corner--tr {
-    top: 0;
-    right: 0;
-    transform: translate(23px, -31px) rotate(8deg);
+    top: -45px;
+    right: -40px;
+    transform: rotate(8deg);
 }
 
 .dfp-explore-further__svg--sun {
-    width: 104px;
-    aspect-ratio: 1;
+    width: 135px;
+    height: 137px;
 }
 
 .dfp-explore-further__corner--bl {
-    left: 21.2px;
-    bottom: -6.4px;
+    left: 48px;
+    bottom: 1px;
 }
 
 .dfp-explore-further__svg--acorn {
-    width: 40.8px;
-    aspect-ratio: 40 / 45;
+    width: 40px;
+    height: 45px;
 }
 
 .dfp-explore-further__corner--br {
-    right: 8px;
-    bottom: -7.6px;
+    right: 0;
+    bottom: 0;
 }
 
 .dfp-explore-further__garden {
     position: relative;
     display: inline-block;
-    width: 166px;
-    height: 77.2px;
+    width: 176px;
+    height: 79px;
     vertical-align: bottom;
 }
 
@@ -1680,32 +1680,32 @@ section.dfp-explore-further.sm-content-container:has(h2) h2::after {
 
 .dfp-explore-further__garden-shadow--sunflower {
     right: 62px;
-    bottom: -2.4px;
+    bottom: -2px;
 }
 
 .dfp-explore-further__garden-shadow--tulip {
-    right: 116px;
+    right: 122px;
     bottom: 0;
 }
 
 .dfp-explore-further__garden-shadow--mushroom {
-    right: 2.4px;
-    bottom: -5.6px;
+    right: 4px;
+    bottom: -5px;
 }
 
 .dfp-explore-further__svg--sunflower {
-    width: 59.6px;
-    aspect-ratio: 1;
+    width: 72px;
+    height: 78px;
 }
 
 .dfp-explore-further__svg--tulip {
-    width: 43.2px;
-    aspect-ratio: 1;
+    width: 53px;
+    height: 56px;
 }
 
 .dfp-explore-further__svg--mushroom {
-    width: 53.2px;
-    aspect-ratio: 1;
+    width: 65px;
+    height: 67px;
 }
 
 /* —— Design for Purpose: The Objective —— */
@@ -1726,12 +1726,16 @@ section.dfp-the-objective.sm-content-container:has(h2) h2::after {
     border: 8px solid #583e36;
     border-radius: 24px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     overflow: visible;
 }
 
 .dfp-the-objective__corner--tr {
     position: absolute;
-    top: -22px;
+    top: -21px;
     right: -18px;
     transform: none;
     pointer-events: none;
@@ -1739,10 +1743,10 @@ section.dfp-the-objective.sm-content-container:has(h2) h2::after {
 
 .dfp-the-objective__badge {
     position: relative;
-    width: 108px;
-    height: 108px;
+    width: 116px;
+    height: 116px;
     background: #14a9c3;
-    border: 7px solid #583e36;
+    border: 8px solid #583e36;
     border-radius: 50%;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
     display: block;
@@ -1750,50 +1754,47 @@ section.dfp-the-objective.sm-content-container:has(h2) h2::after {
 
 .dfp-the-objective__icon-shadow {
     position: absolute;
-    top: 11px;
-    left: 11px;
-    width: 76px;
-    height: 76px;
+    top: 16px;
+    left: 16px;
+    width: 84px;
+    height: 84px;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
     line-height: 0;
 }
 
 .dfp-the-objective__svg--bow {
-    width: 76px;
-    height: 76px;
+    width: 84px;
+    height: 84px;
 }
 
 .dfp-the-objective__title {
-    margin: 28px 0 10px 24px;
+    margin: 0;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: 23.04px;
+    font-size: 27.65px;
     line-height: 1.12;
     color: #009290;
-    max-width: calc(100% - 156px);
 }
 
 .dfp-the-objective__subtitle {
-    margin-left: 24px;
-    margin-bottom: 16px;
+    margin: 0;
     font-family: Nunito, Sniglet, system-ui, sans-serif;
     font-weight: 900;
-    font-size: 16.59px;
+    font-size: 19.2px;
     line-height: 1.12;
     color: #583e36;
-    max-width: calc(100% - 156px);
 }
 
 .dfp-the-objective__text {
-    margin: 0 24px 18px;
+    margin: 0;
     font-weight: 300;
-    font-size: 14.4px;
-    line-height: 1.42;
+    font-size: 16px;
+    line-height: 1.52;
     color: #583e36;
     max-width: 100%;
 }
 
 .dfp-the-objective__text:last-child {
-    margin-bottom: 24px;
+    margin-bottom: 0;
 }
 }
