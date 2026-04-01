@@ -251,9 +251,10 @@
     --border-radius: 16px;
     --font-family: 'Nunito', sans-serif;
     --font-weight: 800;
+    --font-size: 16px; /* Default font size, overrides Backpack UI since we don't have shadowDOM yet */
 
     font-family: var(--font-family);
-    
+    font-size: var(--font-size);
     padding-block: 48px;
 
     .sm-content-container {
@@ -993,7 +994,6 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
 
 .dfp-formulas__intro {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     color: #583e36;
 }
@@ -1036,7 +1036,6 @@ section.dfp-formulas.sm-content-container:has(h2) h2::after {
 
 .dfp-formulas__callout p {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.42;
     color: #583e36;
 }
@@ -1177,7 +1176,6 @@ section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
 
 .dfp-need-to-know__text {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
 }
 
@@ -1315,7 +1313,6 @@ section.dfp-think-about-this.sm-content-container:has(h2) h2::after {
 
 .dfp-think-about-this__text {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     color: #4d1a72;
     width: 100%;
@@ -1372,7 +1369,6 @@ section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
 
 .dfp-do-you-remember__text {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     max-width: 544px;
 }
@@ -1526,7 +1522,6 @@ section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
 
 .dfp-math-strategies__text {
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     color: #fff;
 }
@@ -1612,7 +1607,6 @@ section.dfp-explore-further.sm-content-container:has(h2) h2::after {
 .dfp-explore-further__text {
     margin: 0 0 24px;
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     max-width: 672px;
 }
@@ -1788,7 +1782,6 @@ section.dfp-the-objective.sm-content-container:has(h2) h2::after {
 .dfp-the-objective__text {
     margin: 0;
     font-weight: 300;
-    font-size: 16px;
     line-height: 1.52;
     color: #583e36;
     max-width: 100%;
