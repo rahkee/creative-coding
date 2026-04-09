@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animate the Afters — Course Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;1,6..12,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <article class="course-card active" id="course-card" aria-labelledby="course-title">
+      <div class="course-card__main">
+        <header class="course-card__header">
+          <h1 class="course-card__title" id="course-title">
+            Building Strong Relationships Through Empathy and Understanding
+          </h1>
+          <p class="course-card__date">Revised April 5th, 2026</p>
+        </header>
+
+        <ul class="course-card__labels" role="list">
+          <li class="label label--original">
+            <span class="label__icon" aria-hidden="true"><i class="fa-solid fa-tree"></i></span>
+            <span class="label__text">Original</span>
+          </li>
+          <li class="label label--published">
+            <span class="label__icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+            <span class="label__text">Published</span>
+          </li>
+          <li class="label label--native">
+            <span class="label__icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
+            <span class="label__text">Native</span>
+          </li>
+          <li class="label label--imported">
+            <span class="label__icon" aria-hidden="true"><i class="fa-solid fa-file-import"></i></span>
+            <span class="label__text">Imported</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="course-card__stats">
+        <div class="stat stat--neutral">
+          <p class="stat__value" data-stat="grade"><span class="stat__grade">6 - 8</span></p>
+          <p class="stat__label">Grade Level</p>
+        </div>
+        <div class="stat stat--neutral">
+          <p class="stat__value"><span data-count="21" data-suffix="">0</span></p>
+          <p class="stat__label">Objectives</p>
+        </div>
+        <div class="stat stat--standards">
+          <p class="stat__value"><span data-count="189" data-suffix="">0</span></p>
+          <p class="stat__label">Standards</p>
+        </div>
+      </div>
+    </article>
+
+    <button type="button" class="replay-btn" id="replay-btn" aria-label="Replay card animation">
+      <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

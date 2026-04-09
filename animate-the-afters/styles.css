@@ -1,0 +1,438 @@
+:root {
+  --gray-0: #ffffff;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --lime-200: #c2e79d;
+  --lime-700: #406b20;
+  --sky-200: #b8dfe9;
+  --sky-700: #2b5d73;
+  --rose-200: #fbcfcd;
+  --rose-700: #a8284a;
+  --purple-100: #e7e8f8;
+  --purple-800: #594b88;
+  --font-headline: "Poppins", system-ui, sans-serif;
+  --font-body: "Nunito Sans", system-ui, sans-serif;
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: linear-gradient(160deg, #eef0f4 0%, #e2e6ee 100%);
+  color: var(--gray-800);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 32px 20px 48px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Course card — JS toggles `.active`; enter motion is depth-based (3 levels) */
+/* -------------------------------------------------------------------------- */
+
+.course-card {
+  /* Enter timing: shared by @supports blocks and --count-up-delay (first numeric stat value). */
+  --rise-duration: 0.55s;
+  --stagger-2: 55ms;
+  --stagger-3: 40ms;
+
+  width: 100%;
+  max-width: 420px;
+  background: var(--gray-0);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &.active {
+    /* = delay(second .stat .stat__value): first [data-count] row (objectives), after grade cell. */
+    --count-up-delay: calc(
+      7 * var(--rise-duration) + 4 * var(--stagger-3) + var(--stagger-2)
+    );
+  }
+
+  & > *,
+  & > * > *,
+  & > * > * > * {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .course-card__main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .course-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .course-card__title {
+    margin: 0;
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000;
+  }
+
+  .course-card__date {
+    margin: 0;
+    font-size: 10.725px;
+    line-height: 15.73px;
+    font-weight: 400;
+    color: var(--gray-400);
+  }
+
+  .course-card__labels {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10.7px;
+    line-height: 10.7px;
+    font-weight: 400;
+  }
+
+  .label__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .label__text {
+    min-height: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  .label--original {
+    background: var(--gray-200);
+    color: var(--gray-700);
+  }
+
+  .label--published {
+    background: var(--lime-200);
+    color: var(--lime-700);
+  }
+
+  .label--native {
+    background: var(--sky-200);
+    color: var(--sky-700);
+  }
+
+  .label--imported {
+    background: var(--rose-200);
+    color: var(--rose-700);
+  }
+
+  .course-card__stats {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .stat {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 54px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .stat--neutral {
+    background: var(--gray-100);
+    color: var(--gray-800);
+  }
+
+  .stat--standards {
+    background: var(--purple-100);
+    color: var(--purple-800);
+  }
+
+  .stat__value {
+    margin: 0;
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 16.25px;
+    line-height: 21.25px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__label {
+    margin: 0;
+    font-size: 10.725px;
+    line-height: 15.73px;
+    font-weight: 400;
+  }
+
+  .stat--standards .stat__label {
+    color: var(--purple-800);
+  }
+}
+
+/* Chromium / Safari: sibling-index() where possible; depth-1/2 split for strict DOM preorder. */
+@supports (animation-delay: calc(1ms * sibling-index())) {
+  /* Depth 1: main first, then stats only after last label finishes (5 rises + 4 depth-3 steps in main). */
+  .course-card.active > :nth-child(1) {
+    --l1: 0ms;
+    --enter-end: calc(var(--l1) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l1);
+  }
+
+  .course-card.active > :nth-child(2) {
+    --l1: calc(5 * var(--rise-duration) + 4 * var(--stagger-3));
+    --enter-end: calc(var(--l1) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l1);
+  }
+
+  /* Depth 2 under main: header first; ul after title + date (2 rises + stagger-3). */
+  .course-card.active > .course-card__main > :nth-child(1) {
+    --l2: calc(var(--enter-end) + 0ms);
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__main > :nth-child(2) {
+    --l2: calc(var(--enter-end) + 2 * var(--rise-duration) + var(--stagger-3));
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  /* Depth 2 under stats: stagger stat columns. */
+  .course-card.active > .course-card__stats > * {
+    --l2: calc(var(--enter-end) + (sibling-index() - 1) * var(--stagger-2));
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > * > * > * {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + (sibling-index() - 1) * var(--stagger-3));
+  }
+}
+
+/* Firefox: explicit selectors; same preorder as @supports (sibling-index) branch. */
+@supports not (animation-delay: calc(1ms * sibling-index())) {
+  .course-card.active > .course-card__main {
+    --l1: 0ms;
+    --enter-end: calc(var(--l1) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l1);
+  }
+
+  .course-card.active > .course-card__stats {
+    --l1: calc(5 * var(--rise-duration) + 4 * var(--stagger-3));
+    --enter-end: calc(var(--l1) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l1);
+  }
+
+  .course-card.active > .course-card__main > .course-card__header {
+    --l2: calc(var(--enter-end) + 0ms);
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__main > .course-card__labels {
+    --l2: calc(var(--enter-end) + 2 * var(--rise-duration) + var(--stagger-3));
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(1) {
+    --l2: calc(var(--enter-end) + 0ms);
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(2) {
+    --l2: calc(var(--enter-end) + var(--stagger-2));
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(3) {
+    --l2: calc(var(--enter-end) + calc(2 * var(--stagger-2)));
+    --enter-end-2: calc(var(--l2) + var(--rise-duration));
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--l2);
+  }
+
+  .course-card.active > .course-card__main > .course-card__header > .course-card__title {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + 0ms);
+  }
+
+  .course-card.active > .course-card__main > .course-card__header > .course-card__date {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + var(--stagger-3));
+  }
+
+  .course-card.active > .course-card__main > .course-card__labels > .label:nth-child(1) {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + 0ms);
+  }
+
+  .course-card.active > .course-card__main > .course-card__labels > .label:nth-child(2) {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + var(--stagger-3));
+  }
+
+  .course-card.active > .course-card__main > .course-card__labels > .label:nth-child(3) {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + calc(2 * var(--stagger-3)));
+  }
+
+  .course-card.active > .course-card__main > .course-card__labels > .label:nth-child(4) {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + calc(3 * var(--stagger-3)));
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(1) > .stat__value {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + 0ms);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(1) > .stat__label {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + var(--stagger-3));
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(2) > .stat__value {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + 0ms);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(2) > .stat__label {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + var(--stagger-3));
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(3) > .stat__value {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + 0ms);
+  }
+
+  .course-card.active > .course-card__stats > .stat:nth-child(3) > .stat__label {
+    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--enter-end-2) + var(--stagger-3));
+  }
+}
+
+@keyframes course-card-section-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.replay-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gray-0);
+  color: var(--gray-700);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    color: var(--purple-800);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1), 0 12px 28px rgb(89 75 136 / 0.12);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--purple-800);
+    outline-offset: 3px;
+  }
+
+  & i.spinning {
+    animation: spin-refresh 0.65s ease-out;
+  }
+}
+
+@keyframes spin-refresh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-card > *,
+  .course-card > * > *,
+  .course-card > * > * > * {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .replay-btn i.spinning {
+    animation: none;
+  }
+}
