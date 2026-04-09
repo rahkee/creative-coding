@@ -10,10 +10,12 @@
     card.classList.remove("active");
   }
 
-  function replayActive() {
-    removeActive();
-    void card.offsetWidth;
-    addActive();
+  function toggleActive() {
+    if (card.classList.contains("active")) {
+      removeActive();
+    } else {
+      addActive();
+    }
   }
 
   document.querySelectorAll("[data-count]").forEach((el) => {
@@ -24,7 +26,7 @@
   });
 
   if (replayBtn) {
-    replayBtn.addEventListener("click", () => replayActive());
+    replayBtn.addEventListener("click", () => toggleActive());
   }
 
   function start() {
