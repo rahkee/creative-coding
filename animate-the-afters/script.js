@@ -10,12 +10,14 @@
     card.classList.remove("active");
   }
 
-  function toggleActive() {
-    if (card.classList.contains("active")) {
-      removeActive();
-    } else {
-      addActive();
-    }
+  function replayActive() {
+    removeActive();
+    void card.offsetWidth;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        addActive();
+      });
+    });
   }
 
   document.querySelectorAll("[data-count]").forEach((el) => {
@@ -26,7 +28,7 @@
   });
 
   if (replayBtn) {
-    replayBtn.addEventListener("click", () => toggleActive());
+    replayBtn.addEventListener("click", () => replayActive());
   }
 
   function start() {
