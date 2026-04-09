@@ -17,51 +17,51 @@
               .course-card > * (stats row) > * (cell) > * (lines)
     -->
     <article class="course-card" id="course-card" aria-labelledby="course-title">
-      <div>
-        <header>
-          <h1 id="course-title">
+      <div class="course-card__content">
+        <header class="course-card__header">
+          <h1 class="course-card__title" id="course-title">
             Building Strong Relationships Through Empathy and Understanding
           </h1>
-          <p>Revised April 5th, 2026</p>
+          <p class="course-card__revision-date">Revised April 5th, 2026</p>
         </header>
 
-        <ul role="list">
-          <li>
-            <span aria-hidden="true"><i class="fa-solid fa-tree"></i></span>
-            <span>Original</span>
+        <ul class="course-card__tag-list" role="list">
+          <li class="course-card__tag">
+            <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-tree"></i></span>
+            <span class="course-card__tag-label">Original</span>
           </li>
-          <li>
-            <span aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
-            <span>Published</span>
+          <li class="course-card__tag">
+            <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+            <span class="course-card__tag-label">Published</span>
           </li>
-          <li>
-            <span aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
-            <span>Native</span>
+          <li class="course-card__tag">
+            <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
+            <span class="course-card__tag-label">Native</span>
           </li>
-          <li>
-            <span aria-hidden="true"><i class="fa-solid fa-file-import"></i></span>
-            <span>Imported</span>
+          <li class="course-card__tag">
+            <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-file-import"></i></span>
+            <span class="course-card__tag-label">Imported</span>
           </li>
         </ul>
       </div>
 
-      <div>
-        <div>
-          <p><span>6 - 8</span></p>
-          <p>Grade Level</p>
+      <div class="course-card__stats">
+        <div class="course-card__stat">
+          <p class="course-card__stat-value"><span class="course-card__stat-number">6 - 8</span></p>
+          <p class="course-card__stat-label">Grade Level</p>
         </div>
-        <div>
-          <p><span data-count="21" data-suffix="">0</span></p>
-          <p>Objectives</p>
+        <div class="course-card__stat">
+          <p class="course-card__stat-value"><span class="course-card__stat-number" data-count="21" data-suffix="">0</span></p>
+          <p class="course-card__stat-label">Objectives</p>
         </div>
-        <div>
-          <p><span data-count="189" data-suffix="">0</span></p>
-          <p>Standards</p>
+        <div class="course-card__stat">
+          <p class="course-card__stat-value"><span class="course-card__stat-number" data-count="189" data-suffix="">0</span></p>
+          <p class="course-card__stat-label">Standards</p>
         </div>
       </div>
     </article>
 
-    <button type="button" class="replay-btn" id="replay-btn" aria-label="Replay card animation">
+    <button type="button" class="replay-btn course-card__replay" id="replay-btn" aria-label="Replay card animation">
       <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
     </button>
   </div>
