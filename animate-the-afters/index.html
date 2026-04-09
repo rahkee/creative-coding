@@ -12,10 +12,6 @@
 </head>
 <body>
   <div class="page">
-    <!--
-      Shape: .course-card > * (block) > * (header | list) > * (leaves)
-              .course-card > * (stats row) > * (cell) > * (lines)
-    -->
     <article class="course-card" id="course-card" aria-labelledby="course-title">
       <div class="course-card__content">
         <header class="course-card__header">
@@ -26,19 +22,19 @@
         </header>
 
         <ul class="course-card__tag-list" role="list">
-          <li class="course-card__tag">
+          <li class="course-card__tag course-card__tag--gray">
             <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-tree"></i></span>
             <span class="course-card__tag-label">Original</span>
           </li>
-          <li class="course-card__tag">
+          <li class="course-card__tag course-card__tag--lime">
             <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
             <span class="course-card__tag-label">Published</span>
           </li>
-          <li class="course-card__tag">
+          <li class="course-card__tag course-card__tag--sky">
             <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
             <span class="course-card__tag-label">Native</span>
           </li>
-          <li class="course-card__tag">
+          <li class="course-card__tag course-card__tag--rose">
             <span class="course-card__tag-icon" aria-hidden="true"><i class="fa-solid fa-file-import"></i></span>
             <span class="course-card__tag-label">Imported</span>
           </li>
@@ -46,22 +42,22 @@
       </div>
 
       <div class="course-card__stats">
-        <div class="course-card__stat">
+        <div class="course-card__stat course-card__stat--muted">
           <p class="course-card__stat-value"><span class="course-card__stat-number">6 - 8</span></p>
           <p class="course-card__stat-label">Grade Level</p>
         </div>
-        <div class="course-card__stat">
+        <div class="course-card__stat course-card__stat--muted">
           <p class="course-card__stat-value"><span class="course-card__stat-number" data-count="21" data-suffix="">0</span></p>
           <p class="course-card__stat-label">Objectives</p>
         </div>
-        <div class="course-card__stat">
+        <div class="course-card__stat course-card__stat--accent">
           <p class="course-card__stat-value"><span class="course-card__stat-number" data-count="189" data-suffix="">0</span></p>
           <p class="course-card__stat-label">Standards</p>
         </div>
       </div>
     </article>
 
-    <button type="button" class="replay-btn course-card__replay" id="replay-btn" aria-label="Replay">
+    <button type="button" class="replay-btn course-card__replay" id="replay-btn" aria-label="Replay card animation">
       <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
     </button>
   </div>

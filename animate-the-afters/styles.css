@@ -40,6 +40,36 @@ body {
   justify-content: center;
   gap: 28px;
   padding: 32px 20px 48px;
+
+  & .replay-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gray-0);
+    color: var(--gray-700);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      color: var(--purple-800);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1), 0 12px 28px rgb(89 75 136 / 0.12);
+    }
+
+    &:active {
+      transform: scale(0.94);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--purple-800);
+      outline-offset: 3px;
+    }
+  }
 }
 
 .course-card {
@@ -53,20 +83,19 @@ body {
   flex-direction: column;
   gap: 24px;
 
-  /* Depth 1 — first block: title area + list */
-  & > *:nth-child(1) {
+  & .course-card__content {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  & > *:nth-child(1) > *:nth-child(1) {
+  & .course-card__header {
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
 
-  & > *:nth-child(1) > *:nth-child(1) h1 {
+  & .course-card__title {
     margin: 0;
     font-family: var(--font-headline);
     font-weight: 600;
@@ -75,7 +104,7 @@ body {
     color: #000;
   }
 
-  & > *:nth-child(1) > *:nth-child(1) p {
+  & .course-card__revision-date {
     margin: 0;
     font-size: 10.725px;
     line-height: 15.73px;
@@ -83,7 +112,7 @@ body {
     color: var(--gray-400);
   }
 
-  & > *:nth-child(1) > *:nth-child(2) {
+  & .course-card__tag-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -93,7 +122,7 @@ body {
     align-items: center;
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > * {
+  & .course-card__tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -104,7 +133,7 @@ body {
     font-weight: 400;
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > * > span:first-of-type {
+  & .course-card__tag-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,40 +141,39 @@ body {
     line-height: 1;
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > * > span:last-of-type {
+  & .course-card__tag-label {
     min-height: 14px;
     display: flex;
     align-items: center;
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > *:nth-child(1) {
+  & .course-card__tag--gray {
     background: var(--gray-200);
     color: var(--gray-700);
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > *:nth-child(2) {
+  & .course-card__tag--lime {
     background: var(--lime-200);
     color: var(--lime-700);
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > *:nth-child(3) {
+  & .course-card__tag--sky {
     background: var(--sky-200);
     color: var(--sky-700);
   }
 
-  & > *:nth-child(1) > *:nth-child(2) > *:nth-child(4) {
+  & .course-card__tag--rose {
     background: var(--rose-200);
     color: var(--rose-700);
   }
 
-  /* Depth 1 — second block: metric cells */
-  & > *:nth-child(2) {
+  & .course-card__stats {
     display: flex;
     gap: 8px;
     width: 100%;
   }
 
-  & > *:nth-child(2) > * {
+  & .course-card__stat {
     flex: 1 1 0;
     min-width: 0;
     height: 54px;
@@ -158,18 +186,17 @@ body {
     text-align: center;
   }
 
-  & > *:nth-child(2) > *:nth-child(1),
-  & > *:nth-child(2) > *:nth-child(2) {
+  & .course-card__stat--muted {
     background: var(--gray-100);
     color: var(--gray-800);
   }
 
-  & > *:nth-child(2) > *:nth-child(3) {
+  & .course-card__stat--accent {
     background: var(--purple-100);
     color: var(--purple-800);
   }
 
-  & > *:nth-child(2) > * > p:first-of-type {
+  & .course-card__stat-value {
     margin: 0;
     font-family: var(--font-headline);
     font-weight: 600;
@@ -179,44 +206,14 @@ body {
     font-variant-numeric: tabular-nums;
   }
 
-  & > *:nth-child(2) > * > p:last-of-type {
+  & .course-card__stat-label {
     margin: 0;
     font-size: 10.725px;
     line-height: 15.73px;
     font-weight: 400;
   }
 
-  & > *:nth-child(2) > *:nth-child(3) > p:last-of-type {
+  & .course-card__stat--accent .course-card__stat-label {
     color: var(--purple-800);
-  }
-}
-
-.replay-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: none;
-  background: var(--gray-0);
-  color: var(--gray-700);
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    color: var(--purple-800);
-    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1), 0 12px 28px rgb(89 75 136 / 0.12);
-  }
-
-  &:active {
-    transform: scale(0.94);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--purple-800);
-    outline-offset: 3px;
   }
 }
