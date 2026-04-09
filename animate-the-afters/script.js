@@ -10,17 +10,6 @@
   }));
 
   let countFrame = null;
-  let countUpTimeout = null;
-
-  function parseCountUpDelayMs() {
-    const raw = getComputedStyle(card).getPropertyValue("--count-up-delay").trim();
-    if (!raw) return 0;
-    const n = parseFloat(raw);
-    if (Number.isNaN(n)) return 0;
-    if (raw.endsWith("ms")) return n;
-    if (raw.endsWith("s")) return Math.round(n * 1000);
-    return 0;
-  }
 
   function cancelCount() {
     if (countFrame !== null) {
@@ -57,10 +46,6 @@
   }
 
   function playAnimation(replay) {
-    if (countUpTimeout != null) {
-      clearTimeout(countUpTimeout);
-      countUpTimeout = null;
-    }
     cancelCount();
 
     if (replay) {
@@ -78,11 +63,7 @@
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!prefersReduced) {
-      const delayMs = parseCountUpDelayMs();
-      countUpTimeout = setTimeout(() => {
-        countUpTimeout = null;
-        runCountUp(900);
-      }, delayMs);
+      runCountUp(900);
     } else {
       targets.forEach(({ el, end }) => {
         el.textContent = String(end);
