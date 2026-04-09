@@ -42,19 +42,7 @@ body {
   padding: 32px 20px 48px;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Enter stack: depth-1 = two shells (staggered). Leaves animate on a timeline */
-/* anchored to inherited --l1 only (no +rise between tiers) so branch-2 can start */
-/* while branch-1 children are still staggering. JS toggles .active. */
-/* -------------------------------------------------------------------------- */
-
 .course-card {
-  /* --stagger-1: visible stagger between the two top-level shells (depth 1). */
-  --rise-duration: 0.275s;
-  --stagger-1: 0.48s;
-  --stagger-2: 27.5ms;
-  --stagger-3: 20ms;
-
   width: 100%;
   max-width: 420px;
   background: var(--gray-0);
@@ -64,11 +52,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-
-  & > * {
-    opacity: 0;
-    transform: translateY(10px);
-  }
 
   /* Depth 1 — first block: title area + list */
   & > *:nth-child(1) {
@@ -208,138 +191,6 @@ body {
   }
 }
 
-@supports (animation-delay: calc(1ms * sibling-index())) {
-  /* Depth 1: shells only; stagger between the two columns. --l1 inherits to descendants. */
-  .course-card.active > * {
-    --l1: calc((sibling-index() - 1) * var(--stagger-1));
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: var(--l1);
-  }
-
-  /* Stat cells: column offset for inner lines (no wrapper animation). */
-  .course-card.active > *:nth-child(2) > * {
-    --cell-stagger-offset: calc((sibling-index() - 1) * var(--stagger-2));
-  }
-
-  /* Column 1: title + date (2 slots before list items in the shared timeline). */
-  .course-card.active > *:nth-child(1) > *:nth-child(1) > * {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + (sibling-index() - 1) * var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(2) > * {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(
-      var(--l1) + 2 * var(--stagger-3) + (sibling-index() - 1) * var(--stagger-3)
-    );
-  }
-
-  /* Column 2: value + label per cell, parallel to column 1 list once shell 2’s --l1 hits. */
-  .course-card.active > *:nth-child(2) > * > * {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(
-      var(--l1) + var(--cell-stagger-offset) + (sibling-index() - 1) * var(--stagger-3)
-    );
-  }
-}
-
-@supports not (animation-delay: calc(1ms * sibling-index())) {
-  .course-card.active > *:nth-child(1) {
-    --l1: 0ms;
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: var(--l1);
-  }
-
-  .course-card.active > *:nth-child(2) {
-    --l1: var(--stagger-1);
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: var(--l1);
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(1) {
-    --cell-stagger-offset: 0ms;
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(2) {
-    --cell-stagger-offset: var(--stagger-2);
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(3) {
-    --cell-stagger-offset: calc(2 * var(--stagger-2));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(1) > *:nth-child(1) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + 0ms);
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(1) > *:nth-child(2) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(2) > *:nth-child(1) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + 2 * var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(2) > *:nth-child(2) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + 3 * var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(2) > *:nth-child(3) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + 4 * var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(1) > *:nth-child(2) > *:nth-child(4) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + 5 * var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(1) > *:nth-child(1) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + 0ms);
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(1) > *:nth-child(2) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(2) > *:nth-child(1) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + 0ms);
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(2) > *:nth-child(2) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + var(--stagger-3));
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(3) > *:nth-child(1) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + 0ms);
-  }
-
-  .course-card.active > *:nth-child(2) > *:nth-child(3) > *:nth-child(2) {
-    animation: course-card-section-rise var(--rise-duration) cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--l1) + var(--cell-stagger-offset) + var(--stagger-3));
-  }
-}
-
-@keyframes course-card-section-rise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .replay-btn {
   width: 48px;
   height: 48px;
@@ -367,30 +218,5 @@ body {
   &:focus-visible {
     outline: 2px solid var(--purple-800);
     outline-offset: 3px;
-  }
-
-  & i.spinning {
-    animation: spin-refresh 0.65s ease-out;
-  }
-}
-
-@keyframes spin-refresh {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .course-card * {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
-  }
-
-  .replay-btn i.spinning {
-    animation: none;
   }
 }
