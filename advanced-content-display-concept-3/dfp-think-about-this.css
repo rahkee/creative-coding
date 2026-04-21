@@ -13,7 +13,6 @@
 
         .dfp-think-about-this__wrap {
             position: relative;
-            width: 100%;
             padding: 78px 24px 0;
             overflow: visible;
 
@@ -69,8 +68,6 @@
             }
 
             .dfp-think-about-this__card {
-                position: relative;
-                width: 100%;
                 background: #f6f1fa;
                 border: 8px solid #4d1a72;
                 border-radius: 24px;
@@ -87,7 +84,6 @@
                     font-size: 19.2px;
                     line-height: 1.12;
                     color: #4d1a72;
-                    width: 100%;
                     max-width: none;
                 }
 
@@ -95,7 +91,6 @@
                     font-weight: 300;
                     line-height: 1.52;
                     color: #4d1a72;
-                    width: 100%;
                     max-width: none;
                 }
             }
@@ -108,7 +103,7 @@
 
             .dfp-think-about-this__ribbon-title {
                 white-space: normal;
-                width: 100%;
+                flex-basis: 100%;
                 order: -1;
             }
         }

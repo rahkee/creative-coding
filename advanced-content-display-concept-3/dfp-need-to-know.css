@@ -13,7 +13,6 @@
 
         .dfp-need-to-know__container {
             position: relative;
-            width: 100%;
             background: #fff6f6;
             border: 8px solid #583e36;
             border-radius: 24px;
@@ -88,7 +87,6 @@
             }
 
             .dfp-need-to-know__body {
-                position: relative;
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
@@ -98,7 +96,6 @@
                 max-width: 100%;
 
                 .dfp-need-to-know__title {
-                    position: relative;
                     font-family: Nunito, Sniglet, system-ui, sans-serif;
                     font-weight: 900;
                     font-size: 19.2px;

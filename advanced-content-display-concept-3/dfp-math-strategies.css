@@ -13,7 +13,6 @@
 
         .dfp-math-strategies__container {
             position: relative;
-            width: 100%;
             max-width: 447px;
             margin-left: auto;
             margin-right: auto;
@@ -47,7 +46,6 @@
                 border-radius: 8px;
                 box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
                 padding: 16px;
-                width: 100%;
 
                 .dfp-math-strategies__formula-inner {
                     text-align: center;

@@ -13,7 +13,6 @@
 
         .dfp-formulas__container {
             position: relative;
-            width: 100%;
             background: #effbf6;
             border: 8px solid #583e36;
             border-radius: 24px;
@@ -65,7 +64,6 @@
             }
 
             .dfp-formulas__body {
-                position: relative;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
@@ -73,7 +71,6 @@
                 .dfp-formulas__title-row {
                     display: flex;
                     align-items: center;
-                    width: 100%;
                     padding-left: 88px;
                 }
 
@@ -86,7 +83,6 @@
                 }
 
                 .dfp-formulas__intro-row {
-                    width: 100%;
                     padding-right: 48px;
                 }
 
@@ -104,19 +100,16 @@
                     padding-left: 40px;
 
                     .dfp-formulas__ruler-badge {
-                        position: absolute;
-                        left: 0;
-                        top: 20px;
+                        align-self: flex-start;
                         background: #14a9c3;
                         border: 6px solid #583e36;
                         border-radius: 12px;
-                        padding: 16px;
+                        padding: 12px;
 
                         .dfp-formulas__ruler-flip {
                             transform: scaleY(-1) rotate(180deg);
 
                             .dfp-formulas__ruler-canvas {
-                                position: relative;
                                 width: 48px;
                                 height: 48px;
                                 overflow: hidden;
@@ -140,6 +133,15 @@
             }
         }
 
+        @container (min-width: 577px) {
+            .dfp-formulas__ruler-badge {
+                position: absolute;
+                left: 0;
+                top: 20px;
+                padding: 16px;
+            }
+        }
+
         @container (max-width: 576px) {
             .dfp-formulas__title-row {
                 padding-left: 48px;
@@ -151,15 +153,6 @@
 
             .dfp-formulas__callout-row {
                 padding-left: 0;
-            }
-
-            .dfp-formulas__ruler-badge {
-                position: relative;
-                left: auto;
-                top: auto;
-                transform: none;
-                align-self: flex-start;
-                padding: 12px;
             }
 
             .dfp-formulas__callout {
