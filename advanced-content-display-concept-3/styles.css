@@ -913,7 +913,7 @@
             transform: none;
         }
 
-        .dfp-formulas__shell {
+        .dfp-formulas__container {
             position: relative;
             width: 100%;
             background: #effbf6;
@@ -1082,7 +1082,7 @@
             transform: none;
         }
 
-        .dfp-need-to-know__shell {
+        .dfp-need-to-know__container {
             position: relative;
             width: 100%;
             background: #fff6f6;
@@ -1350,7 +1350,7 @@
             transform: none;
         }
 
-        .dfp-do-you-remember__shell {
+        .dfp-do-you-remember__container {
             position: relative;
             width: 100%;
             padding-right: 80px;
@@ -1484,7 +1484,7 @@
                 width: min(288px, 90%);
             }
 
-            .dfp-do-you-remember__shell {
+            .dfp-do-you-remember__container {
                 padding-right: 0;
                 display: flex;
                 flex-direction: column;
@@ -1504,7 +1504,7 @@
             transform: none;
         }
 
-        .dfp-math-strategies__shell {
+        .dfp-math-strategies__container {
             position: relative;
             width: 100%;
             max-width: 447px;
@@ -1710,7 +1710,7 @@
             transform: none;
         }
 
-        .dfp-the-objective__shell {
+        .dfp-the-objective__container {
             position: relative;
             width: 100%;
             background: #e9f8f8;
