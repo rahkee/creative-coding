@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Formulas —— */
-    section.dfp-formulas.sm-content-container {
+    .dfp-formulas {
         &:has(h2) h2::before,
         &:has(h2) h2::after {
             content: none;

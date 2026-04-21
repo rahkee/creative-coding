@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Explore Further —— */
-    section.sm-content-container:has(> .dfp-explore-further__container) {
+    .dfp-explore-further {
         .dfp-explore-further__container {
             position: relative;
             border: 8px solid #583e36;

@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Need to Know —— */
-    section.dfp-need-to-know.sm-content-container {
+    .dfp-need-to-know {
         &:has(h2) h2::before,
         &:has(h2) h2::after {
             content: none;

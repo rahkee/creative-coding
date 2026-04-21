@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Do You Remember —— */
-    section.dfp-do-you-remember.sm-content-container {
+    .dfp-do-you-remember {
         &:has(h2) h2::before,
         &:has(h2) h2::after {
             content: none;

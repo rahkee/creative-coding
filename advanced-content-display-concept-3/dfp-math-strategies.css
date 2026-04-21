@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Math Strategies —— */
-    section.dfp-math-strategies.sm-content-container {
+    .dfp-math-strategies {
         &:has(h2) h2::before,
         &:has(h2) h2::after {
             content: none;

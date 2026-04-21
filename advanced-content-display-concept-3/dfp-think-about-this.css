@@ -1,6 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Think About This —— */
-    section.dfp-think-about-this.sm-content-container {
+    .dfp-think-about-this {
         &:has(h2) h2::before,
         &:has(h2) h2::after {
             content: none;

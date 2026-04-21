@@ -1,15 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: The Objective —— */
-    section.dfp-the-objective.sm-content-container {
-        &:has(h2) h2::before,
-        &:has(h2) h2::after {
-            content: none;
-            display: none;
-            width: 0;
-            height: 0;
-            background: none;
-            transform: none;
-        }
+    .dfp-the-objective {
 
         .dfp-the-objective__container {
             position: relative;
