@@ -251,7 +251,8 @@
     --border-radius: 16px;
     --font-family: 'Nunito', sans-serif;
     --font-weight: 800;
-    --font-size: 16px; /* Default font size, overrides Backpack UI since we don't have shadowDOM yet */
+    --font-size: 16px;
+    /* Default font size, overrides Backpack UI since we don't have shadowDOM yet */
 
     font-family: var(--font-family);
     font-size: var(--font-size);
@@ -274,23 +275,23 @@
             flex-direction: row;
         }
 
-        & .associated.half-half > div {
+        & .associated.half-half>div {
             flex: 1 1 0;
         }
 
-        & .associated.two-thirds > div:first-child {
+        & .associated.two-thirds>div:first-child {
             flex: 2 1 0;
         }
 
-        & .associated.two-thirds > div:last-child {
+        & .associated.two-thirds>div:last-child {
             flex: 1 1 0;
         }
 
-        & .associated.one-thirds > div:first-child {
+        & .associated.one-thirds>div:first-child {
             flex: 1 1 0;
         }
 
-        & .associated.one-thirds > div:last-child {
+        & .associated.one-thirds>div:last-child {
             flex: 2 1 0;
         }
     }
@@ -359,8 +360,8 @@
 
     section.sm-content-container:has(h2) {
 
-        h2::before,
-        h2::after {
+        >h2::before,
+        >h2::after {
             content: '';
             position: absolute;
             width: 24px;
@@ -370,48 +371,48 @@
             background-position: center;
         }
 
-        h2::before {
+        >h2::before {
             left: 0;
             top: 0;
 
         }
 
-        h2::after {
+        >h2::after {
             right: 0;
             top: 0;
             transform: translate(32px, -24px);
         }
 
-        &:nth-child(6n+1 of section:has(h2)) h2::before {
+        &:nth-child(6n+1 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/light_blue/3lines.svg');
             transform: translate(-32px, -24px) rotate(33deg);
         }
 
-        &:nth-child(6n+2 of section:has(h2)) h2::before {
+        &:nth-child(6n+2 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/3lines.svg');
             transform: translate(-40px, -6px) rotate(0deg);
         }
 
-        &:nth-child(6n+2 of section:has(h2)) h2::after {
+        &:nth-child(6n+2 of section:has(h2))>h2::after {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/coral/scribble.svg');
         }
 
-        &:nth-child(6n+3 of section:has(h2)) h2::before {
+        &:nth-child(6n+3 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/yellow/3lines.svg');
             transform: translate(-40px, 6px) rotate(-24deg);
         }
 
-        &:nth-child(6n+4 of section:has(h2)) h2::before {
+        &:nth-child(6n+4 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/purple/3lines.svg');
             transform: translate(-40px, -12px) rotate(12deg);
         }
 
-        &:nth-child(6n+5 of section:has(h2)) h2::before {
+        &:nth-child(6n+5 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/mint/3lines.svg');
             transform: translate(-12px, -40px) rotate(72deg);
         }
 
-        &:nth-child(6n+6 of section:has(h2)) h2::before {
+        &:nth-child(6n+6 of section:has(h2))>h2::before {
             background-image: url('https://cdn.strongmind.com/backpack-ui/latest/assets/images/homeschool_styling_assets/doodles/pink/3lines.svg');
             transform: translate(-32px, -24px) rotate(33deg);
         }
@@ -900,894 +901,891 @@
         margin: 0;
     }
 
-/* —— Design for Purpose: Formulas —— */
-section.dfp-formulas.sm-content-container:has(h2) h2::before,
-section.dfp-formulas.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
+    /* —— Design for Purpose: Formulas —— */
+    section.dfp-formulas.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
 
-.dfp-formulas__shell {
-    position: relative;
-    width: 100%;
-    background: #effbf6;
-    border: 8px solid #583e36;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 24px 40px 40px;
-}
+        .dfp-formulas__shell {
+            position: relative;
+            width: 100%;
+            background: #effbf6;
+            border: 8px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 24px 40px 40px;
 
-.dfp-formulas__body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
+            .dfp-formulas__corner {
+                pointer-events: none;
 
-.dfp-formulas__corner {
-    pointer-events: none;
-}
+                &--tl {
+                    position: absolute;
+                    left: -18px;
+                    top: -57px;
+                }
 
-.dfp-formulas__corner--tl {
-    position: absolute;
-    left: -18px;
-    top: -57px;
-}
+                &--br {
+                    position: absolute;
+                    right: 18px;
+                    bottom: -21px;
+                }
+            }
 
-.dfp-formulas__corner--br {
-    position: absolute;
-    right: 18px;
-    bottom: -21px;
-}
+            /* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
+            .dfp-formulas__icon-shadow {
+                display: inline-block;
+                line-height: 0;
+                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+            }
 
-/* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
-.dfp-formulas__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
+            .dfp-formulas__svg {
+                display: block;
+                height: auto;
+                max-width: 100%;
+            }
 
-.dfp-formulas__svg {
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
+            .dfp-formulas__svg--calculator {
+                width: 103px;
+                aspect-ratio: 1;
+            }
 
-.dfp-formulas__svg--calculator {
-    width: 103px;
-    aspect-ratio: 1;
-}
+            .dfp-formulas__svg--spellbook {
+                width: 105px;
+                aspect-ratio: 1;
+            }
 
-.dfp-formulas__svg--spellbook {
-    width: 105px;
-    aspect-ratio: 1;
-}
+            .dfp-formulas__svg--ruler {
+                width: 48px;
+                height: 48px;
+            }
 
-.dfp-formulas__svg--ruler {
-    width: 48px;
-    height: 48px;
-}
+            .dfp-formulas__body {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
 
-.dfp-formulas__title-row {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding-left: 88px;
-}
+                .dfp-formulas__title-row {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding-left: 88px;
+                }
 
-.dfp-formulas__title {
-    font-family: var(--font-family);
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 1.12;
-    color: #583e36;
-}
+                .dfp-formulas__title {
+                    font-family: var(--font-family);
+                    font-weight: 900;
+                    font-size: 40px;
+                    line-height: 1.12;
+                    color: #583e36;
+                }
 
-.dfp-formulas__intro-row {
-    width: 100%;
-    padding-right: 48px;
-}
+                .dfp-formulas__intro-row {
+                    width: 100%;
+                    padding-right: 48px;
+                }
 
-.dfp-formulas__intro {
-    font-weight: 300;
-    line-height: 1.52;
-    color: #583e36;
-}
+                .dfp-formulas__intro {
+                    font-weight: 300;
+                    line-height: 1.52;
+                    color: #583e36;
+                }
 
-.dfp-formulas__callout-row {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-left: 40px;
-}
+                .dfp-formulas__callout-row {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    padding-left: 40px;
 
-.dfp-formulas__ruler-badge {
-    position: absolute;
-    left: 0;
-    top: 20px;
-    background: #14a9c3;
-    border: 6px solid #583e36;
-    border-radius: 12px;
-    padding: 16px;
-}
+                    .dfp-formulas__ruler-badge {
+                        position: absolute;
+                        left: 0;
+                        top: 20px;
+                        background: #14a9c3;
+                        border: 6px solid #583e36;
+                        border-radius: 12px;
+                        padding: 16px;
 
-.dfp-formulas__ruler-flip {
-    transform: scaleY(-1) rotate(180deg);
-}
+                        .dfp-formulas__ruler-flip {
+                            transform: scaleY(-1) rotate(180deg);
 
-.dfp-formulas__ruler-canvas {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    overflow: hidden;
-}
+                            .dfp-formulas__ruler-canvas {
+                                position: relative;
+                                width: 48px;
+                                height: 48px;
+                                overflow: hidden;
+                            }
+                        }
+                    }
 
-.dfp-formulas__callout {
-    background: #fff;
-    border: 4px solid #583e36;
-    border-radius: 16px;
-    padding: 24px 72px 24px 64px;
-}
+                    .dfp-formulas__callout {
+                        background: #fff;
+                        border: 4px solid #583e36;
+                        border-radius: 16px;
+                        padding: 24px 72px 24px 64px;
 
-.dfp-formulas__callout p {
-    font-weight: 300;
-    line-height: 1.42;
-    color: #583e36;
-}
+                        p {
+                            font-weight: 300;
+                            line-height: 1.42;
+                            color: #583e36;
+                        }
+                    }
+                }
+            }
+        }
 
-@container (max-width: 576px) {
-    .strongmind-content-layer .dfp-formulas__title-row {
-        padding-left: 48px;
+        @container (max-width: 576px) {
+            .dfp-formulas__title-row {
+                padding-left: 48px;
+            }
+
+            .dfp-formulas__intro-row {
+                padding-right: 0;
+            }
+
+            .dfp-formulas__callout-row {
+                padding-left: 0;
+            }
+
+            .dfp-formulas__ruler-badge {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                align-self: flex-start;
+                padding: 12px;
+            }
+
+            .dfp-formulas__callout {
+                padding: 20px;
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-formulas__intro-row {
-        padding-right: 0;
+    /* —— Design for Purpose: Need to Know —— */
+    section.dfp-need-to-know.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-need-to-know__shell {
+            position: relative;
+            width: 100%;
+            background: #fff6f6;
+            border: 8px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+            padding: 56px 80px 48px 48px;
+            overflow: visible;
+
+            .dfp-need-to-know__icon-shadow {
+                display: inline-block;
+                line-height: 0;
+                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+
+                &--strong {
+                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
+                }
+            }
+
+            .dfp-need-to-know__header-cluster {
+                position: absolute;
+                left: calc(50% - 176px);
+                top: -108px;
+                width: 352px;
+                height: 160px;
+                pointer-events: none;
+                display: block;
+
+                .dfp-need-to-know__svg {
+                    display: block;
+                    height: auto;
+                    max-width: 100%;
+                }
+
+                .dfp-need-to-know__svg--halo {
+                    width: 112px;
+                    aspect-ratio: 1;
+                    position: absolute;
+                    top: 0;
+                    left: calc(50% - 52px);
+                }
+
+                .dfp-need-to-know__crown-spin {
+                    position: absolute;
+                    top: 0;
+                    left: calc(50% - 38px);
+                    transform: rotate(-5deg);
+
+                    .dfp-need-to-know__svg--crown {
+                        width: 76px;
+                        aspect-ratio: 76 / 75;
+                    }
+                }
+
+                .dfp-need-to-know__pill {
+                    position: absolute;
+                    top: 76px;
+                    left: calc(50% - 84px);
+                    background: #fff2d4;
+                    border: 8px solid #583e36;
+                    border-radius: 96px;
+                    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+                    padding: 16px 32px;
+
+                    .dfp-need-to-know__pill-label {
+                        font-family: Nunito, Sniglet, system-ui, sans-serif;
+                        font-weight: 900;
+                        font-size: 23.04px;
+                        line-height: 1.12;
+                        color: #583e36;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            .dfp-need-to-know__body {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: stretch;
+                text-align: left;
+                color: #583e36;
+                max-width: 100%;
+
+                .dfp-need-to-know__title {
+                    position: relative;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 19.2px;
+                    line-height: 1.12;
+                }
+
+                .dfp-need-to-know__text {
+                    font-weight: 300;
+                    line-height: 1.52;
+                }
+            }
+
+            .dfp-need-to-know__corner {
+                position: absolute;
+                pointer-events: none;
+                line-height: 0;
+
+                &--br {
+                    right: 17px;
+                    bottom: -30px;
+                    width: 130px;
+                    height: 92px;
+                    display: block;
+
+                    > .dfp-need-to-know__icon-shadow:first-child {
+                        position: absolute;
+                        right: 36px;
+                        bottom: -26px;
+                        display: block;
+                    }
+
+                    .dfp-need-to-know__quill-flip {
+                        position: absolute;
+                        right: 21px;
+                        bottom: -25px;
+                        display: block;
+                        transform: scaleY(-1) rotate(180deg);
+                    }
+
+                    .dfp-need-to-know__svg--notebook {
+                        width: 88px;
+                        aspect-ratio: 1;
+                    }
+
+                    .dfp-need-to-know__svg--quill {
+                        width: 63px;
+                        aspect-ratio: 1;
+                    }
+                }
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-formulas__callout-row {
-        padding-left: 0;
+    /* —— Design for Purpose: Think About This —— */
+    section.dfp-think-about-this.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-think-about-this__wrap {
+            position: relative;
+            width: 100%;
+            padding: 78px 24px 0;
+            overflow: visible;
+
+            .dfp-think-about-this__ribbon {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                transform: translate(0px, -55px);
+                display: flex;
+                height: 79px;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                padding: 0 48px;
+                pointer-events: none;
+                width: auto;
+                max-width: none;
+
+                .dfp-think-about-this__icon-shadow {
+                    display: inline-block;
+                    line-height: 0;
+                    flex-shrink: 0;
+                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                }
+
+                .dfp-think-about-this__svg {
+                    display: block;
+                    height: auto;
+                }
+
+                .dfp-think-about-this__svg--moon {
+                    width: 110px;
+                    aspect-ratio: 1;
+                }
+
+                .dfp-think-about-this__svg--crow {
+                    width: 75px;
+                    aspect-ratio: 1;
+                }
+
+                .dfp-think-about-this__ribbon-title {
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 33.18px;
+                    line-height: 1.12;
+                    color: #4d1a72;
+                    text-align: center;
+                    white-space: nowrap;
+                    flex: 1 0 0;
+                    max-width: 288px;
+                }
+            }
+
+            .dfp-think-about-this__card {
+                position: relative;
+                width: 100%;
+                background: #f6f1fa;
+                border: 8px solid #4d1a72;
+                border-radius: 24px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                padding: 48px 48px 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                color: #4d1a72;
+
+                .dfp-think-about-this__subtitle {
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 19.2px;
+                    line-height: 1.12;
+                    color: #4d1a72;
+                    width: 100%;
+                    max-width: none;
+                }
+
+                .dfp-think-about-this__text {
+                    font-weight: 300;
+                    line-height: 1.52;
+                    color: #4d1a72;
+                    width: 100%;
+                    max-width: none;
+                }
+            }
+        }
+
+        @container (max-width: 448px) {
+            .dfp-think-about-this__ribbon {
+                flex-wrap: wrap;
+            }
+
+            .dfp-think-about-this__ribbon-title {
+                white-space: normal;
+                width: 100%;
+                order: -1;
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-formulas__ruler-badge {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        align-self: flex-start;
-        padding: 12px;
+    /* —— Design for Purpose: Do You Remember —— */
+    section.dfp-do-you-remember.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-do-you-remember__shell {
+            position: relative;
+            width: 100%;
+            padding-right: 80px;
+
+            .dfp-do-you-remember__card {
+                position: relative;
+                width: 100%;
+                background: #f6f1fa;
+                border: 8px solid #583e36;
+                border-radius: 24px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                padding: 40px 160px 40px 40px;
+                color: #583e36;
+
+                .dfp-do-you-remember__title {
+                    margin: 0 0 16px;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 19.2px;
+                    line-height: 1.12;
+                }
+
+                .dfp-do-you-remember__text {
+                    font-weight: 300;
+                    line-height: 1.52;
+                    max-width: 544px;
+                }
+            }
+
+            .dfp-do-you-remember__cloud {
+                position: absolute;
+                right: -69px;
+                bottom: -29px;
+                width: 208px;
+                height: 161px;
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                display: block;
+                padding: 0;
+                pointer-events: none;
+                filter: none;
+                overflow: visible;
+
+                .dfp-do-you-remember__cloud-shape {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    pointer-events: none;
+
+                    svg {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: contain;
+                    }
+                }
+
+                .dfp-do-you-remember__cloud-title {
+                    position: absolute;
+                    left: 44px;
+                    top: 40px;
+                    width: 158px;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 23.04px;
+                    line-height: 1.12;
+                    color: #583e36;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.1em;
+                }
+
+                .dfp-do-you-remember__cloud-icons {
+                    position: absolute;
+                    left: 112px;
+                    top: 100px;
+                    width: 89px;
+                    height: 153px;
+                    display: block;
+
+                    > .dfp-do-you-remember__icon-shadow:first-child {
+                        position: absolute;
+                        left: 18px;
+                        top: 0;
+                    }
+
+                    .dfp-do-you-remember__icon-shadow {
+                        display: inline-block;
+                        line-height: 0;
+                        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                    }
+
+                    .dfp-do-you-remember__notebook-tilt {
+                        position: absolute;
+                        left: -35px;
+                        top: -7px;
+                        transform: rotate(13deg);
+                    }
+
+                    .dfp-do-you-remember__svg--ball {
+                        width: 63px;
+                        aspect-ratio: 1;
+                        height: auto;
+                    }
+
+                    .dfp-do-you-remember__svg--notebook {
+                        width: 68px;
+                        aspect-ratio: 1;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        @container (max-width: 512px) {
+            .dfp-do-you-remember__card {
+                padding-right: 22px;
+                padding-bottom: 96px;
+            }
+
+            .dfp-do-you-remember__cloud {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin: 16px auto 0;
+                width: min(288px, 90%);
+            }
+
+            .dfp-do-you-remember__shell {
+                padding-right: 0;
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-formulas__callout {
-        padding: 20px;
-    }
-}
+    /* —— Design for Purpose: Math Strategies —— */
+    section.dfp-math-strategies.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
 
-/* —— Design for Purpose: Need to Know —— */
-section.dfp-need-to-know.sm-content-container:has(h2) h2::before,
-section.dfp-need-to-know.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
+        .dfp-math-strategies__shell {
+            position: relative;
+            width: 100%;
+            max-width: 447px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #2e1f1c;
+            border: 8px solid #6b4a41;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 48px 48px 64px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow: visible;
 
-.dfp-need-to-know__shell {
-    position: relative;
-    width: 100%;
-    background: #fff6f6;
-    border: 8px solid #583e36;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-    padding: 56px 80px 48px 48px;
-    overflow: visible;
-}
+            .dfp-math-strategies__title {
+                text-align: center;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 33.18px;
+                line-height: 1.12;
+                color: #9e6d58;
+            }
 
-.dfp-need-to-know__header-cluster {
-    position: absolute;
-    left: calc(50% - 176px);
-    top: -108px;
-    width: 352px;
-    height: 160px;
-    pointer-events: none;
-    display: block;
-}
+            .dfp-math-strategies__text {
+                font-weight: 300;
+                line-height: 1.52;
+                color: #fff;
+            }
 
-.dfp-need-to-know__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
+            .dfp-math-strategies__formula {
+                background: #583e36;
+                border-radius: 8px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                padding: 16px;
+                width: 100%;
 
-.dfp-need-to-know__icon-shadow--strong {
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
-}
+                .dfp-math-strategies__formula-inner {
+                    text-align: center;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 27.65px;
+                    line-height: 1.12;
+                    color: #65d4a5;
+                }
+            }
 
-.dfp-need-to-know__svg {
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
+            .dfp-math-strategies__corner {
+                position: absolute;
+                pointer-events: none;
+                line-height: 0;
 
-.dfp-need-to-know__svg--halo {
-    width: 112px;
-    aspect-ratio: 1;
-    position: absolute;
-    top: 0;
-    left: calc(50% - 52px);
-}
+                &--bc {
+                    left: calc(50% - 54px);
+                    bottom: -49px;
+                    transform: none;
 
-.dfp-need-to-know__crown-spin {
-    position: absolute;
-    top: 0;
-    left: calc(50% - 38px);
-    transform: rotate(-5deg);
-}
+                    .dfp-math-strategies__icon-shadow {
+                        display: inline-block;
+                        line-height: 0;
+                        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                    }
 
-.dfp-need-to-know__svg--crown {
-    width: 76px;
-    aspect-ratio: 76 / 75;
-}
-
-.dfp-need-to-know__pill {
-    position: absolute;
-    top: 76px;
-    left: calc(50% - 84px);
-    background: #fff2d4;
-    border: 8px solid #583e36;
-    border-radius: 96px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-    padding: 16px 32px;
-}
-
-.dfp-need-to-know__pill-label {
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 23.04px;
-    line-height: 1.12;
-    color: #583e36;
-    white-space: nowrap;
-}
-
-.dfp-need-to-know__body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
-    text-align: left;
-    color: #583e36;
-    max-width: 100%;
-}
-
-.dfp-need-to-know__title {
-    position: relative;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 19.2px;
-    line-height: 1.12;
-}
-
-.dfp-need-to-know__text {
-    font-weight: 300;
-    line-height: 1.52;
-}
-
-.dfp-need-to-know__corner {
-    position: absolute;
-    pointer-events: none;
-    line-height: 0;
-}
-
-.dfp-need-to-know__corner--br {
-    right: 17px;
-    bottom: -30px;
-    width: 130px;
-    height: 92px;
-    display: block;
-}
-
-.dfp-need-to-know__quill-flip {
-    position: absolute;
-    right: 21px;
-    bottom: -25px;
-    display: block;
-    transform: scaleY(-1) rotate(180deg);
-}
-
-.dfp-need-to-know__svg--notebook {
-    width: 88px;
-    aspect-ratio: 1;
-}
-
-.dfp-need-to-know__svg--quill {
-    width: 63px;
-    aspect-ratio: 1;
-}
-
-.dfp-need-to-know__corner--br > .dfp-need-to-know__icon-shadow:first-child {
-    position: absolute;
-    right: 36px;
-    bottom: -26px;
-    display: block;
-}
-
-/* —— Design for Purpose: Think About This —— */
-section.dfp-think-about-this.sm-content-container:has(h2) h2::before,
-section.dfp-think-about-this.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
-
-.dfp-think-about-this__wrap {
-    position: relative;
-    width: 100%;
-    padding: 78px 24px 0;
-    overflow: visible;
-}
-
-.dfp-think-about-this__card {
-    position: relative;
-    width: 100%;
-    background: #f6f1fa;
-    border: 8px solid #4d1a72;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 48px 48px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    color: #4d1a72;
-}
-
-.dfp-think-about-this__ribbon {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    transform: translate(0px, -55px);
-    display: flex;
-    height: 79px;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 0 48px;
-    pointer-events: none;
-    width: auto;
-    max-width: none;
-}
-
-.dfp-think-about-this__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    flex-shrink: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
-
-.dfp-think-about-this__svg {
-    display: block;
-    height: auto;
-}
-
-.dfp-think-about-this__svg--moon {
-    width: 110px;
-    aspect-ratio: 1;
-}
-
-.dfp-think-about-this__svg--crow {
-    width: 75px;
-    aspect-ratio: 1;
-}
-
-.dfp-think-about-this__ribbon-title {
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 33.18px;
-    line-height: 1.12;
-    color: #4d1a72;
-    text-align: center;
-    white-space: nowrap;
-    flex: 1 0 0;
-    max-width: 288px;
-}
-
-.dfp-think-about-this__subtitle {
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 19.2px;
-    line-height: 1.12;
-    color: #4d1a72;
-    width: 100%;
-    max-width: none;
-}
-
-.dfp-think-about-this__text {
-    font-weight: 300;
-    line-height: 1.52;
-    color: #4d1a72;
-    width: 100%;
-    max-width: none;
-}
-
-@container (max-width: 448px) {
-    .strongmind-content-layer .dfp-think-about-this__ribbon {
-        flex-wrap: wrap;
+                    .dfp-math-strategies__svg--board {
+                        width: 107px;
+                        aspect-ratio: 1;
+                    }
+                }
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-think-about-this__ribbon-title {
-        white-space: normal;
-        width: 100%;
-        order: -1;
-    }
-}
+    /* —— Design for Purpose: Explore Further —— */
+    section.sm-content-container:has(> .dfp-explore-further__container) {
+        .dfp-explore-further__container {
+            position: relative;
+            border: 8px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
+            padding: 40px 80px 72px 48px;
+            color: #583e36;
+            overflow: visible;
 
-/* —— Design for Purpose: Do You Remember —— */
-section.dfp-do-you-remember.sm-content-container:has(h2) h2::before,
-section.dfp-do-you-remember.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
+            .dfp-explore-further__title {
+                margin: 0 0 24px;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 27.65px;
+                line-height: 1.12;
+                max-width: 672px;
+            }
 
-.dfp-do-you-remember__shell {
-    position: relative;
-    width: 100%;
-    padding-right: 80px;
-}
+            .dfp-explore-further__text {
+                margin: 0 0 24px;
+                font-weight: 300;
+                line-height: 1.52;
+                max-width: 672px;
 
-.dfp-do-you-remember__card {
-    position: relative;
-    width: 100%;
-    background: #f6f1fa;
-    border: 8px solid #583e36;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 40px 160px 40px 40px;
-    color: #583e36;
-}
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
 
-.dfp-do-you-remember__title {
-    margin: 0 0 16px;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 19.2px;
-    line-height: 1.12;
-}
+            .dfp-explore-further__icon-shadow {
+                display: inline-block;
+                line-height: 0;
+                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+            }
 
-.dfp-do-you-remember__text {
-    font-weight: 300;
-    line-height: 1.52;
-    max-width: 544px;
-}
+            .dfp-explore-further__svg {
+                display: block;
+                height: auto;
+            }
 
-.dfp-do-you-remember__cloud {
-    position: absolute;
-    right: -69px;
-    bottom: -29px;
-    width: 208px;
-    height: 161px;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    display: block;
-    padding: 0;
-    pointer-events: none;
-    filter: none;
-    overflow: visible;
-}
+            .dfp-explore-further__svg--sun {
+                width: 135px;
+                height: 137px;
+            }
 
-.dfp-do-you-remember__cloud-shape {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-}
+            .dfp-explore-further__svg--acorn {
+                width: 40px;
+                height: 45px;
+            }
 
-.dfp-do-you-remember__cloud-shape svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-}
+            .dfp-explore-further__corner {
+                position: absolute;
+                pointer-events: none;
+                line-height: 0;
 
-.dfp-do-you-remember__cloud-title {
-    position: absolute;
-    left: 44px;
-    top: 40px;
-    width: 158px;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 23.04px;
-    line-height: 1.12;
-    color: #583e36;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0.1em;
-}
+                &--tr {
+                    top: -45px;
+                    right: -40px;
+                    transform: rotate(8deg);
+                }
 
-.dfp-do-you-remember__cloud-icons {
-    position: absolute;
-    left: 112px;
-    top: 100px;
-    width: 89px;
-    height: 153px;
-    display: block;
-}
+                &--bl {
+                    left: 48px;
+                    bottom: 1px;
+                }
 
-.dfp-do-you-remember__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
+                &--br {
+                    right: 0;
+                    bottom: 0;
 
-.dfp-do-you-remember__notebook-tilt {
-    position: absolute;
-    left: -35px;
-    top: -7px;
-    transform: rotate(13deg);
-}
+                    .dfp-explore-further__garden {
+                        position: relative;
+                        display: inline-block;
+                        width: 176px;
+                        height: 79px;
+                        vertical-align: bottom;
 
-.dfp-do-you-remember__svg--ball {
-    width: 63px;
-    aspect-ratio: 1;
-    height: auto;
-}
+                        .dfp-explore-further__garden-shadow {
+                            position: absolute;
+                            display: inline-block;
+                            line-height: 0;
 
-.dfp-do-you-remember__svg--notebook {
-    width: 68px;
-    aspect-ratio: 1;
-    height: auto;
-}
+                            &--sunflower {
+                                right: 62px;
+                                bottom: -2px;
+                            }
 
-.dfp-do-you-remember__cloud-icons > .dfp-do-you-remember__icon-shadow:first-child {
-    position: absolute;
-    left: 18px;
-    top: 0;
-}
+                            &--tulip {
+                                right: 122px;
+                                bottom: 0;
+                            }
 
-@container (max-width: 512px) {
-    .strongmind-content-layer .dfp-do-you-remember__card {
-        padding-right: 22px;
-        padding-bottom: 96px;
+                            &--mushroom {
+                                right: 4px;
+                                bottom: -5px;
+                            }
+                        }
+
+                        .dfp-explore-further__svg--sunflower {
+                            width: 72px;
+                            height: 78px;
+                        }
+
+                        .dfp-explore-further__svg--tulip {
+                            width: 53px;
+                            height: 56px;
+                        }
+
+                        .dfp-explore-further__svg--mushroom {
+                            width: 65px;
+                            height: 67px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    .strongmind-content-layer .dfp-do-you-remember__cloud {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin: 16px auto 0;
-        width: min(288px, 90%);
+    /* —— Design for Purpose: The Objective —— */
+    section.dfp-the-objective.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-the-objective__shell {
+            position: relative;
+            width: 100%;
+            background: #e9f8f8;
+            border: 8px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow: visible;
+
+            .dfp-the-objective__corner--tr {
+                position: absolute;
+                top: -21px;
+                right: -18px;
+                transform: none;
+                pointer-events: none;
+
+                .dfp-the-objective__badge {
+                    position: relative;
+                    width: 116px;
+                    height: 116px;
+                    background: #14a9c3;
+                    border: 8px solid #583e36;
+                    border-radius: 50%;
+                    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                    display: block;
+
+                    .dfp-the-objective__icon-shadow {
+                        position: absolute;
+                        top: 16px;
+                        left: 16px;
+                        width: 84px;
+                        height: 84px;
+                        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                        line-height: 0;
+
+                        .dfp-the-objective__svg--bow {
+                            width: 84px;
+                            height: 84px;
+                        }
+                    }
+                }
+            }
+
+            .dfp-the-objective__title {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 27.65px;
+                line-height: 1.12;
+                color: #009290;
+            }
+
+            .dfp-the-objective__subtitle {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 19.2px;
+                line-height: 1.12;
+                color: #583e36;
+            }
+
+            .dfp-the-objective__text {
+                margin: 0;
+                font-weight: 300;
+                line-height: 1.52;
+                color: #583e36;
+                max-width: 100%;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
-
-    .strongmind-content-layer .dfp-do-you-remember__shell {
-        padding-right: 0;
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/* —— Design for Purpose: Math Strategies —— */
-section.dfp-math-strategies.sm-content-container:has(h2) h2::before,
-section.dfp-math-strategies.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
-
-.dfp-math-strategies__shell {
-    position: relative;
-    width: 100%;
-    max-width: 447px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #2e1f1c;
-    border: 8px solid #6b4a41;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 48px 48px 64px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow: visible;
-}
-
-.dfp-math-strategies__title {
-    text-align: center;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 33.18px;
-    line-height: 1.12;
-    color: #9e6d58;
-}
-
-.dfp-math-strategies__text {
-    font-weight: 300;
-    line-height: 1.52;
-    color: #fff;
-}
-
-.dfp-math-strategies__formula {
-    background: #583e36;
-    border-radius: 8px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 16px;
-    width: 100%;
-}
-
-.dfp-math-strategies__formula-inner {
-    text-align: center;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 27.65px;
-    line-height: 1.12;
-    color: #65d4a5;
-}
-
-.dfp-math-strategies__corner {
-    position: absolute;
-    pointer-events: none;
-    line-height: 0;
-}
-
-.dfp-math-strategies__corner--bc {
-    left: calc(50% - 54px);
-    bottom: -49px;
-    transform: none;
-}
-
-.dfp-math-strategies__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
-
-.dfp-math-strategies__svg--board {
-    width: 107px;
-    aspect-ratio: 1;
-}
-
-/* —— Design for Purpose: Explore Further —— */
-section.dfp-explore-further.sm-content-container:has(h2) h2::before,
-section.dfp-explore-further.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
-
-.dfp-explore-further__shell {
-    position: relative;
-    width: 100%;
-    padding-bottom: 6px;
-}
-
-.dfp-explore-further__card {
-    position: relative;
-    width: 100%;
-    border: 8px solid #583e36;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
-    padding: 40px 80px 72px 48px;
-    color: #583e36;
-    overflow: visible;
-}
-
-.dfp-explore-further__title {
-    margin: 0 0 24px;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 27.65px;
-    line-height: 1.12;
-    max-width: 672px;
-}
-
-.dfp-explore-further__text {
-    margin: 0 0 24px;
-    font-weight: 300;
-    line-height: 1.52;
-    max-width: 672px;
-}
-
-.dfp-explore-further__text:last-of-type {
-    margin-bottom: 0;
-}
-
-.dfp-explore-further__icon-shadow {
-    display: inline-block;
-    line-height: 0;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-}
-
-.dfp-explore-further__svg {
-    display: block;
-    height: auto;
-}
-
-.dfp-explore-further__corner {
-    position: absolute;
-    pointer-events: none;
-    line-height: 0;
-}
-
-.dfp-explore-further__corner--tr {
-    top: -45px;
-    right: -40px;
-    transform: rotate(8deg);
-}
-
-.dfp-explore-further__svg--sun {
-    width: 135px;
-    height: 137px;
-}
-
-.dfp-explore-further__corner--bl {
-    left: 48px;
-    bottom: 1px;
-}
-
-.dfp-explore-further__svg--acorn {
-    width: 40px;
-    height: 45px;
-}
-
-.dfp-explore-further__corner--br {
-    right: 0;
-    bottom: 0;
-}
-
-.dfp-explore-further__garden {
-    position: relative;
-    display: inline-block;
-    width: 176px;
-    height: 79px;
-    vertical-align: bottom;
-}
-
-.dfp-explore-further__garden-shadow {
-    position: absolute;
-    display: inline-block;
-    line-height: 0;
-}
-
-.dfp-explore-further__garden-shadow--sunflower {
-    right: 62px;
-    bottom: -2px;
-}
-
-.dfp-explore-further__garden-shadow--tulip {
-    right: 122px;
-    bottom: 0;
-}
-
-.dfp-explore-further__garden-shadow--mushroom {
-    right: 4px;
-    bottom: -5px;
-}
-
-.dfp-explore-further__svg--sunflower {
-    width: 72px;
-    height: 78px;
-}
-
-.dfp-explore-further__svg--tulip {
-    width: 53px;
-    height: 56px;
-}
-
-.dfp-explore-further__svg--mushroom {
-    width: 65px;
-    height: 67px;
-}
-
-/* —— Design for Purpose: The Objective —— */
-section.dfp-the-objective.sm-content-container:has(h2) h2::before,
-section.dfp-the-objective.sm-content-container:has(h2) h2::after {
-    content: none;
-    display: none;
-    width: 0;
-    height: 0;
-    background: none;
-    transform: none;
-}
-
-.dfp-the-objective__shell {
-    position: relative;
-    width: 100%;
-    background: #e9f8f8;
-    border: 8px solid #583e36;
-    border-radius: 24px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow: visible;
-}
-
-.dfp-the-objective__corner--tr {
-    position: absolute;
-    top: -21px;
-    right: -18px;
-    transform: none;
-    pointer-events: none;
-}
-
-.dfp-the-objective__badge {
-    position: relative;
-    width: 116px;
-    height: 116px;
-    background: #14a9c3;
-    border: 8px solid #583e36;
-    border-radius: 50%;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-    display: block;
-}
-
-.dfp-the-objective__icon-shadow {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 84px;
-    height: 84px;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-    line-height: 0;
-}
-
-.dfp-the-objective__svg--bow {
-    width: 84px;
-    height: 84px;
-}
-
-.dfp-the-objective__title {
-    margin: 0;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 27.65px;
-    line-height: 1.12;
-    color: #009290;
-}
-
-.dfp-the-objective__subtitle {
-    margin: 0;
-    font-family: Nunito, Sniglet, system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 19.2px;
-    line-height: 1.12;
-    color: #583e36;
-}
-
-.dfp-the-objective__text {
-    margin: 0;
-    font-weight: 300;
-    line-height: 1.52;
-    color: #583e36;
-    max-width: 100%;
-}
-
-.dfp-the-objective__text:last-child {
-    margin-bottom: 0;
-}
 }
