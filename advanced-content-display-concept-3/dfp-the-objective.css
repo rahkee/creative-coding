@@ -1,0 +1,86 @@
+.strongmind-content-layer {
+    /* —— Design for Purpose: The Objective —— */
+    section.dfp-the-objective.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-the-objective__container {
+            position: relative;
+            width: 100%;
+            background: #e9f8f8;
+            border: 8px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow: visible;
+
+            .dfp-the-objective__badge {
+                position: absolute;
+                top: -21px;
+                right: -18px;
+                pointer-events: none;
+                width: 116px;
+                height: 116px;
+                background: #14a9c3;
+                border: 8px solid #583e36;
+                border-radius: 50%;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+
+                > span {
+                    position: absolute;
+                    top: 16px;
+                    left: 16px;
+                    width: 84px;
+                    height: 84px;
+                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                    line-height: 0;
+
+                    svg {
+                        width: 84px;
+                        height: 84px;
+                    }
+                }
+            }
+
+            h2 {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 27.65px;
+                line-height: 1.12;
+                color: #009290;
+            }
+
+            h3 {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 19.2px;
+                line-height: 1.12;
+                color: #583e36;
+            }
+
+            p {
+                margin: 0;
+                font-weight: 300;
+                line-height: 1.52;
+                color: #583e36;
+                max-width: 100%;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

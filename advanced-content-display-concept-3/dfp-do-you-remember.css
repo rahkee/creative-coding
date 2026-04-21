@@ -1,0 +1,155 @@
+.strongmind-content-layer {
+    /* —— Design for Purpose: Do You Remember —— */
+    section.dfp-do-you-remember.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-do-you-remember__container {
+            position: relative;
+            width: 100%;
+            padding-right: 80px;
+
+            .dfp-do-you-remember__card {
+                position: relative;
+                width: 100%;
+                background: #f6f1fa;
+                border: 8px solid #583e36;
+                border-radius: 24px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                padding: 40px 160px 40px 40px;
+                color: #583e36;
+
+                .dfp-do-you-remember__title {
+                    margin: 0 0 16px;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 19.2px;
+                    line-height: 1.12;
+                }
+
+                .dfp-do-you-remember__text {
+                    font-weight: 300;
+                    line-height: 1.52;
+                    max-width: 544px;
+                }
+            }
+
+            .dfp-do-you-remember__cloud {
+                position: absolute;
+                right: -69px;
+                bottom: -29px;
+                width: 208px;
+                height: 161px;
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                display: block;
+                padding: 0;
+                pointer-events: none;
+                filter: none;
+                overflow: visible;
+
+                .dfp-do-you-remember__cloud-shape {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    pointer-events: none;
+
+                    svg {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: contain;
+                    }
+                }
+
+                .dfp-do-you-remember__cloud-title {
+                    position: absolute;
+                    left: 44px;
+                    top: 40px;
+                    width: 158px;
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 23.04px;
+                    line-height: 1.12;
+                    color: #583e36;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.1em;
+                }
+
+                .dfp-do-you-remember__cloud-icons {
+                    position: absolute;
+                    left: 112px;
+                    top: 100px;
+                    width: 89px;
+                    height: 153px;
+                    display: block;
+
+                    > .dfp-do-you-remember__icon-shadow:first-child {
+                        position: absolute;
+                        left: 18px;
+                        top: 0;
+                    }
+
+                    .dfp-do-you-remember__icon-shadow {
+                        display: inline-block;
+                        line-height: 0;
+                        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                    }
+
+                    .dfp-do-you-remember__notebook-tilt {
+                        position: absolute;
+                        left: -35px;
+                        top: -7px;
+                        transform: rotate(13deg);
+                    }
+
+                    .dfp-do-you-remember__svg--ball {
+                        width: 63px;
+                        aspect-ratio: 1;
+                        height: auto;
+                    }
+
+                    .dfp-do-you-remember__svg--notebook {
+                        width: 68px;
+                        aspect-ratio: 1;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        @container (max-width: 512px) {
+            .dfp-do-you-remember__card {
+                padding-right: 22px;
+                padding-bottom: 96px;
+            }
+
+            .dfp-do-you-remember__cloud {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin: 16px auto 0;
+                width: min(288px, 90%);
+            }
+
+            .dfp-do-you-remember__container {
+                padding-right: 0;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

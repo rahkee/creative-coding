@@ -1,0 +1,116 @@
+.strongmind-content-layer {
+    /* —— Design for Purpose: Think About This —— */
+    section.dfp-think-about-this.sm-content-container {
+        &:has(h2) h2::before,
+        &:has(h2) h2::after {
+            content: none;
+            display: none;
+            width: 0;
+            height: 0;
+            background: none;
+            transform: none;
+        }
+
+        .dfp-think-about-this__wrap {
+            position: relative;
+            width: 100%;
+            padding: 78px 24px 0;
+            overflow: visible;
+
+            .dfp-think-about-this__ribbon {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                transform: translate(0px, -55px);
+                display: flex;
+                height: 79px;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                padding: 0 48px;
+                pointer-events: none;
+                width: auto;
+                max-width: none;
+
+                .dfp-think-about-this__icon-shadow {
+                    display: inline-block;
+                    line-height: 0;
+                    flex-shrink: 0;
+                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                }
+
+                .dfp-think-about-this__svg {
+                    display: block;
+                    height: auto;
+                }
+
+                .dfp-think-about-this__svg--moon {
+                    width: 110px;
+                    aspect-ratio: 1;
+                }
+
+                .dfp-think-about-this__svg--crow {
+                    width: 75px;
+                    aspect-ratio: 1;
+                }
+
+                .dfp-think-about-this__ribbon-title {
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 33.18px;
+                    line-height: 1.12;
+                    color: #4d1a72;
+                    text-align: center;
+                    white-space: nowrap;
+                    flex: 1 0 0;
+                    max-width: 288px;
+                }
+            }
+
+            .dfp-think-about-this__card {
+                position: relative;
+                width: 100%;
+                background: #f6f1fa;
+                border: 8px solid #4d1a72;
+                border-radius: 24px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+                padding: 48px 48px 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                color: #4d1a72;
+
+                .dfp-think-about-this__subtitle {
+                    font-family: Nunito, Sniglet, system-ui, sans-serif;
+                    font-weight: 900;
+                    font-size: 19.2px;
+                    line-height: 1.12;
+                    color: #4d1a72;
+                    width: 100%;
+                    max-width: none;
+                }
+
+                .dfp-think-about-this__text {
+                    font-weight: 300;
+                    line-height: 1.52;
+                    color: #4d1a72;
+                    width: 100%;
+                    max-width: none;
+                }
+            }
+        }
+
+        @container (max-width: 448px) {
+            .dfp-think-about-this__ribbon {
+                flex-wrap: wrap;
+            }
+
+            .dfp-think-about-this__ribbon-title {
+                white-space: normal;
+                width: 100%;
+                order: -1;
+            }
+        }
+    }
+}
