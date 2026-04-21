@@ -1723,41 +1723,35 @@
             gap: 24px;
             overflow: visible;
 
-            .dfp-the-objective__corner--tr {
+            .dfp-the-objective__badge {
                 position: absolute;
                 top: -21px;
                 right: -18px;
-                transform: none;
                 pointer-events: none;
+                width: 116px;
+                height: 116px;
+                background: #14a9c3;
+                border: 8px solid #583e36;
+                border-radius: 50%;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
 
-                .dfp-the-objective__badge {
-                    position: relative;
-                    width: 116px;
-                    height: 116px;
-                    background: #14a9c3;
-                    border: 8px solid #583e36;
-                    border-radius: 50%;
-                    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-                    display: block;
+                > span {
+                    position: absolute;
+                    top: 16px;
+                    left: 16px;
+                    width: 84px;
+                    height: 84px;
+                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+                    line-height: 0;
 
-                    .dfp-the-objective__icon-shadow {
-                        position: absolute;
-                        top: 16px;
-                        left: 16px;
+                    svg {
                         width: 84px;
                         height: 84px;
-                        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-                        line-height: 0;
-
-                        .dfp-the-objective__svg--bow {
-                            width: 84px;
-                            height: 84px;
-                        }
                     }
                 }
             }
 
-            .dfp-the-objective__title {
+            h2 {
                 margin: 0;
                 font-family: Nunito, Sniglet, system-ui, sans-serif;
                 font-weight: 900;
@@ -1766,7 +1760,7 @@
                 color: #009290;
             }
 
-            .dfp-the-objective__subtitle {
+            h3 {
                 margin: 0;
                 font-family: Nunito, Sniglet, system-ui, sans-serif;
                 font-weight: 900;
@@ -1775,7 +1769,7 @@
                 color: #583e36;
             }
 
-            .dfp-the-objective__text {
+            p {
                 margin: 0;
                 font-weight: 300;
                 line-height: 1.52;
