@@ -64,6 +64,10 @@
         max-width: 75ch;
     }
 
+    .sm-content-container[class*='dfp-'] {
+        margin: 32px auto;
+    }
+
     /* Associated: stacked by default; row layout when this layer is wide enough (container is this block, not .associated). */
     .associated {
         display: flex;
