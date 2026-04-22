@@ -1,15 +1,6 @@
 .strongmind-content-layer {
     /* —— Design for Purpose: Do You Remember —— */
     .dfp-do-you-remember {
-        &:has(h2) h2::before,
-        &:has(h2) h2::after {
-            content: none;
-            display: none;
-            width: 0;
-            height: 0;
-            background: none;
-            transform: none;
-        }
 
         .dfp-do-you-remember__container {
             position: relative;
