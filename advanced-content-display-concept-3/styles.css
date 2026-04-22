@@ -41,6 +41,11 @@
     .strongmind-content-layer .dfp-math-strategies .dfp-math-strategies__badge svg .dfp-math-strategies__sparkles path {
         animation: none;
     }
+
+    .strongmind-content-layer .dfp-do-you-remember .dfp-do-you-remember__badge .dfp-do-you-remember__sparkles ellipse,
+    .strongmind-content-layer .dfp-do-you-remember .dfp-do-you-remember__badge .dfp-do-you-remember__sparkles path {
+        animation: none;
+    }
 }
 
 /* Custom Styles */
