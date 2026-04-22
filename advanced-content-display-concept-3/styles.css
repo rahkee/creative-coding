@@ -46,6 +46,12 @@
     .strongmind-content-layer .dfp-do-you-remember .dfp-do-you-remember__badge .dfp-do-you-remember__sparkles path {
         animation: none;
     }
+
+    .strongmind-content-layer .dfp-think-about-this .dfp-think-about-this__badge svg .dfp-think-about-this__sparkles path,
+    .strongmind-content-layer .dfp-think-about-this .dfp-think-about-this__badge svg .dfp-think-about-this__sparkles circle,
+    .strongmind-content-layer .dfp-think-about-this .dfp-think-about-this__badge svg .dfp-think-about-this__sparkles ellipse {
+        animation: none;
+    }
 }
 
 /* Custom Styles */

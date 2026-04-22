@@ -934,12 +934,10 @@
 
             <!-- Design for Purpose: Think About This -->
             <section class="sm-content-container dfp-think-about-this" aria-labelledby="dfp-think-about-heading">
-                <div class="dfp-think-about-this__wrap">
-                    <div class="dfp-think-about-this__ribbon">
-                        <span class="dfp-think-about-this__icon-shadow" aria-hidden="true">
-
-                            <svg class="dfp-think-about-this__svg dfp-think-about-this__svg--moon"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+                <div class="dfp-think-about-this__container">
+                    <div class="dfp-think-about-this__badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="110" height="110"
+                            fill="none" aria-hidden="true">
                                 <g>
                                     <g>
                                         <path
@@ -982,7 +980,7 @@
                                         <path
                                             d="m77.143 444.998c-4.19 0-8.098-2.645-9.51-6.835-2.507-7.446-3.72-15.241-3.602-23.17.082-5.542 4.631-9.936 10.184-9.886 5.542.082 9.968 4.642 9.886 10.184-.084 5.644.776 11.184 2.554 16.465 1.769 5.253-1.055 10.945-6.308 12.714-1.062.358-2.142.528-3.204.528z" />
                                     </g>
-                                    <g>
+                                    <g class="dfp-think-about-this__sparkles">
                                         <path
                                             d="m34.657 4.349-8.244 23.18c-.353.993-1.052 1.779-1.934 2.176l-20.595 9.28c-2.91 1.311-2.91 5.947 0 7.258l20.595 9.279c.882.397 1.581 1.184 1.934 2.176l8.244 23.18c1.165 3.275 5.283 3.275 6.448 0l8.244-23.18c.353-.993 1.052-1.779 1.934-2.176l20.595-9.279c2.91-1.311 2.91-5.947 0-7.258l-20.595-9.279c-.882-.397-1.581-1.184-1.934-2.176l-8.244-23.18c-1.165-3.275-5.284-3.275-6.448-.001z"
                                             fill="#fff2a5" />
@@ -997,14 +995,10 @@
                                     </g>
                                 </g>
                             </svg>
-
-                        </span>
-                        <h2 id="dfp-think-about-heading" class="dfp-think-about-this__ribbon-title">Think About This
+                        <h2 id="dfp-think-about-heading">Think About This
                         </h2>
-                        <span class="dfp-think-about-this__icon-shadow" aria-hidden="true">
-
-                            <svg class="dfp-think-about-this__svg dfp-think-about-this__svg--crow"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="75" height="75" fill="none"
+                            aria-hidden="true">
                                 <g>
                                     <g>
                                         <path
@@ -1045,7 +1039,7 @@
                                         <path
                                             d="m192.508 325.332c-3.02 0-6.008-1.345-8.005-3.915-3.431-4.417-2.632-10.781 1.785-14.212l42.795-33.243c4.419-3.432 10.78-2.631 14.212 1.785 3.431 4.417 2.632 10.781-1.785 14.212l-42.795 33.243c-1.848 1.435-4.035 2.13-6.207 2.13z" />
                                     </g>
-                                    <g>
+                                    <g class="dfp-think-about-this__sparkles">
                                         <path
                                             d="m56.684 142.373-8.319 23.393c-.356 1.002-1.061 1.795-1.951 2.196l-20.784 9.364c-2.936 1.323-2.936 6.001 0 7.324l20.784 9.364c.89.401 1.595 1.195 1.951 2.196l8.319 23.393c1.175 3.305 5.332 3.305 6.507 0l8.319-23.393c.356-1.001 1.061-1.795 1.951-2.196l20.784-9.364c2.936-1.323 2.936-6.001 0-7.324l-20.784-9.364c-.89-.401-1.595-1.195-1.951-2.196l-8.319-23.393c-1.175-3.304-5.331-3.304-6.507 0z"
                                             fill="#d3b5f2" />
@@ -1061,19 +1055,17 @@
                                     </g>
                                 </g>
                             </svg>
-
-                        </span>
                     </div>
                     <div class="dfp-think-about-this__card">
-                        <h3 class="dfp-think-about-this__subtitle" id="dfp-think-about-subtitle">Understand the
+                        <h3 id="dfp-think-about-subtitle">Understand the
                             Scientific Method
                         </h3>
-                        <p class="dfp-think-about-this__text">The scientific method helps you investigate questions
+                        <p>The scientific method helps you investigate questions
                             using evidence
                             instead of guesses. You begin by observing something interesting and asking a clear question
                             about it.
                             From there, you think of a possible explanation called a hypothesis.</p>
-                        <p class="dfp-think-about-this__text">Next, you test your hypothesis with an experiment and
+                        <p>Next, you test your hypothesis with an experiment and
                             collect data
                             about what happens. Careful observation and accurate measurements help you understand the
                             results. The
