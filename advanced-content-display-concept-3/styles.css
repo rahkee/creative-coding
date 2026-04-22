@@ -8,6 +8,20 @@
 @import url('dfp-the-objective.css');
 
 /* Keyframe Animations */
+@keyframes dfpSparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
 @keyframes smContentLayerIconSway {
 
     0%,
@@ -17,6 +31,15 @@
 
     50% {
         transform: rotate(-12deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .strongmind-content-layer .dfp-the-objective .dfp-the-objective__badge svg .dfp-the-objective__sparkles path,
+    .strongmind-content-layer .dfp-math-strategies .dfp-math-strategies__badge svg .dfp-math-strategies__sparkles ellipse,
+    .strongmind-content-layer .dfp-math-strategies .dfp-math-strategies__badge svg .dfp-math-strategies__sparkles path {
+        animation: none;
     }
 }
 
