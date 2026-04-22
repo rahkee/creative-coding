@@ -18,11 +18,14 @@
 
             .dfp-math-strategies__badge {
                 position: absolute;
-                left: calc(50% - 54px);
+                left: 0;
+                right: 0;
+                margin-inline: auto;
                 bottom: -32px;
+                display: flex;
+                justify-content: center;
 
                 svg {
-                    display: block;
                     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
 
                     .dfp-math-strategies__sparkles {
