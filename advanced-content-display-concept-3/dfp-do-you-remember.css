@@ -1,102 +1,100 @@
-.strongmind-content-layer {
-    /* —— Design for Purpose: Do You Remember —— */
-    .dfp-do-you-remember {
+/* —— Design for Purpose: Do You Remember —— */
+.dfp-do-you-remember {
 
-        .dfp-do-you-remember__container {
-            position: relative;
-            padding-right: 64px;
+    .dfp-do-you-remember__container {
+        position: relative;
+        padding-right: 64px;
 
-            .dfp-do-you-remember__card {
-                background: #f6f1fa;
-                border: 4px solid #583e36;
-                border-radius: 24px;
-                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-                padding: 40px 150px 40px 40px;
-                color: #583e36;
+        .dfp-do-you-remember__card {
+            background: #f6f1fa;
+            border: 4px solid #583e36;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 40px 150px 40px 40px;
+            color: #583e36;
 
-                h2 {
-                    margin: 0 0 16px;
-                    font-family: Nunito, Sniglet, system-ui, sans-serif;
-                    font-weight: 900;
-                    font-size: 24px;
-                    line-height: 1;
-                }
-
-                p {
-                    margin: 0;
-                    font-weight: 300;
-                    line-height: 1.52;
-                    max-width: 620px;
-                }
+            h2 {
+                margin: 0 0 16px;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 24px;
+                line-height: 1;
             }
 
-            .dfp-do-you-remember__badge {
+            p {
+                margin: 0;
+                font-weight: 300;
+                line-height: 1.52;
+                max-width: 620px;
+            }
+        }
+
+        .dfp-do-you-remember__badge {
+            position: absolute;
+            right: 0;
+            bottom: -29px;
+            width: 208px;
+            height: 161px;
+
+            >p {
                 position: absolute;
-                right: 0;
-                bottom: -29px;
-                width: 208px;
-                height: 161px;
+                left: 32px;
+                top: 44px;
+                width: 158px;
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 22px;
+                line-height: 1.1;
+                color: #583e36;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+            }
 
-                >p {
-                    position: absolute;
-                    left: 32px;
-                    top: 44px;
-                    width: 158px;
-                    margin: 0;
-                    font-family: Nunito, Sniglet, system-ui, sans-serif;
-                    font-weight: 900;
-                    font-size: 22px;
-                    line-height: 1.1;
-                    color: #583e36;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: column;
-                }
+            .dfp-do-you-remember__icons {
+                position: absolute;
+                left: 112px;
+                top: 100px;
+                width: 89px;
+                height: 153px;
 
-                .dfp-do-you-remember__icons {
-                    position: absolute;
-                    left: 112px;
-                    top: 100px;
-                    width: 89px;
-                    height: 153px;
+                >svg:first-child {
 
-                    >svg:first-child {
+                    .dfp-do-you-remember__sparkles {
+                        ellipse,
+                        path {
+                            transform-box: fill-box;
+                            animation: dfpSparkle ease-in-out infinite;
+                        }
 
-                        .dfp-do-you-remember__sparkles {
-                            ellipse,
-                            path {
-                                transform-box: fill-box;
-                                animation: dfpSparkle ease-in-out infinite;
-                            }
+                        >path:nth-child(1) {
+                            animation-duration: 2.2s;
+                            animation-delay: 0.05s;
+                        }
 
-                            >path:nth-child(1) {
-                                animation-duration: 2.2s;
-                                animation-delay: 0.05s;
-                            }
+                        >path:nth-child(2) {
+                            animation-duration: 1.65s;
+                            animation-delay: 0.55s;
+                        }
 
-                            >path:nth-child(2) {
-                                animation-duration: 1.65s;
-                                animation-delay: 0.55s;
-                            }
+                        >g:nth-child(3)>path:nth-child(1) {
+                            animation-duration: 2.85s;
+                            animation-delay: 0.2s;
+                        }
 
-                            >g:nth-child(3)>path:nth-child(1) {
-                                animation-duration: 2.85s;
-                                animation-delay: 0.2s;
-                            }
-
-                            >g:nth-child(3)>ellipse:nth-child(2) {
-                                animation-duration: 1.95s;
-                                animation-delay: 0.82s;
-                            }
+                        >g:nth-child(3)>ellipse:nth-child(2) {
+                            animation-duration: 1.95s;
+                            animation-delay: 0.82s;
                         }
                     }
+                }
 
-                    .dfp-do-you-remember__notebook-tilt {
-                        position: absolute;
-                        left: -32px;
-                        top: -1px;
-                        transform: rotate(13deg);
-                    }
+                .dfp-do-you-remember__notebook-tilt {
+                    position: absolute;
+                    left: -32px;
+                    top: -1px;
+                    transform: rotate(13deg);
                 }
             }
         }

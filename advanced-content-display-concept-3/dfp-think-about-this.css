@@ -1,130 +1,119 @@
-.strongmind-content-layer {
-    /* —— Design for Purpose: Think About This —— */
-    .dfp-think-about-this {
-        &:has(h2) h2::before,
-        &:has(h2) h2::after {
-            content: none;
-            display: none;
-            width: 0;
-            height: 0;
-            background: none;
-            transform: none;
-        }
+/* —— Design for Purpose: Think About This —— */
+.dfp-think-about-this {
 
-        .dfp-think-about-this__container {
-            position: relative;
-            padding: 78px 24px 0;
-            overflow: visible;
+    .dfp-think-about-this__container {
+        position: relative;
+        padding: 78px 24px 0;
+        overflow: visible;
 
-            .dfp-think-about-this__badge {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                transform: translate(0px, -55px);
-                display: flex;
-                height: 79px;
-                align-items: center;
-                justify-content: center;
-                gap: 16px;
-                padding: 0 48px;
-                pointer-events: none;
-                width: auto;
-                max-width: none;
+        .dfp-think-about-this__badge {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            transform: translate(0px, -55px);
+            display: flex;
+            height: 79px;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 0 48px;
+            pointer-events: none;
+            width: auto;
+            max-width: none;
 
-                >svg {
-                    display: block;
-                    height: auto;
-                    flex-shrink: 0;
-                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+            >svg {
+                display: block;
+                height: auto;
+                flex-shrink: 0;
+                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
 
-                    .dfp-think-about-this__sparkles {
+                .dfp-think-about-this__sparkles {
 
-                        path,
-                        circle,
-                        ellipse {
-                            transform-origin: center;
-                            transform-box: fill-box;
-                            animation: dfpSparkle ease-in-out infinite;
-                        }
+                    path,
+                    circle,
+                    ellipse {
+                        transform-origin: center;
+                        transform-box: fill-box;
+                        animation: dfpSparkle ease-in-out infinite;
+                    }
 
-                        >path:nth-child(1) {
-                            animation-duration: 2.2s;
-                            animation-delay: 0.05s;
-                        }
+                    >path:nth-child(1) {
+                        animation-duration: 2.2s;
+                        animation-delay: 0.05s;
+                    }
 
-                        >path:nth-child(2) {
-                            animation-duration: 1.65s;
-                            animation-delay: 0.55s;
-                        }
+                    >path:nth-child(2) {
+                        animation-duration: 1.65s;
+                        animation-delay: 0.55s;
+                    }
 
-                        >g:nth-child(3)>:is(path, circle):first-child {
-                            animation-duration: 2.85s;
-                            animation-delay: 0.2s;
-                        }
+                    >g:nth-child(3)>:is(path, circle):first-child {
+                        animation-duration: 2.85s;
+                        animation-delay: 0.2s;
+                    }
 
-                        >g:nth-child(3)>ellipse:nth-child(2) {
-                            animation-duration: 1.95s;
-                            animation-delay: 0.82s;
-                        }
+                    >g:nth-child(3)>ellipse:nth-child(2) {
+                        animation-duration: 1.95s;
+                        animation-delay: 0.82s;
                     }
                 }
-
-                h2 {
-                    margin: 0;
-                    font-family: Nunito, Sniglet, system-ui, sans-serif;
-                    font-weight: 900;
-                    font-size: 33.18px;
-                    line-height: 1.12;
-                    color: #4d1a72;
-                    text-align: center;
-                    white-space: nowrap;
-                    flex: 1 0 0;
-                    max-width: 288px;
-                }
             }
 
-            .dfp-think-about-this__card {
-                background: #f6f1fa;
-                border: 8px solid #4d1a72;
-                border-radius: 24px;
-                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-                padding: 48px 48px 40px;
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
+            h2 {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 24px;
+                line-height: 1.12;
                 color: #4d1a72;
-
-                h3 {
-                    margin: 0;
-                    font-family: Nunito, Sniglet, system-ui, sans-serif;
-                    font-weight: 900;
-                    font-size: 19.2px;
-                    line-height: 1.12;
-                    color: #4d1a72;
-                    max-width: none;
-                }
-
-                p {
-                    margin: 0;
-                    font-weight: 300;
-                    line-height: 1.52;
-                    color: #4d1a72;
-                    max-width: none;
-                }
+                text-align: center;
+                white-space: nowrap;
+                flex: 1 0 0;
+                max-width: 288px;
             }
         }
 
-        @container (max-width: 448px) {
-            .dfp-think-about-this__badge {
-                flex-wrap: wrap;
+        .dfp-think-about-this__card {
+            background: #f6f1fa;
+            border: 8px solid #4d1a72;
+            border-radius: 24px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+            padding: 48px 48px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            color: #4d1a72;
+
+            h3 {
+                margin: 0;
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 19.2px;
+                line-height: 1.12;
+                color: #4d1a72;
+                max-width: none;
             }
 
-            .dfp-think-about-this__badge h2 {
-                white-space: normal;
-                flex-basis: 100%;
-                order: -1;
+            p {
+                margin: 0;
+                font-weight: 300;
+                line-height: 1.52;
+                color: #4d1a72;
+                max-width: none;
             }
+        }
+    }
+
+    @container (max-width: 448px) {
+        .dfp-think-about-this__badge {
+            flex-wrap: wrap;
+        }
+
+        .dfp-think-about-this__badge h2 {
+            white-space: normal;
+            flex-basis: 100%;
+            order: -1;
         }
     }
 }

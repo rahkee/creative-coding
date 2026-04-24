@@ -1,95 +1,92 @@
-.strongmind-content-layer {
+/* —— Design for Purpose: The Objective —— */
+.dfp-the-objective {
 
-    /* —— Design for Purpose: The Objective —— */
-    .dfp-the-objective {
+    .dfp-the-objective__container {
+        position: relative;
+        background: #e9f8f8;
+        border: 4px solid #583e36;
+        border-radius: 24px;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+        padding: 40px;
+        padding-inline-end: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        overflow: visible;
 
-        .dfp-the-objective__container {
-            position: relative;
-            background: #e9f8f8;
-            border: 4px solid #583e36;
-            border-radius: 24px;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-            padding: 40px;
-            padding-inline-end: 56px;
+        .dfp-the-objective__badge {
+            position: absolute;
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-            overflow: visible;
+            align-items: center;
+            justify-content: center;
+            top: -16px;
+            right: -16px;
+            aspect-ratio: 1;
+            height: 96px;
+            background: #14a9c3;
+            border: 4px solid #583e36;
+            border-radius: 50%;
 
-            .dfp-the-objective__badge {
-                position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                top: -16px;
-                right: -16px;
-                aspect-ratio: 1;
-                height: 96px;
-                background: #14a9c3;
-                border: 4px solid #583e36;
-                border-radius: 50%;
+            svg {
+                display: block;
 
-                svg {
-                    display: block;
+                .dfp-the-objective__sparkles {
+                    path {
+                        transform-origin: center;
+                        transform-box: fill-box;
+                        animation: dfpSparkle ease-in-out infinite;
+                    }
 
-                    .dfp-the-objective__sparkles {
-                        path {
-                            transform-origin: center;
-                            transform-box: fill-box;
-                            animation: dfpSparkle ease-in-out infinite;
-                        }
+                    >path:nth-child(1) {
+                        animation-duration: 2.2s;
+                        animation-delay: 0.05s;
+                    }
 
-                        >path:nth-child(1) {
-                            animation-duration: 2.2s;
-                            animation-delay: 0.05s;
-                        }
+                    >path:nth-child(2) {
+                        animation-duration: 1.65s;
+                        animation-delay: 0.55s;
+                    }
 
-                        >path:nth-child(2) {
-                            animation-duration: 1.65s;
-                            animation-delay: 0.55s;
-                        }
+                    >g:nth-child(3)>path:nth-child(1) {
+                        animation-duration: 2.85s;
+                        animation-delay: 0.2s;
+                    }
 
-                        >g:nth-child(3)>path:nth-child(1) {
-                            animation-duration: 2.85s;
-                            animation-delay: 0.2s;
-                        }
-
-                        >g:nth-child(3)>path:nth-child(2) {
-                            animation-duration: 1.95s;
-                            animation-delay: 0.82s;
-                        }
+                    >g:nth-child(3)>path:nth-child(2) {
+                        animation-duration: 1.95s;
+                        animation-delay: 0.82s;
                     }
                 }
             }
+        }
 
-            h2 {
-                margin: 0;
-                font-family: Nunito, Sniglet, system-ui, sans-serif;
-                font-weight: 900;
-                font-size: 24px;
-                line-height: 1.12;
-                color: #009290;
-            }
+        h2 {
+            margin: 0;
+            font-family: Nunito, Sniglet, system-ui, sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 1.12;
+            color: #009290;
+        }
 
-            h3 {
-                margin: 0;
-                font-family: Nunito, Sniglet, system-ui, sans-serif;
-                font-weight: 900;
-                font-size: 19.2px;
-                line-height: 1.12;
-                color: #583e36;
-            }
+        h3 {
+            margin: 0;
+            font-family: Nunito, Sniglet, system-ui, sans-serif;
+            font-weight: 900;
+            font-size: 19.2px;
+            line-height: 1.12;
+            color: #583e36;
+        }
 
-            p {
-                margin: 0;
-                font-weight: 300;
-                line-height: 1.52;
-                color: #583e36;
-                max-width: 100%;
+        p {
+            margin: 0;
+            font-weight: 300;
+            line-height: 1.52;
+            color: #583e36;
+            max-width: 100%;
 
-                &:last-child {
-                    margin-bottom: 0;
-                }
+            &:last-child {
+                margin-bottom: 0;
             }
         }
     }

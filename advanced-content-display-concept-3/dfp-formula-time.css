@@ -1,163 +1,152 @@
-.strongmind-content-layer {
-    /* —— Design for Purpose: Formulas —— */
-    .dfp-formulas {
-        &:has(h2) h2::before,
-        &:has(h2) h2::after {
-            content: none;
-            display: none;
-            width: 0;
-            height: 0;
-            background: none;
-            transform: none;
-        }
+/* —— Design for Purpose: Formulas —— */
+.dfp-formulas {
 
-        .dfp-formulas__container {
-            position: relative;
-            background: #effbf6;
-            border: 8px solid #583e36;
-            border-radius: 24px;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-            padding: 24px 40px 40px;
+    .dfp-formulas__container {
+        position: relative;
+        background: #effbf6;
+        border: 8px solid #583e36;
+        border-radius: 24px;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+        padding: 24px 40px 40px;
 
-            .dfp-formulas__corner {
-                pointer-events: none;
+        .dfp-formulas__corner {
+            pointer-events: none;
 
-                &--tl {
-                    position: absolute;
-                    left: -18px;
-                    top: -57px;
-                }
-
-                &--br {
-                    position: absolute;
-                    right: 18px;
-                    bottom: -21px;
-                }
-            }
-
-            /* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
-            .dfp-formulas__icon-shadow {
-                display: inline-block;
-                line-height: 0;
-                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-            }
-
-            .dfp-formulas__svg {
-                display: block;
-                height: auto;
-                max-width: 100%;
-            }
-
-            .dfp-formulas__svg--calculator {
-                width: 103px;
-                aspect-ratio: 1;
-            }
-
-            .dfp-formulas__svg--spellbook {
-                width: 105px;
-                aspect-ratio: 1;
-            }
-
-            .dfp-formulas__svg--ruler {
-                width: 48px;
-                height: 48px;
-            }
-
-            .dfp-formulas__body {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-
-                .dfp-formulas__title-row {
-                    display: flex;
-                    align-items: center;
-                    padding-left: 88px;
-                }
-
-                .dfp-formulas__title {
-                    font-family: var(--font-family);
-                    font-weight: 900;
-                    font-size: 40px;
-                    line-height: 1.12;
-                    color: #583e36;
-                }
-
-                .dfp-formulas__intro-row {
-                    padding-right: 48px;
-                }
-
-                .dfp-formulas__intro {
-                    font-weight: 300;
-                    line-height: 1.52;
-                    color: #583e36;
-                }
-
-                .dfp-formulas__callout-row {
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                    padding-left: 40px;
-
-                    .dfp-formulas__ruler-badge {
-                        align-self: flex-start;
-                        background: #14a9c3;
-                        border: 6px solid #583e36;
-                        border-radius: 12px;
-                        padding: 12px;
-
-                        .dfp-formulas__ruler-flip {
-                            transform: scaleY(-1) rotate(180deg);
-
-                            .dfp-formulas__ruler-canvas {
-                                width: 48px;
-                                height: 48px;
-                                overflow: hidden;
-                            }
-                        }
-                    }
-
-                    .dfp-formulas__callout {
-                        background: #fff;
-                        border: 4px solid #583e36;
-                        border-radius: 16px;
-                        padding: 24px 72px 24px 64px;
-
-                        p {
-                            font-weight: 300;
-                            line-height: 1.42;
-                            color: #583e36;
-                        }
-                    }
-                }
-            }
-        }
-
-        @container (min-width: 577px) {
-            .dfp-formulas__ruler-badge {
+            &--tl {
                 position: absolute;
-                left: 0;
-                top: 20px;
-                padding: 16px;
+                left: -18px;
+                top: -57px;
+            }
+
+            &--br {
+                position: absolute;
+                right: 18px;
+                bottom: -21px;
             }
         }
 
-        @container (max-width: 576px) {
+        /* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
+        .dfp-formulas__icon-shadow {
+            display: inline-block;
+            line-height: 0;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+        }
+
+        .dfp-formulas__svg {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .dfp-formulas__svg--calculator {
+            width: 103px;
+            aspect-ratio: 1;
+        }
+
+        .dfp-formulas__svg--spellbook {
+            width: 105px;
+            aspect-ratio: 1;
+        }
+
+        .dfp-formulas__svg--ruler {
+            width: 48px;
+            height: 48px;
+        }
+
+        .dfp-formulas__body {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
             .dfp-formulas__title-row {
-                padding-left: 48px;
+                display: flex;
+                align-items: center;
+                padding-left: 88px;
+            }
+
+            .dfp-formulas__title {
+                font-family: var(--font-family);
+                font-weight: 900;
+                font-size: 40px;
+                line-height: 1.12;
+                color: #583e36;
             }
 
             .dfp-formulas__intro-row {
-                padding-right: 0;
+                padding-right: 48px;
+            }
+
+            .dfp-formulas__intro {
+                font-weight: 300;
+                line-height: 1.52;
+                color: #583e36;
             }
 
             .dfp-formulas__callout-row {
-                padding-left: 0;
-            }
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                padding-left: 40px;
 
-            .dfp-formulas__callout {
-                padding: 20px;
+                .dfp-formulas__ruler-badge {
+                    align-self: flex-start;
+                    background: #14a9c3;
+                    border: 6px solid #583e36;
+                    border-radius: 12px;
+                    padding: 12px;
+
+                    .dfp-formulas__ruler-flip {
+                        transform: scaleY(-1) rotate(180deg);
+
+                        .dfp-formulas__ruler-canvas {
+                            width: 48px;
+                            height: 48px;
+                            overflow: hidden;
+                        }
+                    }
+                }
+
+                .dfp-formulas__callout {
+                    background: #fff;
+                    border: 4px solid #583e36;
+                    border-radius: 16px;
+                    padding: 24px 72px 24px 64px;
+
+                    p {
+                        font-weight: 300;
+                        line-height: 1.42;
+                        color: #583e36;
+                    }
+                }
             }
+        }
+    }
+
+    @container (min-width: 577px) {
+        .dfp-formulas__ruler-badge {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            padding: 16px;
+        }
+    }
+
+    @container (max-width: 576px) {
+        .dfp-formulas__title-row {
+            padding-left: 48px;
+        }
+
+        .dfp-formulas__intro-row {
+            padding-right: 0;
+        }
+
+        .dfp-formulas__callout-row {
+            padding-left: 0;
+        }
+
+        .dfp-formulas__callout {
+            padding: 20px;
         }
     }
 }

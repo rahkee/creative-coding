@@ -1,119 +1,118 @@
-.strongmind-content-layer {
-    /* —— Design for Purpose: Explore Further —— */
-    .dfp-explore-further {
-        .dfp-explore-further__container {
-            position: relative;
-            border: 8px solid #583e36;
-            border-radius: 24px;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
-            background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
-            padding: 40px 80px 72px 48px;
-            color: #583e36;
-            overflow: visible;
+/* —— Design for Purpose: Explore Further —— */
+.dfp-explore-further {
+    
+    .dfp-explore-further__container {
+        position: relative;
+        border: 8px solid #583e36;
+        border-radius: 24px;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
+        background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
+        padding: 40px 80px 72px 48px;
+        color: #583e36;
+        overflow: visible;
 
-            .dfp-explore-further__title {
-                margin: 0 0 24px;
-                font-family: Nunito, Sniglet, system-ui, sans-serif;
-                font-weight: 900;
-                font-size: 27.65px;
-                line-height: 1.12;
-                max-width: 672px;
+        .dfp-explore-further__title {
+            margin: 0 0 24px;
+            font-family: Nunito, Sniglet, system-ui, sans-serif;
+            font-weight: 900;
+            font-size: 27.65px;
+            line-height: 1.12;
+            max-width: 672px;
+        }
+
+        .dfp-explore-further__text {
+            margin: 0 0 24px;
+            font-weight: 300;
+            line-height: 1.52;
+            max-width: 672px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .dfp-explore-further__icon-shadow {
+            display: inline-block;
+            line-height: 0;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+        }
+
+        .dfp-explore-further__svg {
+            display: block;
+            height: auto;
+        }
+
+        .dfp-explore-further__svg--sun {
+            width: 135px;
+            height: 137px;
+        }
+
+        .dfp-explore-further__svg--acorn {
+            width: 40px;
+            height: 45px;
+        }
+
+        .dfp-explore-further__corner {
+            position: absolute;
+            pointer-events: none;
+            line-height: 0;
+
+            &--tr {
+                top: -45px;
+                right: -40px;
+                transform: rotate(8deg);
             }
 
-            .dfp-explore-further__text {
-                margin: 0 0 24px;
-                font-weight: 300;
-                line-height: 1.52;
-                max-width: 672px;
-
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
+            &--bl {
+                left: 48px;
+                bottom: 1px;
             }
 
-            .dfp-explore-further__icon-shadow {
-                display: inline-block;
-                line-height: 0;
-                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-            }
+            &--br {
+                right: 0;
+                bottom: 0;
 
-            .dfp-explore-further__svg {
-                display: block;
-                height: auto;
-            }
+                .dfp-explore-further__garden {
+                    position: relative;
+                    display: inline-block;
+                    width: 176px;
+                    height: 79px;
+                    vertical-align: bottom;
 
-            .dfp-explore-further__svg--sun {
-                width: 135px;
-                height: 137px;
-            }
-
-            .dfp-explore-further__svg--acorn {
-                width: 40px;
-                height: 45px;
-            }
-
-            .dfp-explore-further__corner {
-                position: absolute;
-                pointer-events: none;
-                line-height: 0;
-
-                &--tr {
-                    top: -45px;
-                    right: -40px;
-                    transform: rotate(8deg);
-                }
-
-                &--bl {
-                    left: 48px;
-                    bottom: 1px;
-                }
-
-                &--br {
-                    right: 0;
-                    bottom: 0;
-
-                    .dfp-explore-further__garden {
-                        position: relative;
+                    .dfp-explore-further__garden-shadow {
+                        position: absolute;
                         display: inline-block;
-                        width: 176px;
-                        height: 79px;
-                        vertical-align: bottom;
+                        line-height: 0;
 
-                        .dfp-explore-further__garden-shadow {
-                            position: absolute;
-                            display: inline-block;
-                            line-height: 0;
-
-                            &--sunflower {
-                                right: 62px;
-                                bottom: -2px;
-                            }
-
-                            &--tulip {
-                                right: 122px;
-                                bottom: 0;
-                            }
-
-                            &--mushroom {
-                                right: 4px;
-                                bottom: -5px;
-                            }
+                        &--sunflower {
+                            right: 62px;
+                            bottom: -2px;
                         }
 
-                        .dfp-explore-further__svg--sunflower {
-                            width: 72px;
-                            height: 78px;
+                        &--tulip {
+                            right: 122px;
+                            bottom: 0;
                         }
 
-                        .dfp-explore-further__svg--tulip {
-                            width: 53px;
-                            height: 56px;
+                        &--mushroom {
+                            right: 4px;
+                            bottom: -5px;
                         }
+                    }
 
-                        .dfp-explore-further__svg--mushroom {
-                            width: 65px;
-                            height: 67px;
-                        }
+                    .dfp-explore-further__svg--sunflower {
+                        width: 72px;
+                        height: 78px;
+                    }
+
+                    .dfp-explore-further__svg--tulip {
+                        width: 53px;
+                        height: 56px;
+                    }
+
+                    .dfp-explore-further__svg--mushroom {
+                        width: 65px;
+                        height: 67px;
                     }
                 }
             }

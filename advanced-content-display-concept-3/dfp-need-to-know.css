@@ -1,149 +1,138 @@
-.strongmind-content-layer {
-    /* —— Design for Purpose: Need to Know —— */
-    .dfp-need-to-know {
-        &:has(h2) h2::before,
-        &:has(h2) h2::after {
-            content: none;
-            display: none;
-            width: 0;
-            height: 0;
-            background: none;
-            transform: none;
+/* —— Design for Purpose: Need to Know —— */
+.dfp-need-to-know {
+
+    .dfp-need-to-know__container {
+        position: relative;
+        background: #fff6f6;
+        border: 8px solid #583e36;
+        border-radius: 24px;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+        padding: 56px 80px 48px 48px;
+        overflow: visible;
+
+        .dfp-need-to-know__icon-shadow {
+            display: inline-block;
+            line-height: 0;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+
+            &--strong {
+                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
+            }
         }
 
-        .dfp-need-to-know__container {
-            position: relative;
-            background: #fff6f6;
-            border: 8px solid #583e36;
-            border-radius: 24px;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-            padding: 56px 80px 48px 48px;
-            overflow: visible;
+        .dfp-need-to-know__header-cluster {
+            position: absolute;
+            left: calc(50% - 176px);
+            top: -108px;
+            width: 352px;
+            height: 160px;
+            pointer-events: none;
+            display: block;
 
-            .dfp-need-to-know__icon-shadow {
-                display: inline-block;
-                line-height: 0;
-                filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
-
-                &--strong {
-                    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
-                }
-            }
-
-            .dfp-need-to-know__header-cluster {
-                position: absolute;
-                left: calc(50% - 176px);
-                top: -108px;
-                width: 352px;
-                height: 160px;
-                pointer-events: none;
+            .dfp-need-to-know__svg {
                 display: block;
+                height: auto;
+                max-width: 100%;
+            }
 
-                .dfp-need-to-know__svg {
-                    display: block;
-                    height: auto;
-                    max-width: 100%;
-                }
+            .dfp-need-to-know__svg--halo {
+                width: 112px;
+                aspect-ratio: 1;
+                position: absolute;
+                top: 0;
+                left: calc(50% - 52px);
+            }
 
-                .dfp-need-to-know__svg--halo {
-                    width: 112px;
-                    aspect-ratio: 1;
-                    position: absolute;
-                    top: 0;
-                    left: calc(50% - 52px);
-                }
+            .dfp-need-to-know__crown-spin {
+                position: absolute;
+                top: 0;
+                left: calc(50% - 38px);
+                transform: rotate(-5deg);
 
-                .dfp-need-to-know__crown-spin {
-                    position: absolute;
-                    top: 0;
-                    left: calc(50% - 38px);
-                    transform: rotate(-5deg);
-
-                    .dfp-need-to-know__svg--crown {
-                        width: 76px;
-                        aspect-ratio: 76 / 75;
-                    }
-                }
-
-                .dfp-need-to-know__pill {
-                    position: absolute;
-                    top: 76px;
-                    left: calc(50% - 84px);
-                    background: #fff2d4;
-                    border: 8px solid #583e36;
-                    border-radius: 96px;
-                    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
-                    padding: 16px 32px;
-
-                    .dfp-need-to-know__pill-label {
-                        font-family: Nunito, Sniglet, system-ui, sans-serif;
-                        font-weight: 900;
-                        font-size: 23.04px;
-                        line-height: 1.12;
-                        color: #583e36;
-                        white-space: nowrap;
-                    }
+                .dfp-need-to-know__svg--crown {
+                    width: 76px;
+                    aspect-ratio: 76 / 75;
                 }
             }
 
-            .dfp-need-to-know__body {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                align-items: stretch;
-                text-align: left;
-                color: #583e36;
-                max-width: 100%;
+            .dfp-need-to-know__pill {
+                position: absolute;
+                top: 76px;
+                left: calc(50% - 84px);
+                background: #fff2d4;
+                border: 8px solid #583e36;
+                border-radius: 96px;
+                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+                padding: 16px 32px;
 
-                .dfp-need-to-know__title {
+                .dfp-need-to-know__pill-label {
                     font-family: Nunito, Sniglet, system-ui, sans-serif;
                     font-weight: 900;
-                    font-size: 19.2px;
+                    font-size: 23.04px;
                     line-height: 1.12;
-                }
-
-                .dfp-need-to-know__text {
-                    font-weight: 300;
-                    line-height: 1.52;
+                    color: #583e36;
+                    white-space: nowrap;
                 }
             }
+        }
 
-            .dfp-need-to-know__corner {
-                position: absolute;
-                pointer-events: none;
-                line-height: 0;
+        .dfp-need-to-know__body {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: stretch;
+            text-align: left;
+            color: #583e36;
+            max-width: 100%;
 
-                &--br {
-                    right: 17px;
-                    bottom: -30px;
-                    width: 130px;
-                    height: 92px;
+            .dfp-need-to-know__title {
+                font-family: Nunito, Sniglet, system-ui, sans-serif;
+                font-weight: 900;
+                font-size: 19.2px;
+                line-height: 1.12;
+            }
+
+            .dfp-need-to-know__text {
+                font-weight: 300;
+                line-height: 1.52;
+            }
+        }
+
+        .dfp-need-to-know__corner {
+            position: absolute;
+            pointer-events: none;
+            line-height: 0;
+
+            &--br {
+                right: 17px;
+                bottom: -30px;
+                width: 130px;
+                height: 92px;
+                display: block;
+
+                > .dfp-need-to-know__icon-shadow:first-child {
+                    position: absolute;
+                    right: 36px;
+                    bottom: -26px;
                     display: block;
+                }
 
-                    > .dfp-need-to-know__icon-shadow:first-child {
-                        position: absolute;
-                        right: 36px;
-                        bottom: -26px;
-                        display: block;
-                    }
+                .dfp-need-to-know__quill-flip {
+                    position: absolute;
+                    right: 21px;
+                    bottom: -25px;
+                    display: block;
+                    transform: scaleY(-1) rotate(180deg);
+                }
 
-                    .dfp-need-to-know__quill-flip {
-                        position: absolute;
-                        right: 21px;
-                        bottom: -25px;
-                        display: block;
-                        transform: scaleY(-1) rotate(180deg);
-                    }
+                .dfp-need-to-know__svg--notebook {
+                    width: 88px;
+                    aspect-ratio: 1;
+                }
 
-                    .dfp-need-to-know__svg--notebook {
-                        width: 88px;
-                        aspect-ratio: 1;
-                    }
-
-                    .dfp-need-to-know__svg--quill {
-                        width: 63px;
-                        aspect-ratio: 1;
-                    }
+                .dfp-need-to-know__svg--quill {
+                    width: 63px;
+                    aspect-ratio: 1;
                 }
             }
         }
