@@ -12,20 +12,15 @@
             box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
             padding: 40px 150px 40px 40px;
             color: #583e36;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
 
             h2 {
-                margin: 0 0 16px;
                 font-family: Nunito, Sniglet, system-ui, sans-serif;
                 font-weight: 900;
-                font-size: 24px;
+                font-size: 20px;
                 line-height: 1;
-            }
-
-            p {
-                margin: 0;
-                font-weight: 300;
-                line-height: 1.52;
-                max-width: 620px;
             }
         }
 
@@ -41,11 +36,10 @@
                 left: 32px;
                 top: 44px;
                 width: 158px;
-                margin: 0;
                 font-family: Nunito, Sniglet, system-ui, sans-serif;
                 font-weight: 900;
-                font-size: 22px;
-                line-height: 1.1;
+                font-size: 24px;
+                line-height: 1;
                 color: #583e36;
                 text-align: center;
                 display: flex;

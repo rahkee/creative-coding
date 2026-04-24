@@ -12,7 +12,6 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        overflow: visible;
 
         .dfp-the-objective__badge {
             position: absolute;
@@ -28,7 +27,6 @@
             border-radius: 50%;
 
             svg {
-                display: block;
 
                 .dfp-the-objective__sparkles {
                     path {
@@ -61,29 +59,21 @@
         }
 
         h2 {
-            margin: 0;
             font-family: Nunito, Sniglet, system-ui, sans-serif;
             font-weight: 900;
             font-size: 24px;
-            line-height: 1.12;
             color: #009290;
         }
 
         h3 {
             margin: 0;
             font-family: Nunito, Sniglet, system-ui, sans-serif;
-            font-weight: 900;
-            font-size: 19.2px;
-            line-height: 1.12;
+            font-size: 20px;
             color: #583e36;
         }
 
         p {
-            margin: 0;
-            font-weight: 300;
-            line-height: 1.52;
             color: #583e36;
-            max-width: 100%;
 
             &:last-child {
                 margin-bottom: 0;
