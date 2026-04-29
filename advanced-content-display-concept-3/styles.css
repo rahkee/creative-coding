@@ -56,6 +56,11 @@
     .strongmind-content-layer .dfp-need-to-know .dfp-need-to-know__header-cluster svg .dfp-need-to-know__sparkles path {
         animation: none;
     }
+
+    .strongmind-content-layer .dfp-formulas svg .dfp-formulas__sparkles path,
+    .strongmind-content-layer .dfp-formulas svg .dfp-formulas__sparkles ellipse {
+        animation: none;
+    }
 }
 
 /* Custom Styles */

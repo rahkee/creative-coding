@@ -4,25 +4,25 @@
     .dfp-formulas__container {
         position: relative;
         background: #effbf6;
-        border: 8px solid #583e36;
+        border: 4px solid #583e36;
         border-radius: 24px;
         box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
         padding: 24px 40px 40px;
 
         .dfp-formulas__corner {
+            position: absolute;
             pointer-events: none;
+            z-index: 1;
+        }
 
-            &--tl {
-                position: absolute;
-                left: -18px;
-                top: -57px;
-            }
+        .dfp-formulas__corner--tl {
+            left: 20px;
+            top: -35px;
+        }
 
-            &--br {
-                position: absolute;
-                right: 18px;
-                bottom: -21px;
-            }
+        .dfp-formulas__corner--br {
+            right: 20px;
+            bottom: -25px;
         }
 
         /* Sticker shadows follow transparent artwork alpha (Figma: 2px 4px / ~6px blur, 12% black). */
@@ -92,7 +92,7 @@
                 .dfp-formulas__ruler-badge {
                     align-self: flex-start;
                     background: #14a9c3;
-                    border: 6px solid #583e36;
+                    border: 4px solid #583e36;
                     border-radius: 12px;
                     padding: 12px;
 
@@ -127,7 +127,8 @@
         .dfp-formulas__ruler-badge {
             position: absolute;
             left: 0;
-            top: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             padding: 16px;
         }
     }
@@ -148,5 +149,34 @@
         .dfp-formulas__callout {
             padding: 20px;
         }
+    }
+}
+
+.dfp-formulas__sparkles {
+
+    path, ellipse {
+        transform-origin: center;
+        transform-box: fill-box;
+        animation: dfpSparkle ease-in-out infinite;
+    }
+
+    >:nth-child(1) {
+        animation-duration: 2.2s;
+        animation-delay: 0.05s;
+    }
+
+    >:nth-child(2) {
+        animation-duration: 1.65s;
+        animation-delay: 0.55s;
+    }
+
+    >g:nth-child(3)>path:first-child {
+        animation-duration: 2.85s;
+        animation-delay: 0.2s;
+    }
+
+    >g:nth-child(3)>path:last-child {
+        animation-duration: 1.95s;
+        animation-delay: 0.82s;
     }
 }
