@@ -52,6 +52,10 @@
     .strongmind-content-layer .dfp-think-about-this .dfp-think-about-this__badge svg .dfp-think-about-this__sparkles ellipse {
         animation: none;
     }
+
+    .strongmind-content-layer .dfp-need-to-know .dfp-need-to-know__header-cluster svg .dfp-need-to-know__sparkles path {
+        animation: none;
+    }
 }
 
 /* Custom Styles */
@@ -76,7 +80,7 @@
     }
 
     .sm-content-container[class*='dfp-'] {
-        margin: 32px auto;
+        margin: 100px auto 32px;
     }
 
     /* Associated: stacked by default; row layout when this layer is wide enough (container is this block, not .associated). */
