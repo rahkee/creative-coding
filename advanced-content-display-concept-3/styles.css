@@ -61,6 +61,19 @@
     .strongmind-content-layer .dfp-formulas svg .dfp-formulas__sparkles ellipse {
         animation: none;
     }
+
+    .strongmind-content-layer .dfp-explore-further svg .dfp-explore-further__sparkles path,
+    .strongmind-content-layer .dfp-explore-further svg .dfp-explore-further__sparkles circle,
+    .strongmind-content-layer .dfp-explore-further svg .dfp-explore-further__sparkles ellipse {
+        animation: none;
+    }
+
+    .strongmind-content-layer .dfp-explore-further .dfp-explore-further__garden-shadow--sunflower,
+    .strongmind-content-layer .dfp-explore-further .dfp-explore-further__garden-shadow--tulip,
+    .strongmind-content-layer .dfp-explore-further .dfp-explore-further__garden-shadow--mushroom,
+    .strongmind-content-layer .dfp-explore-further .dfp-explore-further__icon-container__acorn {
+        animation: none;
+    }
 }
 
 /* Custom Styles */

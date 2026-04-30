@@ -3,7 +3,7 @@
     
     .dfp-explore-further__container {
         position: relative;
-        border: 8px solid #583e36;
+        border: 4px solid #583e36;
         border-radius: 24px;
         box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.12);
         background: radial-gradient(110% 90% at 74% 23%, #fff7e5 0%, #c7efdf 100%);
@@ -42,80 +42,162 @@
             height: auto;
         }
 
-        .dfp-explore-further__svg--sun {
-            width: 135px;
-            height: 137px;
+        .dfp-explore-further__icon-container__acorn {
+            position: absolute;
+            bottom: -5px;
+            left: 40px;
+            pointer-events: none;
+            transform-origin: bottom center;
+            animation: dfpSway 5.2s ease-in-out infinite;
+            animation-delay: 0.6s;
+
+            .dfp-explore-further__svg--acorn {
+                width: 40px;
+                height: 45px;
+                display: block;
+            }
         }
 
-        .dfp-explore-further__svg--acorn {
-            width: 40px;
-            height: 45px;
+        .dfp-explore-further__icon-container__sun {
+            position: absolute;
+            top: -45px;
+            right: -30px;
+            pointer-events: none;
+            overflow: visible;
+            transform-origin: center;
+            animation: dfpPulse 4s ease-in-out infinite;
+
+            .dfp-explore-further__svg--sun {
+                width: 135px;
+                height: 137px;
+                display: block;
+                overflow: visible;
+            }
         }
 
         .dfp-explore-further__corner {
             position: absolute;
             pointer-events: none;
             line-height: 0;
+        }
 
-            &--tr {
-                top: -45px;
-                right: -40px;
-                transform: rotate(8deg);
-            }
+        .dfp-explore-further__corner--tr {
+            top: -45px;
+            right: -40px;
+            transform: rotate(8deg);
+        }
 
-            &--bl {
-                left: 48px;
-                bottom: 1px;
-            }
+        .dfp-explore-further__corner--bl {
+            left: 48px;
+            bottom: 1px;
+        }
 
-            &--br {
-                right: 0;
-                bottom: 0;
+        .dfp-explore-further__corner--br {
+            right: 0;
+            bottom: 0;
+        }
 
-                .dfp-explore-further__garden {
-                    position: relative;
-                    display: inline-block;
-                    width: 176px;
-                    height: 79px;
-                    vertical-align: bottom;
+        .dfp-explore-further__garden {
+            position: relative;
+            display: inline-block;
+            width: 176px;
+            height: 79px;
+            vertical-align: bottom;
+        }
 
-                    .dfp-explore-further__garden-shadow {
-                        position: absolute;
-                        display: inline-block;
-                        line-height: 0;
+        .dfp-explore-further__garden-shadow {
+            position: absolute;
+            display: inline-block;
+            line-height: 0;
+        }
 
-                        &--sunflower {
-                            right: 62px;
-                            bottom: -2px;
-                        }
+        .dfp-explore-further__garden-shadow--sunflower {
+            right: 62px;
+            bottom: -5px;
+            transform-origin: bottom center;
+            animation: dfpSway 4.4s ease-in-out infinite;
+        }
 
-                        &--tulip {
-                            right: 122px;
-                            bottom: 0;
-                        }
+        .dfp-explore-further__garden-shadow--tulip {
+            right: 122px;
+            bottom: -2px;
+            transform-origin: bottom center;
+            animation: dfpSway 3.8s ease-in-out infinite;
+            animation-delay: 0.4s;
+        }
 
-                        &--mushroom {
-                            right: 4px;
-                            bottom: -5px;
-                        }
-                    }
+        .dfp-explore-further__garden-shadow--mushroom {
+            right: 4px;
+            bottom: -5px;
+            transform-origin: bottom center;
+            animation: dfpSway 4.2s ease-in-out infinite;
+            animation-delay: 0.8s;
+        }
 
-                    .dfp-explore-further__svg--sunflower {
-                        width: 72px;
-                        height: 78px;
-                    }
+        .dfp-explore-further__svg--sunflower {
+            width: 72px;
+            height: 78px;
+        }
 
-                    .dfp-explore-further__svg--tulip {
-                        width: 53px;
-                        height: 56px;
-                    }
+        .dfp-explore-further__svg--tulip {
+            width: 53px;
+            height: 56px;
+        }
 
-                    .dfp-explore-further__svg--mushroom {
-                        width: 65px;
-                        height: 67px;
-                    }
-                }
-            }
+        .dfp-explore-further__svg--mushroom {
+            width: 65px;
+            height: 67px;
         }
     }
 }
+
+.dfp-explore-further__sparkles {
+
+    path, circle, ellipse {
+        transform-origin: center;
+        transform-box: fill-box;
+        animation: dfpSparkle ease-in-out infinite;
+    }
+
+    >:nth-child(1) {
+        animation-duration: 2.2s;
+        animation-delay: 0.05s;
+    }
+
+    >:nth-child(2) {
+        animation-duration: 1.65s;
+        animation-delay: 0.55s;
+    }
+
+    >:nth-child(3)>:nth-child(1) {
+        animation-duration: 2.85s;
+        animation-delay: 0.2s;
+    }
+
+    >:nth-child(3)>:nth-child(2) {
+        animation-duration: 1.95s;
+        animation-delay: 0.82s;
+    }
+}
+
+.dfp-explore-further__sun-ridges {
+    transform-origin: 49% 54%;
+    transform-box: view-box;
+    animation: dfpSpin 60s linear infinite;
+}
+
+@keyframes dfpPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+@keyframes dfpSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes dfpSway {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+}
+
